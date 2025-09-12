@@ -11,21 +11,29 @@ class CustomThemeData {
     return brightness == Brightness.light ? light : dark;
   }
 
-  Color get primaryColor => Color(0xff6200ee);
+  Color get primaryColor => Color(0xffe44641);
 
-  Color get primaryBackground {
-    return by(light: const Color(0xFFffffff), dark: const Color(0xFF000000));
-  }
+  Color get primaryBackground => const Color(0xFFffffff);
 
-  Color get secondaryBackground {
-    return by(light: const Color(0xFFeeeff0), dark: const Color(0xFF181818));
-  }
+  Color get secondaryBackground => const Color(0xFFeeeff0);
 
-  Color get primaryForeground {
-    return by(light: const Color(0xFF000000), dark: const Color(0xFFFFFFFF));
-  }
+  Color get primaryForeground => const Color(0xff2a2a2a);
 
-  Color get secondaryForeground => primaryForeground.withValues(alpha: 0.75);
+  Color get secondaryForeground => Color(0xff767676);
+
+  Color get success => Color(0xffa6d778);
+
+  Color get info => Color(0xff6c6cf4);
+
+  Color get warning => Color(0xfff44da0);
+
+  Color get white => Color(0xffffffff);
+
+  Color get transparent => Color(0x00000000);
+
+  Color get splashColor => Color(0xffffffff).withValues(alpha: 0.125);
+
+  Color get shadowColor => Color(0xff000000).withValues(alpha: 0.125);
 
   ThemeData toTheme() {
     return ThemeData(
