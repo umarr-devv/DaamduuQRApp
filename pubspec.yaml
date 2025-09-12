@@ -89,10 +89,15 @@ flutter:
   assets:
     - ".env"
 
-    - "assets/svg/home.svg"
-    - "assets/svg/search.svg"
-    - "assets/svg/favorite.svg"
-    - "assets/svg/settings.svg"
+    - "assets/svg/house.svg"
+    - "assets/svg/house-fill.svg"
+    - "assets/svg/heart.svg"
+    - "assets/svg/heart-fill.svg"
+    - "assets/svg/map-marker.svg"
+    - "assets/svg/map-marker-fill.svg"
+    - "assets/svg/user.svg"
+    - "assets/svg/user-fill.svg"
+    - "assets/svg/qr.svg"
 
     - "assets/icon/icon.png"
 
