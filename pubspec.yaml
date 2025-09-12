@@ -28,8 +28,11 @@ dependencies:
   hive_ce_flutter: ^2.3.1
   intl: ^0.20.2
   json_annotation: ^4.9.0
+  mobile_scanner: ^7.0.1
   path_provider: ^2.1.5
   retrofit: ^4.5.0
+  smooth_page_indicator: ^1.2.1
+  story_view: ^0.16.6
   talker: ^4.9.1
   talker_bloc_logger: ^4.9.1
   talker_dio_logger: ^4.9.1
