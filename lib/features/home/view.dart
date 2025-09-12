@@ -14,8 +14,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
-    FlutterNativeSplash.remove();
     super.initState();
+    FlutterNativeSplash.remove();
   }
 
   @override

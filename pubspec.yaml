@@ -1,6 +1,6 @@
 name: app
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
@@ -58,26 +58,26 @@ flutter_launcher_icons:
     background_color: "#ffffff"
     theme_color: "#ffffff"
   windows:
-    generate: true
+    generate: false
     image_path: "assets/icon/icon.png"
     icon_size: 48
   macos:
-    generate: true
+    generate: false
     image_path: "assets/icon/icon.png"
 
 flutter_native_splash:
-  color: "#000000"
-  image: "assets/icon/icon.png"
-  branding: "assets/icon/icon.png"
-  color_dark: "#121212"
-  image_dark: "assets/icon/icon.png"
-  branding_dark: "assets/icon/icon.png"
+  color: "#e44641"
+  image: "assets/splash/splash_icon.png"
+  branding: "assets/splash/splash_branding.png"
+  color_dark: "#e44641"
+  image_dark: "assets/splash/splash_icon.png"
+  branding_dark: "assets/splash/splash_branding.png"
 
   android_12:
-    color: "#000000"
-    icon_background_color: "#ffffff"
-    image: "assets/icon/icon.png"
-    branding: "assets/icon/icon.png"
+    color: "#e44641"
+    icon_background_color: "#e44641"
+    image: "assets/splash/android_12_splash_icon.png"
+    branding: "assets/splash/android_12_splash_branding.png"
 
   android: true
   ios: true
@@ -87,29 +87,34 @@ flutter:
   uses-material-design: true
 
   assets:
-    - '.env'
+    - ".env"
 
-    - 'assets/svg/home.svg'
-    - 'assets/svg/search.svg'
-    - 'assets/svg/favorite.svg'
-    - 'assets/svg/settings.svg'
+    - "assets/svg/home.svg"
+    - "assets/svg/search.svg"
+    - "assets/svg/favorite.svg"
+    - "assets/svg/settings.svg"
 
-    - 'assets/icon/icon.png'
+    - "assets/icon/icon.png"
+
+    - "assets/splash/splash_branding.png"
+    - "assets/splash/splash_icon.png"
+    - "assets/splash/android_12_splash_icon.png"
+    - "assets/splash/android_12_splash_branding.png"
 
   fonts:
     - family: Manrope
       fonts:
-        - asset: 'assets/fonts/Manrope/Manrope-ExtraBold.ttf'
+        - asset: "assets/fonts/Manrope/Manrope-ExtraBold.ttf"
           weight: 800
-        - asset: 'assets/fonts/Manrope/Manrope-Bold.ttf'
+        - asset: "assets/fonts/Manrope/Manrope-Bold.ttf"
           weight: 700
-        - asset: 'assets/fonts/Manrope/Manrope-SemiBold.ttf'
+        - asset: "assets/fonts/Manrope/Manrope-SemiBold.ttf"
           weight: 600
-        - asset: 'assets/fonts/Manrope/Manrope-Medium.ttf'
+        - asset: "assets/fonts/Manrope/Manrope-Medium.ttf"
           weight: 500
-        - asset: 'assets/fonts/Manrope/Manrope-Regular.ttf'
+        - asset: "assets/fonts/Manrope/Manrope-Regular.ttf"
           weight: 400
-        - asset: 'assets/fonts/Manrope/Manrope-Light.ttf'
+        - asset: "assets/fonts/Manrope/Manrope-Light.ttf"
           weight: 300
-        - asset: 'assets/fonts/Manrope/Manrope-ExtraLight.ttf'
+        - asset: "assets/fonts/Manrope/Manrope-ExtraLight.ttf"
           weight: 200
