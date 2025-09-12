@@ -1,6 +1,7 @@
 import 'package:app/features/home/view.dart';
 import 'package:app/features/init/view.dart';
 import 'package:app/features/menu/view.dart';
+import 'package:app/features/story/view.dart';
 import 'package:auto_route/auto_route.dart';
 
 part 'router.gr.dart';
@@ -15,5 +16,6 @@ class AppRouter extends RootStackRouter {
       initial: true,
       children: [AutoRoute(page: HomeRoute.page, initial: true)],
     ),
+    CustomRoute(page: StoryRoute.page, transitionsBuilder: TransitionsBuilders.slideBottom),
   ];
 }

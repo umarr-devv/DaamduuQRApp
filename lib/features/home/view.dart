@@ -1,3 +1,5 @@
+import 'package:app/features/home/widgets/stories.dart';
+import 'package:app/features/home/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +9,13 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: CustomScrollView());
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          HomeAppBar(),
+          SliverToBoxAdapter(child: HomeStories()),
+        ],
+      ),
+    );
   }
 }
