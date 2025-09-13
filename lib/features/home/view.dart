@@ -1,3 +1,4 @@
+import 'package:app/features/home/widgets/card.dart';
 import 'package:app/features/home/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,10 @@ class HomeScreen extends StatelessWidget {
         slivers: [
           HomeAppBar(),
           SliverToBoxAdapter(child: HomeStories()),
+          SliverToBoxAdapter(child: HomeCard()),
+          SliverToBoxAdapter(child: HomeEestablishmentList()),
+          SliverToBoxAdapter(child: HomeFoodList()),
+          SliverFillRemaining(),
         ],
       ),
     );

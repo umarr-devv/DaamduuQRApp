@@ -31,6 +31,8 @@ class CustomThemeData {
 
   Color get transparent => Color(0x00000000);
 
+  Color get opacityForeground => primaryForeground.withValues(alpha: 0.2);
+
   Color get splashColor => Color(0xffffffff).withValues(alpha: 0.125);
 
   Color get shadowColor => Color(0xff000000).withValues(alpha: 0.125);
