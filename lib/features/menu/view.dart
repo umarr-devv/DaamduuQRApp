@@ -23,7 +23,7 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     return AutoTabsRouter(
-      routes: [HomeRoute(), HomeRoute(), HomeRoute(), HomeRoute()],
+      routes: [HomeRoute(), FavoriteRoute(), LocationRoute(), ProfileRoute()],
       transitionBuilder: (context, child, animation) => child,
       builder: (context, child) {
         final tabsRouter = AutoTabsRouter.of(context);
