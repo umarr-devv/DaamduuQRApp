@@ -106,6 +106,9 @@ flutter:
     - "assets/svg/user-fill.svg"
     - "assets/svg/qr.svg"
     - "assets/svg/bell.svg"
+    - "assets/svg/search.svg"
+    - "assets/svg/empty-set.svg"
+    - "assets/svg/face-sad-sweat.svg"
 
     - "assets/icon/icon.png"
 
