@@ -72,17 +72,19 @@ flutter_launcher_icons:
 flutter_native_splash:
   color: "#e44641"
   image: "assets/splash/splash_icon.png"
-  branding: "assets/splash/splash_branding.png"
-  color_dark: "#e44641"
+  branding: "assets/splash/light_splash_logo.png"
+  color_dark: "#2a2a2a"
   image_dark: "assets/splash/splash_icon.png"
-  branding_dark: "assets/splash/splash_branding.png"
-
+  branding_dark: "assets/splash/dark_splash_logo.png"
   android_12:
     color: "#e44641"
     icon_background_color: "#e44641"
-    image: "assets/splash/android_12_splash_icon.png"
-    branding: "assets/splash/android_12_splash_branding.png"
-
+    image: "assets/splash/a12_splash_icon.png"
+    branding: "assets/splash/a12_light_splash_logo.png"
+    color_dark: "#2a2a2a"
+    icon_background_color_dark: "#2a2a2a"
+    image_dark: "assets/splash/a12_splash_icon.png"
+    branding_dark: "assets/splash/a12_dark_splash_logo.png"
   android: true
   ios: true
   web: false
@@ -105,10 +107,12 @@ flutter:
 
     - "assets/icon/icon.png"
 
-    - "assets/splash/splash_branding.png"
+    - "assets/splash/a12_splash_icon.png"
+    - "assets/splash/a12_dark_splash_logo.png"
+    - "assets/splash/a12_light_splash_logo.png"
     - "assets/splash/splash_icon.png"
-    - "assets/splash/android_12_splash_icon.png"
-    - "assets/splash/android_12_splash_branding.png"
+    - "assets/splash/dark_splash_logo.png"
+    - "assets/splash/light_splash_logo.png"
 
   fonts:
     - family: Manrope
