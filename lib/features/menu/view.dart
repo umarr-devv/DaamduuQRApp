@@ -22,10 +22,12 @@ class _MenuScreenState extends State<MenuScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return AutoTabsRouter(
+    return AutoTabsRouter.pageView(
       routes: [HomeRoute(), FavoriteRoute(), LocationRoute(), ProfileRoute()],
-      transitionBuilder: (context, child, animation) => child,
-      builder: (context, child) {
+      physics: const NeverScrollableScrollPhysics(),
+      duration: const Duration(milliseconds: 125),
+      curve: Curves.bounceInOut,
+      builder: (context, child, controller) {
         final tabsRouter = AutoTabsRouter.of(context);
         return Scaffold(
           body: child,
