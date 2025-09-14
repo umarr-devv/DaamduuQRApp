@@ -1,3 +1,4 @@
+import 'package:app/features/favorite/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +8,13 @@ class FavoriteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          FavoriteAppBar(),
+          SliverFillRemaining(child: FavoriteEmpty()),
+        ],
+      ),
+    );
   }
 }
