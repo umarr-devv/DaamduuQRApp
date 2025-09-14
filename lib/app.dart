@@ -19,6 +19,7 @@ class _AppScreenState extends State<AppScreen> {
     return MaterialApp.router(
       title: 'DaamduuQR',
       theme: lightTheme,
+      debugShowCheckedModeBanner: false,
       routerConfig: appRoute.config(
         navigatorObservers: () => [TalkerRouteObserver(GetIt.I<Talker>())],
       ),

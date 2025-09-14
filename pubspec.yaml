@@ -94,7 +94,8 @@ flutter:
 
   assets:
     - ".env"
-
+    - "assets/svg/icon.svg"
+    - "assets/svg/logo.svg"
     - "assets/svg/house.svg"
     - "assets/svg/house-fill.svg"
     - "assets/svg/heart.svg"
@@ -104,6 +105,7 @@ flutter:
     - "assets/svg/user.svg"
     - "assets/svg/user-fill.svg"
     - "assets/svg/qr.svg"
+    - "assets/svg/bell.svg"
 
     - "assets/icon/icon.png"
 
