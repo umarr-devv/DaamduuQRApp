@@ -9,14 +9,27 @@ class HomeAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return SliverAppBar(
-      title: SvgPicture.asset('assets/svg/logo.svg', height: 20),
+      title: Row(
+        spacing: 8,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(6),
+            decoration: BoxDecoration(
+              color: theme.custom.primaryColor,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: SvgPicture.asset('assets/svg/icon.svg', height: 20),
+          ),
+          SvgPicture.asset('assets/svg/logo.svg', height: 20),
+        ],
+      ),
       backgroundColor: theme.custom.primaryBackground,
       pinned: true,
       actions: [
         IconButton(
           onPressed: () {},
           icon: SvgPicture.asset(
-            'assets/svg/bell.svg',
+            'assets/svg/search.svg',
             height: 20,
             width: 20,
             colorFilter: ColorFilter.mode(
