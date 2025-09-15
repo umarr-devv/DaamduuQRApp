@@ -1,5 +1,5 @@
 export 'appbar.dart';
-export 'category.dart';
-export 'establishment.dart';
+export 'establishment_category.dart';
+export 'establishment_list.dart';
 export 'food.dart';
 export 'stories.dart';

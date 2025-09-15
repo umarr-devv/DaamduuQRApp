@@ -27,11 +27,15 @@ class CustomThemeData {
 
   Color get warning => Color(0xfff44da0);
 
+  Color get black => Color(0xff000000);
+
   Color get white => Color(0xffffffff);
 
   Color get transparent => Color(0x00000000);
 
   Color get opacityForeground => primaryForeground.withValues(alpha: 0.2);
+
+  Color get opacityWhite => Color(0xffffffff).withValues(alpha: 0.75);
 
   Color get splashColor => Color(0xffffffff).withValues(alpha: 0.125);
 

@@ -126,6 +126,8 @@ flutter:
     - "assets/splash/dark_splash_logo.png"
     - "assets/splash/light_splash_logo.png"
 
+    - "assets/placeholder/restaurant.jpg"
+
   fonts:
     - family: Manrope
       fonts:
