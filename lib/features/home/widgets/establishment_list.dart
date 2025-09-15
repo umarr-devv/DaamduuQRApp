@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class HomeEestablishmentList extends StatefulWidget {
-  const HomeEestablishmentList({super.key});
+class HomeEstablishmentList extends StatefulWidget {
+  const HomeEstablishmentList({super.key});
 
   @override
-  State<HomeEestablishmentList> createState() => _HomeEestablishmentListState();
+  State<HomeEstablishmentList> createState() => _HomeEstablishmentListState();
 }
 
-class _HomeEestablishmentListState extends State<HomeEestablishmentList> {
+class _HomeEstablishmentListState extends State<HomeEstablishmentList> {
   final carouselController = CarouselSliderController();
 
   int currentIndex = 0;

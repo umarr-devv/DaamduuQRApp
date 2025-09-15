@@ -13,7 +13,9 @@ class HomeScreen extends StatelessWidget {
         slivers: [
           HomeAppBar(),
           SliverToBoxAdapter(child: HomeEstablishmentCategories()),
-          SliverToBoxAdapter(child: HomeEestablishmentList()),
+          SliverToBoxAdapter(child: HomeEstablishmentList()),
+          SliverToBoxAdapter(child: HomeFoodCategoriesTitle()),
+          HomeFoodCategories(),
           SliverFillRemaining(),
         ],
       ),

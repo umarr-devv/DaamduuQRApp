@@ -127,6 +127,12 @@ flutter:
     - "assets/splash/light_splash_logo.png"
 
     - "assets/placeholder/restaurant.jpg"
+    - "assets/placeholder/desert.jpg"
+    - "assets/placeholder/drinks.jpg"
+    - "assets/placeholder/main_food.jpg"
+    - "assets/placeholder/salad.jpg"
+    - "assets/placeholder/soup.jpg"
+    - "assets/placeholder/sushi.jpg"
 
   fonts:
     - family: Manrope
