@@ -16,7 +16,9 @@ class HomeScreen extends StatelessWidget {
           SliverToBoxAdapter(child: HomeEstablishmentList()),
           SliverToBoxAdapter(child: HomeFoodCategoriesTitle()),
           HomeFoodCategories(),
-          SliverFillRemaining(),
+          SliverToBoxAdapter(child: HomePopularFoodsTitle()),
+          HomePopularFoodsList(),
+          SliverPadding(padding: const EdgeInsets.only(top: 64)),
         ],
       ),
     );

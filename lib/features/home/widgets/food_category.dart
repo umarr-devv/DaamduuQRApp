@@ -27,7 +27,7 @@ class HomeFoodCategoriesTitle extends StatelessWidget {
       child: Text(
         'Категории',
         style: TextStyle(
-          fontSize: 18,
+          fontSize: 16,
           fontWeight: FontWeight.w500,
           color: theme.custom.secondaryForeground,
         ),
