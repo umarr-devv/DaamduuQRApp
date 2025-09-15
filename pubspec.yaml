@@ -109,6 +109,13 @@ flutter:
     - "assets/svg/search.svg"
     - "assets/svg/empty-set.svg"
     - "assets/svg/face-sad-sweat.svg"
+    - "assets/svg/croissant.svg"
+    - "assets/svg/cup-straw-swoosh.svg"
+    - "assets/svg/french-fries.svg"
+    - "assets/svg/glass-cheers.svg"
+    - "assets/svg/hamburger-soda.svg"
+    - "assets/svg/mug-hot-alt.svg"
+    - "assets/svg/restaurant.svg"
 
     - "assets/icon/icon.png"
 
