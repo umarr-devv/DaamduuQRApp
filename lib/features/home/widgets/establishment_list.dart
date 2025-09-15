@@ -79,7 +79,7 @@ class _EstablishmentItem extends StatelessWidget {
           child: Stack(
             children: [
               Hero(
-                tag: 'background-image',
+                tag: 'establishment-image',
                 child: Image.asset(
                   'assets/placeholder/restaurant.jpg',
                   width: double.infinity,

@@ -1,9 +1,17 @@
+import 'package:app/core/router/router.dart';
 import 'package:app/shared/theme/theme.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-class _CategoryItemData {
-  _CategoryItemData({required this.image, required this.label});
+// FOR ONLY DEBUG
+class FoodCategoryItemData {
+  FoodCategoryItemData({
+    required this.id,
+    required this.image,
+    required this.label,
+  });
 
+  final int id;
   final String image;
   final String label;
 }
@@ -37,18 +45,36 @@ class HomeFoodCategories extends StatefulWidget {
 
 class _HomeFoodCategoriesState extends State<HomeFoodCategories> {
   final categories = [
-    _CategoryItemData(
+    FoodCategoryItemData(
+      id: 0,
       image: 'assets/placeholder/main_food.jpg',
       label: 'Блюда',
     ),
-    _CategoryItemData(image: 'assets/placeholder/soup.jpg', label: 'Супы'),
-    _CategoryItemData(image: 'assets/placeholder/salad.jpg', label: 'Салаты'),
-    _CategoryItemData(image: 'assets/placeholder/sushi.jpg', label: 'Суши'),
-    _CategoryItemData(
+    FoodCategoryItemData(
+      id: 1,
+      image: 'assets/placeholder/soup.jpg',
+      label: 'Супы',
+    ),
+    FoodCategoryItemData(
+      id: 2,
+      image: 'assets/placeholder/salad.jpg',
+      label: 'Салаты',
+    ),
+    FoodCategoryItemData(
+      id: 3,
+      image: 'assets/placeholder/sushi.jpg',
+      label: 'Суши',
+    ),
+    FoodCategoryItemData(
+      id: 4,
       image: 'assets/placeholder/drinks.jpg',
       label: 'Напитики',
     ),
-    _CategoryItemData(image: 'assets/placeholder/desert.jpg', label: 'Десерты'),
+    FoodCategoryItemData(
+      id: 5,
+      image: 'assets/placeholder/desert.jpg',
+      label: 'Десерты',
+    ),
   ];
 
   @override
@@ -73,43 +99,57 @@ class _HomeFoodCategoriesState extends State<HomeFoodCategories> {
 class _CategorItem extends StatelessWidget {
   const _CategorItem({required this.category});
 
-  final _CategoryItemData category;
+  final FoodCategoryItemData category;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return ClipRRect(
-      borderRadius: BorderRadiusGeometry.circular(16),
-      child: Stack(
-        children: [
-          Image.asset(
-            category.image,
-            height: double.infinity,
-            width: double.infinity,
-            fit: BoxFit.cover,
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [theme.custom.opacityBlack, theme.custom.transparent],
-                  stops: [0.35, 1],
-                ),
+    return GestureDetector(
+      onTap: () {
+        AutoRouter.of(context).push(CategoryRoute(category: category));
+      },
+      child: ClipRRect(
+        borderRadius: BorderRadiusGeometry.circular(16),
+        child: Stack(
+          children: [
+            Hero(
+              tag: 'category-image-${category.id}',
+              child: Image.asset(
+                category.image,
+                height: double.infinity,
+                width: double.infinity,
+                fit: BoxFit.cover,
               ),
-              child: Text(
-                category.label,
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  color: theme.custom.white,
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(
+                  vertical: 4,
+                  horizontal: 12,
+                ),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      theme.custom.opacityBlack,
+                      theme.custom.transparent,
+                    ],
+                    stops: [0.35, 1],
+                  ),
+                ),
+                child: Text(
+                  category.label,
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: theme.custom.white,
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

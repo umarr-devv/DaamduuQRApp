@@ -49,7 +49,7 @@ class _BackgroundImagesState extends State<_BackgroundImages> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Hero(
-      tag: 'background-image',
+      tag: 'establishment-image',
       child: SizedBox(
         height: 220,
         child: Stack(

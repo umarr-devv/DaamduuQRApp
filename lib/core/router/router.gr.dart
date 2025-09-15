@@ -11,6 +11,53 @@
 part of 'router.dart';
 
 /// generated route for
+/// [CategoryScreen]
+class CategoryRoute extends PageRouteInfo<CategoryRouteArgs> {
+  CategoryRoute({
+    Key? key,
+    required FoodCategoryItemData category,
+    List<PageRouteInfo>? children,
+  }) : super(
+         CategoryRoute.name,
+         args: CategoryRouteArgs(key: key, category: category),
+         initialChildren: children,
+       );
+
+  static const String name = 'CategoryRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<CategoryRouteArgs>();
+      return CategoryScreen(key: args.key, category: args.category);
+    },
+  );
+}
+
+class CategoryRouteArgs {
+  const CategoryRouteArgs({this.key, required this.category});
+
+  final Key? key;
+
+  final FoodCategoryItemData category;
+
+  @override
+  String toString() {
+    return 'CategoryRouteArgs{key: $key, category: $category}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! CategoryRouteArgs) return false;
+    return key == other.key && category == other.category;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ category.hashCode;
+}
+
+/// generated route for
 /// [EstablishmentScreen]
 class EstablishmentRoute extends PageRouteInfo<void> {
   const EstablishmentRoute({List<PageRouteInfo>? children})
