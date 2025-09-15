@@ -1,3 +1,4 @@
+import 'package:app/features/establishment/view.dart';
 import 'package:app/features/favorite/view.dart';
 import 'package:app/features/home/view.dart';
 import 'package:app/features/init/view.dart';
@@ -25,8 +26,12 @@ class AppRouter extends RootStackRouter {
       ],
     ),
     CustomRoute(
+      page: EstablishmentRoute.page,
+      transitionsBuilder: TransitionsBuilders.fadeIn,
+    ),
+    CustomRoute(
       page: StoryRoute.page,
-      transitionsBuilder: TransitionsBuilders.slideBottom,
+      transitionsBuilder: TransitionsBuilders.slideTop,
     ),
   ];
 }

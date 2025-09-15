@@ -1,4 +1,6 @@
+import 'package:app/core/router/router.dart';
 import 'package:app/shared/theme/theme.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -66,61 +68,69 @@ class _EstablishmentItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16),
-      child: ClipRRect(
-        borderRadius: BorderRadiusGeometry.circular(12),
-        child: Stack(
-          children: [
-            Image.asset(
-              'assets/placeholder/restaurant.jpg',
-              width: double.infinity,
-              fit: BoxFit.cover,
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                height: 80,
-                padding: const EdgeInsets.symmetric(
-                  vertical: 8,
-                  horizontal: 12,
-                ),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [theme.custom.black, theme.custom.transparent],
-                    begin: Alignment.bottomCenter,
-                    end: Alignment.topCenter,
-                  ),
-                ),
-                child: Row(
-                  spacing: 12,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    _EstablishmentName(),
-                    Row(
-                      spacing: 4,
-                      children: [
-                        Icon(
-                          Icons.location_on,
-                          size: 16,
-                          color: theme.custom.white,
-                        ),
-                        Text(
-                          '1.4 km',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                            color: theme.custom.white,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+    return GestureDetector(
+      onTap: () {
+        AutoRouter.of(context).push(EstablishmentRoute());
+      },
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 16),
+        child: ClipRRect(
+          borderRadius: BorderRadiusGeometry.circular(12),
+          child: Stack(
+            children: [
+              Hero(
+                tag: 'background-image',
+                child: Image.asset(
+                  'assets/placeholder/restaurant.jpg',
+                  width: double.infinity,
+                  fit: BoxFit.cover,
                 ),
               ),
-            ),
-          ],
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  height: 80,
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 8,
+                    horizontal: 12,
+                  ),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [theme.custom.black, theme.custom.transparent],
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
+                    ),
+                  ),
+                  child: Row(
+                    spacing: 12,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      _EstablishmentName(),
+                      Row(
+                        spacing: 4,
+                        children: [
+                          Icon(
+                            Icons.location_on,
+                            size: 16,
+                            color: theme.custom.white,
+                          ),
+                          Text(
+                            '1.4 km',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              color: theme.custom.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

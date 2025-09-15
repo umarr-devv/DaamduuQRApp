@@ -11,6 +11,22 @@
 part of 'router.dart';
 
 /// generated route for
+/// [EstablishmentScreen]
+class EstablishmentRoute extends PageRouteInfo<void> {
+  const EstablishmentRoute({List<PageRouteInfo>? children})
+    : super(EstablishmentRoute.name, initialChildren: children);
+
+  static const String name = 'EstablishmentRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const EstablishmentScreen();
+    },
+  );
+}
+
+/// generated route for
 /// [FavoriteScreen]
 class FavoriteRoute extends PageRouteInfo<void> {
   const FavoriteRoute({List<PageRouteInfo>? children})
