@@ -93,7 +93,12 @@ class _CategorItem extends StatelessWidget {
             child: Container(
               width: double.infinity,
               padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
-              decoration: BoxDecoration(color: theme.custom.opacityBlack),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [theme.custom.opacityBlack, theme.custom.transparent],
+                  stops: [0.35, 1],
+                ),
+              ),
               child: Text(
                 category.label,
                 style: TextStyle(
