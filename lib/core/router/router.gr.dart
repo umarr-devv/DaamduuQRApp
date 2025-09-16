@@ -170,6 +170,22 @@ class ProfileRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [ScannerScreen]
+class ScannerRoute extends PageRouteInfo<void> {
+  const ScannerRoute({List<PageRouteInfo>? children})
+    : super(ScannerRoute.name, initialChildren: children);
+
+  static const String name = 'ScannerRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const ScannerScreen();
+    },
+  );
+}
+
+/// generated route for
 /// [StoryScreen]
 class StoryRoute extends PageRouteInfo<void> {
   const StoryRoute({List<PageRouteInfo>? children})

@@ -1,4 +1,6 @@
+import 'package:app/core/router/router.dart';
 import 'package:app/shared/theme/theme.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -9,7 +11,9 @@ class MenuActionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return FloatingActionButton(
-      onPressed: () {},
+      onPressed: () {
+        AutoRouter.of(context).push(ScannerRoute());
+      },
       backgroundColor: theme.custom.primaryForeground,
       splashColor: theme.custom.splashColor,
       shape: const CircleBorder(),
