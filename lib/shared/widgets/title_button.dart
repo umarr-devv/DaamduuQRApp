@@ -26,9 +26,9 @@ class _CustomTitleButtonState extends State<CustomTitleButton> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Container(
-      padding: const EdgeInsets.all(6),
-      width: 48,
-      height: 48,
+      margin: const EdgeInsets.all(6),
+      width: 42,
+      height: 42,
       child: IconButton(
         onPressed: () async {
           setState(() {

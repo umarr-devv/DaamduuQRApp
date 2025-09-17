@@ -17,7 +17,7 @@ class EstablishmentAppBar extends StatefulWidget {
 
 class _EstablishmentAppBarState extends State<EstablishmentAppBar> {
   double expandedHeight = 240;
-  double toolbarHeight = 48;
+  double toolbarHeight = 64;
 
   bool shadow = true;
 

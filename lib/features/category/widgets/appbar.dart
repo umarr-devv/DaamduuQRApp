@@ -15,14 +15,11 @@ class CategoryAppBar extends StatelessWidget {
       flexibleSpace: FlexibleSpaceBar(
         background: _BackgroundImage(category: category),
       ),
-      leading: Padding(
-        padding: EdgeInsetsGeometry.all(8),
-        child: CustomTitleButton(
-          onTap: () {
-            AutoRouter.of(context).maybePop();
-          },
-          icon: Icons.arrow_back_ios_new_rounded,
-        ),
+      leading: CustomTitleButton(
+        onTap: () {
+          AutoRouter.of(context).maybePop();
+        },
+        icon: Icons.arrow_back_ios_new_rounded,
       ),
     );
   }
