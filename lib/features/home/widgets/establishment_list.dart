@@ -170,7 +170,7 @@ class _EstablishmentName extends StatelessWidget {
           ],
         ),
         Text(
-          '"Блаженство & ты"',
+          '"Вкусно и точка"',
           style: TextStyle(
             fontSize: 15,
             fontWeight: FontWeight.w500,

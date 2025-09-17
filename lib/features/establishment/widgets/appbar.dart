@@ -124,7 +124,7 @@ class _AppBarTitle extends StatelessWidget {
             ],
           ),
           Text(
-            'Блаженство и ты',
+            'Вкусно и точка',
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w500,
@@ -179,7 +179,7 @@ class _BackgroundImagesState extends State<_BackgroundImages> {
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                margin: const EdgeInsets.symmetric(vertical: 8),
+                margin: const EdgeInsets.only(bottom: 32),
                 padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
                 decoration: BoxDecoration(
                   color: theme.custom.white,
@@ -194,6 +194,19 @@ class _BackgroundImagesState extends State<_BackgroundImages> {
                     dotWidth: 8,
                     dotColor: theme.custom.opacityForeground,
                     activeDotColor: theme.custom.primaryColor,
+                  ),
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                height: 24,
+                decoration: BoxDecoration(
+                  color: theme.custom.primaryBackground,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(16),
+                    topRight: Radius.circular(16),
                   ),
                 ),
               ),

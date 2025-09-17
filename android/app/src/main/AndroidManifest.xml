@@ -3,7 +3,6 @@
         android:label="app"
         android:name="${applicationName}"
         android:icon="@mipmap/lc_icon">
-        <uses-permission android:name="android.permission.INTERNET"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
