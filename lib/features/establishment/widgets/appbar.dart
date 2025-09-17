@@ -2,35 +2,137 @@ import 'package:app/shared/theme/theme.dart';
 import 'package:app/shared/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class EstablishmentAppBar extends StatelessWidget {
-  const EstablishmentAppBar({super.key});
+class EstablishmentAppBar extends StatefulWidget {
+  const EstablishmentAppBar({super.key, required this.scrollController});
+
+  final ScrollController scrollController;
+
+  @override
+  State<EstablishmentAppBar> createState() => _EstablishmentAppBarState();
+}
+
+class _EstablishmentAppBarState extends State<EstablishmentAppBar> {
+  double expandedHeight = 240;
+  double toolbarHeight = 48;
+
+  bool shadow = true;
+
+  bool isCollapsed = false;
+  SystemUiOverlayStyle systemOverlayStyle = SystemUiOverlayStyle.light;
+
+  Future scrollListener() async {
+    if (widget.scrollController.offset > expandedHeight - toolbarHeight) {
+      if (!isCollapsed) {
+        await Future.delayed(Duration(milliseconds: 125));
+        setState(() {
+          isCollapsed = true;
+          shadow = false;
+          systemOverlayStyle = SystemUiOverlayStyle.dark;
+        });
+      }
+    } else if (widget.scrollController.offset <
+        expandedHeight - toolbarHeight) {
+      if (isCollapsed) {
+        setState(() {
+          isCollapsed = false;
+          shadow = true;
+          systemOverlayStyle = SystemUiOverlayStyle.light;
+        });
+      }
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    widget.scrollController.addListener(scrollListener);
+  }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return SliverAppBar(
       backgroundColor: theme.custom.white,
-      expandedHeight: 220,
-      leading: Padding(
-        padding: const EdgeInsets.all(8),
-        child: CustomTitleButton(
-          onTap: () {
-            AutoRouter.of(context).maybePop();
-          },
-          icon: Icons.arrow_back_ios_new_rounded,
-        ),
+      toolbarHeight: toolbarHeight,
+      expandedHeight: expandedHeight,
+      leading: Row(
+        children: [
+          CustomTitleButton(
+            onTap: () {
+              AutoRouter.of(context).maybePop();
+            },
+            icon: Icons.arrow_back_ios_new_rounded,
+            shadow: shadow,
+          ),
+        ],
       ),
+      title: _AppBarTitle(show: isCollapsed),
       actions: [
         CustomTitleButton(
           onTap: () {},
           icon: Icons.favorite,
           color: theme.custom.primaryColor,
+          shadow: shadow,
         ),
         const SizedBox(width: 4),
       ],
+      pinned: true,
+      snap: true,
+      floating: true,
       flexibleSpace: FlexibleSpaceBar(background: _BackgroundImages()),
+      systemOverlayStyle: systemOverlayStyle,
+    );
+  }
+}
+
+class _AppBarTitle extends StatelessWidget {
+  const _AppBarTitle({required this.show});
+
+  final bool show;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Opacity(
+      opacity: show ? 1 : 0,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            spacing: 6,
+            children: [
+              SvgPicture.asset(
+                'assets/svg/restaurant.svg',
+                height: 16,
+                colorFilter: ColorFilter.mode(
+                  theme.custom.secondaryForeground,
+                  BlendMode.srcIn,
+                ),
+              ),
+              Text(
+                'Ресторан',
+                style: TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w400,
+                  color: theme.custom.secondaryForeground,
+                ),
+              ),
+            ],
+          ),
+          Text(
+            'Блаженство и ты',
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              color: theme.custom.primaryForeground,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -65,10 +167,10 @@ class _BackgroundImagesState extends State<_BackgroundImages> {
               ),
             ),
             Container(
-              height: 80,
+              height: 36,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [theme.custom.black, theme.custom.transparent],
+                  colors: [theme.custom.opacityBlack, theme.custom.transparent],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                 ),
