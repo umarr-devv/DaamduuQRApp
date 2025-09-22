@@ -24,6 +24,7 @@ dependencies:
   flutter_native_splash: ^2.4.6
   flutter_secure_storage: ^9.2.4
   flutter_svg: ^2.2.0
+  flutter_tilt: ^3.3.2
   get_it: ^8.0.3
   hive_ce: ^2.11.3
   hive_ce_flutter: ^2.3.1

@@ -9,7 +9,7 @@ class EstablishmentTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Container(
-      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 12),
+      padding: const EdgeInsets.only(top: 8, left: 16, right: 16, bottom: 12),
       child: Row(
         spacing: 12,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

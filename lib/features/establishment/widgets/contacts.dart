@@ -51,7 +51,7 @@ class _EstablishmentContactsState extends State<EstablishmentContacts> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 24),
       child: Column(
         spacing: 12,
         crossAxisAlignment: CrossAxisAlignment.start,

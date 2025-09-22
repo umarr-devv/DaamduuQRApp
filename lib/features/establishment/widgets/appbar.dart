@@ -81,8 +81,6 @@ class _EstablishmentAppBarState extends State<EstablishmentAppBar> {
         const SizedBox(width: 4),
       ],
       pinned: true,
-      snap: true,
-      floating: true,
       flexibleSpace: FlexibleSpaceBar(background: _BackgroundImages()),
       systemOverlayStyle: systemOverlayStyle,
     );
@@ -179,11 +177,15 @@ class _BackgroundImagesState extends State<_BackgroundImages> {
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                margin: const EdgeInsets.only(bottom: 32),
-                padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+                width: double.infinity,
+                height: 24,
+                alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: theme.custom.white,
-                  borderRadius: BorderRadius.circular(6),
+                  color: theme.custom.primaryBackground,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(16),
+                    topRight: Radius.circular(16),
+                  ),
                 ),
                 child: SmoothPageIndicator(
                   controller: pageContoller,
@@ -193,20 +195,7 @@ class _BackgroundImagesState extends State<_BackgroundImages> {
                     dotHeight: 8,
                     dotWidth: 8,
                     dotColor: theme.custom.opacityForeground,
-                    activeDotColor: theme.custom.primaryColor,
-                  ),
-                ),
-              ),
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                height: 24,
-                decoration: BoxDecoration(
-                  color: theme.custom.primaryBackground,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(16),
-                    topRight: Radius.circular(16),
+                    activeDotColor: theme.custom.primaryForeground,
                   ),
                 ),
               ),
