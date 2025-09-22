@@ -1,5 +1,6 @@
 import 'package:app/features/home/widgets/food.dart';
 import 'package:app/shared/theme/theme.dart';
+import 'package:app/shared/widgets/food_card.dart';
 import 'package:flutter/material.dart';
 
 class HomePopularFoodsList extends StatefulWidget {
