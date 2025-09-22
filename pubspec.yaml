@@ -123,6 +123,7 @@ flutter:
     - "assets/svg/phone.svg"
     - "assets/svg/telegram.svg"
     - "assets/svg/whatsapp.svg"
+    - "assets/svg/shopping-basket.svg"
 
     - "assets/icon/icon.png"
 

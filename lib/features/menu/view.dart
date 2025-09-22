@@ -1,4 +1,5 @@
 import 'package:app/core/router/router.dart';
+import 'package:app/features/menu/widgets/basket_button.dart';
 import 'package:app/features/menu/widgets/button.dart';
 import 'package:app/features/menu/widgets/navbar.dart';
 import 'package:auto_route/auto_route.dart';
@@ -30,7 +31,7 @@ class _MenuScreenState extends State<MenuScreen> {
       builder: (context, child, controller) {
         final tabsRouter = AutoTabsRouter.of(context);
         return Scaffold(
-          body: child,
+          body: Stack(children: [child, BasketButton()]),
           floatingActionButton: MenuActionButton(),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,
