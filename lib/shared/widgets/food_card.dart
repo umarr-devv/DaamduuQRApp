@@ -1,7 +1,7 @@
 import 'package:app/features/home/widgets/food.dart';
 import 'package:app/shared/theme/theme.dart';
+import 'package:app/shared/widgets/food_detail.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_tilt/flutter_tilt.dart';
 
 class FoodCard extends StatelessWidget {
   const FoodCard({super.key, required this.food});
@@ -11,39 +11,35 @@ class FoodCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Tilt(
-      childLayout: ChildLayout(
-        outer: [
-          TiltParallax(size: Offset(2, 2), child: _FoodFavoriteButton()),
-          TiltParallax(
-            size: Offset(2, 2),
-            child: _FoodPrice(food: food),
-          ),
-          TiltParallax(size: Offset(2, 2), child: _FoodCardAddButton()),
-        ],
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadiusGeometry.circular(16),
-        child: Container(
-          decoration: BoxDecoration(color: theme.custom.primaryBackground),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: Stack(
-                  children: [
-                    Image.asset(
+    return ClipRRect(
+      borderRadius: BorderRadiusGeometry.circular(16),
+      child: GestureDetector(
+        onTap: () {
+          FoodDetail(food: food).show(context);
+        },
+        child: Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(color: theme.custom.primaryBackground),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Image.asset(
                       food.image,
                       width: double.infinity,
                       height: double.infinity,
                       fit: BoxFit.cover,
                     ),
-                  ],
-                ),
+                  ),
+                  _FoodCardInfo(food: food),
+                ],
               ),
-              _FoodCardInfo(food: food),
-            ],
-          ),
+            ),
+            _FoodFavoriteButton(),
+            _FoodPrice(food: food),
+            _FoodCardAddButton(),
+          ],
         ),
       ),
     );

@@ -6,11 +6,13 @@ class CustomIconButton extends StatefulWidget {
     super.key,
     required this.icon,
     required this.onTap,
+    this.size = 24,
     this.background,
     this.foreground,
   });
   final IconData icon;
-  final Function onTap;
+  final void Function() onTap;
+  final double size;
   final Color? background;
   final Color? foreground;
 
@@ -22,12 +24,20 @@ class _CustomIconButtonState extends State<CustomIconButton> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return IconButton(
-      onPressed: () {},
-      style: IconButton.styleFrom(
-        backgroundColor: widget.background ?? theme.custom.primaryForeground,
+    return SizedBox(
+      height: widget.size + 16,
+      width: widget.size + 16,
+      child: IconButton(
+        onPressed: widget.onTap,
+        style: IconButton.styleFrom(
+          backgroundColor: widget.background ?? theme.custom.primaryForeground,
+        ),
+        icon: Icon(
+          widget.icon,
+          size: widget.size,
+          color: widget.foreground ?? theme.custom.white,
+        ),
       ),
-      icon: Icon(widget.icon, color: widget.foreground ?? theme.custom.white),
     );
   }
 }

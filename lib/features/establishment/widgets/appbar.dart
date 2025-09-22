@@ -1,10 +1,10 @@
 import 'package:app/shared/theme/theme.dart';
+import 'package:app/shared/widgets/page_indicator.dart';
 import 'package:app/shared/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class EstablishmentAppBar extends StatefulWidget {
   const EstablishmentAppBar({super.key, required this.scrollController});
@@ -187,17 +187,7 @@ class _BackgroundImagesState extends State<_BackgroundImages> {
                     topRight: Radius.circular(16),
                   ),
                 ),
-                child: SmoothPageIndicator(
-                  controller: pageContoller,
-                  count: 4,
-                  effect: ExpandingDotsEffect(
-                    expansionFactor: 2.5,
-                    dotHeight: 8,
-                    dotWidth: 8,
-                    dotColor: theme.custom.opacityForeground,
-                    activeDotColor: theme.custom.primaryForeground,
-                  ),
-                ),
+                child: CustomPageIndicator(controller: pageContoller, count: 4),
               ),
             ),
           ],

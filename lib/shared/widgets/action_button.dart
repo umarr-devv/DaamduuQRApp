@@ -6,11 +6,15 @@ class CustomActionButton extends StatelessWidget {
     super.key,
     this.onTap,
     required this.label,
+    this.background,
+    this.foreground,
     required this.icon,
   });
 
   final void Function()? onTap;
   final String label;
+  final Color? background;
+  final Color? foreground;
   final IconData icon;
 
   @override
@@ -19,7 +23,7 @@ class CustomActionButton extends StatelessWidget {
     return TextButton(
       onPressed: onTap,
       style: TextButton.styleFrom(
-        backgroundColor: theme.custom.primaryForeground,
+        backgroundColor: background ?? theme.custom.primaryForeground,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadiusGeometry.circular(8),
         ),
@@ -31,13 +35,13 @@ class CustomActionButton extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, size: 24, color: theme.custom.white),
+          Icon(icon, size: 24, color: foreground ?? theme.custom.white),
           Text(
             label,
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w500,
-              color: theme.custom.white,
+              color: foreground ?? theme.custom.white,
             ),
           ),
         ],
