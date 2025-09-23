@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:app/app.dart';
 import 'package:app/data/repositories/repositories.dart';
 import 'package:app/service/service.dart';
+import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -33,6 +34,9 @@ Future initDependencies() async {
 
   final dio = DioConfigure.init(talker: talker);
   GetIt.I.registerSingleton<Dio>(dio);
+
+  final client = DaamduuqrClient(dio: dio);
+  GetIt.I.registerSingleton<DaamduuqrClient>(client);
 
   final secureStorage = SecureStorage();
   final generalStorage = GeneralStorage();
