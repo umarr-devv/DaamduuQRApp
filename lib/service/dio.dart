@@ -16,8 +16,21 @@ class DioConfigure {
       ),
     );
     dio.interceptors.add(
-      InterceptorsWrapper(onRequest: (options, handler) async {}),
+      InterceptorsWrapper(
+        onRequest: (options, handler) {
+          final queryParams = options.queryParameters;
+          final cleanedParams = <String, dynamic>{};
+          queryParams.forEach((key, value) {
+            if (value != null) {
+              cleanedParams[key] = value;
+            }
+          });
+          options.queryParameters = cleanedParams;
+          return handler.next(options);
+        },
+      ),
     );
+
     return dio;
   }
 }
