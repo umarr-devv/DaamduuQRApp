@@ -44,7 +44,8 @@ class CustomSpinRefreshIndicator extends StatelessWidget {
                   opacity: controller.isLoading ? 1 : 0,
                   child: SpinKitRing(
                     color: theme.custom.primaryColor,
-                    size: 36,
+                    lineWidth: 4,
+                    size: 32,
                   ),
                 ),
               ),

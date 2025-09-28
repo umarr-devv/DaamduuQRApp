@@ -15,6 +15,8 @@ class RecommendationCubit extends Cubit<RecommendationState> {
   Future update() async {
     emit(RecommendationLoading(state));
     try {
+      // FOR DEBUG
+      await Future.delayed(const Duration(seconds: 3));
       final establishmentsResponse = await client
           .getRecommendationsApi()
           .getRecommendationsEstablishments(

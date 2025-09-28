@@ -59,18 +59,52 @@ class CategoryRouteArgs {
 
 /// generated route for
 /// [EstablishmentScreen]
-class EstablishmentRoute extends PageRouteInfo<void> {
-  const EstablishmentRoute({List<PageRouteInfo>? children})
-    : super(EstablishmentRoute.name, initialChildren: children);
+class EstablishmentRoute extends PageRouteInfo<EstablishmentRouteArgs> {
+  EstablishmentRoute({
+    Key? key,
+    required EstablishmentScheme establishment,
+    List<PageRouteInfo>? children,
+  }) : super(
+         EstablishmentRoute.name,
+         args: EstablishmentRouteArgs(key: key, establishment: establishment),
+         initialChildren: children,
+       );
 
   static const String name = 'EstablishmentRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const EstablishmentScreen();
+      final args = data.argsAs<EstablishmentRouteArgs>();
+      return EstablishmentScreen(
+        key: args.key,
+        establishment: args.establishment,
+      );
     },
   );
+}
+
+class EstablishmentRouteArgs {
+  const EstablishmentRouteArgs({this.key, required this.establishment});
+
+  final Key? key;
+
+  final EstablishmentScheme establishment;
+
+  @override
+  String toString() {
+    return 'EstablishmentRouteArgs{key: $key, establishment: $establishment}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! EstablishmentRouteArgs) return false;
+    return key == other.key && establishment == other.establishment;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ establishment.hashCode;
 }
 
 /// generated route for
@@ -100,7 +134,7 @@ class HomeRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const HomeScreen();
+      return HomeScreen();
     },
   );
 }

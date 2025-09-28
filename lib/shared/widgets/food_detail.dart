@@ -1,7 +1,5 @@
 import 'package:app/features/home/widgets/food.dart';
 import 'package:app/shared/theme/theme.dart';
-import 'package:app/shared/widgets/page_indicator.dart';
-import 'package:app/shared/widgets/scrollable_sheet.dart';
 import 'package:app/shared/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 

@@ -1,15 +1,22 @@
 import 'package:app/shared/theme/theme.dart';
-import 'package:app/shared/widgets/page_indicator.dart';
 import 'package:app/shared/widgets/widgets.dart';
+import 'package:app/utils/file.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class EstablishmentAppBar extends StatefulWidget {
-  const EstablishmentAppBar({super.key, required this.scrollController});
+  const EstablishmentAppBar({
+    super.key,
+    required this.establishment,
+    required this.scrollController,
+  });
 
   final ScrollController scrollController;
+  final EstablishmentScheme establishment;
 
   @override
   State<EstablishmentAppBar> createState() => _EstablishmentAppBarState();
@@ -70,7 +77,10 @@ class _EstablishmentAppBarState extends State<EstablishmentAppBar> {
           ),
         ],
       ),
-      title: _AppBarTitle(show: isCollapsed),
+      title: _AppBarTitle(
+        show: isCollapsed,
+        establishment: widget.establishment,
+      ),
       actions: [
         CustomTitleButton(
           onTap: () {},
@@ -81,16 +91,20 @@ class _EstablishmentAppBarState extends State<EstablishmentAppBar> {
         const SizedBox(width: 4),
       ],
       pinned: true,
-      flexibleSpace: FlexibleSpaceBar(background: _BackgroundImages()),
+      flexibleSpace: FlexibleSpaceBar(
+        background: _BackgroundImages(widget.establishment),
+      ),
       systemOverlayStyle: systemOverlayStyle,
     );
   }
 }
 
 class _AppBarTitle extends StatelessWidget {
-  const _AppBarTitle({required this.show});
+  const _AppBarTitle({required this.establishment, required this.show});
 
   final bool show;
+
+  final EstablishmentScheme establishment;
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +136,7 @@ class _AppBarTitle extends StatelessWidget {
             ],
           ),
           Text(
-            'Вкусно и точка',
+            establishment.name,
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w500,
@@ -136,7 +150,9 @@ class _AppBarTitle extends StatelessWidget {
 }
 
 class _BackgroundImages extends StatefulWidget {
-  const _BackgroundImages();
+  const _BackgroundImages(this.establishment);
+
+  final EstablishmentScheme establishment;
 
   @override
   State<_BackgroundImages> createState() => _BackgroundImagesState();
@@ -149,20 +165,19 @@ class _BackgroundImagesState extends State<_BackgroundImages> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Hero(
-      tag: 'establishment-image',
+      tag: widget.establishment.id,
       child: SizedBox(
         height: 220,
         child: Stack(
           children: [
             PageView(
               controller: pageContoller,
-              children: List.generate(
-                4,
-                (index) => Image.asset(
-                  'assets/placeholder/restaurant.jpg',
+              children: widget.establishment.images.map((i) {
+                return CachedNetworkImage(
+                  imageUrl: fileUrl(i.id),
                   fit: BoxFit.cover,
-                ),
-              ),
+                );
+              }).toList(),
             ),
             Container(
               height: 36,
@@ -187,7 +202,10 @@ class _BackgroundImagesState extends State<_BackgroundImages> {
                     topRight: Radius.circular(16),
                   ),
                 ),
-                child: CustomPageIndicator(controller: pageContoller, count: 4),
+                child: CustomPageIndicator(
+                  controller: pageContoller,
+                  count: widget.establishment.images.length,
+                ),
               ),
             ),
           ],
