@@ -134,7 +134,7 @@ class HomeRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return HomeScreen();
+      return const HomeScreen();
     },
   );
 }

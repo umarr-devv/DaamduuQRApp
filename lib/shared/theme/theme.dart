@@ -42,6 +42,11 @@ class CustomThemeData {
 
   Color get shadowColor => Color(0xff000000).withValues(alpha: 0.2);
 
+  Color get shimmerBase => black.withValues(alpha: 0.1);
+
+  Color get shimmerHighlight => black.withValues(alpha: 0.2);
+
+
   ThemeData toTheme() {
     return ThemeData(
       useMaterial3: true,

@@ -32,3 +32,33 @@ class CustomPageIndicator extends StatelessWidget {
     );
   }
 }
+
+class CustomAnimationIndicator extends StatelessWidget {
+  const CustomAnimationIndicator({
+    super.key,
+    required this.currentIndex,
+    required this.length,
+    required this.color,
+  });
+
+  final int currentIndex;
+  final int length;
+
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return AnimatedSmoothIndicator(
+      activeIndex: currentIndex,
+      count: length,
+      effect: ExpandingDotsEffect(
+        expansionFactor: 2.5,
+        dotHeight: 8,
+        dotWidth: 8,
+        dotColor: theme.custom.opacityForeground,
+        activeDotColor: color,
+      ),
+    );
+  }
+}

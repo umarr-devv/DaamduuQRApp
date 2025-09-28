@@ -1,5 +1,5 @@
 import 'package:app/core/router/router.dart';
-import 'package:app/features/home/bloc/recommendation/recommendation_cubit.dart';
+import 'package:app/features/home/bloc/home/home_cubit.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:app/shared/widgets/widgets.dart';
 import 'package:app/utils/file.dart';
@@ -9,7 +9,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HomeEstablishmentList extends StatefulWidget {
   const HomeEstablishmentList({super.key});
@@ -22,21 +22,41 @@ class _HomeEstablishmentListState extends State<HomeEstablishmentList> {
   final carouselController = CarouselSliderController();
   int currentIndex = 0;
 
-  RecommendationCubit get cubit =>
-      BlocProvider.of<RecommendationCubit>(context);
-
-  @override
-  void initState() {
-    cubit.update();
-    super.initState();
-  }
+  HomeCubit get cubit => BlocProvider.of<HomeCubit>(context);
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return BlocBuilder<RecommendationCubit, RecommendationState>(
+    return BlocBuilder<HomeCubit, HomeState>(
       bloc: cubit,
       builder: (context, state) {
+        if (state is HomeInitial) {
+          return Shimmer.fromColors(
+            baseColor: theme.custom.shimmerBase,
+            highlightColor: theme.custom.shimmerHighlight,
+            child: Column(
+              spacing: 12,
+              children: [
+                Container(
+                  height: 180,
+                  margin: const EdgeInsets.symmetric(horizontal: 16),
+                  decoration: BoxDecoration(
+                    color: theme.custom.primaryBackground,
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: CustomAnimationIndicator(
+                    currentIndex: 0,
+                    length: 12,
+                    color: theme.custom.primaryBackground,
+                  ),
+                ),
+              ],
+            ),
+          );
+        }
         return Column(
           spacing: 8,
           children: [
@@ -62,16 +82,10 @@ class _HomeEstablishmentListState extends State<HomeEstablishmentList> {
             ),
             Align(
               alignment: Alignment.center,
-              child: AnimatedSmoothIndicator(
-                activeIndex: currentIndex,
-                count: state.establishments.length,
-                effect: ExpandingDotsEffect(
-                  expansionFactor: 2.5,
-                  dotHeight: 8,
-                  dotWidth: 8,
-                  dotColor: theme.custom.opacityForeground,
-                  activeDotColor: theme.custom.primaryColor,
-                ),
+              child: CustomAnimationIndicator(
+                currentIndex: currentIndex,
+                length: state.establishments.length,
+                color: theme.custom.primaryColor,
               ),
             ),
           ],
