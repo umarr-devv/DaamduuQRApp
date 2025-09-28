@@ -40,11 +40,11 @@ class AppRouter extends RootStackRouter {
     ),
     CustomRoute(
       page: StoryRoute.page,
-      transitionsBuilder: TransitionsBuilders.slideTop,
+      transitionsBuilder: TransitionsBuilders.slideBottom,
     ),
     CustomRoute(
       page: ScannerRoute.page,
-      transitionsBuilder: TransitionsBuilders.slideTop,
+      transitionsBuilder: TransitionsBuilders.slideBottom,
       fullscreenDialog: true,
     ),
   ];

@@ -221,16 +221,47 @@ class ScannerRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [StoryScreen]
-class StoryRoute extends PageRouteInfo<void> {
-  const StoryRoute({List<PageRouteInfo>? children})
-    : super(StoryRoute.name, initialChildren: children);
+class StoryRoute extends PageRouteInfo<StoryRouteArgs> {
+  StoryRoute({
+    Key? key,
+    required StoryScheme story,
+    List<PageRouteInfo>? children,
+  }) : super(
+         StoryRoute.name,
+         args: StoryRouteArgs(key: key, story: story),
+         initialChildren: children,
+       );
 
   static const String name = 'StoryRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const StoryScreen();
+      final args = data.argsAs<StoryRouteArgs>();
+      return StoryScreen(key: args.key, story: args.story);
     },
   );
+}
+
+class StoryRouteArgs {
+  const StoryRouteArgs({this.key, required this.story});
+
+  final Key? key;
+
+  final StoryScheme story;
+
+  @override
+  String toString() {
+    return 'StoryRouteArgs{key: $key, story: $story}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! StoryRouteArgs) return false;
+    return key == other.key && story == other.story;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ story.hashCode;
 }
