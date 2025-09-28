@@ -6,7 +6,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class EstablishmentAppBar extends StatefulWidget {
   const EstablishmentAppBar({
@@ -114,26 +113,9 @@ class _AppBarTitle extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            spacing: 6,
-            children: [
-              SvgPicture.asset(
-                'assets/svg/restaurant.svg',
-                height: 16,
-                colorFilter: ColorFilter.mode(
-                  theme.custom.secondaryForeground,
-                  BlendMode.srcIn,
-                ),
-              ),
-              Text(
-                'Ресторан',
-                style: TextStyle(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w400,
-                  color: theme.custom.secondaryForeground,
-                ),
-              ),
-            ],
+          CustomEstablishmentType(
+            type: establishment.type,
+            color: theme.custom.secondaryForeground,
           ),
           Text(
             establishment.name,

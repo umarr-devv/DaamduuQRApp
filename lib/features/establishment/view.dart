@@ -26,9 +26,12 @@ class _EstablishmentScreenState extends State<EstablishmentScreen> {
         controller: scrollController,
         slivers: [
           EstablishmentAppBar(
-            establishment:widget.establishment,
-            scrollController: scrollController),
-          SliverToBoxAdapter(child: EstablishmentTitle()),
+            establishment: widget.establishment,
+            scrollController: scrollController,
+          ),
+          SliverToBoxAdapter(
+            child: EstablishmentTitle(establishment: widget.establishment),
+          ),
           SliverToBoxAdapter(child: EstablishmentContacts()),
           HomePopularFoodsList(),
           SliverFillRemaining(),

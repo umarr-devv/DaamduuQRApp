@@ -1,6 +1,7 @@
 import 'package:app/core/router/router.dart';
 import 'package:app/features/home/bloc/recommendation/recommendation_cubit.dart';
 import 'package:app/shared/theme/theme.dart';
+import 'package:app/shared/widgets/widgets.dart';
 import 'package:app/utils/file.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -8,7 +9,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeEstablishmentList extends StatefulWidget {
@@ -192,27 +192,9 @@ class _EstablishmentName extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          spacing: 6,
-          children: [
-            SvgPicture.asset(
-              'assets/svg/restaurant.svg',
-              height: 14,
-              width: 14,
-              colorFilter: ColorFilter.mode(
-                theme.custom.opacityWhite,
-                BlendMode.srcIn,
-              ),
-            ),
-            Text(
-              'Ресторан',
-              style: TextStyle(
-                fontSize: 13,
-                fontWeight: FontWeight.w500,
-                color: theme.custom.opacityWhite,
-              ),
-            ),
-          ],
+        CustomEstablishmentType(
+          type: establishment.type,
+          color: theme.custom.opacityWhite,
         ),
         Text(
           '"${establishment.name}"',

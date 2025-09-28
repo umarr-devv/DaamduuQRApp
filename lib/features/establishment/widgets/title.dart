@@ -1,9 +1,12 @@
 import 'package:app/shared/theme/theme.dart';
 import 'package:app/shared/widgets/widgets.dart';
+import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
 
 class EstablishmentTitle extends StatelessWidget {
-  const EstablishmentTitle({super.key});
+  const EstablishmentTitle({super.key, required this.establishment});
+
+  final EstablishmentScheme establishment;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +21,7 @@ class EstablishmentTitle extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Вкусно и точка',
+                establishment.name,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
@@ -26,7 +29,7 @@ class EstablishmentTitle extends StatelessWidget {
                 ),
               ),
               Text(
-                'Улица Ленина, 75-здание 2 этаж',
+                establishment.address,
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
