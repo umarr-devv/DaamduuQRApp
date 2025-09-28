@@ -95,7 +95,7 @@ flutter_native_splash:
     branding_dark: "assets/splash/a12_dark_splash_logo.png"
   android: true
   ios: true
-  web: false
+  web: true
 
 flutter:
   uses-material-design: true
