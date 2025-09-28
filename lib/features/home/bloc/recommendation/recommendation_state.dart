@@ -1,5 +1,6 @@
 part of 'recommendation_cubit.dart';
 
+@JsonSerializable()
 class RecommendationState extends Equatable {
   const RecommendationState({
     this.establishments = const [],
@@ -22,6 +23,11 @@ class RecommendationState extends Equatable {
   RecommendationState.from(RecommendationState other)
     : establishments = other.establishments,
       products = other.products;
+    
+
+    factory RecommendationState.fromJson(Map<String, dynamic> json) => _$RecommendationStateFromJson(json);
+
+     Map<String, dynamic> toJson() => _$RecommendationStateToJson(this);
 
   @override
   List<Object> get props => [establishments, products];

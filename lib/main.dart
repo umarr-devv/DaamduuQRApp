@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:app/app.dart';
 import 'package:app/data/repositories/repositories.dart';
+import 'package:app/service/hyrated_storage.dart';
 import 'package:app/service/service.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:dio/dio.dart';
@@ -43,6 +44,8 @@ Future initDependencies() async {
 
   secureStorage.init();
   await generalStorage.init();
+
+  await HyratedStorageService.init();
 
   GetIt.I.registerSingleton<SecureStorage>(secureStorage);
   GetIt.I.registerSingleton<GeneralStorage>(generalStorage);
