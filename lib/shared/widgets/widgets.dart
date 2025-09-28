@@ -1,4 +1,5 @@
 export 'action_button.dart';
+export 'contact.dart';
 export 'establishment_type.dart';
 export 'food_card.dart';
 export 'food_detail.dart';

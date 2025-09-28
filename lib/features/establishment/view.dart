@@ -32,7 +32,9 @@ class _EstablishmentScreenState extends State<EstablishmentScreen> {
           SliverToBoxAdapter(
             child: EstablishmentTitle(establishment: widget.establishment),
           ),
-          SliverToBoxAdapter(child: EstablishmentContacts()),
+          SliverToBoxAdapter(
+            child: EstablishmentContacts(establishment: widget.establishment),
+          ),
           HomePopularFoodsList(),
           SliverFillRemaining(),
         ],
