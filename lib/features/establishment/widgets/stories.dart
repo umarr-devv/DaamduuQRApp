@@ -1,9 +1,8 @@
 import 'package:app/core/router/router.dart';
 import 'package:app/features/establishment/bloc/establishment/establishment_cubit.dart';
 import 'package:app/shared/theme/theme.dart';
-import 'package:app/utils/file.dart';
+import 'package:app/shared/widgets/image.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -59,10 +58,7 @@ class _StoryItem extends StatelessWidget {
         ),
         child: ClipRRect(
           borderRadius: BorderRadiusGeometry.circular(128),
-          child: CachedNetworkImage(
-            imageUrl: fileUrl(story.imageId!),
-            fit: BoxFit.cover,
-          ),
+          child: CustomImage(imageId: story.imageId),
         ),
       ),
     );

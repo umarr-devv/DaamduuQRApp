@@ -1,7 +1,6 @@
 import 'package:app/shared/theme/theme.dart';
-import 'package:app/utils/file.dart';
+import 'package:app/shared/widgets/image.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
 import 'package:story_view/story_view.dart';
@@ -24,7 +23,7 @@ class _StoryContentState extends State<StoryContent> {
       Container(
         decoration: BoxDecoration(color: theme.custom.black),
         alignment: Alignment.center,
-        child: CachedNetworkImage(imageUrl: fileUrl(i.id)),
+        child: CustomImage(imageId: i.id, fit: BoxFit.contain),
       ),
       duration: const Duration(seconds: 7),
     );

@@ -154,6 +154,11 @@ flutter:
     - "assets/placeholder/food3.jpg"
     - "assets/placeholder/food4.jpg"
 
+    - "assets/placeholder/establishment.png"
+    - "assets/placeholder/product.png"
+    - "assets/placeholder/category.png"
+    - "assets/placeholder/default.png"
+
   fonts:
     - family: Manrope
       fonts:
