@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return MultiBlocProvider(
       providers: [BlocProvider(create: (context) => cubit)],
       child: Scaffold(
-        body: CustomSpinRefreshIndicator(
+        body: CustomScreenRefreshIndicator(
           onRefresh: () async {
             await cubit.update();
           },
