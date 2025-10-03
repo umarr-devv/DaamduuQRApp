@@ -8,16 +8,16 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shimmer/shimmer.dart';
 
-class HomeEstablishmentList extends StatefulWidget {
-  const HomeEstablishmentList({super.key});
+class HomeEstablishmentCarousel extends StatefulWidget {
+  const HomeEstablishmentCarousel({super.key});
 
   @override
-  State<HomeEstablishmentList> createState() => _HomeEstablishmentListState();
+  State<HomeEstablishmentCarousel> createState() =>
+      _HomeEstablishmentCarouselState();
 }
 
-class _HomeEstablishmentListState extends State<HomeEstablishmentList> {
+class _HomeEstablishmentCarouselState extends State<HomeEstablishmentCarousel> {
   final carouselController = CarouselSliderController();
   int currentIndex = 0;
 
@@ -29,33 +29,6 @@ class _HomeEstablishmentListState extends State<HomeEstablishmentList> {
     return BlocBuilder<HomeCubit, HomeState>(
       bloc: cubit,
       builder: (context, state) {
-        if (state is HomeInitial) {
-          return Shimmer.fromColors(
-            baseColor: theme.custom.shimmerBase,
-            highlightColor: theme.custom.shimmerHighlight,
-            child: Column(
-              spacing: 12,
-              children: [
-                Container(
-                  height: 180,
-                  margin: const EdgeInsets.symmetric(horizontal: 16),
-                  decoration: BoxDecoration(
-                    color: theme.custom.primaryBackground,
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.center,
-                  child: CustomAnimationIndicator(
-                    currentIndex: 0,
-                    length: 12,
-                    color: theme.custom.primaryBackground,
-                  ),
-                ),
-              ],
-            ),
-          );
-        }
         return Column(
           spacing: 8,
           children: [

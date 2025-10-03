@@ -9,26 +9,16 @@ part 'home_cubit.g.dart';
 part 'home_state.dart';
 
 class HomeCubit extends HydratedCubit<HomeState> {
-  final client = GetIt.I<DaamduuqrClient>().getRecommendationsApi();
+  final client = GetIt.I<DaamduuqrClient>();
   final talker = GetIt.I<Talker>();
 
   HomeCubit() : super(HomeInitial());
 
-  Future init() async {
-    emit(HomeInitial());
-    try {
-      final newState = await getData();
-      emit(HomeLoaded(newState));
-    } catch (exc) {
-      talker.error(exc);
-      emit(HomeFailure());
-    }
-  }
-
   Future update() async {
     emit(HomeLoading(state));
     try {
-      final newState = await getData();
+      await Future.delayed(Duration(seconds: 1));
+      final newState = await _getData();
       emit(HomeLoaded(newState));
     } catch (exc) {
       talker.error(exc);
@@ -36,11 +26,13 @@ class HomeCubit extends HydratedCubit<HomeState> {
     }
   }
 
-  Future<HomeState> getData() async {
+  Future<HomeState> _getData() async {
     final establishmentsResponse = await client
+        .getRecommendationsApi()
         .getRecommendationsEstablishments(latitude: null, longitude: null);
-    final productsResponse = await client.getRecommendationsProducts();
-
+    final productsResponse = await client
+        .getRecommendationsApi()
+        .getRecommendationsProducts();
     return state.copyWith(
       establishments: establishmentsResponse.data,
       products: productsResponse.data,

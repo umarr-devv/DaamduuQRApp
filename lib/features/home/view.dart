@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    cubit.init();
+    cubit.update();
   }
 
   @override
@@ -27,23 +27,29 @@ class _HomeScreenState extends State<HomeScreen> {
     return MultiBlocProvider(
       providers: [BlocProvider(create: (context) => cubit)],
       child: Scaffold(
-        body: CustomScreenRefreshIndicator(
-          onRefresh: () async {
-            await cubit.update();
+        body: BlocBuilder<HomeCubit, HomeState>(
+          bloc: cubit,
+          builder: (context, state) {
+            return CustomScreenRefreshIndicator(
+              onRefresh: () async {
+                cubit.update();
+              },
+              loading: state is HomeLoading,
+              child: CustomScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                slivers: [
+                  HomeAppBar(),
+                  SliverToBoxAdapter(child: HomeEstablishmentCategories()),
+                  SliverToBoxAdapter(child: HomeEstablishmentCarousel()),
+                  SliverToBoxAdapter(child: HomeFoodCategoriesTitle()),
+                  HomeFoodCategories(),
+                  SliverToBoxAdapter(child: HomePopularFoodsTitle()),
+                  HomePopularFoodsList(),
+                  SliverPadding(padding: const EdgeInsets.only(top: 64)),
+                ],
+              ),
+            );
           },
-          child: CustomScrollView(
-            physics: const AlwaysScrollableScrollPhysics(),
-            slivers: [
-              HomeAppBar(),
-              SliverToBoxAdapter(child: HomeEstablishmentCategories()),
-              SliverToBoxAdapter(child: HomeEstablishmentList()),
-              SliverToBoxAdapter(child: HomeFoodCategoriesTitle()),
-              HomeFoodCategories(),
-              SliverToBoxAdapter(child: HomePopularFoodsTitle()),
-              HomePopularFoodsList(),
-              SliverPadding(padding: const EdgeInsets.only(top: 64)),
-            ],
-          ),
         ),
       ),
     );
