@@ -31,9 +31,12 @@ class _StoryContentState extends State<StoryContent> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return StoryView(
       storyItems: stories,
       controller: controller,
+      indicatorColor: theme.custom.opacityWhite,
+      indicatorForegroundColor: theme.custom.primaryColor,
       onComplete: () {
         AutoRouter.of(context).maybePop();
       },
