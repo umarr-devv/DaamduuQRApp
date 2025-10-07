@@ -17,6 +17,7 @@ class CustomLoadingScreen extends StatelessWidget {
     final theme = Theme.of(context);
     return Stack(
       children: [
+        if (!loading)
         child,
         IgnorePointer(
           ignoring: !loading,
