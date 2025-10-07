@@ -31,6 +31,8 @@ class _MenuScreenState extends State<MenuScreen> {
       builder: (context, child, controller) {
         final tabsRouter = AutoTabsRouter.of(context);
         return Scaffold(
+          resizeToAvoidBottomInset: false,
+          extendBody: true,
           body: Stack(children: [child, BasketButton()]),
           floatingActionButton: MenuActionButton(),
           floatingActionButtonLocation:
