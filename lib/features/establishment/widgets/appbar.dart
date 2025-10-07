@@ -66,12 +66,17 @@ class _EstablishmentAppBarState extends State<EstablishmentAppBar> {
       expandedHeight: expandedHeight,
       leading: Row(
         children: [
-          CustomTitleButton(
-            onTap: () {
-              AutoRouter.of(context).maybePop();
-            },
-            icon: Icons.arrow_back_ios_new_rounded,
-            shadow: shadow,
+          Padding(
+            padding: const EdgeInsets.only(left: 8),
+            child: CustomIconButton(
+              onTap: () {
+                AutoRouter.of(context).maybePop();
+              },
+              icon: Icons.arrow_back_ios_new_rounded,
+              background: theme.custom.primaryBackground,
+              foreground: theme.custom.primaryForeground,
+              shadow: shadow,
+            ),
           ),
         ],
       ),
@@ -80,13 +85,15 @@ class _EstablishmentAppBarState extends State<EstablishmentAppBar> {
         establishment: widget.establishment,
       ),
       actions: [
-        CustomTitleButton(
+        CustomIconButton(
           onTap: () {},
           icon: Icons.favorite,
-          color: theme.custom.primaryColor,
+          foreground: theme.custom.primaryColor,
+          background: theme.custom.primaryBackground,
+          radius: 64,
           shadow: shadow,
         ),
-        const SizedBox(width: 4),
+        const SizedBox(width: 8),
       ],
       pinned: true,
       flexibleSpace: FlexibleSpaceBar(
@@ -154,10 +161,7 @@ class _BackgroundImagesState extends State<_BackgroundImages> {
             PageView(
               controller: pageContoller,
               children: widget.establishment.images.map((i) {
-                return CustomImage(
-                  imageId: i.id,
-                  fit: BoxFit.cover,
-                );
+                return CustomImage(imageId: i.id, fit: BoxFit.cover);
               }).toList(),
             ),
             Container(

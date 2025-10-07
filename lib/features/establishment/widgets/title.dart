@@ -1,5 +1,6 @@
 import 'package:app/shared/theme/theme.dart';
 import 'package:app/shared/widgets/widgets.dart';
+import 'package:app/utils/geo.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
 
@@ -38,11 +39,18 @@ class EstablishmentTitle extends StatelessWidget {
               ),
             ],
           ),
-          CustomIconButton(
-            icon: Icons.directions,
-            onTap: () {},
-            background: theme.custom.primaryColor,
-          ),
+          if (establishment.latitude != null && establishment.longitude != null)
+            CustomIconButton(
+              radius: 64,
+              icon: Icons.directions,
+              onTap: () async {
+                await openGeo(
+                  latitude: establishment.latitude!.toDouble(),
+                  longitude: establishment.longitude!.toDouble(),
+                );
+              },
+              background: theme.custom.primaryColor,
+            ),
         ],
       ),
     );

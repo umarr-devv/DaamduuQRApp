@@ -9,6 +9,7 @@ class CustomIconButton extends StatefulWidget {
     this.size = 24,
     this.radius = 12,
     this.animation = true,
+    this.shadow = true,
     this.background,
     this.foreground,
   });
@@ -17,6 +18,7 @@ class CustomIconButton extends StatefulWidget {
   final double radius;
   final double size;
   final bool animation;
+  final bool shadow;
   final Color? background;
   final Color? foreground;
 
@@ -54,6 +56,10 @@ class _CustomIconButtonState extends State<CustomIconButton> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadiusGeometry.circular(widget.radius),
           ),
+          shadowColor: widget.shadow
+              ? theme.custom.shadowColor
+              : theme.custom.transparent,
+          elevation: 12,
           backgroundColor: widget.background ?? theme.custom.primaryForeground,
         ),
         icon: AnimatedScale(
