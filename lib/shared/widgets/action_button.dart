@@ -8,14 +8,14 @@ class CustomActionButton extends StatelessWidget {
     required this.label,
     this.background,
     this.foreground,
-    required this.icon,
+    this.icon,
   });
 
   final void Function()? onTap;
   final String label;
   final Color? background;
   final Color? foreground;
-  final IconData icon;
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +35,7 @@ class CustomActionButton extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          if (icon != null)
           Icon(icon, size: 24, color: foreground ?? theme.custom.white),
           Text(
             label,
