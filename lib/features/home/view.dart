@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   HomeFoodCategories(),
                   SliverToBoxAdapter(child: HomePopularFoodsTitle()),
                   HomePopularFoodsList(),
-                  SliverPadding(padding: const EdgeInsets.only(top: 64)),
+                  SliverToBoxAdapter(child: NavBarSpace())
                 ],
               ),
             );
