@@ -156,22 +156,6 @@ class InitRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [LocationScreen]
-class LocationRoute extends PageRouteInfo<void> {
-  const LocationRoute({List<PageRouteInfo>? children})
-    : super(LocationRoute.name, initialChildren: children);
-
-  static const String name = 'LocationRoute';
-
-  static PageInfo page = PageInfo(
-    name,
-    builder: (data) {
-      return const LocationScreen();
-    },
-  );
-}
-
-/// generated route for
 /// [MenuScreen]
 class MenuRoute extends PageRouteInfo<void> {
   const MenuRoute({List<PageRouteInfo>? children})
@@ -183,6 +167,22 @@ class MenuRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const MenuScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [OrderScreen]
+class OrderRoute extends PageRouteInfo<void> {
+  const OrderRoute({List<PageRouteInfo>? children})
+    : super(OrderRoute.name, initialChildren: children);
+
+  static const String name = 'OrderRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const OrderScreen();
     },
   );
 }

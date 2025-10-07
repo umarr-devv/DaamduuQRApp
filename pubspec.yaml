@@ -132,6 +132,7 @@ flutter:
     - "assets/svg/telegram.svg"
     - "assets/svg/whatsapp.svg"
     - "assets/svg/shopping-basket.svg"
+    - "assets/svg/shopping-basket-fill.svg"
 
     - "assets/icon/icon.png"
 

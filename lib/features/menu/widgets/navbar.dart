@@ -28,12 +28,12 @@ class _MenuNavBarState extends State<MenuNavBar> {
       inactiveSvgIcon: 'assets/svg/house.svg',
     ),
     _MenuNavBarItemData(
-      activeSvgIcon: 'assets/svg/heart-fill.svg',
-      inactiveSvgIcon: 'assets/svg/heart.svg',
+      activeSvgIcon: 'assets/svg/shopping-basket-fill.svg',
+      inactiveSvgIcon: 'assets/svg/shopping-basket.svg',
     ),
     _MenuNavBarItemData(
-      activeSvgIcon: 'assets/svg/map-marker-fill.svg',
-      inactiveSvgIcon: 'assets/svg/map-marker.svg',
+      activeSvgIcon: 'assets/svg/heart-fill.svg',
+      inactiveSvgIcon: 'assets/svg/heart.svg',
     ),
     _MenuNavBarItemData(
       activeSvgIcon: 'assets/svg/user-fill.svg',

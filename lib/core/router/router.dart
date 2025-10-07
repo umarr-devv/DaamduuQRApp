@@ -4,8 +4,8 @@ import 'package:app/features/favorite/view.dart';
 import 'package:app/features/home/view.dart';
 import 'package:app/features/home/widgets/food_category.dart';
 import 'package:app/features/init/view.dart';
-import 'package:app/features/location/view.dart';
 import 'package:app/features/menu/view.dart';
+import 'package:app/features/order/view.dart';
 import 'package:app/features/profile/view.dart';
 import 'package:app/features/scanner/view.dart';
 import 'package:app/features/story/view.dart';
@@ -26,7 +26,7 @@ class AppRouter extends RootStackRouter {
       children: [
         AutoRoute(page: HomeRoute.page),
         AutoRoute(page: FavoriteRoute.page),
-        AutoRoute(page: LocationRoute.page),
+        AutoRoute(page: OrderRoute.page),
         AutoRoute(page: ProfileRoute.page),
       ],
     ),

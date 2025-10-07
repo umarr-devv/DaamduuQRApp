@@ -1,5 +1,4 @@
 import 'package:app/core/router/router.dart';
-import 'package:app/features/menu/widgets/basket_button.dart';
 import 'package:app/features/menu/widgets/button.dart';
 import 'package:app/features/menu/widgets/navbar.dart';
 import 'package:auto_route/auto_route.dart';
@@ -24,16 +23,16 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     return AutoTabsRouter.pageView(
-      routes: [HomeRoute(), FavoriteRoute(), LocationRoute(), ProfileRoute()],
+      routes: [HomeRoute(), OrderRoute(), FavoriteRoute(), ProfileRoute()],
       physics: const NeverScrollableScrollPhysics(),
-      duration: const Duration(milliseconds: 125),
+      duration: const Duration(milliseconds: 175),
       curve: Curves.bounceInOut,
       builder: (context, child, controller) {
         final tabsRouter = AutoTabsRouter.of(context);
         return Scaffold(
           resizeToAvoidBottomInset: false,
           extendBody: true,
-          body: Stack(children: [child, BasketButton()]),
+          body: child,
           floatingActionButton: MenuActionButton(),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,
