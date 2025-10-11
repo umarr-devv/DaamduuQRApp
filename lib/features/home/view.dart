@@ -34,7 +34,11 @@ class _HomeScreenState extends State<HomeScreen> {
               onRefresh: () async {
                 cubit.update();
               },
+              retry: () async {
+                cubit.update();
+              },
               loading: state is HomeLoading,
+              error: state is HomeFailure,
               child: CustomScrollView(
                 physics: const AlwaysScrollableScrollPhysics(),
                 slivers: [

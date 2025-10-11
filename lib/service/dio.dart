@@ -7,7 +7,14 @@ class DioConfigure {
   static String url = dotenv.env['API']!;
 
   static Dio init({Talker? talker}) {
-    final dio = Dio();
+    final dio = Dio(
+      BaseOptions(
+        baseUrl: url,
+        connectTimeout: const Duration(seconds: 5),
+        receiveTimeout: const Duration(seconds: 5),
+        sendTimeout: const Duration(seconds: 5),
+      ),
+    );
     dio.options.baseUrl = url;
     dio.interceptors.add(
       TalkerDioLogger(
