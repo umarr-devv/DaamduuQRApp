@@ -17,11 +17,6 @@ class EstablishmentContacts extends StatelessWidget {
         spacing: 12,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Divider(
-            color: theme.custom.opacityForeground,
-            endIndent: 16,
-            indent: 16,
-          ),
           Text(
             'Контакты',
             style: TextStyle(

@@ -1,6 +1,7 @@
 import 'package:app/features/establishment/bloc/establishment/establishment_cubit.dart';
 import 'package:app/features/establishment/widgets/widgets.dart';
 import 'package:app/shared/theme/theme.dart';
+import 'package:app/shared/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
@@ -45,6 +46,7 @@ class _EstablishmentScreenState extends State<EstablishmentScreen> {
               child: EstablishmentTitle(establishment: widget.establishment),
             ),
             SliverToBoxAdapter(child: EstablishmentStories()),
+            SliverToBoxAdapter(child: CustomDivider()),
             SliverToBoxAdapter(
               child: EstablishmentContacts(establishment: widget.establishment),
             ),
