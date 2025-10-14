@@ -15,7 +15,7 @@ part of 'router.dart';
 class CategoryRoute extends PageRouteInfo<CategoryRouteArgs> {
   CategoryRoute({
     Key? key,
-    required FoodCategoryItemData category,
+    required CategoryScheme category,
     List<PageRouteInfo>? children,
   }) : super(
          CategoryRoute.name,
@@ -39,7 +39,7 @@ class CategoryRouteArgs {
 
   final Key? key;
 
-  final FoodCategoryItemData category;
+  final CategoryScheme category;
 
   @override
   String toString() {

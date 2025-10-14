@@ -1,12 +1,12 @@
-import 'package:app/features/home/widgets/widgets.dart';
 import 'package:app/shared/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
 
 class CategoryAppBar extends StatelessWidget {
   const CategoryAppBar({super.key, required this.category});
 
-  final FoodCategoryItemData category;
+  final CategoryScheme category;
 
   @override
   Widget build(BuildContext context) {
@@ -28,18 +28,13 @@ class CategoryAppBar extends StatelessWidget {
 class _BackgroundImage extends StatelessWidget {
   const _BackgroundImage({required this.category});
 
-  final FoodCategoryItemData category;
+  final CategoryScheme category;
 
   @override
   Widget build(BuildContext context) {
     return Hero(
       tag: 'category-image-${category.id}',
-      child: Image.asset(
-        category.image,
-        height: double.infinity,
-        width: double.infinity,
-        fit: BoxFit.cover,
-      ),
+      child: CustomImage(imageId: category.imageId),
     );
   }
 }

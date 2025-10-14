@@ -1,7 +1,6 @@
 import 'package:app/core/router/router.dart';
 import 'package:app/features/home/bloc/home/home_cubit.dart';
 import 'package:app/shared/theme/theme.dart';
-import 'package:app/shared/widgets/image.dart';
 import 'package:app/shared/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:carousel_slider/carousel_slider.dart';

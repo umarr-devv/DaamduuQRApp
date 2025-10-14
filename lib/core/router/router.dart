@@ -2,7 +2,6 @@ import 'package:app/features/category/view.dart';
 import 'package:app/features/establishment/view.dart';
 import 'package:app/features/favorite/view.dart';
 import 'package:app/features/home/view.dart';
-import 'package:app/features/home/widgets/food_category.dart';
 import 'package:app/features/init/view.dart';
 import 'package:app/features/menu/view.dart';
 import 'package:app/features/order/view.dart';
