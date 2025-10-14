@@ -2,14 +2,18 @@ import 'package:app/shared/theme/theme.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get_it/get_it.dart';
+import 'package:talker_flutter/talker_flutter.dart';
 
 class _MenuNavBarItemData {
   _MenuNavBarItemData({
     required this.activeSvgIcon,
     required this.inactiveSvgIcon,
+    this.toLogs = false,
   });
   final String activeSvgIcon;
   final String inactiveSvgIcon;
+  final bool toLogs;
 }
 
 class MenuNavBar extends StatefulWidget {
@@ -38,6 +42,7 @@ class _MenuNavBarState extends State<MenuNavBar> {
     _MenuNavBarItemData(
       activeSvgIcon: 'assets/svg/user-fill.svg',
       inactiveSvgIcon: 'assets/svg/user.svg',
+      toLogs: true,
     ),
   ];
 
@@ -129,6 +134,15 @@ class _MenuNavBarItemState extends State<_MenuNavBarItem> {
     final theme = Theme.of(context);
     return GestureDetector(
       onTap: onTap,
+      onLongPress: () {
+        if (widget.item.toLogs) {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => TalkerScreen(talker: GetIt.I<Talker>()),
+            ),
+          );
+        }
+      },
       child: AnimatedScale(
         scale: scale,
         duration: const Duration(milliseconds: 75),
