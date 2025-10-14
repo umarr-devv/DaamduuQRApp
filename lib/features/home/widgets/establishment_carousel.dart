@@ -110,7 +110,7 @@ class _EstablishmentItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      _EstablishmentName(establishment),
+                      Expanded(child: _EstablishmentTitle(establishment)),
                       _EstablishmentLocation(establishment),
                     ],
                   ),
@@ -149,8 +149,8 @@ class _EstablishmentLocation extends StatelessWidget {
   }
 }
 
-class _EstablishmentName extends StatelessWidget {
-  const _EstablishmentName(this.establishment);
+class _EstablishmentTitle extends StatelessWidget {
+  const _EstablishmentTitle(this.establishment);
 
   final EstablishmentScheme establishment;
 
@@ -167,6 +167,8 @@ class _EstablishmentName extends StatelessWidget {
         ),
         Text(
           '"${establishment.name}"',
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
           style: TextStyle(
             fontSize: 15,
             fontWeight: FontWeight.w500,

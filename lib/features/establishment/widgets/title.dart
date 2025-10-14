@@ -18,26 +18,28 @@ class EstablishmentTitle extends StatelessWidget {
         spacing: 12,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                establishment.name,
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                  color: theme.custom.primaryForeground,
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  establishment.name,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: theme.custom.primaryForeground,
+                  ),
                 ),
-              ),
-              Text(
-                establishment.address,
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  color: theme.custom.secondaryForeground,
+                Text(
+                  establishment.address,
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    color: theme.custom.secondaryForeground,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           if (establishment.latitude != null && establishment.longitude != null)
             CustomIconButton(
