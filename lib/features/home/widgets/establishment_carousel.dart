@@ -7,6 +7,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HomeEstablishmentCarousel extends StatefulWidget {
   const HomeEstablishmentCarousel({super.key});
@@ -28,6 +29,12 @@ class _HomeEstablishmentCarouselState extends State<HomeEstablishmentCarousel> {
     return BlocBuilder<HomeCubit, HomeState>(
       bloc: cubit,
       builder: (context, state) {
+        if (state is HomeLoading) {
+          return _LoadingPlaceholder();
+        }
+        if (state.establishments.isEmpty) {
+          return SizedBox();
+        }
         return Column(
           spacing: 8,
           children: [
@@ -62,6 +69,29 @@ class _HomeEstablishmentCarouselState extends State<HomeEstablishmentCarousel> {
           ],
         );
       },
+    );
+  }
+}
+
+class _LoadingPlaceholder extends StatelessWidget {
+  const _LoadingPlaceholder();
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+      child: Shimmer.fromColors(
+        baseColor: theme.custom.shimmerBase,
+        highlightColor: theme.custom.shimmerHighlight,
+        child: Container(
+          height: 180,
+          decoration: BoxDecoration(
+            color: theme.custom.primaryBackground,
+            borderRadius: BorderRadius.circular(16),
+          ),
+        ),
+      ),
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:app/utils/undefined.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:equatable/equatable.dart';
 import 'package:get_it/get_it.dart';
@@ -14,10 +15,13 @@ class HomeCubit extends HydratedCubit<HomeState> {
 
   HomeCubit() : super(HomeInitial());
 
-  Future update() async {
-    emit(HomeLoading(state));
+  Future update({bool refresh = false}) async {
+    if (refresh) {
+      emit(HomeRefreshing(state));
+    } else {
+      emit(HomeLoading(state));
+    }
     try {
-      await Future.delayed(Duration(seconds: 1));
       final newState = await _getData();
       emit(HomeLoaded(newState));
     } catch (exc) {
@@ -26,10 +30,20 @@ class HomeCubit extends HydratedCubit<HomeState> {
     }
   }
 
+  Future setType(Object? type) async {
+    final newState = state.copyWith(type: type);
+    emit(HomeUpdate(newState));
+    await update();
+  }
+
   Future<HomeState> _getData() async {
     final establishmentsResponse = await client
         .getRecommendationsApi()
-        .getRecommendationsEstablishments(latitude: null, longitude: null);
+        .getRecommendationsEstablishments(
+          latitude: null,
+          longitude: null,
+          establishmentType: state.type,
+        );
     final productsResponse = await client
         .getRecommendationsApi()
         .getRecommendationsProducts();

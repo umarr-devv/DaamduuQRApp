@@ -10,6 +10,7 @@ import 'package:daamduuqr_client/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
 import 'package:daamduuqr_client/src/model/establishment_scheme.dart';
+import 'package:daamduuqr_client/src/model/establishment_type.dart';
 
 import 'package:daamduuqr_client/src/model/product_scheme.dart';
 
@@ -22,6 +23,7 @@ class RecommendationsApi {
   ///
   ///
   /// Parameters:
+  /// * [establishmentType]
   /// * [latitude]
   /// * [longitude]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -34,6 +36,7 @@ class RecommendationsApi {
   /// Returns a [Future] containing a [Response] with a [List<EstablishmentScheme>] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<List<EstablishmentScheme>>> getRecommendationsEstablishments({
+    EstablishmentType? establishmentType,
     num? latitude,
     num? longitude,
     CancelToken? cancelToken,
@@ -52,6 +55,7 @@ class RecommendationsApi {
     );
 
     final _queryParameters = <String, dynamic>{
+      r'establishment_type': establishmentType,
       r'latitude': latitude,
       r'longitude': longitude,
     };

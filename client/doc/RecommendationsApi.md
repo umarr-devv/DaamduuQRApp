@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **getRecommendationsEstablishments**
-> List<EstablishmentScheme> getRecommendationsEstablishments(latitude, longitude)
+> List<EstablishmentScheme> getRecommendationsEstablishments(establishmentType, latitude, longitude)
 
 On Get Recommendations Establishments
 
@@ -23,11 +23,12 @@ On Get Recommendations Establishments
 import 'package:daamduuqr_client/api.dart';
 
 final api = DaamduuqrClient().getRecommendationsApi();
+final EstablishmentType establishmentType = ; // EstablishmentType | 
 final num latitude = 8.14; // num | 
 final num longitude = 8.14; // num | 
 
 try {
-    final response = api.getRecommendationsEstablishments(latitude, longitude);
+    final response = api.getRecommendationsEstablishments(establishmentType, latitude, longitude);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling RecommendationsApi->getRecommendationsEstablishments: $e\n');
@@ -38,6 +39,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **establishmentType** | [**EstablishmentType**](.md)|  | [optional] 
  **latitude** | **num**|  | [optional] 
  **longitude** | **num**|  | [optional] 
 

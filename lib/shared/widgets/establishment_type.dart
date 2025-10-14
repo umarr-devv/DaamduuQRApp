@@ -9,11 +9,13 @@ class CustomEstablishmentType extends StatelessWidget {
     required this.color,
   });
 
-  final EstablishmentType type;
+  final EstablishmentType? type;
   final Color color;
 
   (String, String) getType() {
     switch (type) {
+      case null:
+        return ('assets/svg/list.svg', 'Все');
       case EstablishmentType.restaurant:
         return ('assets/svg/restaurant.svg', 'Рестораны');
       case EstablishmentType.fastFood:

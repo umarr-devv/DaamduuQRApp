@@ -32,18 +32,18 @@ class _HomeScreenState extends State<HomeScreen> {
           builder: (context, state) {
             return CustomScreenRefreshIndicator(
               onRefresh: () async {
-                cubit.update();
+                cubit.update(refresh: true);
               },
               retry: () async {
-                cubit.update();
+                cubit.update(refresh: true);
               },
-              loading: state is HomeLoading,
+              loading: state is HomeRefreshing,
               error: state is HomeFailure,
               child: CustomScrollView(
                 physics: const AlwaysScrollableScrollPhysics(),
                 slivers: [
                   HomeAppBar(),
-                  SliverToBoxAdapter(child: HomeEstablishmentCategories()),
+                  SliverToBoxAdapter(child: HomeEstablishmentTypes()),
                   SliverToBoxAdapter(child: HomeEstablishmentCarousel()),
                   SliverToBoxAdapter(child: PopularProductTitle()),
                   PopularProductList(),

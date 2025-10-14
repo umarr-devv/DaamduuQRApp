@@ -1,96 +1,67 @@
+import 'package:app/features/home/bloc/home/home_cubit.dart';
 import 'package:app/shared/theme/theme.dart';
+import 'package:app/shared/widgets/establishment_type.dart';
+import 'package:app/utils/undefined.dart';
+import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class EstablishmentCategoryData {
-  EstablishmentCategoryData({required this.svgIcon, required this.label});
-  final String svgIcon;
-  final String label;
-}
-
-class HomeEstablishmentCategories extends StatefulWidget {
-  const HomeEstablishmentCategories({super.key});
+class HomeEstablishmentTypes extends StatefulWidget {
+  const HomeEstablishmentTypes({super.key});
 
   @override
-  State<HomeEstablishmentCategories> createState() =>
-      _HomeEstablishmentCategoriesState();
+  State<HomeEstablishmentTypes> createState() => _HomeEstablishmentTypesState();
 }
 
-class _HomeEstablishmentCategoriesState
-    extends State<HomeEstablishmentCategories> {
-  int activeIndex = 0;
-
-  final categories = [
-    EstablishmentCategoryData(
-      svgIcon: 'assets/svg/restaurant.svg',
-      label: 'Рестораны',
-    ),
-    EstablishmentCategoryData(
-      svgIcon: 'assets/svg/hamburger-soda.svg',
-      label: 'Фастфуды',
-    ),
-    EstablishmentCategoryData(
-      svgIcon: 'assets/svg/mug-hot-alt.svg',
-      label: 'Кафе',
-    ),
-    EstablishmentCategoryData(
-      svgIcon: 'assets/svg/french-fries.svg',
-      label: 'Столовые',
-    ),
-    EstablishmentCategoryData(
-      svgIcon: 'assets/svg/croissant.svg',
-      label: 'Кондитерские',
-    ),
-    EstablishmentCategoryData(
-      svgIcon: 'assets/svg/glass-cheers.svg',
-      label: 'Бары',
-    ),
-    EstablishmentCategoryData(
-      svgIcon: 'assets/svg/cup-straw-swoosh.svg',
-      label: 'Кофейни',
-    ),
-  ];
-
-  void onTap(int index) {
-    setState(() {
-      activeIndex = index;
-    });
+class _HomeEstablishmentTypesState extends State<HomeEstablishmentTypes> {
+  void onTap(EstablishmentType? type) {
+    BlocProvider.of<HomeCubit>(context).setType(type ?? undefined);
   }
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-      child: Row(
-        spacing: 8,
-        children: categories
-            .map(
-              (category) => _EstablishmentCategoryItem(
-                category: category,
-                onTap: onTap,
-                activeIndex: activeIndex,
-                index: categories.indexOf(category),
-              ),
-            )
-            .toList(),
-      ),
+    return BlocBuilder<HomeCubit, HomeState>(
+      bloc: BlocProvider.of<HomeCubit>(context),
+      builder: (context, state) {
+        return SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+          child: Row(
+            spacing: 8,
+            children:
+                [
+                  _EstablishmentCategoryItem(
+                    type: null,
+                    onTap: onTap,
+                    currentType: state.type,
+                  ),
+                ] +
+                EstablishmentType.values
+                    .map(
+                      (i) => _EstablishmentCategoryItem(
+                        type: i,
+                        onTap: onTap,
+                        currentType: state.type,
+                      ),
+                    )
+                    .toList(),
+          ),
+        );
+      },
     );
   }
 }
 
 class _EstablishmentCategoryItem extends StatefulWidget {
   const _EstablishmentCategoryItem({
-    required this.category,
+    required this.type,
     required this.onTap,
-    required this.index,
-    required this.activeIndex,
+    required this.currentType,
   });
 
-  final EstablishmentCategoryData category;
-  final Function(int) onTap;
-  final int index;
-  final int activeIndex;
+  final EstablishmentType? type;
+  final void Function(EstablishmentType?) onTap;
+  final EstablishmentType? currentType;
 
   @override
   State<_EstablishmentCategoryItem> createState() =>
@@ -99,14 +70,14 @@ class _EstablishmentCategoryItem extends StatefulWidget {
 
 class _EstablishmentCategoryItemState
     extends State<_EstablishmentCategoryItem> {
-  bool get active => widget.activeIndex == widget.index;
+  bool get active => widget.currentType == widget.type;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return GestureDetector(
       onTap: () {
-        widget.onTap(widget.index);
+        widget.onTap(widget.type);
       },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 175),
@@ -117,28 +88,9 @@ class _EstablishmentCategoryItemState
               : theme.custom.primaryBackground,
           borderRadius: BorderRadius.circular(4),
         ),
-        child: Row(
-          spacing: 8,
-          children: [
-            SvgPicture.asset(
-              widget.category.svgIcon,
-              height: 18,
-              colorFilter: ColorFilter.mode(
-                active ? theme.custom.white : theme.custom.secondaryForeground,
-                BlendMode.srcIn,
-              ),
-            ),
-            Text(
-              widget.category.label,
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w500,
-                color: active
-                    ? theme.custom.white
-                    : theme.custom.secondaryForeground,
-              ),
-            ),
-          ],
+        child: CustomEstablishmentType(
+          type: widget.type,
+          color: active ? theme.custom.white : theme.custom.primaryForeground,
         ),
       ),
     );
