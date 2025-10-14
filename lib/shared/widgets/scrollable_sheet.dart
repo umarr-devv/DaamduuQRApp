@@ -4,10 +4,21 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 class CustomScrollableSheet extends StatelessWidget {
-  const CustomScrollableSheet({super.key, required this.child, this.color});
+  const CustomScrollableSheet({
+    super.key,
+    this.color,
+    this.initialChildSize = 0.85,
+    this.maxChildSize = 0.9,
+    this.minChildSize = 0.8,
+    required this.child,
+  });
 
   final Widget child;
   final Color? color;
+
+  final double initialChildSize;
+  final double maxChildSize;
+  final double minChildSize;
 
   static Future show(BuildContext context, Widget child) async {
     final theme = Theme.of(context);
@@ -27,9 +38,9 @@ class CustomScrollableSheet extends StatelessWidget {
     final theme = Theme.of(context);
     return DraggableScrollableSheet(
       expand: false,
-      initialChildSize: 0.75,
-      maxChildSize: 0.85,
-      minChildSize: 0.7,
+      initialChildSize: initialChildSize,
+      maxChildSize: maxChildSize,
+      minChildSize: minChildSize,
       builder: (context, controller) {
         return Stack(
           children: [
@@ -44,6 +55,7 @@ class CustomScrollableSheet extends StatelessWidget {
                 child: CustomIconButton(
                   icon: Icons.close,
                   size: 20,
+                  radius: 64,
                   background: color ?? theme.custom.secondaryBackground,
                   foreground: theme.custom.secondaryForeground,
                   onTap: () {

@@ -47,9 +47,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   SliverToBoxAdapter(child: HomeEstablishmentCarousel()),
                   SliverToBoxAdapter(child: HomeFoodCategoriesTitle()),
                   HomeFoodCategories(),
-                  SliverToBoxAdapter(child: HomePopularFoodsTitle()),
-                  HomePopularFoodsList(),
-                  SliverToBoxAdapter(child: NavBarSpace())
+                  SliverToBoxAdapter(child: PopularProductTitle()),
+                  PopularProductList(),
+                  SliverToBoxAdapter(child: NavBarSpace()),
                 ],
               ),
             );

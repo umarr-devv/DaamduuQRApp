@@ -1,12 +1,12 @@
-import 'package:app/features/home/widgets/food.dart';
 import 'package:app/shared/theme/theme.dart';
-import 'package:app/shared/widgets/food_detail.dart';
+import 'package:app/shared/widgets/widgets.dart';
+import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
 
-class FoodCard extends StatelessWidget {
-  const FoodCard({super.key, required this.food});
+class ProductCard extends StatelessWidget {
+  const ProductCard({super.key, required this.product});
 
-  final FoodData food;
+  final ProductScheme product;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class FoodCard extends StatelessWidget {
       borderRadius: BorderRadiusGeometry.circular(16),
       child: GestureDetector(
         onTap: () {
-          FoodDetail(food: food).show(context);
+          ProductDetail(product: product).show(context);
         },
         child: Stack(
           children: [
@@ -25,19 +25,18 @@ class FoodCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
-                    child: Image.asset(
-                      food.image,
-                      width: double.infinity,
-                      height: double.infinity,
-                      fit: BoxFit.cover,
+                    child: CustomImage(
+                      imageId: product.images.isNotEmpty
+                          ? product.images[0].id
+                          : null,
                     ),
                   ),
-                  _FoodCardInfo(food: food),
+                  _ProductCardInfo(product: product),
                 ],
               ),
             ),
             _FoodFavoriteButton(),
-            _FoodPrice(food: food),
+            _ProductPrice(product: product),
             _FoodCardAddButton(),
           ],
         ),
@@ -97,10 +96,10 @@ class _FoodFavoriteButtonState extends State<_FoodFavoriteButton> {
   }
 }
 
-class _FoodPrice extends StatelessWidget {
-  const _FoodPrice({required this.food});
+class _ProductPrice extends StatelessWidget {
+  const _ProductPrice({required this.product});
 
-  final FoodData food;
+  final ProductScheme product;
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +117,7 @@ class _FoodPrice extends StatelessWidget {
           text: TextSpan(
             children: [
               TextSpan(
-                text: food.price.toStringAsFixed(0),
+                text: product.price.toStringAsFixed(0),
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
@@ -173,10 +172,10 @@ class _FoodCardAddButton extends StatelessWidget {
   }
 }
 
-class _FoodCardInfo extends StatelessWidget {
-  const _FoodCardInfo({required this.food});
+class _ProductCardInfo extends StatelessWidget {
+  const _ProductCardInfo({required this.product});
 
-  final FoodData food;
+  final ProductScheme product;
 
   @override
   Widget build(BuildContext context) {
@@ -192,7 +191,7 @@ class _FoodCardInfo extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Блюда',
+                product.category.name,
                 style: TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w500,
@@ -200,7 +199,7 @@ class _FoodCardInfo extends StatelessWidget {
                 ),
               ),
               Text(
-                food.name,
+                product.name,
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
