@@ -2,7 +2,9 @@
     <application
         android:label="app"
         android:name="${applicationName}"
-        android:icon="@mipmap/lc_icon">
+        android:icon="@mipmap/lc_icon"
+        android:usesCleartextTraffic="true"
+        >
         <activity
             android:name=".MainActivity"
             android:exported="true"
