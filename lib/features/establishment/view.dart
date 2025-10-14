@@ -25,7 +25,7 @@ class _EstablishmentScreenState extends State<EstablishmentScreen> {
   void initState() {
     super.initState();
     cubit = EstablishmentCubit(establishment: widget.establishment);
-    cubit.init();
+    cubit.update();
   }
 
   @override
@@ -35,23 +35,42 @@ class _EstablishmentScreenState extends State<EstablishmentScreen> {
       providers: [BlocProvider.value(value: cubit)],
       child: Scaffold(
         backgroundColor: theme.custom.primaryBackground,
-        body: CustomScrollView(
-          controller: scrollController,
-          slivers: [
-            EstablishmentAppBar(
-              establishment: widget.establishment,
-              scrollController: scrollController,
-            ),
-            SliverToBoxAdapter(
-              child: EstablishmentTitle(establishment: widget.establishment),
-            ),
-            SliverToBoxAdapter(child: EstablishmentStories()),
-            SliverToBoxAdapter(child: CustomDivider()),
-            SliverToBoxAdapter(
-              child: EstablishmentContacts(establishment: widget.establishment),
-            ),
-            SliverFillRemaining(),
-          ],
+        body: BlocBuilder<EstablishmentCubit, EstablishmentState>(
+          bloc: cubit,
+          builder: (context, state) {
+            return CustomScreenRefreshIndicator(
+              refreshing: state is EstablishmentRefreshing,
+              error: state is EstablishmentFailure,
+              onRefresh: () async {
+                await cubit.update();
+              },
+              retry: () async {
+                await cubit.update();
+              },
+              child: CustomScrollView(
+                controller: scrollController,
+                slivers: [
+                  EstablishmentAppBar(
+                    establishment: widget.establishment,
+                    scrollController: scrollController,
+                  ),
+                  SliverToBoxAdapter(
+                    child: EstablishmentTitle(
+                      establishment: widget.establishment,
+                    ),
+                  ),
+                  SliverToBoxAdapter(child: EstablishmentStories()),
+                  SliverToBoxAdapter(child: CustomDivider()),
+                  SliverToBoxAdapter(
+                    child: EstablishmentContacts(
+                      establishment: widget.establishment,
+                    ),
+                  ),
+                  SliverFillRemaining(),
+                ],
+              ),
+            );
+          },
         ),
       ),
     );

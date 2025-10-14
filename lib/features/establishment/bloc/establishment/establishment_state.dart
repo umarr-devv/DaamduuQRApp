@@ -54,6 +54,10 @@ final class EstablishmentLoaded extends EstablishmentState {
   EstablishmentLoaded(super.state) : super.from();
 }
 
+final class EstablishmentRefreshing extends EstablishmentState {
+  EstablishmentRefreshing(super.state) : super.from();
+}
+
 final class EstablishmentFailure extends EstablishmentState {
   EstablishmentFailure(super.state) : super.from();
 }

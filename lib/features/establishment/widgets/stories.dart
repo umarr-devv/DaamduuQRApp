@@ -6,6 +6,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shimmer/shimmer.dart';
 
 class EstablishmentStories extends StatelessWidget {
   const EstablishmentStories({super.key});
@@ -15,8 +16,10 @@ class EstablishmentStories extends StatelessWidget {
     return BlocBuilder<EstablishmentCubit, EstablishmentState>(
       bloc: BlocProvider.of<EstablishmentCubit>(context),
       builder: (context, state) {
-        if (state is EstablishmentInitial) {
-          return Container();
+        if (state is EstablishmentLoading) {
+          return _LoadingPlaceholder();
+        } else if (state.stories.isEmpty) {
+          return SizedBox();
         }
         return Container(
           margin: const EdgeInsets.only(top: 4, bottom: 12),
@@ -32,6 +35,37 @@ class EstablishmentStories extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+}
+
+class _LoadingPlaceholder extends StatelessWidget {
+  const _LoadingPlaceholder();
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Container(
+      margin: const EdgeInsets.only(top: 4, bottom: 12),
+      height: 80,
+      width: double.infinity,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        itemBuilder: (context, index) => Shimmer.fromColors(
+          baseColor: theme.custom.shimmerBase,
+          highlightColor: theme.custom.shimmerHighlight,
+          child: Container(
+            width: 80,
+            decoration: BoxDecoration(
+              color: theme.custom.primaryColor,
+              borderRadius: BorderRadius.circular(64),
+            ),
+          ),
+        ),
+        separatorBuilder: (context, index) => SizedBox(width: 12),
+        itemCount: 6,
+      ),
     );
   }
 }

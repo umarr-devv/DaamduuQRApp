@@ -9,21 +9,21 @@ class CustomScreenRefreshIndicator extends StatelessWidget {
     super.key,
     required this.onRefresh,
     required this.child,
-    this.loading = false,
+    this.refreshing = false,
     this.error = false,
     this.retry,
   });
 
   final Future Function() onRefresh;
   final Widget child;
-  final bool loading;
+  final bool refreshing;
   final bool error;
   final void Function()? retry;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    if (error){
+    if (error) {
       return ErrorScreen(retry: retry);
     }
     return CustomRefreshIndicator(
@@ -31,7 +31,7 @@ class CustomScreenRefreshIndicator extends StatelessWidget {
       builder: (context, child, controller) {
         final progress = controller.value.clamp(0, 1);
         return CustomLoadingScreen(
-          loading: loading,
+          loading: refreshing,
           child: Stack(
             children: [
               Container(

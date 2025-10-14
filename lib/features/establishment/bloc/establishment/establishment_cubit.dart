@@ -15,8 +15,12 @@ class EstablishmentCubit extends HydratedCubit<EstablishmentState> {
   final client = GetIt.I<DaamduuqrClient>();
   final talker = GetIt.I<Talker>();
 
-  Future init() async {
-    emit(EstablishmentInitial.from(state));
+  Future update({bool refresh = false}) async {
+    if (refresh) {
+      emit(EstablishmentRefreshing(state));
+    } else {
+      emit(EstablishmentLoading(state));
+    }
     try {
       final newState = await getData();
       emit(EstablishmentLoaded(newState));
@@ -32,6 +36,9 @@ class EstablishmentCubit extends HydratedCubit<EstablishmentState> {
     );
     return state.copyWith(stories: stories.data);
   }
+
+  @override
+  String get id => state.establishment.id;
 
   @override
   Map<String, dynamic>? toJson(EstablishmentState state) {
