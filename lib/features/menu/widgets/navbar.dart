@@ -60,9 +60,9 @@ class _MenuNavBarState extends State<MenuNavBar> {
       ),
       child: BottomAppBar(
         shape: const CircularNotchedRectangle(),
-        notchMargin: 8.0,
-        shadowColor: theme.custom.shadowColor,
-        elevation: 8,
+        notchMargin: 8,
+        shadowColor: theme.custom.black,
+        elevation: 1,
         color: theme.custom.primaryBackground,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -77,7 +77,7 @@ class _MenuNavBarState extends State<MenuNavBar> {
                     onTap: onTap,
                   ),
                 ),
-            const SizedBox(width: 24), // гибкий отступ
+            const SizedBox(width: 24),
             ...items
                 .sublist(2)
                 .map(
