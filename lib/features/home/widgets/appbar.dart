@@ -17,7 +17,6 @@ class HomeAppBar extends StatelessWidget {
         CustomIconButton(
           icon: Icons.notifications,
           size: 24,
-          shadow: false,
           onTap: () {},
         ),
         SizedBox(width: 16),

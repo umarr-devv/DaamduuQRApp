@@ -10,3 +10,4 @@ export 'rating_indicator.dart';
 export 'searchbar.dart';
 export 'title_button.dart';
 export 'title_text.dart';
+export 'currency.dart';
