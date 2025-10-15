@@ -220,6 +220,53 @@ class ScannerRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [SearchScreen]
+class SearchRoute extends PageRouteInfo<SearchRouteArgs> {
+  SearchRoute({
+    Key? key,
+    required TextEditingController textController,
+    List<PageRouteInfo>? children,
+  }) : super(
+         SearchRoute.name,
+         args: SearchRouteArgs(key: key, textController: textController),
+         initialChildren: children,
+       );
+
+  static const String name = 'SearchRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<SearchRouteArgs>();
+      return SearchScreen(key: args.key, textController: args.textController);
+    },
+  );
+}
+
+class SearchRouteArgs {
+  const SearchRouteArgs({this.key, required this.textController});
+
+  final Key? key;
+
+  final TextEditingController textController;
+
+  @override
+  String toString() {
+    return 'SearchRouteArgs{key: $key, textController: $textController}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! SearchRouteArgs) return false;
+    return key == other.key && textController == other.textController;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ textController.hashCode;
+}
+
+/// generated route for
 /// [StoryScreen]
 class StoryRoute extends PageRouteInfo<StoryRouteArgs> {
   StoryRoute({

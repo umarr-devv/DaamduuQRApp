@@ -187,13 +187,10 @@ class _CardImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Hero(
-      tag: establishment.id,
-      child: CustomImage(
-        imageId: establishment.images.isNotEmpty
-            ? establishment.images[0].id
-            : null,
-      ),
+    return CustomImage(
+      imageId: establishment.images.isNotEmpty
+          ? establishment.images[0].id
+          : null,
     );
   }
 }

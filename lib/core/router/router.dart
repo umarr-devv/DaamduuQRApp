@@ -7,6 +7,7 @@ import 'package:app/features/menu/view.dart';
 import 'package:app/features/order/view.dart';
 import 'package:app/features/profile/view.dart';
 import 'package:app/features/scanner/view.dart';
+import 'package:app/features/search/view.dart';
 import 'package:app/features/story/view.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
@@ -44,6 +45,11 @@ class AppRouter extends RootStackRouter {
     CustomRoute(
       page: ScannerRoute.page,
       transitionsBuilder: TransitionsBuilders.slideBottom,
+      fullscreenDialog: true,
+    ),
+    CustomRoute(
+      page: SearchRoute.page,
+      transitionsBuilder: TransitionsBuilders.fadeIn,
       fullscreenDialog: true,
     ),
   ];

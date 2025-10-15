@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
           physics: const AlwaysScrollableScrollPhysics(),
           slivers: [
             HomeAppBar(),
-            SliverToBoxAdapter(child: CustomSearchBar()),
+            SliverToBoxAdapter(child: HomeSearchBar()),
             SliverToBoxAdapter(child: HomeFilter()),
             SliverToBoxAdapter(child: HomeEstablishments()),
             HomeProducts(),

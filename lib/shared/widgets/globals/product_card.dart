@@ -1,6 +1,5 @@
 import 'package:app/shared/theme/theme.dart';
 import 'package:app/shared/widgets/components/components.dart';
-import 'package:app/shared/widgets/components/image.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
 
