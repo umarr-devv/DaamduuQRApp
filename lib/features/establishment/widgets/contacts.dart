@@ -1,5 +1,5 @@
 import 'package:app/shared/theme/theme.dart';
-import 'package:app/shared/widgets/contact.dart';
+import 'package:app/shared/widgets/widgets.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
 

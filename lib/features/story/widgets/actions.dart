@@ -1,5 +1,5 @@
 import 'package:app/shared/theme/theme.dart';
-import 'package:app/shared/widgets/icon_button.dart';
+import 'package:app/shared/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';

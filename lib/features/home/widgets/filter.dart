@@ -1,6 +1,6 @@
 import 'package:app/features/home/bloc/home/home_cubit.dart';
 import 'package:app/shared/theme/theme.dart';
-import 'package:app/shared/widgets/establishment_type.dart';
+import 'package:app/shared/widgets/widgets.dart';
 import 'package:app/utils/undefined.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';

@@ -1,6 +1,6 @@
 import 'package:app/shared/theme/theme.dart';
-import 'package:app/shared/widgets/error_screen.dart';
-import 'package:app/shared/widgets/loading_screen.dart';
+import 'package:app/shared/widgets/widgets.dart';
+
 import 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
 import 'package:flutter/material.dart';
 
