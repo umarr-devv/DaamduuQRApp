@@ -12,5 +12,6 @@ export 'product_card.dart';
 export 'product_detail.dart';
 export 'refresh_indicator.dart';
 export 'scrollable_sheet.dart';
+export 'searchbar.dart';
 export 'title_button.dart';
 export 'title_text.dart';

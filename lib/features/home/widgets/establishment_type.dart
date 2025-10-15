@@ -88,7 +88,7 @@ class _EstablishmentTypeItemState extends State<_EstablishmentTypeItem> {
         ),
         child: CustomEstablishmentType(
           type: widget.type,
-          color: active ? theme.custom.white : theme.custom.primaryForeground,
+          color: active ? theme.custom.white : theme.custom.secondaryForeground,
         ),
       ),
     );

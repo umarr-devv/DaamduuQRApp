@@ -27,31 +27,17 @@ class _HomeScreenState extends State<HomeScreen> {
     return MultiBlocProvider(
       providers: [BlocProvider(create: (context) => cubit)],
       child: Scaffold(
-        body: BlocBuilder<HomeCubit, HomeState>(
-          bloc: cubit,
-          builder: (context, state) {
-            return CustomScreenRefreshIndicator(
-              onRefresh: () async {
-                cubit.update(refresh: true);
-              },
-              retry: () async {
-                cubit.update(refresh: true);
-              },
-              refreshing: state is HomeRefreshing,
-              error: state is HomeFailure,
-              child: CustomScrollView(
-                physics: const AlwaysScrollableScrollPhysics(),
-                slivers: [
-                  HomeAppBar(),
-                  SliverToBoxAdapter(child: HomeEstablishmentTypes()),
-                  SliverToBoxAdapter(child: HomeEstablishmentCarousel()),
-                  SliverToBoxAdapter(child: PopularProductTitle()),
-                  PopularProductList(),
-                  SliverToBoxAdapter(child: NavBarSpace()),
-                ],
-              ),
-            );
-          },
+        body: CustomScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          slivers: [
+            HomeAppBar(),
+            SliverToBoxAdapter(child: CustomSearchBar()),
+            SliverToBoxAdapter(child: HomeEstablishmentTypes()),
+            SliverToBoxAdapter(child: HomeEstablishmentCarousel()),
+            SliverToBoxAdapter(child: PopularProductTitle()),
+            PopularProductList(),
+            SliverToBoxAdapter(child: NavBarSpace()),
+          ],
         ),
       ),
     );

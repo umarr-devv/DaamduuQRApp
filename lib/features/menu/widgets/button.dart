@@ -18,7 +18,7 @@ class MenuActionButton extends StatelessWidget {
       splashColor: theme.custom.splashColor,
       shape: const CircleBorder(),
       child: SvgPicture.asset(
-        'assets/svg/qr.svg',
+        'assets/svg/icon.svg',
         height: 28,
         width: 28,
         colorFilter: ColorFilter.mode(theme.custom.white, BlendMode.srcIn),

@@ -12,16 +12,15 @@ class HomeAppBar extends StatelessWidget {
     final theme = Theme.of(context);
     return SliverAppBar(
       title: _AppBarTitle(),
-      backgroundColor: theme.custom.primaryBackground,
-      pinned: true,
+      backgroundColor: theme.custom.secondaryBackground,
       actions: [
         CustomIconButton(
-          icon: 'assets/svg/search.svg',
-          size: 20,
+          icon: Icons.notifications,
+          size: 24,
           shadow: false,
           onTap: () {},
         ),
-        SizedBox(width: 8),
+        SizedBox(width: 16),
       ],
     );
   }
