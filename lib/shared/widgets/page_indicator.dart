@@ -38,13 +38,13 @@ class CustomAnimationIndicator extends StatelessWidget {
     super.key,
     required this.currentIndex,
     required this.length,
-    required this.color,
+     this.color,
   });
 
   final int currentIndex;
   final int length;
 
-  final Color color;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +57,7 @@ class CustomAnimationIndicator extends StatelessWidget {
         dotHeight: 8,
         dotWidth: 8,
         dotColor: theme.custom.opacityForeground,
-        activeDotColor: color,
+        activeDotColor: color ?? theme.custom.primaryForeground,
       ),
     );
   }

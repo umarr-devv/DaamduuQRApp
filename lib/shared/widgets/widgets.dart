@@ -10,6 +10,7 @@ export 'navbar_space.dart';
 export 'page_indicator.dart';
 export 'product_card.dart';
 export 'product_detail.dart';
+export 'rating_indicator.dart';
 export 'refresh_indicator.dart';
 export 'scrollable_sheet.dart';
 export 'searchbar.dart';

@@ -1,5 +1,3 @@
 export 'appbar.dart';
-export 'establishment_type.dart';
-export 'establishment_carousel.dart';
-export 'products.dart';
-
+export 'filter.dart';
+export 'establishments.dart';

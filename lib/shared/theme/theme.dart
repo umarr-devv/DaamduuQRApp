@@ -27,6 +27,8 @@ class CustomThemeData {
 
   Color get warning => Color(0xfff44da0);
 
+  Color get yellow => Color(0xfffebc49);
+
   Color get black => Color(0xff000000);
 
   Color get white => Color(0xffffffff);
@@ -41,11 +43,20 @@ class CustomThemeData {
 
   Color get splashColor => Color(0xffffffff).withValues(alpha: 0.125);
 
-  Color get shadowColor => Color(0xff000000).withValues(alpha: 0.2);
+  Color get shadowColor => Color(0xff000000).withValues(alpha: 0.1);
 
   Color get shimmerBase => black.withValues(alpha: 0.1);
 
   Color get shimmerHighlight => black.withValues(alpha: 0.2);
+
+  List<BoxShadow> get boxShadow => [
+    BoxShadow(
+      color: shadowColor,
+      offset: Offset(2, 2),
+      blurRadius: 8,
+      spreadRadius: -2,
+    ),
+  ];
 
   ThemeData toTheme() {
     return ThemeData(

@@ -6,14 +6,14 @@ import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomeEstablishmentTypes extends StatefulWidget {
-  const HomeEstablishmentTypes({super.key});
+class HomeFilter extends StatefulWidget {
+  const HomeFilter({super.key});
 
   @override
-  State<HomeEstablishmentTypes> createState() => _HomeEstablishmentTypesState();
+  State<HomeFilter> createState() => _HomeFilterState();
 }
 
-class _HomeEstablishmentTypesState extends State<HomeEstablishmentTypes> {
+class _HomeFilterState extends State<HomeFilter> {
   void onTap(EstablishmentType? type) {
     BlocProvider.of<HomeCubit>(context).setType(type ?? undefined);
   }
@@ -30,7 +30,7 @@ class _HomeEstablishmentTypesState extends State<HomeEstablishmentTypes> {
             spacing: 8,
             children:
                 [
-                  _EstablishmentTypeItem(
+                  _FilterItem(
                     type: null,
                     onTap: onTap,
                     currentType: state.type,
@@ -38,7 +38,7 @@ class _HomeEstablishmentTypesState extends State<HomeEstablishmentTypes> {
                 ] +
                 EstablishmentType.values
                     .map(
-                      (i) => _EstablishmentTypeItem(
+                      (i) => _FilterItem(
                         type: i,
                         onTap: onTap,
                         currentType: state.type,
@@ -52,8 +52,8 @@ class _HomeEstablishmentTypesState extends State<HomeEstablishmentTypes> {
   }
 }
 
-class _EstablishmentTypeItem extends StatefulWidget {
-  const _EstablishmentTypeItem({
+class _FilterItem extends StatefulWidget {
+  const _FilterItem({
     required this.type,
     required this.onTap,
     required this.currentType,
@@ -64,10 +64,10 @@ class _EstablishmentTypeItem extends StatefulWidget {
   final EstablishmentType? currentType;
 
   @override
-  State<_EstablishmentTypeItem> createState() => _EstablishmentTypeItemState();
+  State<_FilterItem> createState() => _FilterItemState();
 }
 
-class _EstablishmentTypeItemState extends State<_EstablishmentTypeItem> {
+class _FilterItemState extends State<_FilterItem> {
   bool get active => widget.currentType == widget.type;
 
   @override
