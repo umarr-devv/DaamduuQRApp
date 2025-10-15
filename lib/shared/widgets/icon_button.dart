@@ -1,5 +1,6 @@
 import 'package:app/shared/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomIconButton extends StatefulWidget {
   const CustomIconButton({
@@ -13,7 +14,7 @@ class CustomIconButton extends StatefulWidget {
     this.background,
     this.foreground,
   });
-  final IconData icon;
+  final Object icon;
   final void Function() onTap;
   final double radius;
   final double size;
@@ -60,16 +61,28 @@ class _CustomIconButtonState extends State<CustomIconButton> {
               ? theme.custom.shadowColor
               : theme.custom.transparent,
           elevation: 12,
-          backgroundColor: widget.background ?? theme.custom.primaryForeground,
+          backgroundColor: widget.background ?? theme.custom.primaryBackground,
         ),
         icon: AnimatedScale(
           scale: scale,
           duration: const Duration(milliseconds: 175),
-          child: Icon(
-            widget.icon,
-            size: widget.size,
-            color: widget.foreground ?? theme.custom.white,
-          ),
+          child: widget.icon is IconData
+              ? Icon(
+                  widget.icon as IconData,
+                  size: widget.size,
+                  color: widget.foreground ?? theme.custom.primaryForeground,
+                )
+              : widget.icon is String
+              ? SvgPicture.asset(
+                  widget.icon as String,
+                  width: widget.size,
+                  height: widget.size,
+                  colorFilter: ColorFilter.mode(
+                    widget.foreground ?? theme.custom.primaryForeground,
+                    BlendMode.srcIn,
+                  ),
+                )
+              : SizedBox(),
         ),
       ),
     );
