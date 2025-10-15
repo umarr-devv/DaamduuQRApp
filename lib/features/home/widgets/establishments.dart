@@ -117,7 +117,6 @@ class _FavoriteStatus extends StatelessWidget {
         child: CustomIconButton(
           icon: Icons.favorite_border_rounded,
           size: 20,
-          radius: 64,
           onTap: () {},
         ),
       ),

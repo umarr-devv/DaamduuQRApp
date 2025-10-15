@@ -1,5 +1,6 @@
 export 'action_button.dart';
 export 'contact.dart';
+export 'currency.dart';
 export 'divider.dart';
 export 'establishment_type.dart';
 export 'icon_button.dart';
@@ -8,6 +9,6 @@ export 'navbar_space.dart';
 export 'page_indicator.dart';
 export 'rating_indicator.dart';
 export 'searchbar.dart';
+export 'text_button.dart';
 export 'title_button.dart';
 export 'title_text.dart';
-export 'currency.dart';

@@ -43,7 +43,6 @@ class EstablishmentTitle extends StatelessWidget {
           ),
           if (establishment.latitude != null && establishment.longitude != null)
             CustomIconButton(
-              radius: 64,
               icon: Icons.directions,
               onTap: () async {
                 await openGeo(
@@ -52,6 +51,7 @@ class EstablishmentTitle extends StatelessWidget {
                 );
               },
               background: theme.custom.primaryColor,
+              foreground: theme.custom.white,
             ),
         ],
       ),

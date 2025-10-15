@@ -72,8 +72,7 @@ class _EstablishmentAppBarState extends State<EstablishmentAppBar> {
                 AutoRouter.of(context).maybePop();
               },
               icon: Icons.arrow_back_ios_new_rounded,
-              background: theme.custom.primaryBackground,
-              foreground: theme.custom.primaryForeground,
+              radius: 12,
               shadow: shadow,
             ),
           ),
@@ -87,9 +86,6 @@ class _EstablishmentAppBarState extends State<EstablishmentAppBar> {
         CustomIconButton(
           onTap: () {},
           icon: Icons.favorite,
-          foreground: theme.custom.primaryColor,
-          background: theme.custom.primaryBackground,
-          radius: 64,
           shadow: shadow,
         ),
         const SizedBox(width: 8),

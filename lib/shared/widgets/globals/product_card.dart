@@ -11,17 +11,41 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        color: theme.custom.primaryBackground,
-        boxShadow: theme.custom.boxShadow,
-      ),
-      child: Column(
-        children: [
-          Expanded(child: _CardImage(product: product)),
-          _CardInfo(product: product),
-        ],
+    return Stack(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            color: theme.custom.primaryBackground,
+            boxShadow: theme.custom.boxShadow,
+          ),
+          child: Column(
+            children: [
+              Expanded(child: _CardImage(product: product)),
+              _CardInfo(product: product),
+            ],
+          ),
+        ),
+        _FavoriteStatus(),
+      ],
+    );
+  }
+}
+
+class _FavoriteStatus extends StatelessWidget {
+  const _FavoriteStatus();
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.topRight,
+      child: Padding(
+        padding: const EdgeInsets.all(8),
+        child: CustomIconButton(
+          icon: Icons.favorite_border_rounded,
+          size: 20,
+          onTap: () {},
+        ),
       ),
     );
   }

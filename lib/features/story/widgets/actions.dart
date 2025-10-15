@@ -1,4 +1,3 @@
-import 'package:app/shared/theme/theme.dart';
 import 'package:app/shared/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +13,6 @@ class StoryActions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Container(
       margin: const EdgeInsets.only(top: 24, left: 16, right: 16),
       child: Row(
@@ -23,19 +21,13 @@ class StoryActions extends StatelessWidget {
         children: [
           CustomIconButton(
             icon: Icons.close,
+            radius: 12,
             onTap: () {
               AutoRouter.of(context).maybePop();
             },
-            background: theme.custom.primaryBackground,
-            foreground: theme.custom.primaryForeground,
             animation: false,
           ),
-          CustomIconButton(
-            icon: Icons.share,
-            onTap: share,
-            background: theme.custom.primaryBackground,
-            foreground: theme.custom.primaryForeground,
-          ),
+          CustomIconButton(icon: Icons.share, onTap: share),
         ],
       ),
     );

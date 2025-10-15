@@ -55,7 +55,6 @@ class CustomScrollableSheet extends StatelessWidget {
                 child: CustomIconButton(
                   icon: Icons.close,
                   size: 20,
-                  radius: 64,
                   background: color ?? theme.custom.secondaryBackground,
                   foreground: theme.custom.secondaryForeground,
                   onTap: () {
