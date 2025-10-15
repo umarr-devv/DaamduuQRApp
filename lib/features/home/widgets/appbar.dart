@@ -1,4 +1,5 @@
 import 'package:app/shared/theme/theme.dart';
+import 'package:app/shared/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_tilt/flutter_tilt.dart';
@@ -14,18 +15,13 @@ class HomeAppBar extends StatelessWidget {
       backgroundColor: theme.custom.primaryBackground,
       pinned: true,
       actions: [
-        IconButton(
-          onPressed: () {},
-          icon: SvgPicture.asset(
-            'assets/svg/search.svg',
-            height: 20,
-            width: 20,
-            colorFilter: ColorFilter.mode(
-              theme.custom.primaryForeground,
-              BlendMode.srcIn,
-            ),
-          ),
+        CustomIconButton(
+          icon: 'assets/svg/search.svg',
+          size: 20,
+          shadow: false,
+          onTap: () {},
         ),
+        SizedBox(width: 8),
       ],
     );
   }

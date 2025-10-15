@@ -39,14 +39,14 @@ class CustomEstablishmentType extends StatelessWidget {
       children: [
         SvgPicture.asset(
           icon,
-          height: 14,
-          width: 14,
+          height: 16,
+          width: 16,
           colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
         ),
         Text(
           label,
           style: TextStyle(
-            fontSize: 13,
+            fontSize: 14,
             fontWeight: FontWeight.w500,
             color: color,
           ),

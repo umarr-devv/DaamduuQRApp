@@ -30,7 +30,7 @@ class _HomeEstablishmentTypesState extends State<HomeEstablishmentTypes> {
             spacing: 8,
             children:
                 [
-                  _EstablishmentCategoryItem(
+                  _EstablishmentTypeItem(
                     type: null,
                     onTap: onTap,
                     currentType: state.type,
@@ -38,7 +38,7 @@ class _HomeEstablishmentTypesState extends State<HomeEstablishmentTypes> {
                 ] +
                 EstablishmentType.values
                     .map(
-                      (i) => _EstablishmentCategoryItem(
+                      (i) => _EstablishmentTypeItem(
                         type: i,
                         onTap: onTap,
                         currentType: state.type,
@@ -52,8 +52,8 @@ class _HomeEstablishmentTypesState extends State<HomeEstablishmentTypes> {
   }
 }
 
-class _EstablishmentCategoryItem extends StatefulWidget {
-  const _EstablishmentCategoryItem({
+class _EstablishmentTypeItem extends StatefulWidget {
+  const _EstablishmentTypeItem({
     required this.type,
     required this.onTap,
     required this.currentType,
@@ -64,12 +64,10 @@ class _EstablishmentCategoryItem extends StatefulWidget {
   final EstablishmentType? currentType;
 
   @override
-  State<_EstablishmentCategoryItem> createState() =>
-      _EstablishmentCategoryItemState();
+  State<_EstablishmentTypeItem> createState() => _EstablishmentTypeItemState();
 }
 
-class _EstablishmentCategoryItemState
-    extends State<_EstablishmentCategoryItem> {
+class _EstablishmentTypeItemState extends State<_EstablishmentTypeItem> {
   bool get active => widget.currentType == widget.type;
 
   @override
@@ -86,7 +84,7 @@ class _EstablishmentCategoryItemState
           color: active
               ? theme.custom.primaryColor
               : theme.custom.primaryBackground,
-          borderRadius: BorderRadius.circular(4),
+          borderRadius: BorderRadius.circular(12),
         ),
         child: CustomEstablishmentType(
           type: widget.type,
