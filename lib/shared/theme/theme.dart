@@ -15,7 +15,7 @@ class CustomThemeData {
 
   Color get primaryBackground => const Color(0xFFffffff);
 
-  Color get secondaryBackground => const Color(0xFFeeeff0);
+  Color get secondaryBackground => const Color(0xFFF5F5F6);
 
   Color get primaryForeground => const Color(0xff2a2a2a);
 
@@ -36,7 +36,7 @@ class CustomThemeData {
   Color get opacityForeground => primaryForeground.withValues(alpha: 0.2);
 
   Color get opacityWhite => Color(0xffffffff).withValues(alpha: 0.75);
-  
+
   Color get opacityBlack => black.withValues(alpha: 0.5);
 
   Color get splashColor => Color(0xffffffff).withValues(alpha: 0.125);
@@ -46,7 +46,6 @@ class CustomThemeData {
   Color get shimmerBase => black.withValues(alpha: 0.1);
 
   Color get shimmerHighlight => black.withValues(alpha: 0.2);
-
 
   ThemeData toTheme() {
     return ThemeData(
