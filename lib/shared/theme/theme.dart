@@ -25,7 +25,7 @@ class CustomThemeData {
 
   Color get info => Color(0xff6c6cf4);
 
-  Color get warning => Color(0xfff44da0);
+  Color get warning => Color(0xFFEB631A);
 
   Color get yellow => Color(0xfffebc49);
 
@@ -45,7 +45,7 @@ class CustomThemeData {
 
   Color get shadowColor => Color(0xff000000).withValues(alpha: 0.1);
 
-   Color get highShadowColor => Color(0xff000000).withValues(alpha: 0.2);
+  Color get highShadowColor => Color(0xff000000).withValues(alpha: 0.2);
 
   Color get shimmerBase => black.withValues(alpha: 0.1);
 

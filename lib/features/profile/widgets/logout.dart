@@ -13,7 +13,7 @@ class ProfileLogout extends StatelessWidget {
       child: CustomTextButton(
         icon: Icons.logout,
         radius: 12,
-        foreground: theme.custom.primaryColor,
+        foreground: theme.custom.warning,
         shadow: false,
         label: 'Выйти',
         onTap: () {},
