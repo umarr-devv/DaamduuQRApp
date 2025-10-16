@@ -1,3 +1,5 @@
+import 'package:app/features/profile/widgets/widgets.dart';
+import 'package:app/shared/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +9,16 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return CustomScrollView(
+      slivers: [
+        ProfileAppBar(),
+        SliverToBoxAdapter(child: ProfileInfo()),
+        SliverToBoxAdapter(child: ProfileActions()),
+        SliverToBoxAdapter(child: ProfileInvite()),
+        SliverToBoxAdapter(child: ProfileLogout()),
+        SliverToBoxAdapter(child: ProfileContacts()),
+        SliverToBoxAdapter(child: NavBarSpace()),
+      ],
+    );
   }
 }

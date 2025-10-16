@@ -37,6 +37,7 @@ dependencies:
   hydrated_bloc: ^10.1.1
   intl: ^0.20.2
   json_annotation: ^4.9.0
+  mesh_gradient: ^1.3.8
   mobile_scanner: ^7.0.1
   path_provider: ^2.1.5
   retrofit: ^4.5.0
@@ -135,6 +136,10 @@ flutter:
     - "assets/svg/shopping-basket.svg"
     - "assets/svg/shopping-basket-fill.svg"
     - "assets/svg/list.svg"
+    - "assets/svg/time-past.svg"
+    - "assets/svg/shield-check.svg"
+    - "assets/svg/interrogation.svg"
+    - "assets/svg/comment-info.svg"
     - "assets/svg/som.svg"
 
     - "assets/icon/icon.png"
