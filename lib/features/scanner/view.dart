@@ -3,28 +3,30 @@ import 'package:app/features/scanner/widgets/info.dart';
 import 'package:app/features/scanner/widgets/widgets.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 @RoutePage()
-class ScannerScreen extends StatefulWidget {
+class ScannerScreen extends StatelessWidget {
   const ScannerScreen({super.key});
 
-  @override
-  State<ScannerScreen> createState() => _ScannerScreenState();
-}
 
-class _ScannerScreenState extends State<ScannerScreen> {
-  final cubit = BarcodeCubit();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          ScannerCamera(cubit: cubit),
-          ScannerBackground(),
-          ScannerAction(),
-          ScannerInfo(cubit: cubit),
-        ],
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => BarcodeCubit())
+      ],
+      child: Scaffold(
+        appBar: ScannerAppBar(),
+        body: Stack(
+          children: [
+            ScannerCamera(),
+            ScannerOverlay(),
+            ScannerAction(),
+            ScannerInfo(),
+          ],
+        ),
       ),
     );
   }

@@ -1,4 +1,5 @@
 export 'action_button.dart';
+export 'camera_overlay.dart';
 export 'contact.dart';
 export 'currency.dart';
 export 'divider.dart';

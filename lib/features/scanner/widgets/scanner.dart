@@ -2,12 +2,12 @@ import 'dart:async';
 
 import 'package:app/features/scanner/bloc/cubit/barcode_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
 class ScannerCamera extends StatefulWidget {
-  const ScannerCamera({super.key, required this.cubit});
+  const ScannerCamera({super.key});
 
-  final BarcodeCubit cubit;
 
   @override
   State<ScannerCamera> createState() => _ScannerCameraState();
@@ -15,16 +15,17 @@ class ScannerCamera extends StatefulWidget {
 
 class _ScannerCameraState extends State<ScannerCamera>
     with WidgetsBindingObserver {
+
   final controller = MobileScannerController(autoStart: false);
-
   StreamSubscription<Object?>? subscription;
-
   BarcodeCapture? detectedBarcode;
+
+  BarcodeCubit get cubit => BlocProvider.of<BarcodeCubit>(context);
 
   void handleBarcode(BarcodeCapture? data) {
     if (data != null && data.barcodes.isNotEmpty) {
       final barcode = data.barcodes[0].rawValue;
-      widget.cubit.setBarcode(barcode);
+      cubit.setBarcode(barcode);
     }
   }
 

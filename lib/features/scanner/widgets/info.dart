@@ -3,10 +3,15 @@ import 'package:app/shared/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ScannerInfo extends StatelessWidget {
-  const ScannerInfo({super.key, required this.cubit});
+class ScannerInfo extends StatefulWidget {
+  const ScannerInfo({super.key});
 
-  final BarcodeCubit cubit;
+  @override
+  State<ScannerInfo> createState() => _ScannerInfoState();
+}
+
+class _ScannerInfoState extends State<ScannerInfo> {
+BarcodeCubit get cubit => BlocProvider.of<BarcodeCubit>(context);
 
   @override
   Widget build(BuildContext context) {
