@@ -4,9 +4,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 class SearchAppBar extends StatelessWidget {
-  const SearchAppBar({super.key, required this.textController});
+  const SearchAppBar({super.key, required this.textController, this.uniqueId});
 
   final TextEditingController textController;
+  final String? uniqueId;
 
   @override
   Widget build(BuildContext context) {
@@ -15,15 +16,16 @@ class SearchAppBar extends StatelessWidget {
       backgroundColor: theme.custom.secondaryBackground,
       automaticallyImplyLeading: false,
       toolbarHeight: 0,
-      bottom: _AppBarTitle(textController: textController),
+      bottom: _AppBarTitle(textController: textController, uniqueId: uniqueId),
     );
   }
 }
 
 class _AppBarTitle extends StatelessWidget implements PreferredSizeWidget {
-  const _AppBarTitle({required this.textController});
+  const _AppBarTitle({required this.textController, this.uniqueId});
 
   final TextEditingController textController;
+  final String? uniqueId;
 
   @override
   Size get preferredSize => Size.fromHeight(64);
@@ -37,15 +39,16 @@ class _AppBarTitle extends StatelessWidget implements PreferredSizeWidget {
         spacing: 8,
         children: [
           CustomIconButton(
-            icon: Icons.arrow_back_ios_new_rounded,
+            icon: Icons.arrow_back,
             background: theme.custom.transparent,
+            shadow: false,
             onTap: () {
               AutoRouter.of(context).maybePop();
             },
           ),
           Expanded(
             child: Hero(
-              tag: 'searchbar',
+              tag: uniqueId ?? 'searchbar',
               child: CustomSearchBar(
                 textController: textController,
                 autofocus: true,

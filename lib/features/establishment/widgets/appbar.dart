@@ -63,18 +63,18 @@ class _EstablishmentAppBarState extends State<EstablishmentAppBar> {
       backgroundColor: theme.custom.white,
       toolbarHeight: toolbarHeight,
       expandedHeight: expandedHeight,
+      elevation: 4,
+      shadowColor: theme.custom.highShadowColor,
       leading: Row(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 8),
-            child: CustomIconButton(
-              onTap: () {
-                AutoRouter.of(context).maybePop();
-              },
-              icon: Icons.arrow_back_ios_new_rounded,
-              radius: 12,
-              shadow: shadow,
-            ),
+          SizedBox(width: 8),
+          CustomIconButton(
+            onTap: () {
+              AutoRouter.of(context).maybePop();
+            },
+            icon: Icons.arrow_back,
+            radius: 12,
+            shadow: shadow,
           ),
         ],
       ),
@@ -85,7 +85,7 @@ class _EstablishmentAppBarState extends State<EstablishmentAppBar> {
       actions: [
         CustomIconButton(
           onTap: () {},
-          icon: Icons.favorite,
+          icon: Icons.favorite_border_rounded,
           shadow: shadow,
         ),
         const SizedBox(width: 8),

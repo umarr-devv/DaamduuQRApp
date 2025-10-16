@@ -1,5 +1,6 @@
 import 'package:app/core/router/router.dart';
 import 'package:app/shared/widgets/components/components.dart';
+import 'package:app/utils/uuid.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +13,7 @@ class HomeSearchBar extends StatefulWidget {
 
 class _HomeSearchBarState extends State<HomeSearchBar> {
   final textController = TextEditingController();
+  final String uniqueId = generateUuid();
 
   @override
   void dispose() {
@@ -25,12 +27,12 @@ class _HomeSearchBarState extends State<HomeSearchBar> {
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       child: GestureDetector(
         onTap: () {
-          AutoRouter.of(
-            context,
-          ).push(SearchRoute(textController: textController));
+          AutoRouter.of(context).push(
+            SearchRoute(textController: textController, uniqueId: uniqueId),
+          );
         },
         child: Hero(
-          tag: 'searchbar',
+          tag: uniqueId,
           child: CustomSearchBar(
             textController: textController,
             enable: false,

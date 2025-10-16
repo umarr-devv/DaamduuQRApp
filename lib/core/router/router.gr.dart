@@ -225,10 +225,15 @@ class SearchRoute extends PageRouteInfo<SearchRouteArgs> {
   SearchRoute({
     Key? key,
     required TextEditingController textController,
+    String? uniqueId,
     List<PageRouteInfo>? children,
   }) : super(
          SearchRoute.name,
-         args: SearchRouteArgs(key: key, textController: textController),
+         args: SearchRouteArgs(
+           key: key,
+           textController: textController,
+           uniqueId: uniqueId,
+         ),
          initialChildren: children,
        );
 
@@ -238,32 +243,45 @@ class SearchRoute extends PageRouteInfo<SearchRouteArgs> {
     name,
     builder: (data) {
       final args = data.argsAs<SearchRouteArgs>();
-      return SearchScreen(key: args.key, textController: args.textController);
+      return SearchScreen(
+        key: args.key,
+        textController: args.textController,
+        uniqueId: args.uniqueId,
+      );
     },
   );
 }
 
 class SearchRouteArgs {
-  const SearchRouteArgs({this.key, required this.textController});
+  const SearchRouteArgs({
+    this.key,
+    required this.textController,
+    this.uniqueId,
+  });
 
   final Key? key;
 
   final TextEditingController textController;
 
+  final String? uniqueId;
+
   @override
   String toString() {
-    return 'SearchRouteArgs{key: $key, textController: $textController}';
+    return 'SearchRouteArgs{key: $key, textController: $textController, uniqueId: $uniqueId}';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     if (other is! SearchRouteArgs) return false;
-    return key == other.key && textController == other.textController;
+    return key == other.key &&
+        textController == other.textController &&
+        uniqueId == other.uniqueId;
   }
 
   @override
-  int get hashCode => key.hashCode ^ textController.hashCode;
+  int get hashCode =>
+      key.hashCode ^ textController.hashCode ^ uniqueId.hashCode;
 }
 
 /// generated route for

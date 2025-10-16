@@ -14,6 +14,13 @@ class ProfileAppBar extends StatelessWidget {
       title: _AppBarTitle(),
       actions: [
         CustomIconButton(icon: Icons.settings, radius: 12, onTap: () {}),
+        SizedBox(width: 8),
+        CustomIconButton(
+          icon: Icons.exit_to_app_rounded,
+          foreground: theme.custom.warning,
+          radius: 12,
+          onTap: () {},
+        ),
         SizedBox(width: 16),
       ],
     );

@@ -35,6 +35,7 @@ class _HomeEstablishmentsState extends State<HomeEstablishments> {
                 pauseAutoPlayInFiniteScroll: true,
                 pauseAutoPlayOnManualNavigate: true,
                 pauseAutoPlayOnTouch: true,
+                enableInfiniteScroll: false,
                 onPageChanged: (index, reason) {
                   setState(() {
                     currentIndex = index;
@@ -186,10 +187,13 @@ class _CardImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomImage(
-      imageId: establishment.images.isNotEmpty
-          ? establishment.images[0].id
-          : null,
+    return Hero(
+      tag: establishment.id,
+      child: CustomImage(
+        imageId: establishment.images.isNotEmpty
+            ? establishment.images[0].id
+            : null,
+      ),
     );
   }
 }
