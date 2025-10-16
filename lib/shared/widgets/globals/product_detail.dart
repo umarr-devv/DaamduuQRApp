@@ -17,15 +17,43 @@ class ProductDetail extends StatelessWidget {
     final theme = Theme.of(context);
     return CustomScrollableSheet(
       color: theme.custom.primaryBackground,
-      
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Stack(
         children: [
-          _ProductDetailImage(product: product),
-          _ProductDetailTitle(product: product),
-          _ProductDetailInfo(product: product),
-          _ProductDetailAdd(product: product),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _ProductDetailImage(product: product),
+              _ProductDetailTitle(product: product),
+              _ProductDetailInfo(product: product),
+              _ProductDetailAdd(product: product),
+            ],
+          ),
+          _ProductDetailActions(product: product),
         ],
+      ),
+    );
+  }
+}
+
+class _ProductDetailActions extends StatelessWidget {
+  const _ProductDetailActions({required this.product});
+
+  final ProductScheme product;
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.topRight,
+      child: Container(
+        padding: const EdgeInsets.all(12),
+        child: Row(
+          spacing: 8,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            CustomIconButton(icon: Icons.share, onTap: () {}),
+            CustomIconButton(icon: Icons.favorite_border_rounded, onTap: () {}),
+          ],
+        ),
       ),
     );
   }

@@ -83,6 +83,8 @@ class _EstablishmentAppBarState extends State<EstablishmentAppBar> {
         establishment: widget.establishment,
       ),
       actions: [
+        CustomIconButton(onTap: () {}, icon: Icons.share, shadow: shadow),
+        const SizedBox(width: 8),
         Hero(
           tag: 'favorite_${widget.establishment.id}',
           child: CustomIconButton(
@@ -91,7 +93,7 @@ class _EstablishmentAppBarState extends State<EstablishmentAppBar> {
             shadow: shadow,
           ),
         ),
-        const SizedBox(width: 8),
+        const SizedBox(width: 16),
       ],
       pinned: true,
       flexibleSpace: FlexibleSpaceBar(
