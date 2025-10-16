@@ -20,22 +20,35 @@ class EstablishmentTitle extends StatelessWidget {
         children: [
           Expanded(
             child: Column(
+              spacing: 2,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  establishment.name,
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    color: theme.custom.primaryForeground,
+                Hero(
+                  tag: 'name_${establishment.id}',
+                  child: Material(
+                    type: MaterialType.transparency,
+                    child: Text(
+                      establishment.name,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        color: theme.custom.primaryForeground,
+                      ),
+                    ),
                   ),
                 ),
-                Text(
-                  establishment.address,
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    color: theme.custom.secondaryForeground,
+                Hero(
+                  tag: 'address_${establishment.id}',
+                  child: Material(
+                    type: MaterialType.transparency,
+                    child: Text(
+                      establishment.address,
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        color: theme.custom.secondaryForeground,
+                      ),
+                    ),
                   ),
                 ),
               ],

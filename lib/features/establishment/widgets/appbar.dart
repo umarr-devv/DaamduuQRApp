@@ -83,10 +83,13 @@ class _EstablishmentAppBarState extends State<EstablishmentAppBar> {
         establishment: widget.establishment,
       ),
       actions: [
-        CustomIconButton(
-          onTap: () {},
-          icon: Icons.favorite_border_rounded,
-          shadow: shadow,
+        Hero(
+          tag: 'favorite_${widget.establishment.id}',
+          child: CustomIconButton(
+            onTap: () {},
+            icon: Icons.favorite_border_rounded,
+            shadow: shadow,
+          ),
         ),
         const SizedBox(width: 8),
       ],
@@ -148,7 +151,7 @@ class _BackgroundImagesState extends State<_BackgroundImages> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Hero(
-      tag: widget.establishment.id,
+      tag: 'image_${widget.establishment.id}',
       child: SizedBox(
         height: 220,
         child: Stack(
