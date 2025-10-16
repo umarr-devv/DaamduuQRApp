@@ -11,27 +11,32 @@ class ProductLongCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Container(
-      padding: const EdgeInsets.all(2),
-      decoration: BoxDecoration(
-        color: theme.custom.primaryBackground,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: theme.custom.boxShadow,
-      ),
-      child: Stack(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadiusGeometry.circular(16),
-            child: Row(
-              children: [
-                _CardImage(product: product),
-                Expanded(child: _CardInfo(product: product)),
-              ],
+    return GestureDetector(
+      onTap: () {
+        ProductDetail(product: product).show(context);
+      },
+      child: Container(
+        padding: const EdgeInsets.all(2),
+        decoration: BoxDecoration(
+          color: theme.custom.primaryBackground,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: theme.custom.boxShadow,
+        ),
+        child: Stack(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadiusGeometry.circular(16),
+              child: Row(
+                children: [
+                  _CardImage(product: product),
+                  Expanded(child: _CardInfo(product: product)),
+                ],
+              ),
             ),
-          ),
-          _FavoriteStatus(product: product),
-          _CardAction(product: product),
-        ],
+            _FavoriteStatus(product: product),
+            _CardAction(product: product),
+          ],
+        ),
       ),
     );
   }
@@ -44,20 +49,7 @@ class _CardAction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Align(
-      alignment: Alignment.bottomRight,
-      child: Padding(
-        padding: const EdgeInsets.all(8),
-        child: CustomTextButton(
-          icon: Icons.add,
-          label: 'Добавить',
-          background: theme.custom.primaryForeground,
-          foreground: theme.custom.white,
-          onTap: () {},
-        ),
-      ),
-    );
+    return SizedBox();
   }
 }
 

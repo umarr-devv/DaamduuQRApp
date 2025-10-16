@@ -1,5 +1,6 @@
 import 'package:app/shared/theme/theme.dart';
 import 'package:app/shared/widgets/components/components.dart';
+import 'package:app/shared/widgets/globals/global.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
 
@@ -11,23 +12,28 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Stack(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
-            color: theme.custom.primaryBackground,
-            boxShadow: theme.custom.boxShadow,
+    return GestureDetector(
+      onTap: () {
+        ProductDetail(product: product).show(context);
+      },
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              color: theme.custom.primaryBackground,
+              boxShadow: theme.custom.boxShadow,
+            ),
+            child: Column(
+              children: [
+                Expanded(child: _CardImage(product: product)),
+                _CardInfo(product: product),
+              ],
+            ),
           ),
-          child: Column(
-            children: [
-              Expanded(child: _CardImage(product: product)),
-              _CardInfo(product: product),
-            ],
-          ),
-        ),
-        _FavoriteStatus(),
-      ],
+          _FavoriteStatus(),
+        ],
+      ),
     );
   }
 }

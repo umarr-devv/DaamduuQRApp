@@ -26,8 +26,9 @@ class CustomScrollableSheet extends StatelessWidget {
       context: context,
       backgroundColor: theme.custom.primaryBackground,
       isScrollControlled: true,
+      elevation: 4,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(22)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
       builder: (context) => child,
     );
@@ -35,7 +36,6 @@ class CustomScrollableSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return DraggableScrollableSheet(
       expand: false,
       initialChildSize: initialChildSize,
@@ -49,38 +49,16 @@ class CustomScrollableSheet extends StatelessWidget {
               child: SizedBox(width: double.infinity, child: child),
             ),
             Align(
-              alignment: Alignment.topRight,
+              alignment: Alignment.topLeft,
               child: Padding(
                 padding: const EdgeInsets.all(8),
                 child: CustomIconButton(
                   icon: Icons.close,
                   size: 20,
-                  background: color ?? theme.custom.secondaryBackground,
-                  foreground: theme.custom.secondaryForeground,
+                  radius: 12,
                   onTap: () {
                     AutoRouter.of(context).maybePop();
                   },
-                ),
-              ),
-            ),
-            Align(
-              alignment: Alignment.topCenter,
-              child: Padding(
-                padding: const EdgeInsets.all(8),
-                child: Container(
-                  height: 6,
-                  width: 128,
-                  decoration: BoxDecoration(
-                    color: color ?? theme.custom.secondaryBackground,
-                    borderRadius: BorderRadius.circular(8),
-                    boxShadow: [
-                      BoxShadow(
-                        color: theme.custom.shadowColor,
-                        offset: Offset(1, 1),
-                        blurRadius: 4,
-                      ),
-                    ],
-                  ),
                 ),
               ),
             ),
