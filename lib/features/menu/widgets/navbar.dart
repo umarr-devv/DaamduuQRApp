@@ -53,43 +53,37 @@ class _MenuNavBarState extends State<MenuNavBar> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return ClipRRect(
-      borderRadius: BorderRadiusGeometry.only(
-        topLeft: Radius.circular(32),
-        topRight: Radius.circular(32),
-      ),
-      child: BottomAppBar(
-        shape: const CircularNotchedRectangle(),
-        notchMargin: 8,
-        shadowColor: theme.custom.black,
-        elevation: 1,
-        color: theme.custom.primaryBackground,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            ...items
-                .sublist(0, 2)
-                .map(
-                  (item) => _MenuNavBarItem(
-                    item: item,
-                    index: items.indexOf(item),
-                    tabsRouter: widget.tabsRouter,
-                    onTap: onTap,
-                  ),
+    return BottomAppBar(
+      shape: const CircularNotchedRectangle(),
+      notchMargin: 8,
+      shadowColor: theme.custom.black,
+      elevation: 4,
+      color: theme.custom.primaryBackground,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          ...items
+              .sublist(0, 2)
+              .map(
+                (item) => _MenuNavBarItem(
+                  item: item,
+                  index: items.indexOf(item),
+                  tabsRouter: widget.tabsRouter,
+                  onTap: onTap,
                 ),
-            const SizedBox(width: 24),
-            ...items
-                .sublist(2)
-                .map(
-                  (item) => _MenuNavBarItem(
-                    item: item,
-                    index: items.indexOf(item),
-                    tabsRouter: widget.tabsRouter,
-                    onTap: onTap,
-                  ),
+              ),
+          const SizedBox(width: 24),
+          ...items
+              .sublist(2)
+              .map(
+                (item) => _MenuNavBarItem(
+                  item: item,
+                  index: items.indexOf(item),
+                  tabsRouter: widget.tabsRouter,
+                  onTap: onTap,
                 ),
-          ],
-        ),
+              ),
+        ],
       ),
     );
   }
