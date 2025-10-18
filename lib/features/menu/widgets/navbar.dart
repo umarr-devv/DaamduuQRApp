@@ -1,19 +1,16 @@
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get_it/get_it.dart';
-import 'package:talker_flutter/talker_flutter.dart';
 
 class _MenuNavBarItemData {
   _MenuNavBarItemData({
     required this.activeSvgIcon,
     required this.inactiveSvgIcon,
-    this.toLogs = false,
   });
   final String activeSvgIcon;
   final String inactiveSvgIcon;
-  final bool toLogs;
 }
 
 class MenuNavBar extends StatefulWidget {
@@ -42,7 +39,6 @@ class _MenuNavBarState extends State<MenuNavBar> {
     _MenuNavBarItemData(
       activeSvgIcon: 'assets/svg/user-fill.svg',
       inactiveSvgIcon: 'assets/svg/user.svg',
-      toLogs: true,
     ),
   ];
 
@@ -53,112 +49,70 @@ class _MenuNavBarState extends State<MenuNavBar> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return ClipRRect(
-      borderRadius: BorderRadiusGeometry.only(
-        topLeft: Radius.circular(24),
-        topRight: Radius.circular(24),
+    return AnimatedBottomNavigationBar.builder(
+      height: 80,
+      activeIndex: widget.tabsRouter.activeIndex,
+      gapLocation: GapLocation.center,
+      notchSmoothness: NotchSmoothness.defaultEdge,
+      leftCornerRadius: 24,
+      rightCornerRadius: 24,
+      backgroundColor: theme.custom.primaryBackground,
+      scaleFactor: 0.4,
+      shadow: BoxShadow(
+        color: theme.custom.shadowColor,
+        offset: Offset(0, -2),
+        blurRadius: 4,
       ),
-      child: BottomAppBar(
-        shape: const CircularNotchedRectangle(),
-        notchMargin: 8,
-        shadowColor: theme.custom.black,
-        elevation: 4,
-        color: theme.custom.primaryBackground,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            ...items
-                .sublist(0, 2)
-                .map(
-                  (item) => _MenuNavBarItem(
-                    item: item,
-                    index: items.indexOf(item),
-                    tabsRouter: widget.tabsRouter,
-                    onTap: onTap,
-                  ),
-                ),
-            const SizedBox(width: 24),
-            ...items
-                .sublist(2)
-                .map(
-                  (item) => _MenuNavBarItem(
-                    item: item,
-                    index: items.indexOf(item),
-                    tabsRouter: widget.tabsRouter,
-                    onTap: onTap,
-                  ),
-                ),
-          ],
-        ),
-      ),
+      onTap: (index) {
+        widget.tabsRouter.setActiveIndex(index);
+      },
+      tabBuilder: (index, isActive) {
+        return _MenuNavBarItem(
+          item: items[index],
+          isActive: isActive,
+          index: index,
+        );
+      },
+      itemCount: items.length,
     );
   }
 }
 
-class _MenuNavBarItem extends StatefulWidget {
+class _MenuNavBarItem extends StatelessWidget {
   const _MenuNavBarItem({
     required this.item,
+    required this.isActive,
     required this.index,
-    required this.tabsRouter,
-    required this.onTap,
   });
 
   final _MenuNavBarItemData item;
+  final bool isActive;
   final int index;
-  final TabsRouter tabsRouter;
-  final Function(int) onTap;
 
-  @override
-  State<_MenuNavBarItem> createState() => _MenuNavBarItemState();
-}
-
-class _MenuNavBarItemState extends State<_MenuNavBarItem> {
-  bool get active => widget.index == widget.tabsRouter.activeIndex;
-
-  double scale = 1.0;
-
-  Future onTap() async {
-    if (active) return;
-    setState(() {
-      scale = 0.85;
-    });
-    widget.onTap(widget.index);
-    await Future.delayed(Duration(milliseconds: 75));
-    setState(() {
-      scale = 1;
-    });
+  EdgeInsets padding() {
+    if (index == 0 || index == 1) {
+      return const EdgeInsets.only(left: 16);
+    } else if (index == 2 || index == 3) {
+      return const EdgeInsets.only(right: 16);
+    }
+    return const EdgeInsets.all(0);
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return GestureDetector(
-      onTap: onTap,
-      onLongPress: () {
-        if (widget.item.toLogs) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => TalkerScreen(talker: GetIt.I<Talker>()),
-            ),
-          );
-        }
-      },
-      child: AnimatedScale(
-        scale: scale,
-        duration: const Duration(milliseconds: 75),
-        child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
-          decoration: BoxDecoration(color: theme.custom.transparent),
-          child: SvgPicture.asset(
-            active ? widget.item.activeSvgIcon : widget.item.inactiveSvgIcon,
-            height: 24,
-            width: 24,
-            colorFilter: ColorFilter.mode(
-              active
-                  ? theme.custom.primaryColor
-                  : theme.custom.secondaryForeground,
-              BlendMode.srcIn,
-            ),
+    return UnconstrainedBox(
+      child: Padding(
+        padding: padding(),
+        child: SvgPicture.asset(
+          isActive ? item.activeSvgIcon : item.inactiveSvgIcon,
+          height: 24,
+          width: 24,
+          colorFilter: ColorFilter.mode(
+            isActive
+                ? theme.custom.primaryColor
+                : theme.custom.secondaryForeground,
+            BlendMode.srcIn,
           ),
         ),
       ),
