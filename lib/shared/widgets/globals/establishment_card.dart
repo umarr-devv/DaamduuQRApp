@@ -93,49 +93,37 @@ class _CardInfo extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Hero(
-            tag: 'name_${establishment.id}',
-            child: Material(
-              type: MaterialType.transparency,
-              child: Text(
-                establishment.name,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                  color: theme.custom.primaryForeground,
-                ),
-              ),
+          Text(
+            establishment.name,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+              color: theme.custom.primaryForeground,
             ),
           ),
-          Hero(
-            tag: 'address_${establishment.id}',
-            child: Material(
-              type: MaterialType.transparency,
-              child: Row(
-                spacing: 4,
-                children: [
-                  Icon(
-                    Icons.location_pin,
-                    size: 16,
+          Row(
+            spacing: 4,
+            children: [
+              Icon(
+                Icons.location_pin,
+                size: 16,
+                color: theme.custom.secondaryForeground,
+              ),
+              Expanded(
+                child: Text(
+                  establishment.address,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500,
                     color: theme.custom.secondaryForeground,
                   ),
-                  Expanded(
-                    child: Text(
-                      establishment.address,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                        color: theme.custom.secondaryForeground,
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
           const SizedBox(height: 8),
           CustomRatingIndicator(value: 4.4),

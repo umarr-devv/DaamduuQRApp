@@ -25,7 +25,7 @@ class _HomeEstablishmentsState extends State<HomeEstablishments> {
             CarouselSlider(
               options: CarouselOptions(
                 height: 240,
-                viewportFraction: 0.75,
+                viewportFraction: 0.85,
                 autoPlay: true,
                 autoPlayInterval: const Duration(seconds: 5),
                 pauseAutoPlayInFiniteScroll: true,

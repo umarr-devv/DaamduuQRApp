@@ -35,6 +35,8 @@ class _EstablishmentScreenState extends State<EstablishmentScreen> {
       providers: [BlocProvider.value(value: cubit)],
       child: Scaffold(
         backgroundColor: theme.custom.primaryBackground,
+        floatingActionButton: EstablishmentButton(),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         body: CustomScrollView(
           controller: scrollController,
           slivers: [
@@ -43,21 +45,16 @@ class _EstablishmentScreenState extends State<EstablishmentScreen> {
               scrollController: scrollController,
             ),
             SliverToBoxAdapter(
-              child: EstablishmentTitle(
-                establishment: widget.establishment,
-              ),
+              child: EstablishmentTitle(establishment: widget.establishment),
             ),
             SliverToBoxAdapter(child: EstablishmentStories()),
             SliverToBoxAdapter(child: CustomDivider()),
             SliverToBoxAdapter(
-              child: EstablishmentContacts(
-                establishment: widget.establishment,
-              ),
+              child: EstablishmentContacts(establishment: widget.establishment),
             ),
             SliverFillRemaining(),
           ],
-        )
-         
+        ),
       ),
     );
   }

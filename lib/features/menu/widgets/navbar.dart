@@ -57,7 +57,7 @@ class _MenuNavBarState extends State<MenuNavBar> {
       leftCornerRadius: 24,
       rightCornerRadius: 24,
       backgroundColor: theme.custom.primaryBackground,
-      scaleFactor: 0.4,
+      scaleFactor: -0.2,
       shadow: BoxShadow(
         color: theme.custom.shadowColor,
         offset: Offset(0, -2),

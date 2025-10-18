@@ -15,7 +15,7 @@ class HomeAppBar extends StatelessWidget {
       title: _AppBarTitle(),
       backgroundColor: theme.custom.secondaryBackground,
       actions: [
-        CustomIconButton(icon: Icons.notifications, radius: 12, onTap: () {}),
+        CustomIconButton(icon: 'assets/svg/bell.svg', radius: 12, onTap: () {}),
         SizedBox(width: 16),
       ],
     );

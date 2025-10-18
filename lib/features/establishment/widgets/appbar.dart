@@ -65,18 +65,15 @@ class _EstablishmentAppBarState extends State<EstablishmentAppBar> {
       expandedHeight: expandedHeight,
       elevation: 4,
       shadowColor: theme.custom.highShadowColor,
-      leading: Row(
-        children: [
-          SizedBox(width: 8),
-          CustomIconButton(
-            onTap: () {
-              AutoRouter.of(context).maybePop();
-            },
-            icon: Icons.arrow_back,
-            radius: 12,
-            shadow: shadow,
-          ),
-        ],
+      leading: UnconstrainedBox(
+        child: CustomIconButton(
+          onTap: () {
+            AutoRouter.of(context).maybePop();
+          },
+          icon: Icons.arrow_back,
+          radius: 12,
+          shadow: shadow,
+        ),
       ),
       title: _AppBarTitle(
         show: isCollapsed,
@@ -152,6 +149,7 @@ class _BackgroundImagesState extends State<_BackgroundImages> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final mediaQuery = MediaQuery.of(context);
     return Hero(
       tag: 'image_${widget.establishment.id}',
       child: SizedBox(
@@ -165,10 +163,13 @@ class _BackgroundImagesState extends State<_BackgroundImages> {
               }).toList(),
             ),
             Container(
-              height: 36,
+              height: mediaQuery.padding.top + 12,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [theme.custom.opacityBlack, theme.custom.transparent],
+                  colors: [
+                    theme.custom.opacityForeground,
+                    theme.custom.transparent,
+                  ],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                 ),
@@ -178,7 +179,7 @@ class _BackgroundImagesState extends State<_BackgroundImages> {
               alignment: Alignment.bottomCenter,
               child: Container(
                 width: double.infinity,
-                height: 24,
+                height: 28,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: theme.custom.primaryBackground,
