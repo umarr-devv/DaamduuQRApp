@@ -40,18 +40,11 @@ class _EstablishmentScreenState extends State<EstablishmentScreen> {
         body: CustomScrollView(
           controller: scrollController,
           slivers: [
-            EstablishmentAppBar(
-              establishment: widget.establishment,
-              scrollController: scrollController,
-            ),
-            SliverToBoxAdapter(
-              child: EstablishmentTitle(establishment: widget.establishment),
-            ),
+            EstablishmentAppBar(scrollController: scrollController),
+            SliverToBoxAdapter(child: EstablishmentTitle()),
             SliverToBoxAdapter(child: EstablishmentStories()),
             SliverToBoxAdapter(child: CustomDivider()),
-            SliverToBoxAdapter(
-              child: EstablishmentContacts(establishment: widget.establishment),
-            ),
+            SliverToBoxAdapter(child: EstablishmentContacts()),
             SliverFillRemaining(),
           ],
         ),

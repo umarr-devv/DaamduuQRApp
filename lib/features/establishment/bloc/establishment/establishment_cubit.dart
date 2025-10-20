@@ -15,12 +15,8 @@ class EstablishmentCubit extends HydratedCubit<EstablishmentState> {
   final client = GetIt.I<DaamduuqrClient>();
   final talker = GetIt.I<Talker>();
 
-  Future update({bool refresh = false}) async {
-    if (refresh) {
-      emit(EstablishmentRefreshing(state));
-    } else {
-      emit(EstablishmentLoading(state));
-    }
+  Future update() async {
+    emit(EstablishmentLoading(state));
     try {
       final newState = await getData();
       emit(EstablishmentLoaded(newState));

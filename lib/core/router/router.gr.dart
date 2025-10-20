@@ -11,6 +11,53 @@
 part of 'router.dart';
 
 /// generated route for
+/// [CatalogScreen]
+class CatalogRoute extends PageRouteInfo<CatalogRouteArgs> {
+  CatalogRoute({
+    Key? key,
+    required EstablishmentScheme establishment,
+    List<PageRouteInfo>? children,
+  }) : super(
+         CatalogRoute.name,
+         args: CatalogRouteArgs(key: key, establishment: establishment),
+         initialChildren: children,
+       );
+
+  static const String name = 'CatalogRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<CatalogRouteArgs>();
+      return CatalogScreen(key: args.key, establishment: args.establishment);
+    },
+  );
+}
+
+class CatalogRouteArgs {
+  const CatalogRouteArgs({this.key, required this.establishment});
+
+  final Key? key;
+
+  final EstablishmentScheme establishment;
+
+  @override
+  String toString() {
+    return 'CatalogRouteArgs{key: $key, establishment: $establishment}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! CatalogRouteArgs) return false;
+    return key == other.key && establishment == other.establishment;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ establishment.hashCode;
+}
+
+/// generated route for
 /// [CategoryScreen]
 class CategoryRoute extends PageRouteInfo<CategoryRouteArgs> {
   CategoryRoute({

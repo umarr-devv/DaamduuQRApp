@@ -5,12 +5,10 @@ class EstablishmentState extends Equatable {
   const EstablishmentState({
     required this.establishment,
     this.stories = const [],
-    this.categories = const [],
     this.places = const [],
   });
   final EstablishmentScheme establishment;
   final List<StoryScheme> stories;
-  final List<CategoryScheme> categories;
   final List<PlaceScheme> places;
 
   EstablishmentState copyWith({
@@ -21,7 +19,6 @@ class EstablishmentState extends Equatable {
     return EstablishmentState(
       establishment: establishment,
       stories: stories ?? this.stories,
-      categories: categories ?? this.categories,
       places: places ?? this.places,
     );
   }
@@ -29,7 +26,6 @@ class EstablishmentState extends Equatable {
   EstablishmentState.from(EstablishmentState other)
     : establishment = other.establishment,
       stories = other.stories,
-      categories = other.categories,
       places = other.places;
 
   factory EstablishmentState.fromJson(Map<String, dynamic> json) =>
@@ -38,7 +34,7 @@ class EstablishmentState extends Equatable {
   Map<String, dynamic> toJson() => _$EstablishmentStateToJson(this);
 
   @override
-  List<Object?> get props => [establishment, stories, categories, places];
+  List<Object?> get props => [establishment, stories, places];
 }
 
 final class EstablishmentInitial extends EstablishmentState {
@@ -52,10 +48,6 @@ final class EstablishmentLoading extends EstablishmentState {
 
 final class EstablishmentLoaded extends EstablishmentState {
   EstablishmentLoaded(super.state) : super.from();
-}
-
-final class EstablishmentRefreshing extends EstablishmentState {
-  EstablishmentRefreshing(super.state) : super.from();
 }
 
 final class EstablishmentFailure extends EstablishmentState {

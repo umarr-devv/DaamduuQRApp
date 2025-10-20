@@ -1,3 +1,4 @@
+import 'package:app/features/catalog/view.dart';
 import 'package:app/features/category/view.dart';
 import 'package:app/features/establishment/view.dart';
 import 'package:app/features/favorite/view.dart';
@@ -50,6 +51,11 @@ class AppRouter extends RootStackRouter {
     CustomRoute(
       page: SearchRoute.page,
       transitionsBuilder: TransitionsBuilders.fadeIn,
+      fullscreenDialog: true,
+    ),
+    CustomRoute(
+      page: CatalogRoute.page,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
       fullscreenDialog: true,
     ),
   ];

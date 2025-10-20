@@ -1,19 +1,16 @@
+import 'package:app/features/establishment/bloc/establishment/establishment_cubit.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:app/shared/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class EstablishmentAppBar extends StatefulWidget {
-  const EstablishmentAppBar({
-    super.key,
-    required this.establishment,
-    required this.scrollController,
-  });
+  const EstablishmentAppBar({super.key, required this.scrollController});
 
   final ScrollController scrollController;
-  final EstablishmentScheme establishment;
 
   @override
   State<EstablishmentAppBar> createState() => _EstablishmentAppBarState();
@@ -56,47 +53,54 @@ class _EstablishmentAppBarState extends State<EstablishmentAppBar> {
     widget.scrollController.addListener(scrollListener);
   }
 
+  EstablishmentCubit get cubit => BlocProvider.of<EstablishmentCubit>(context);
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return SliverAppBar(
-      backgroundColor: theme.custom.white,
-      toolbarHeight: toolbarHeight,
-      expandedHeight: expandedHeight,
-      elevation: 4,
-      shadowColor: theme.custom.highShadowColor,
-      leading: UnconstrainedBox(
-        child: CustomIconButton(
-          onTap: () {
-            AutoRouter.of(context).maybePop();
-          },
-          icon: Icons.arrow_back,
-          radius: 12,
-          shadow: shadow,
-        ),
-      ),
-      title: _AppBarTitle(
-        show: isCollapsed,
-        establishment: widget.establishment,
-      ),
-      actions: [
-        CustomIconButton(onTap: () {}, icon: Icons.share, shadow: shadow),
-        const SizedBox(width: 8),
-        Hero(
-          tag: 'favorite_${widget.establishment.id}',
-          child: CustomIconButton(
-            onTap: () {},
-            icon: Icons.favorite_border_rounded,
-            shadow: shadow,
+    return BlocBuilder<EstablishmentCubit, EstablishmentState>(
+      bloc: cubit,
+      builder: (context, state) {
+        return SliverAppBar(
+          backgroundColor: theme.custom.white,
+          toolbarHeight: toolbarHeight,
+          expandedHeight: expandedHeight,
+          elevation: 4,
+          shadowColor: theme.custom.highShadowColor,
+          leading: UnconstrainedBox(
+            child: CustomIconButton(
+              onTap: () {
+                AutoRouter.of(context).maybePop();
+              },
+              icon: Icons.arrow_back,
+              radius: 12,
+              shadow: shadow,
+            ),
           ),
-        ),
-        const SizedBox(width: 16),
-      ],
-      pinned: true,
-      flexibleSpace: FlexibleSpaceBar(
-        background: _BackgroundImages(widget.establishment),
-      ),
-      systemOverlayStyle: systemOverlayStyle,
+          title: _AppBarTitle(
+            show: isCollapsed,
+            establishment: state.establishment,
+          ),
+          actions: [
+            CustomIconButton(onTap: () {}, icon: Icons.share, shadow: shadow),
+            const SizedBox(width: 8),
+            Hero(
+              tag: 'favorite_${state.establishment.id}',
+              child: CustomIconButton(
+                onTap: () {},
+                icon: Icons.favorite_border_rounded,
+                shadow: shadow,
+              ),
+            ),
+            const SizedBox(width: 16),
+          ],
+          pinned: true,
+          flexibleSpace: FlexibleSpaceBar(
+            background: _BackgroundImages(state.establishment),
+          ),
+          systemOverlayStyle: systemOverlayStyle,
+        );
+      },
     );
   }
 }
