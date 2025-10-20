@@ -27,6 +27,8 @@ class CustomThemeData {
 
   Color get warning => Color(0xFFEB631A);
 
+  Color get opacityWarning => warning.withValues(alpha: 0.175);
+
   Color get yellow => Color(0xfffebc49);
 
   Color get black => Color(0xff000000);

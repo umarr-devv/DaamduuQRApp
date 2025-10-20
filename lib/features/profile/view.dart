@@ -13,9 +13,9 @@ class ProfileScreen extends StatelessWidget {
       slivers: [
         ProfileAppBar(),
         SliverToBoxAdapter(child: ProfileInfo()),
+        SliverToBoxAdapter(child: ProfileError()),
         SliverToBoxAdapter(child: ProfileActions()),
         SliverToBoxAdapter(child: ProfileInvite()),
-        // SliverToBoxAdapter(child: ProfileLogout()),
         SliverToBoxAdapter(child: ProfileContacts()),
         SliverToBoxAdapter(child: NavBarSpace()),
       ],

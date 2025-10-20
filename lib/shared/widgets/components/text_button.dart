@@ -15,6 +15,7 @@ class CustomTextButton extends StatefulWidget {
     this.shadow = true,
     this.background,
     this.foreground,
+    this.padding,
   });
   final Object? icon;
   final String label;
@@ -24,6 +25,7 @@ class CustomTextButton extends StatefulWidget {
   final double fontSize;
   final bool animation;
   final bool shadow;
+  final EdgeInsets? padding;
   final Color? background;
   final Color? foreground;
 
@@ -63,6 +65,7 @@ class _CustomTextButtonState extends State<CustomTextButton> {
           shadowColor: widget.shadow
               ? theme.custom.veryHighShadowColor
               : theme.custom.transparent,
+          padding: widget.padding,
           elevation: 4,
           backgroundColor: widget.background ?? theme.custom.primaryBackground,
         ),
