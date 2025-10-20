@@ -16,16 +16,17 @@ class EstablishmentButton extends StatelessWidget {
       bloc: BlocProvider.of<EstablishmentCubit>(context),
       builder: (context, state) {
         return Container(
+          height: 48,
           margin: const EdgeInsets.symmetric(horizontal: 16),
           width: double.infinity,
           child: CustomTextButton(
             icon: 'assets/svg/menu-food.svg',
-            label: 'Перейти в Меню',
+            label: 'Меню',
             background: theme.custom.primaryColor,
             foreground: theme.custom.white,
             radius: 12,
             size: 24,
-            fontSize: 16,
+            fontSize: 18,
             shadow: true,
             onTap: () {
               AutoRouter.of(

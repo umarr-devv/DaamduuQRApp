@@ -43,9 +43,11 @@ class CustomThemeData {
 
   Color get splashColor => Color(0xffffffff).withValues(alpha: 0.125);
 
-  Color get shadowColor => Color(0xff000000).withValues(alpha: 0.075);
+  Color get shadowColor => Color(0xff000000).withValues(alpha: 0.05);
 
   Color get highShadowColor => Color(0xff000000).withValues(alpha: 0.2);
+
+  Color get veryHighShadowColor => Color(0xff000000).withValues(alpha: 0.5);
 
   Color get shimmerBase => black.withValues(alpha: 0.1);
 

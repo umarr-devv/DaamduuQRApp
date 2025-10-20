@@ -61,7 +61,7 @@ class _CustomTextButtonState extends State<CustomTextButton> {
             borderRadius: BorderRadiusGeometry.circular(widget.radius),
           ),
           shadowColor: widget.shadow
-              ? theme.custom.highShadowColor
+              ? theme.custom.veryHighShadowColor
               : theme.custom.transparent,
           elevation: 4,
           backgroundColor: widget.background ?? theme.custom.primaryBackground,
