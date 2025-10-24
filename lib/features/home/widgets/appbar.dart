@@ -4,18 +4,62 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_tilt/flutter_tilt.dart';
 
-class HomeAppBar extends StatelessWidget {
-  const HomeAppBar({super.key});
+class HomeAppBar extends StatefulWidget {
+  const HomeAppBar({super.key, required this.scrollController});
+
+  final ScrollController scrollController;
+
+  @override
+  State<HomeAppBar> createState() => _HomeAppBarState();
+}
+
+class _HomeAppBarState extends State<HomeAppBar> {
+  double toolbarHeight = 64;
+
+  bool isCollapsed = false;
+
+  Future scrollListener() async {
+    if (widget.scrollController.offset > toolbarHeight) {
+      if (!isCollapsed) {
+        await Future.delayed(Duration(milliseconds: 125));
+        setState(() {
+          isCollapsed = true;
+        });
+      }
+    } else if (widget.scrollController.offset < toolbarHeight) {
+      if (isCollapsed) {
+        setState(() {
+          isCollapsed = false;
+        });
+      }
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    widget.scrollController.addListener(scrollListener);
+  }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return SliverAppBar(
       shadowColor: theme.custom.highShadowColor,
+      toolbarHeight: toolbarHeight,
+      pinned: true,
       title: _AppBarTitle(),
-      backgroundColor: theme.custom.secondaryBackground,
+      backgroundColor: isCollapsed
+          ? theme.custom.primaryBackground
+          : theme.custom.secondaryBackground,
       actions: [
-        CustomIconButton(icon: 'assets/svg/bell.svg', radius: 12, onTap: () {}),
+        CustomIconButton(
+          icon: 'assets/svg/bell.svg',
+          radius: 12,
+
+          shadow: !isCollapsed,
+          onTap: () {},
+        ),
         SizedBox(width: 16),
       ],
     );

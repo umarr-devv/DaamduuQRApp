@@ -14,6 +14,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final scrollController = ScrollController();
   final cubit = HomeCubit();
 
   @override
@@ -28,9 +29,9 @@ class _HomeScreenState extends State<HomeScreen> {
       providers: [BlocProvider(create: (context) => cubit)],
       child: Scaffold(
         body: CustomScrollView(
-          physics: const AlwaysScrollableScrollPhysics(),
+          controller: scrollController,
           slivers: [
-            HomeAppBar(),
+            HomeAppBar(scrollController: scrollController),
             SliverToBoxAdapter(child: HomeSearchBar()),
             SliverToBoxAdapter(child: HomeFilter()),
             SliverToBoxAdapter(child: HomeEstablishments()),
