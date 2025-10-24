@@ -1,3 +1,4 @@
+import 'package:app/utils/undefined.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:equatable/equatable.dart';
 import 'package:get_it/get_it.dart';
@@ -30,7 +31,10 @@ class CatalogCubit extends HydratedCubit<CatalogState> {
     final categories = await client
         .getCategoriesApi()
         .getCategoriesByEstablishment(establishmentId: state.establishment.id);
-    return state.copyWith(categories: categories.data);
+    final products = await client
+        .getEstablishmentsApi()
+        .getEstablishmentProducts(establishmentId: state.establishment.id);
+    return state.copyWith(categories: categories.data, products: products.data);
   }
 
   @override

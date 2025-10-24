@@ -2,21 +2,36 @@ part of 'catalog_cubit.dart';
 
 @JsonSerializable()
 class CatalogState extends Equatable {
-  const CatalogState({required this.establishment, this.categories = const []});
+  const CatalogState({
+    required this.establishment,
+    this.categories = const [],
+    this.products = const [],
+    this.currentCategory,
+  });
 
   final EstablishmentScheme establishment;
   final List<CategoryScheme> categories;
+  final List<ProductScheme> products;
+  final CategoryScheme? currentCategory;
 
-  CatalogState copyWith({List<CategoryScheme>? categories}) {
+  CatalogState copyWith({
+    List<CategoryScheme>? categories,
+    List<ProductScheme>? products,
+    Object? currentCategory,
+  }) {
     return CatalogState(
       establishment: establishment,
       categories: categories ?? this.categories,
+      products: products ?? this.products,
+      currentCategory: undefCompare(currentCategory, this.currentCategory),
     );
   }
 
   CatalogState.from(CatalogState other)
     : establishment = other.establishment,
-      categories = other.categories;
+      products = other.products,
+      categories = other.categories,
+      currentCategory = other.currentCategory;
 
   factory CatalogState.fromJson(Map<String, dynamic> json) =>
       _$CatalogStateFromJson(json);
