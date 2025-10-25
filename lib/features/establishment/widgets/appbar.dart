@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:app/features/establishment/bloc/establishment/establishment_cubit.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:app/shared/widgets/widgets.dart';
@@ -82,7 +83,16 @@ class _EstablishmentAppBarState extends State<EstablishmentAppBar> {
             establishment: state.establishment,
           ),
           actions: [
-            CustomIconButton(onTap: () {}, icon: Icons.share, shadow: shadow),
+            Hero(
+              tag: 'rating_${state.establishment.id}',
+              child: RatingButton(rating: 4.7),
+            ),
+            const SizedBox(width: 8),
+            CustomIconButton(
+              onTap: () {},
+              icon: Icons.share,
+              shadow: shadow,
+            ),
             const SizedBox(width: 8),
             Hero(
               tag: 'favorite_${state.establishment.id}',

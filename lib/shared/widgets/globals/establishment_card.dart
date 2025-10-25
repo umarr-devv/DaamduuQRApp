@@ -35,7 +35,7 @@ class EstablishmentCard extends StatelessWidget {
                   _CardInfo(establishment: establishment),
                 ],
               ),
-              _FavoriteStatus(establishment: establishment),
+              _Actions(establishment: establishment),
               _AvailableStatus(),
             ],
           ),
@@ -54,8 +54,8 @@ class _AvailableStatus extends StatelessWidget {
   }
 }
 
-class _FavoriteStatus extends StatelessWidget {
-  const _FavoriteStatus({required this.establishment});
+class _Actions extends StatelessWidget {
+  const _Actions({required this.establishment});
 
   final EstablishmentScheme establishment;
 
@@ -65,13 +65,23 @@ class _FavoriteStatus extends StatelessWidget {
       alignment: Alignment.topRight,
       child: Padding(
         padding: const EdgeInsets.all(8),
-        child: Hero(
-          tag: 'favorite_${establishment.id}',
-          child: CustomIconButton(
-            icon: Icons.favorite_border_rounded,
-            size: 20,
-            onTap: () {},
-          ),
+        child: Row(
+          spacing: 8,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Hero(
+              tag: 'rating_${establishment.id}',
+              child: RatingButton(rating: 4.7),
+            ),
+            Hero(
+              tag: 'favorite_${establishment.id}',
+              child: CustomIconButton(
+                icon: Icons.favorite_border_rounded,
+                size: 20,
+                onTap: () {},
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -125,8 +135,6 @@ class _CardInfo extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 8),
-          CustomRatingIndicator(value: 4.4),
         ],
       ),
     );

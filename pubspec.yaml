@@ -8,6 +8,7 @@ environment:
   sdk: ^3.9.2
 
 dependencies:
+  animate_do: ^4.2.0
   animated_bottom_navigation_bar: ^1.4.0
   animations: ^2.0.11
   auto_route: ^10.1.0+1
