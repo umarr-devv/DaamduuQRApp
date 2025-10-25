@@ -58,7 +58,7 @@ class _CustomIconButtonState extends State<CustomIconButton> {
             borderRadius: BorderRadiusGeometry.circular(widget.radius),
           ),
           shadowColor: widget.shadow
-              ? theme.custom.highShadowColor
+              ? theme.custom.veryHighShadowColor
               : theme.custom.transparent,
           elevation: 4,
           backgroundColor: widget.background ?? theme.custom.primaryBackground,

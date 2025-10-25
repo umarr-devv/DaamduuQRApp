@@ -74,14 +74,7 @@ class _Actions extends StatelessWidget {
               tag: 'rating_${establishment.id}',
               child: RatingButton(rating: 4.7),
             ),
-            Hero(
-              tag: 'favorite_${establishment.id}',
-              child: CustomIconButton(
-                icon: Icons.favorite_border_rounded,
-                size: 20,
-                onTap: () {},
-              ),
-            ),
+            Hero(tag: 'favorite_${establishment.id}', child: FavoriteButton()),
           ],
         ),
       ),

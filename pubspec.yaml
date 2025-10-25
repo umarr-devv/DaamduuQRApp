@@ -147,6 +147,7 @@ flutter:
     - "assets/svg/comment-info.svg"
     - "assets/svg/som.svg"
     - "assets/svg/menu-food.svg"
+    - "assets/svg/share.svg"
 
     - "assets/icon/icon.png"
 

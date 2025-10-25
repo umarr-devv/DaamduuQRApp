@@ -1,4 +1,5 @@
 import 'package:app/shared/theme/theme.dart';
+import 'package:app/shared/widgets/buttons/favorite.dart';
 import 'package:app/shared/widgets/components/components.dart';
 import 'package:app/shared/widgets/globals/global.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
@@ -45,14 +46,7 @@ class _FavoriteStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.topRight,
-      child: Padding(
-        padding: const EdgeInsets.all(8),
-        child: CustomIconButton(
-          icon: Icons.favorite_border_rounded,
-          size: 20,
-          onTap: () {},
-        ),
-      ),
+      child: Padding(padding: const EdgeInsets.all(8), child: FavoriteButton()),
     );
   }
 }

@@ -1,6 +1,5 @@
 import 'package:app/shared/theme/theme.dart';
 import 'package:app/shared/widgets/widgets.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 class CustomScrollableSheet extends StatelessWidget {
@@ -55,13 +54,7 @@ class CustomScrollableSheet extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  CustomIconButton(
-                    icon: Icons.close,
-                    radius: 12,
-                    onTap: () {
-                      AutoRouter.of(context).maybePop();
-                    },
-                  ),
+                  MaybePopButton(close: true),
                   Row(spacing: 8, children: actions),
                 ],
               ),

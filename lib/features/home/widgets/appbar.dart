@@ -55,7 +55,6 @@ class _HomeAppBarState extends State<HomeAppBar> {
         CustomIconButton(
           icon: 'assets/svg/bell.svg',
           radius: 12,
-
           shadow: !isCollapsed,
           onTap: () {},
         ),

@@ -1,7 +1,6 @@
 import 'package:app/features/establishment/bloc/establishment/establishment_cubit.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:app/shared/widgets/widgets.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -21,7 +20,6 @@ class _EstablishmentAppBarState extends State<EstablishmentAppBar> {
   double toolbarHeight = 64;
 
   bool isCollapsed = false;
-  SystemUiOverlayStyle systemOverlayStyle = SystemUiOverlayStyle.light;
 
   Future scrollListener() async {
     if (widget.scrollController.offset > expandedHeight - toolbarHeight) {
@@ -29,7 +27,6 @@ class _EstablishmentAppBarState extends State<EstablishmentAppBar> {
         await Future.delayed(Duration(milliseconds: 125));
         setState(() {
           isCollapsed = true;
-          systemOverlayStyle = SystemUiOverlayStyle.dark;
         });
       }
     } else if (widget.scrollController.offset <
@@ -37,8 +34,6 @@ class _EstablishmentAppBarState extends State<EstablishmentAppBar> {
       if (isCollapsed) {
         setState(() {
           isCollapsed = false;
-
-          systemOverlayStyle = SystemUiOverlayStyle.light;
         });
       }
     }
@@ -64,49 +59,52 @@ class _EstablishmentAppBarState extends State<EstablishmentAppBar> {
           expandedHeight: expandedHeight,
           elevation: 4,
           shadowColor: theme.custom.highShadowColor,
-          leading: UnconstrainedBox(
-            child: CustomIconButton(
-              onTap: () {
-                AutoRouter.of(context).maybePop();
-              },
-              icon: Icons.arrow_back,
-              radius: 12,
-              shadow: !isCollapsed,
-            ),
-          ),
+          leading: MaybePopButton(shadow: !isCollapsed),
           title: _AppBarTitle(
             show: isCollapsed,
             establishment: state.establishment,
           ),
           actions: [
-            Hero(
-              tag: 'rating_${state.establishment.id}',
-              child: RatingButton(rating: 4.7, shadow: !isCollapsed),
+            _TitleActions(
+              isCollapsed: isCollapsed,
+              establishment: state.establishment,
             ),
-            const SizedBox(width: 8),
-            CustomIconButton(
-              onTap: () {},
-              icon: Icons.share,
-              shadow:!isCollapsed,
-            ),
-            const SizedBox(width: 8),
-            Hero(
-              tag: 'favorite_${state.establishment.id}',
-              child: CustomIconButton(
-                onTap: () {},
-                icon: Icons.favorite_border_rounded,
-                shadow: !isCollapsed,
-              ),
-            ),
-            const SizedBox(width: 16),
           ],
           pinned: true,
           flexibleSpace: FlexibleSpaceBar(
             background: _BackgroundImages(state.establishment),
           ),
-          systemOverlayStyle: systemOverlayStyle,
+          systemOverlayStyle: isCollapsed
+              ? SystemUiOverlayStyle.dark
+              : SystemUiOverlayStyle.light,
         );
       },
+    );
+  }
+}
+
+class _TitleActions extends StatelessWidget {
+  const _TitleActions({required this.isCollapsed, required this.establishment});
+
+  final bool isCollapsed;
+  final EstablishmentScheme establishment;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      spacing: 8,
+      children: [
+        Hero(
+          tag: 'rating_${establishment.id}',
+          child: RatingButton(rating: 4.7, shadow: !isCollapsed),
+        ),
+        Hero(
+          tag: 'favorite_${establishment.id}',
+          child: FavoriteButton(shadow: !isCollapsed),
+        ),
+        ShareButton(shadow: !isCollapsed),
+        const SizedBox(),
+      ],
     );
   }
 }

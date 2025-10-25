@@ -13,7 +13,7 @@ class RatingButton extends StatelessWidget {
     return Material(
       type: MaterialType.transparency,
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
         decoration: BoxDecoration(
           color: theme.custom.primaryBackground,
           borderRadius: BorderRadius.circular(64),

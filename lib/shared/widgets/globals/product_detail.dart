@@ -17,10 +17,7 @@ class ProductDetail extends StatelessWidget {
     final theme = Theme.of(context);
     return CustomScrollableSheet(
       color: theme.custom.primaryBackground,
-      actions: [
-        CustomIconButton(icon: Icons.share, onTap: () {}),
-        CustomIconButton(icon: Icons.favorite_border_rounded, onTap: () {}),
-      ],
+      actions: [ShareButton(), FavoriteButton()],
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
