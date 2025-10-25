@@ -2,9 +2,10 @@ import 'package:app/shared/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class RatingButton extends StatelessWidget {
-  const RatingButton({super.key, required this.rating});
+  const RatingButton({super.key, required this.rating, this.shadow = true});
 
   final double rating;
+  final bool shadow;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class RatingButton extends StatelessWidget {
         decoration: BoxDecoration(
           color: theme.custom.primaryBackground,
           borderRadius: BorderRadius.circular(64),
-          boxShadow: theme.custom.boxShadow,
+          boxShadow: shadow ? theme.custom.boxShadow : null,
         ),
         child: Row(
           spacing: 4,

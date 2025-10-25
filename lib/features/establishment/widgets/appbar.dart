@@ -20,8 +20,6 @@ class _EstablishmentAppBarState extends State<EstablishmentAppBar> {
   double expandedHeight = 240;
   double toolbarHeight = 64;
 
-  bool shadow = true;
-
   bool isCollapsed = false;
   SystemUiOverlayStyle systemOverlayStyle = SystemUiOverlayStyle.light;
 
@@ -31,7 +29,6 @@ class _EstablishmentAppBarState extends State<EstablishmentAppBar> {
         await Future.delayed(Duration(milliseconds: 125));
         setState(() {
           isCollapsed = true;
-          shadow = false;
           systemOverlayStyle = SystemUiOverlayStyle.dark;
         });
       }
@@ -40,7 +37,7 @@ class _EstablishmentAppBarState extends State<EstablishmentAppBar> {
       if (isCollapsed) {
         setState(() {
           isCollapsed = false;
-          shadow = true;
+
           systemOverlayStyle = SystemUiOverlayStyle.light;
         });
       }
@@ -74,7 +71,7 @@ class _EstablishmentAppBarState extends State<EstablishmentAppBar> {
               },
               icon: Icons.arrow_back,
               radius: 12,
-              shadow: shadow,
+              shadow: !isCollapsed,
             ),
           ),
           title: _AppBarTitle(
@@ -84,13 +81,13 @@ class _EstablishmentAppBarState extends State<EstablishmentAppBar> {
           actions: [
             Hero(
               tag: 'rating_${state.establishment.id}',
-              child: RatingButton(rating: 4.7),
+              child: RatingButton(rating: 4.7, shadow: !isCollapsed),
             ),
             const SizedBox(width: 8),
             CustomIconButton(
               onTap: () {},
               icon: Icons.share,
-              shadow: shadow,
+              shadow:!isCollapsed,
             ),
             const SizedBox(width: 8),
             Hero(
@@ -98,7 +95,7 @@ class _EstablishmentAppBarState extends State<EstablishmentAppBar> {
               child: CustomIconButton(
                 onTap: () {},
                 icon: Icons.favorite_border_rounded,
-                shadow: shadow,
+                shadow: !isCollapsed,
               ),
             ),
             const SizedBox(width: 16),

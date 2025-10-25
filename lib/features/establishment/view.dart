@@ -44,6 +44,8 @@ class _EstablishmentScreenState extends State<EstablishmentScreen> {
             SliverToBoxAdapter(child: EstablishmentTitle()),
             SliverToBoxAdapter(child: EstablishmentStories()),
             SliverToBoxAdapter(child: CustomDivider()),
+            SliverToBoxAdapter(child: EstablishmentWorkTime()),
+            SliverToBoxAdapter(child: CustomDivider()),
             SliverToBoxAdapter(child: EstablishmentContacts()),
             SliverFillRemaining(),
           ],

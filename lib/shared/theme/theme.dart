@@ -21,7 +21,7 @@ class CustomThemeData {
 
   Color get secondaryForeground => Color(0xff767676);
 
-  Color get success => Color(0xffa6d778);
+  Color get success => Color(0xFF7BA059);
 
   Color get info => Color(0xff6c6cf4);
 
