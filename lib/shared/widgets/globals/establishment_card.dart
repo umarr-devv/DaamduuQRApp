@@ -66,16 +66,9 @@ class _Actions extends StatelessWidget {
       alignment: Alignment.topRight,
       child: Padding(
         padding: const EdgeInsets.all(8),
-        child: Row(
-          spacing: 8,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Hero(
-              tag: 'rating_${establishment.id}',
-              child: RatingButton(rating: 4.7),
-            ),
-            Hero(tag: 'favorite_${establishment.id}', child: FavoriteButton()),
-          ],
+        child: Hero(
+          tag: 'favorite_${establishment.id}',
+          child: FavoriteButton(),
         ),
       ),
     );

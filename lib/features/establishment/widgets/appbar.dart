@@ -95,10 +95,6 @@ class _TitleActions extends StatelessWidget {
       spacing: 8,
       children: [
         Hero(
-          tag: 'rating_${establishment.id}',
-          child: RatingButton(rating: 4.7, shadow: !isCollapsed),
-        ),
-        Hero(
           tag: 'favorite_${establishment.id}',
           child: FavoriteButton(shadow: !isCollapsed),
         ),

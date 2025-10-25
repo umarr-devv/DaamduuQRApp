@@ -23,6 +23,7 @@ class EstablishmentTitle extends StatelessWidget {
           ),
           child: Row(
             spacing: 12,
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
@@ -48,6 +49,7 @@ class _DirectionButton extends StatelessWidget {
     if (establishment.latitude != null && establishment.longitude != null) {
       return CustomIconButton(
         icon: Icons.directions,
+        shadow: false,
         onTap: () async {
           await openGeo(
             latitude: establishment.latitude!.toDouble(),

@@ -27,20 +27,23 @@ class ToMenuButton extends StatelessWidget {
             ),
             width: double.infinity,
             decoration: BoxDecoration(color: theme.custom.primaryBackground),
-            child: CustomTextButton(
-              icon: 'assets/svg/menu-food.svg',
-              label: 'Меню',
-              background: theme.custom.primaryColor,
-              foreground: theme.custom.white,
-              radius: 12,
-              size: 24,
-              fontSize: 18,
-              shadow: false,
-              onTap: () {
-                AutoRouter.of(
-                  context,
-                ).push(CatalogRoute(establishment: state.establishment));
-              },
+            child: SizedBox(
+              height: 48,
+              child: CustomTextButton(
+                icon: 'assets/svg/menu-food.svg',
+                label: 'Меню',
+                background: theme.custom.primaryColor,
+                foreground: theme.custom.white,
+                radius: 12,
+                size: 24,
+                fontSize: 18,
+                shadow: false,
+                onTap: () {
+                  AutoRouter.of(
+                    context,
+                  ).push(CatalogRoute(establishment: state.establishment));
+                },
+              ),
             ),
           ),
         );
