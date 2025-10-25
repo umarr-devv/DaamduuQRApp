@@ -21,17 +21,15 @@ class ProductDetail extends StatelessWidget {
         CustomIconButton(icon: Icons.share, onTap: () {}),
         CustomIconButton(icon: Icons.favorite_border_rounded, onTap: () {}),
       ],
-      child: Stack(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _ProductDetailImage(product: product),
-              _ProductDetailTitle(product: product),
-              _ProductDetailInfo(product: product),
-              _ProductDetailAdd(product: product),
-            ],
-          ),
+          _ProductDetailImage(product: product),
+          _ProductDetailTitle(product: product),
+          CustomDivider(),
+          _ProductDetailInfo(product: product),
+          const SizedBox(height: 48),
+          _ProductDetailAdd(product: product),
         ],
       ),
     );
@@ -76,42 +74,112 @@ class _ProductDetailTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Container(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 12),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                product.category.name,
-                style: TextStyle(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w400,
-                  color: theme.custom.secondaryForeground,
-                ),
-              ),
-              Text(
-                product.name,
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                  color: theme.custom.primaryForeground,
-                ),
-              ),
-            ],
+          _ProductInfo(product: product),
+          _ProductPrice(product: product),
+        ],
+      ),
+    );
+  }
+}
+
+class _ProductInfo extends StatelessWidget {
+  const _ProductInfo({required this.product});
+
+  final ProductScheme product;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          product.category.name,
+          style: TextStyle(
+            fontSize: 13,
+            fontWeight: FontWeight.w400,
+            color: theme.custom.secondaryForeground,
           ),
+        ),
+        Text(
+          product.name,
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
+            color: theme.custom.primaryForeground,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _ProductPrice extends StatelessWidget {
+  const _ProductPrice({required this.product});
+
+  final ProductScheme product;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 8),
+      decoration: BoxDecoration(
+        color: theme.custom.secondaryBackground,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Row(
+        children: [
           if (product.portions.isEmpty)
-            Text(
-              product.price.toStringAsFixed(0),
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.w500,
-                color: theme.custom.primaryColor,
-              ),
+            Row(
+              spacing: 2,
+              children: [
+                Text(
+                  product.price.toStringAsFixed(0),
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w500,
+                    color: theme.custom.primaryForeground,
+                  ),
+                ),
+                SomSymbol(color: theme.custom.primaryForeground),
+              ],
+            )
+          else if (product.portions.isNotEmpty)
+            Row(
+              children:
+                  List.generate(product.portions.length * 2 - 1, (index) {
+                    if (index.isEven) {
+                      final index_ = index ~/ 2;
+                      return Text(
+                        product.portions[index_].price.toStringAsFixed(0),
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                          color: theme.custom.primaryForeground,
+                        ),
+                      );
+                    } else {
+                      return Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 4),
+                        child: Text(
+                          '/',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: theme.custom.secondaryForeground,
+                          ),
+                        ),
+                      );
+                    }
+                  }) +
+                  [SomSymbol(color: theme.custom.primaryForeground)],
             ),
         ],
       ),
@@ -168,13 +236,16 @@ class _ProductDetailAdd extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Container(
+      height: 42,
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: CustomActionButton(
+      child: CustomTextButton(
         label: 'Добавить',
-        icon: Icons.add,
+        icon: 'assets/svg/shopping-basket.svg',
+        radius: 12,
         onTap: () {},
         background: theme.custom.primaryColor,
+        foreground: theme.custom.white,
       ),
     );
   }
