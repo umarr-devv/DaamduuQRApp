@@ -42,19 +42,22 @@ class _EstablishmentScreenState extends State<EstablishmentScreen> {
       providers: [BlocProvider.value(value: cubit)],
       child: Scaffold(
         backgroundColor: theme.custom.primaryBackground,
-        floatingActionButton: EstablishmentButton(),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        body: CustomScrollView(
-          controller: scrollController,
-          slivers: [
-            EstablishmentAppBar(scrollController: scrollController),
-            SliverToBoxAdapter(child: EstablishmentTitle()),
-            SliverToBoxAdapter(child: EstablishmentStories()),
-            SliverToBoxAdapter(child: CustomDivider()),
-            SliverToBoxAdapter(child: EstablishmentWorkTime()),
-            SliverToBoxAdapter(child: CustomDivider()),
-            SliverToBoxAdapter(child: EstablishmentContacts()),
-            SliverFillRemaining(),
+        body: Stack(
+          children: [
+            CustomScrollView(
+              controller: scrollController,
+              slivers: [
+                EstablishmentAppBar(scrollController: scrollController),
+                SliverToBoxAdapter(child: EstablishmentTitle()),
+                SliverToBoxAdapter(child: EstablishmentStories()),
+                SliverToBoxAdapter(child: CustomDivider()),
+                SliverToBoxAdapter(child: EstablishmentWorkTime()),
+                SliverToBoxAdapter(child: CustomDivider()),
+                SliverToBoxAdapter(child: EstablishmentContacts()),
+                SliverFillRemaining(),
+              ],
+            ),
+            ToMenuButton(),
           ],
         ),
       ),
