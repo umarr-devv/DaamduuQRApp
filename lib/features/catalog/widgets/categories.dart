@@ -16,9 +16,26 @@ class CatalogCategories extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _CatalogCategoriesState extends State<CatalogCategories> {
-  final groupButtonController = GroupButtonController();
+  late final GroupButtonController groupButtonController;
 
   CatalogCubit get cubit => BlocProvider.of<CatalogCubit>(context);
+
+  Future setCurrentCategory() async {
+    late final int index;
+    if (cubit.state.currentCategory != null) {
+      index = cubit.state.categories.indexOf(cubit.state.currentCategory!) + 1;
+    } else {
+      index = 0;
+    }
+    groupButtonController.selectIndex(index);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    groupButtonController = GroupButtonController();
+    setCurrentCategory();
+  }
 
   @override
   void dispose() {
@@ -28,19 +45,8 @@ class _CatalogCategoriesState extends State<CatalogCategories> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<CatalogCubit, CatalogState>(
+    return BlocBuilder<CatalogCubit, CatalogState>(
       bloc: cubit,
-      listener: (context, state) {
-        if (state is CatalogSet) {
-          if (state.currentCategory == null) {
-            groupButtonController.selectIndex(0);
-          } else {
-            groupButtonController.selectIndex(
-              state.categories.indexOf(state.currentCategory!) + 1,
-            );
-          }
-        }
-      },
       builder: (context, state) {
         return SizedBox(
           width: double.infinity,
