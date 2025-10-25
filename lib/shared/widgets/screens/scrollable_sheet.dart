@@ -11,10 +11,12 @@ class CustomScrollableSheet extends StatelessWidget {
     this.maxChildSize = 0.9,
     this.minChildSize = 0.8,
     required this.child,
+    this.actions = const [],
   });
 
   final Widget child;
   final Color? color;
+  final List<Widget> actions;
 
   final double initialChildSize;
   final double maxChildSize;
@@ -48,18 +50,20 @@ class CustomScrollableSheet extends StatelessWidget {
               controller: controller,
               child: SizedBox(width: double.infinity, child: child),
             ),
-            Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
-                padding: const EdgeInsets.all(8),
-                child: CustomIconButton(
-                  icon: Icons.close,
-                  size: 20,
-                  radius: 12,
-                  onTap: () {
-                    AutoRouter.of(context).maybePop();
-                  },
-                ),
+            Padding(
+              padding: const EdgeInsets.all(12),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CustomIconButton(
+                    icon: Icons.close,
+                    radius: 12,
+                    onTap: () {
+                      AutoRouter.of(context).maybePop();
+                    },
+                  ),
+                  Row(spacing: 8, children: actions),
+                ],
               ),
             ),
           ],

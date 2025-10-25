@@ -17,6 +17,10 @@ class ProductDetail extends StatelessWidget {
     final theme = Theme.of(context);
     return CustomScrollableSheet(
       color: theme.custom.primaryBackground,
+      actions: [
+        CustomIconButton(icon: Icons.share, onTap: () {}),
+        CustomIconButton(icon: Icons.favorite_border_rounded, onTap: () {}),
+      ],
       child: Stack(
         children: [
           Column(
@@ -28,32 +32,7 @@ class ProductDetail extends StatelessWidget {
               _ProductDetailAdd(product: product),
             ],
           ),
-          _ProductDetailActions(product: product),
         ],
-      ),
-    );
-  }
-}
-
-class _ProductDetailActions extends StatelessWidget {
-  const _ProductDetailActions({required this.product});
-
-  final ProductScheme product;
-
-  @override
-  Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.topRight,
-      child: Container(
-        padding: const EdgeInsets.all(12),
-        child: Row(
-          spacing: 8,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            CustomIconButton(icon: Icons.share, onTap: () {}),
-            CustomIconButton(icon: Icons.favorite_border_rounded, onTap: () {}),
-          ],
-        ),
       ),
     );
   }
@@ -162,7 +141,7 @@ class _ProductDetailImageState extends State<_ProductDetailImage> {
         children: [
           SizedBox(
             width: double.infinity,
-            height: 220,
+            height: 280,
             child: PageView(
               controller: pageController,
               children: widget.product.images
