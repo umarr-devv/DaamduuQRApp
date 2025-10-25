@@ -23,7 +23,9 @@ class CatalogCategories extends StatelessWidget implements PreferredSizeWidget {
             padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
             child: GroupButton<CategoryScheme>(
               isRadio: true,
-              onSelected: (value, index, isSelected) {},
+              onSelected: (value, index, isSelected) {
+                BlocProvider.of<CatalogCubit>(context).setCategory(value);
+              },
               buttons: state.categories,
               buttonBuilder: (selected, category, context) {
                 return _CategoryButton(selected: selected, category: category);
@@ -45,7 +47,8 @@ class _CategoryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Container(
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 175),
       padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 16),
       decoration: BoxDecoration(
         color: selected

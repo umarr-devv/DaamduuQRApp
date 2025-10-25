@@ -14,6 +14,16 @@ class CatalogState extends Equatable {
   final List<ProductScheme> products;
   final CategoryScheme? currentCategory;
 
+  List<ProductScheme> get currenctProducts {
+    if (currentCategory == null) {
+      return products;
+    } else {
+      return products
+          .where((i) => i.category.id == currentCategory?.id)
+          .toList();
+    }
+  }
+
   CatalogState copyWith({
     List<CategoryScheme>? categories,
     List<ProductScheme>? products,
@@ -39,7 +49,7 @@ class CatalogState extends Equatable {
   Map<String, dynamic> toJson() => _$CatalogStateToJson(this);
 
   @override
-  List<Object?> get props => [establishment, categories];
+  List<Object?> get props => [establishment, categories, currentCategory];
 }
 
 final class CatalogInitial extends CatalogState {
@@ -52,6 +62,10 @@ final class CatalogLoading extends CatalogState {
 
 final class CatalogLoaded extends CatalogState {
   CatalogLoaded(super.state) : super.from();
+}
+
+final class CatalogSet extends CatalogState {
+  CatalogSet(super.state) : super.from();
 }
 
 final class CatalogFailure extends CatalogState {

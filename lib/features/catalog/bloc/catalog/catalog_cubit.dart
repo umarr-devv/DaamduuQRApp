@@ -27,6 +27,16 @@ class CatalogCubit extends HydratedCubit<CatalogState> {
     }
   }
 
+  void setCategory(CategoryScheme? category) {
+    final newState = state.copyWith(currentCategory: category);
+    emit(CatalogSet(newState));
+  }
+
+  void clearCategory() {
+    final newState = state.copyWith(currentCategory: undefined);
+    emit(CatalogSet(newState));
+  }
+
   Future<CatalogState> _getData() async {
     final categories = await client
         .getCategoriesApi()

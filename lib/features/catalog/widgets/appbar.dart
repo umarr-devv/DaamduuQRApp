@@ -1,3 +1,4 @@
+import 'package:app/core/router/router.dart';
 import 'package:app/features/catalog/bloc/catalog/catalog_cubit.dart';
 import 'package:app/features/catalog/widgets/categories.dart';
 import 'package:app/shared/theme/theme.dart';
@@ -26,6 +27,19 @@ class _CatalogAppBarState extends State<CatalogAppBar> {
           pinned: true,
           leading: _AppBarLeading(),
           title: _AppBarTitle(establishment: state.establishment),
+          actions: [
+            CustomIconButton(
+              icon: 'assets/svg/search.svg',
+              shadow: false,
+              radius: 12,
+              onTap: () {
+                AutoRouter.of(
+                  context,
+                ).push(SearchRoute(textController: TextEditingController()));
+              },
+            ),
+            SizedBox(width: 8),
+          ],
           bottom: CatalogCategories(),
         );
       },

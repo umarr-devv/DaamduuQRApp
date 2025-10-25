@@ -1,4 +1,3 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:app/features/establishment/bloc/establishment/establishment_cubit.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:app/shared/widgets/widgets.dart';
