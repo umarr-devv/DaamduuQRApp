@@ -19,14 +19,14 @@ class _HomeAppBarState extends State<HomeAppBar> {
   bool isCollapsed = false;
 
   Future scrollListener() async {
-    if (widget.scrollController.offset > toolbarHeight) {
+    if (widget.scrollController.offset > 1) {
       if (!isCollapsed) {
         await Future.delayed(Duration(milliseconds: 125));
         setState(() {
           isCollapsed = true;
         });
       }
-    } else if (widget.scrollController.offset < toolbarHeight) {
+    } else if (widget.scrollController.offset < 1) {
       if (isCollapsed) {
         setState(() {
           isCollapsed = false;

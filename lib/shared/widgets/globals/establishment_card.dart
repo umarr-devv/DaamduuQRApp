@@ -22,6 +22,7 @@ class EstablishmentCard extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
         decoration: BoxDecoration(
+          color: theme.custom.primaryBackground,
           boxShadow: theme.custom.boxShadow,
           borderRadius: BorderRadius.circular(16),
         ),
