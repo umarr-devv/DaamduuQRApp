@@ -1,21 +1,16 @@
-import 'package:app/core/router/router.dart';
 import 'package:app/shared/theme/theme.dart';
-import 'package:app/shared/widgets/components/components.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-class FavoriteAppBar extends StatefulWidget {
-  const FavoriteAppBar({super.key, required this.scrollController});
+class OrderAppBar extends StatefulWidget {
+  const OrderAppBar({super.key, required this.scrollController});
 
   final ScrollController scrollController;
 
   @override
-  State<FavoriteAppBar> createState() => _FavoriteAppBarState();
+  State<OrderAppBar> createState() => _OrderAppBarState();
 }
 
-class _FavoriteAppBarState extends State<FavoriteAppBar> {
-  final textController = TextEditingController();
-
+class _OrderAppBarState extends State<OrderAppBar> {
   bool isCollapsed = false;
 
   void scrollListener() {
@@ -41,12 +36,6 @@ class _FavoriteAppBarState extends State<FavoriteAppBar> {
   }
 
   @override
-  void dispose() {
-    textController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return SliverAppBar(
@@ -56,20 +45,7 @@ class _FavoriteAppBarState extends State<FavoriteAppBar> {
       automaticallyImplyLeading: false,
       pinned: true,
       shadowColor: theme.custom.highShadowColor,
-      title: Text('Мои Избранные'),
-      actions: [
-        CustomIconButton(
-          icon: 'assets/svg/search.svg',
-          radius: 12,
-          shadow: !isCollapsed,
-          onTap: () {
-            AutoRouter.of(
-              context,
-            ).push(SearchRoute(textController: textController));
-          },
-        ),
-        SizedBox(width: 16),
-      ],
+      title: Text('Мой Заказ'),
     );
   }
 }

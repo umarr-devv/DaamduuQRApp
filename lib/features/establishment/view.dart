@@ -29,6 +29,13 @@ class _EstablishmentScreenState extends State<EstablishmentScreen> {
   }
 
   @override
+  void dispose() {
+    cubit.close();
+    scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return MultiBlocProvider(

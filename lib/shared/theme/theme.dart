@@ -47,7 +47,7 @@ class CustomThemeData {
 
   Color get shadowColor => Color(0xff000000).withValues(alpha: 0.05);
 
-  Color get highShadowColor => Color(0xff000000).withValues(alpha: 0.2);
+  Color get highShadowColor => Color(0xff000000).withValues(alpha: 0.175);
 
   Color get veryHighShadowColor => Color(0xff000000).withValues(alpha: 0.5);
 
