@@ -8,7 +8,6 @@ export 'icon_button.dart';
 export 'image.dart';
 export 'navbar_space.dart';
 export 'page_indicator.dart';
-export 'rating_indicator.dart';
 export 'searchbar.dart';
 export 'text_button.dart';
 export 'title_button.dart';
