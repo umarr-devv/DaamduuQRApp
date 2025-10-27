@@ -1,6 +1,8 @@
+import 'package:app/blocs/auth/auth_cubit.dart';
 import 'package:app/core/router/router.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
@@ -16,12 +18,15 @@ class _AppScreenState extends State<AppScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'DaamduuQR',
-      theme: lightTheme,
-      debugShowCheckedModeBanner: false,
-      routerConfig: appRoute.config(
-        navigatorObservers: () => [TalkerRouteObserver(GetIt.I<Talker>())],
+    return MultiBlocProvider(
+      providers: [BlocProvider(create: (context) => AuthCubit())],
+      child: MaterialApp.router(
+        title: 'DaamduuQR',
+        theme: lightTheme,
+        debugShowCheckedModeBanner: false,
+        routerConfig: appRoute.config(
+          navigatorObservers: () => [TalkerRouteObserver(GetIt.I<Talker>())],
+        ),
       ),
     );
   }

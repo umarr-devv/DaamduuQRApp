@@ -68,7 +68,9 @@ class _ProfileAppBarState extends State<ProfileAppBar> {
           shadow: !isCollapsed,
           foreground: theme.custom.warning,
           radius: 12,
-          onTap: () {},
+          onTap: () {
+            AuthDialog().show(context);
+          },
         ),
         SizedBox(width: 16),
       ],

@@ -66,6 +66,27 @@
 		<key>ITSAppUsesNonExemptEncryption</key>
 		<false/>
 		<key>NSAppleIDUsageDescription</key>
-		<string>For Apple ID signing</string
+		<string>For Apple ID signing</string>
+
+				<!-- Google Sign-in Section -->
+		<key>GIDClientID</key>
+			<!-- TODO Replace this value: -->
+			<!-- Copied from GoogleService-Info.plist key CLIENT_ID -->
+		<string>192297844009-fem0r4dmas3plu44lpgoj5r545nqjibe.apps.googleusercontent.com</string>
+
+		<!-- Google Sign-in Section -->
+		<key>CFBundleURLTypes</key>
+		<array>
+			<dict>
+				<key>CFBundleTypeRole</key>
+				<string>Editor</string>
+				<key>CFBundleURLSchemes</key>
+				<array>
+					<!-- TODO Replace this value: -->
+					<!-- Copied from GoogleService-Info.plist key REVERSED_CLIENT_ID -->
+					<string>com.googleusercontent.apps.192297844009-fem0r4dmas3plu44lpgoj5r545nqjibe</string>
+				</array>
+			</dict>
+		</array>
 	</dict>
 </plist>
