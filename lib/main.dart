@@ -2,10 +2,12 @@ import 'dart:async';
 
 import 'package:app/app.dart';
 import 'package:app/data/repositories/repositories.dart';
+import 'package:app/firebase_options.dart';
 import 'package:app/service/hyrated_storage.dart';
 import 'package:app/service/service.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:dio/dio.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -25,6 +27,9 @@ Future<void> main() async {
 }
 
 Future initDependencies() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   final talker = TalkerConfigure.init();
   GetIt.I.registerSingleton<Talker>(talker);
 

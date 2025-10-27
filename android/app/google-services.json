@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "192297844009",
+    "project_id": "daamduuqr",
+    "storage_bucket": "daamduuqr.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:192297844009:android:78a67769e24b7456938b38",
+        "android_client_info": {
+          "package_name": "com.daamduuqr.mobile.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "192297844009-hc9s61a1rh05hdj9pc8n2dk9pbqp3cip.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.daamduuqr.mobile.app",
+            "certificate_hash": "f34f312c1a693bf8c58fa00f3709c7fab1fe2e23"
+          }
+        },
+        {
+          "client_id": "192297844009-mrm89fhggi8lm69p8a2v9gdtfiudquoc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.daamduuqr.mobile.app",
+            "certificate_hash": "2a4005839b5935eb132cb5a435099d66d052c480"
+          }
+        },
+        {
+          "client_id": "192297844009-r2lon1eanjirvh2d6frlm7ehq1l832n7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5BSfOCu_FsVddtmUXnjbbbPwGVScuHXI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "192297844009-r2lon1eanjirvh2d6frlm7ehq1l832n7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "192297844009-fem0r4dmas3plu44lpgoj5r545nqjibe.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.daamduuqr.mobile.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

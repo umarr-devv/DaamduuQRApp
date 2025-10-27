@@ -65,5 +65,7 @@
 		</dict>
 		<key>ITSAppUsesNonExemptEncryption</key>
 		<false/>
+		<key>NSAppleIDUsageDescription</key>
+		<string>For Apple ID signing</string
 	</dict>
 </plist>

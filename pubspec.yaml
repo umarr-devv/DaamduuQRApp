@@ -21,6 +21,9 @@ dependencies:
     path: client
   dio: ^5.8.0+1
   equatable: ^2.0.7
+  firebase_auth: ^6.1.1
+  firebase_core: ^4.2.0
+  firebase_messaging: ^16.0.3
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1
@@ -33,6 +36,7 @@ dependencies:
   flutter_svg: ^2.2.0
   flutter_tilt: ^3.3.2
   get_it: ^8.0.3
+  google_sign_in: ^7.2.0
   group_button: ^5.3.4
   hive_ce: ^2.11.3
   hive_ce_flutter: ^2.3.1
@@ -43,6 +47,7 @@ dependencies:
   path_provider: ^2.1.5
   share_plus: ^12.0.0
   shimmer: ^3.0.0
+  sign_in_with_apple: ^7.0.1
   smooth_page_indicator: ^1.2.1
   story_view: ^0.16.6
   talker: ^5.0.1
