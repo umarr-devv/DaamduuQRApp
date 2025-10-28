@@ -1,8 +1,10 @@
 import 'package:app/blocs/auth/auth_cubit.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:app/shared/widgets/widgets.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class AuthDialog extends StatelessWidget {
   const AuthDialog({super.key});
@@ -19,19 +21,50 @@ class AuthDialog extends StatelessWidget {
       minChildSize: 0.45,
       closeButton: false,
       actions: [MaybePopButton(close: true)],
-      child: Container(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _DialogTitle(),
-            SizedBox(height: 24),
-            _DialogButtons(),
-            SizedBox(height: 64),
-            _DialogRules(),
-          ],
-        ),
+      child: BlocConsumer<AuthCubit, AuthState>(
+        bloc: BlocProvider.of<AuthCubit>(context),
+        listener: (context, state) {
+          if (state is AuthSignInLoaded) {
+            AutoRouter.of(context).maybePop();
+          }
+        },
+        builder: (context, state) {
+          return Stack(
+            children: [
+              Opacity(
+                opacity: state is AuthSignInLoading ? 0.4 : 1,
+                child: Container(
+                  padding: const EdgeInsets.all(24),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _DialogTitle(),
+                      SizedBox(height: 24),
+                      _DialogButtons(),
+                      SizedBox(height: 64),
+                      _DialogRules(),
+                    ],
+                  ),
+                ),
+              ),
+              if (state is AuthSignInLoading) _Progress(),
+            ],
+          );
+        },
       ),
+    );
+  }
+}
+
+class _Progress extends StatelessWidget {
+  const _Progress();
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Container(
+      padding: const EdgeInsets.only(top: 160),
+      child: SpinKitRing(color: theme.custom.primaryColor),
     );
   }
 }
@@ -42,32 +75,26 @@ class _DialogRules extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final cubit = BlocProvider.of<AuthCubit>(context);
-    return GestureDetector(
-      onTap: () {
-        cubit.signOut();
-      },
-      child: RichText(
-        textAlign: TextAlign.center,
-        text: TextSpan(
-          style: TextStyle(
-            fontSize: 13,
-            fontWeight: FontWeight.w400,
-            color: theme.custom.secondaryForeground,
-          ),
-          children: [
-            TextSpan(text: 'Авторизовываясь в нашей системе, вы принимаете '),
-            TextSpan(
-              text: 'условия соглашения',
-              style: TextStyle(color: theme.custom.primaryColor),
-            ),
-            TextSpan(text: ' и '),
-            TextSpan(
-              text: 'конфеденциальности',
-              style: TextStyle(color: theme.custom.primaryColor),
-            ),
-          ],
+    return RichText(
+      textAlign: TextAlign.center,
+      text: TextSpan(
+        style: TextStyle(
+          fontSize: 13,
+          fontWeight: FontWeight.w400,
+          color: theme.custom.secondaryForeground,
         ),
+        children: [
+          TextSpan(text: 'Авторизовываясь в нашей системе, вы принимаете '),
+          TextSpan(
+            text: 'условия соглашения',
+            style: TextStyle(color: theme.custom.primaryColor),
+          ),
+          TextSpan(text: ' и '),
+          TextSpan(
+            text: 'конфеденциальности',
+            style: TextStyle(color: theme.custom.primaryColor),
+          ),
+        ],
       ),
     );
   }

@@ -40,11 +40,11 @@ class _CustomTextButtonState extends State<CustomTextButton> {
 
   Future onPressed() async {
     if (widget.animation) {
+      widget.onTap();
       setState(() {
         scale = 0.9;
       });
       await Future.delayed(const Duration(milliseconds: 175));
-      widget.onTap();
       setState(() {
         scale = 1;
       });
@@ -90,10 +90,13 @@ class _CustomTextButtonState extends State<CustomTextButton> {
                       widget.icon as String,
                       width: widget.size,
                       height: widget.size,
-                      colorFilter: widget.colorFilter? ColorFilter.mode(
-                        widget.foreground ?? theme.custom.primaryForeground,
-                        BlendMode.srcIn,
-                      ) : null,
+                      colorFilter: widget.colorFilter
+                          ? ColorFilter.mode(
+                              widget.foreground ??
+                                  theme.custom.primaryForeground,
+                              BlendMode.srcIn,
+                            )
+                          : null,
                     )
                   : SizedBox(),
               Text(

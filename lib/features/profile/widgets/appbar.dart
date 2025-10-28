@@ -1,6 +1,8 @@
+import 'package:app/blocs/auth/auth_cubit.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:app/shared/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
@@ -40,40 +42,50 @@ class _ProfileAppBarState extends State<ProfileAppBar> {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = BlocProvider.of<AuthCubit>(context);
     final theme = Theme.of(context);
-    return SliverAppBar(
-      backgroundColor: isCollapsed
-          ? theme.custom.primaryBackground
-          : theme.custom.secondaryBackground,
-      pinned: true,
-      shadowColor: theme.custom.highShadowColor,
-      automaticallyImplyLeading: false,
-      title: _AppBarTitle(),
-      actions: [
-        CustomIconButton(
-          icon: Icons.settings,
-          shadow: !isCollapsed,
-          radius: 12,
-          onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => TalkerScreen(talker: GetIt.I<Talker>()),
+    return BlocBuilder<AuthCubit, AuthState>(
+      bloc: cubit,
+      builder: (context, state) {
+        return SliverAppBar(
+          backgroundColor: isCollapsed
+              ? theme.custom.primaryBackground
+              : theme.custom.secondaryBackground,
+          pinned: true,
+          shadowColor: theme.custom.highShadowColor,
+          automaticallyImplyLeading: false,
+          title: _AppBarTitle(),
+          actions: [
+            CustomIconButton(
+              icon: Icons.settings,
+              shadow: !isCollapsed,
+              radius: 12,
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        TalkerScreen(talker: GetIt.I<Talker>()),
+                  ),
+                );
+              },
+            ),
+            if (state.customer != null)
+              Padding(
+                padding: const EdgeInsets.only(left: 8),
+                child: CustomIconButton(
+                  icon: Icons.exit_to_app_rounded,
+                  shadow: !isCollapsed,
+                  foreground: theme.custom.warning,
+                  radius: 12,
+                  onTap: () {
+                    cubit.signOut();
+                  },
+                ),
               ),
-            );
-          },
-        ),
-        SizedBox(width: 8),
-        CustomIconButton(
-          icon: Icons.exit_to_app_rounded,
-          shadow: !isCollapsed,
-          foreground: theme.custom.warning,
-          radius: 12,
-          onTap: () {
-            AuthDialog().show(context);
-          },
-        ),
-        SizedBox(width: 16),
-      ],
+            SizedBox(width: 16),
+          ],
+        );
+      },
     );
   }
 }

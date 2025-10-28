@@ -3,20 +3,23 @@ part of 'auth_cubit.dart';
 @JsonSerializable()
 class AuthState extends Equatable {
   const AuthState({
+    this.customer,
     this.firebaseDisplayName,
     this.firebaseEmail,
     this.firebasePhotoUrl,
     this.firebaseUid,
   });
 
+  final CustomerScheme? customer;
   final String? firebaseDisplayName;
   final String? firebaseEmail;
   final String? firebasePhotoUrl;
   final String? firebaseUid;
 
-  AuthState copyWith(UserCredential? user) {
-    if (user == null) {
+  AuthState copyWith({CustomerScheme? customer, User? firebaseUser}) {
+    if (firebaseUser == null || customer == null) {
       return AuthState(
+        customer: null,
         firebaseDisplayName: null,
         firebaseEmail: null,
         firebasePhotoUrl: null,
@@ -24,16 +27,18 @@ class AuthState extends Equatable {
       );
     } else {
       return AuthState(
-        firebaseDisplayName: user.user?.displayName ?? firebaseDisplayName,
-        firebaseEmail: user.user?.email ?? firebaseEmail,
-        firebasePhotoUrl: user.user?.photoURL ?? firebasePhotoUrl,
-        firebaseUid: user.user?.uid ?? firebaseUid,
+        customer: customer,
+        firebaseDisplayName: firebaseUser.displayName,
+        firebaseEmail: firebaseUser.email,
+        firebasePhotoUrl: firebaseUser.photoURL,
+        firebaseUid: firebaseUser.uid,
       );
     }
   }
 
   AuthState.from(AuthState other)
-    : firebaseDisplayName = other.firebaseDisplayName,
+    : customer = other.customer,
+      firebaseDisplayName = other.firebaseDisplayName,
       firebaseEmail = other.firebaseEmail,
       firebasePhotoUrl = other.firebasePhotoUrl,
       firebaseUid = other.firebaseUid;
@@ -45,6 +50,7 @@ class AuthState extends Equatable {
 
   @override
   List<Object?> get props => [
+    customer,
     firebaseDisplayName,
     firebaseEmail,
     firebasePhotoUrl,

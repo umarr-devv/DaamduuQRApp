@@ -13,28 +13,55 @@ class ProfileInfo extends StatelessWidget {
     return BlocBuilder<AuthCubit, AuthState>(
       bloc: BlocProvider.of<AuthCubit>(context),
       builder: (context, state) {
-        return Container(
-          margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            color: theme.custom.primaryBackground,
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Row(
-            spacing: 12,
-            children: [
-              _UserAvatar(state),
-              Expanded(child: _UserInfo(state)),
-              CustomIconButton(
-                icon: Icons.chevron_right_rounded,
-                shadow: false,
-                background: theme.custom.transparent,
-                onTap: () {},
-              ),
-            ],
-          ),
-        );
+        if (state.customer != null) {
+          return Container(
+            margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: theme.custom.primaryBackground,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Row(
+              spacing: 12,
+              children: [
+                _UserAvatar(state),
+                Expanded(child: _UserInfo(state)),
+                CustomIconButton(
+                  icon: Icons.chevron_right_rounded,
+                  shadow: false,
+                  background: theme.custom.transparent,
+                  onTap: () {},
+                ),
+              ],
+            ),
+          );
+        } else {
+          return _SignInButton();
+        }
       },
+    );
+  }
+}
+
+class _SignInButton extends StatelessWidget {
+  const _SignInButton();
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+      child: CustomTextButton(
+        icon: "assets/svg/sign-in.svg",
+        label: 'Войти',
+        fontSize: 16,
+        radius: 12,
+        foreground: theme.custom.primaryForeground,
+        shadow: false,
+        onTap: () {
+          AuthDialog().show(context);
+        },
+      ),
     );
   }
 }
