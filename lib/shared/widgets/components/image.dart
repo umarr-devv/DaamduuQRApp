@@ -8,6 +8,7 @@ class CustomImage extends StatelessWidget {
   const CustomImage({
     super.key,
     this.imageId,
+    this.url,
     this.placehodler = 'assets/placeholder/default.png',
     this.height = double.infinity,
     this.width = double.infinity,
@@ -15,6 +16,7 @@ class CustomImage extends StatelessWidget {
   });
 
   final String? imageId;
+  final String? url;
   final String placehodler;
   final double height;
   final double width;
@@ -25,9 +27,9 @@ class CustomImage extends StatelessWidget {
     final theme = Theme.of(context);
     return Builder(
       builder: (context) {
-        if (imageId != null) {
+        if (url != null || imageId != null) {
           return CachedNetworkImage(
-            imageUrl: fileUrl(imageId!),
+            imageUrl: url ?? fileUrl(imageId!),
             height: height,
             width: width,
             fit: BoxFit.cover,

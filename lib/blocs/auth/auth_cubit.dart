@@ -18,14 +18,11 @@ class AuthCubit extends HydratedCubit<AuthState> {
 
   Future signInWithGoogle() async {
     try {
-      emit(AuthSignInLoading());
-      UserCredential? user;
-      if (Platform.isAndroid) {
-        user = await AuthService.google();
-      } else if (Platform.isIOS) {
-        user = await AuthService.googleWeb();
-      }
-      emit(AuthSignInLoaded());
+      final emptyState = state.copyWith(null);
+      emit(AuthSignInLoading(emptyState));
+      UserCredential user = await AuthService.google();
+      final newState = state.copyWith(user);
+      emit(AuthSignInLoaded(newState));
     } catch (exc) {
       talker.error(exc);
       emit(AuthFailure());
@@ -34,14 +31,18 @@ class AuthCubit extends HydratedCubit<AuthState> {
 
   Future signInWithAppleID() async {
     try {
-      emit(AuthSignInLoading());
+      final emptyState = state.copyWith(null);
+      emit(AuthSignInLoading(emptyState));
+
       UserCredential? user;
       if (Platform.isAndroid) {
         user = await AuthService.appleIdWeb();
       } else if (Platform.isIOS) {
         user = await AuthService.appleId();
       }
-      emit(AuthSignInLoaded());
+
+      final newState = state.copyWith(user);
+      emit(AuthSignInLoaded(newState));
     } catch (exc) {
       talker.error(exc);
       emit(AuthFailure());
@@ -50,7 +51,8 @@ class AuthCubit extends HydratedCubit<AuthState> {
 
   Future signOut() async {
     await AuthService.appleId();
-    emit(AuthSignOut());
+    final newState = state.copyWith(null);
+    emit(AuthSignOut(newState));
   }
 
   @override

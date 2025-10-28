@@ -1,7 +1,8 @@
+import 'package:app/blocs/auth/auth_cubit.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:app/shared/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProfileInfo extends StatelessWidget {
   const ProfileInfo({super.key});
@@ -9,49 +10,57 @@ class ProfileInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: theme.custom.primaryBackground,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Row(
-        spacing: 12,
-        children: [
-          _UserAvatar(),
-          Expanded(child: _UserInfo()),
-          CustomIconButton(
-            icon: Icons.chevron_right_rounded,
-            shadow: false,
-            background: theme.custom.transparent,
-            onTap: () {},
+    return BlocBuilder<AuthCubit, AuthState>(
+      bloc: BlocProvider.of<AuthCubit>(context),
+      builder: (context, state) {
+        return Container(
+          margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: theme.custom.primaryBackground,
+            borderRadius: BorderRadius.circular(20),
           ),
-        ],
-      ),
+          child: Row(
+            spacing: 12,
+            children: [
+              _UserAvatar(state),
+              Expanded(child: _UserInfo(state)),
+              CustomIconButton(
+                icon: Icons.chevron_right_rounded,
+                shadow: false,
+                background: theme.custom.transparent,
+                onTap: () {},
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }
 
 class _UserAvatar extends StatelessWidget {
-  const _UserAvatar();
+  const _UserAvatar(this.state);
+
+  final AuthState state;
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Shimmer.fromColors(
-      baseColor: theme.custom.shimmerBase,
-      highlightColor: theme.custom.shimmerHighlight,
-      child: ClipRRect(
-        borderRadius: BorderRadiusGeometry.circular(64),
-        child: SizedBox(height: 64, width: 64, child: CustomImage()),
+    return ClipRRect(
+      borderRadius: BorderRadiusGeometry.circular(64),
+      child: SizedBox(
+        height: 64,
+        width: 64,
+        child: CustomImage(url: state.firebasePhotoUrl),
       ),
     );
   }
 }
 
 class _UserInfo extends StatelessWidget {
-  const _UserInfo();
+  const _UserInfo(this.state);
+
+  final AuthState state;
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +70,7 @@ class _UserInfo extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Умарбеков Мухаммадали',
+          state.firebaseDisplayName ?? '',
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w500,
@@ -69,7 +78,7 @@ class _UserInfo extends StatelessWidget {
           ),
         ),
         Text(
-          '+996 222 98 09 90',
+          state.firebaseEmail ?? '',
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w400,

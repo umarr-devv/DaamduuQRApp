@@ -42,26 +42,32 @@ class _DialogRules extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return RichText(
-      textAlign: TextAlign.center,
-      text: TextSpan(
-        style: TextStyle(
-          fontSize: 13,
-          fontWeight: FontWeight.w400,
-          color: theme.custom.secondaryForeground,
+    final cubit = BlocProvider.of<AuthCubit>(context);
+    return GestureDetector(
+      onTap: () {
+        cubit.signOut();
+      },
+      child: RichText(
+        textAlign: TextAlign.center,
+        text: TextSpan(
+          style: TextStyle(
+            fontSize: 13,
+            fontWeight: FontWeight.w400,
+            color: theme.custom.secondaryForeground,
+          ),
+          children: [
+            TextSpan(text: 'Авторизовываясь в нашей системе, вы принимаете '),
+            TextSpan(
+              text: 'условия соглашения',
+              style: TextStyle(color: theme.custom.primaryColor),
+            ),
+            TextSpan(text: ' и '),
+            TextSpan(
+              text: 'конфеденциальности',
+              style: TextStyle(color: theme.custom.primaryColor),
+            ),
+          ],
         ),
-        children: [
-          TextSpan(text: 'Авторизовываясь в нашей системе, вы принимаете '),
-          TextSpan(
-            text: 'условия соглашения',
-            style: TextStyle(color: theme.custom.primaryColor),
-          ),
-          TextSpan(text: ' и '),
-          TextSpan(
-            text: 'конфеденциальности',
-            style: TextStyle(color: theme.custom.primaryColor),
-          ),
-        ],
       ),
     );
   }
