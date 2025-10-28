@@ -5,7 +5,7 @@
 // ignore_for_file: unused_element
 import 'package:json_annotation/json_annotation.dart';
 
-part 'create_customer_scheme.g.dart';
+part 'update_customer_scheme.g.dart';
 
 
 @JsonSerializable(
@@ -14,28 +14,28 @@ part 'create_customer_scheme.g.dart';
   disallowUnrecognizedKeys: false,
   explicitToJson: true,
 )
-class CreateCustomerScheme {
-  /// Returns a new [CreateCustomerScheme] instance.
-  CreateCustomerScheme({
+class UpdateCustomerScheme {
+  /// Returns a new [UpdateCustomerScheme] instance.
+  UpdateCustomerScheme({
 
-    required  this.firebaseUid,
+    required  this.fullname,
 
     required  this.email,
 
     required  this.phoneNumber,
 
-    required  this.fullname,
+    required  this.pushToken,
   });
 
   @JsonKey(
     
-    name: r'firebase_uid',
+    name: r'fullname',
     required: true,
-    includeIfNull: false,
+    includeIfNull: true,
   )
 
 
-  final String firebaseUid;
+  final String? fullname;
 
 
 
@@ -65,35 +65,35 @@ class CreateCustomerScheme {
 
   @JsonKey(
     
-    name: r'fullname',
+    name: r'push_token',
     required: true,
     includeIfNull: true,
   )
 
 
-  final String? fullname;
+  final String? pushToken;
 
 
 
 
 
     @override
-    bool operator ==(Object other) => identical(this, other) || other is CreateCustomerScheme &&
-      other.firebaseUid == firebaseUid &&
+    bool operator ==(Object other) => identical(this, other) || other is UpdateCustomerScheme &&
+      other.fullname == fullname &&
       other.email == email &&
       other.phoneNumber == phoneNumber &&
-      other.fullname == fullname;
+      other.pushToken == pushToken;
 
     @override
     int get hashCode =>
-        firebaseUid.hashCode +
+        (fullname == null ? 0 : fullname.hashCode) +
         (email == null ? 0 : email.hashCode) +
         (phoneNumber == null ? 0 : phoneNumber.hashCode) +
-        (fullname == null ? 0 : fullname.hashCode);
+        (pushToken == null ? 0 : pushToken.hashCode);
 
-  factory CreateCustomerScheme.fromJson(Map<String, dynamic> json) => _$CreateCustomerSchemeFromJson(json);
+  factory UpdateCustomerScheme.fromJson(Map<String, dynamic> json) => _$UpdateCustomerSchemeFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CreateCustomerSchemeToJson(this);
+  Map<String, dynamic> toJson() => _$UpdateCustomerSchemeToJson(this);
 
   @override
   String toString() {

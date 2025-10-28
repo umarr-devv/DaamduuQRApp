@@ -72,6 +72,7 @@ export 'package:daamduuqr_client/src/model/story_scheme.dart';
 export 'package:daamduuqr_client/src/model/token_scheme.dart';
 export 'package:daamduuqr_client/src/model/update_category_scheme.dart';
 export 'package:daamduuqr_client/src/model/update_contact_scheme.dart';
+export 'package:daamduuqr_client/src/model/update_customer_scheme.dart';
 export 'package:daamduuqr_client/src/model/update_establishment_scheme.dart';
 export 'package:daamduuqr_client/src/model/update_menu_scheme.dart';
 export 'package:daamduuqr_client/src/model/update_organization_scheme.dart';

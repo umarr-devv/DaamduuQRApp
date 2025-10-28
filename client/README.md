@@ -77,7 +77,10 @@ Class | Method | HTTP request | Description
 [*ContactsApi*](doc/ContactsApi.md) | [**createContact**](doc/ContactsApi.md#createcontact) | **POST** /api/contacts | On Create Contact
 [*ContactsApi*](doc/ContactsApi.md) | [**getContact**](doc/ContactsApi.md#getcontact) | **GET** /api/contacts/{contact_id} | On Get Contact
 [*ContactsApi*](doc/ContactsApi.md) | [**updateContact**](doc/ContactsApi.md#updatecontact) | **PUT** /api/contacts/{contact_id} | On Update Contact
-[*CustomersApi*](doc/CustomersApi.md) | [**createCustomer**](doc/CustomersApi.md#createcustomer) | **POST** /api/customers | On Create Customer
+[*CustomersApi*](doc/CustomersApi.md) | [**customerMe**](doc/CustomersApi.md#customerme) | **GET** /api/customers/me | On Customer Me
+[*CustomersApi*](doc/CustomersApi.md) | [**customerSignIn**](doc/CustomersApi.md#customersignin) | **POST** /api/customers/sign_in | On Customer Sign In
+[*CustomersApi*](doc/CustomersApi.md) | [**setCustomerPushToken**](doc/CustomersApi.md#setcustomerpushtoken) | **PATCH** /api/customers/push_token | On Set Customer Push Token
+[*CustomersApi*](doc/CustomersApi.md) | [**updateCustomer**](doc/CustomersApi.md#updatecustomer) | **PUT** /api/customers | On Update Customer
 [*DefaultApi*](doc/DefaultApi.md) | [**onHomeHomeGet**](doc/DefaultApi.md#onhomehomeget) | **GET** /home/ | On Home
 [*EstablishmentsApi*](doc/EstablishmentsApi.md) | [**addEstablishmentContact**](doc/EstablishmentsApi.md#addestablishmentcontact) | **PATCH** /api/establishments/{establishment_id}/contacts/{contact_id} | On Add Establishment Contact
 [*EstablishmentsApi*](doc/EstablishmentsApi.md) | [**addEstablishmentImages**](doc/EstablishmentsApi.md#addestablishmentimages) | **PATCH** /api/establishments/{establishment_id}/images | On Add Establishment Images
@@ -191,6 +194,7 @@ Class | Method | HTTP request | Description
  - [TokenScheme](doc/TokenScheme.md)
  - [UpdateCategoryScheme](doc/UpdateCategoryScheme.md)
  - [UpdateContactScheme](doc/UpdateContactScheme.md)
+ - [UpdateCustomerScheme](doc/UpdateCustomerScheme.md)
  - [UpdateEstablishmentScheme](doc/UpdateEstablishmentScheme.md)
  - [UpdateMenuScheme](doc/UpdateMenuScheme.md)
  - [UpdateOrganizationScheme](doc/UpdateOrganizationScheme.md)

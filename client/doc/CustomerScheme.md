@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **id** | **String** |  | 
 **createAt** | [**DateTime**](DateTime.md) |  | 
 **updateAt** | [**DateTime**](DateTime.md) |  | 
+**firebaseUid** | **String** |  | 
 **email** | **String** |  | 
 **phoneNumber** | **String** |  | 
 **pushToken** | **String** |  | 

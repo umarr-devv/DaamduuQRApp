@@ -18,8 +18,8 @@ import 'package:daamduuqr_client/src/model/create_user_scheme.dart';
 import 'package:daamduuqr_client/src/model/customer_scheme.dart';
 import 'package:daamduuqr_client/src/model/establishment_scheme.dart';
 import 'package:daamduuqr_client/src/model/file_scheme.dart';
-import 'package:daamduuqr_client/src/model/health_scheme.dart';
 import 'package:daamduuqr_client/src/model/http_validation_error.dart';
+import 'package:daamduuqr_client/src/model/health_scheme.dart';
 import 'package:daamduuqr_client/src/model/login_user_scheme.dart';
 import 'package:daamduuqr_client/src/model/menu_add_product_scheme.dart';
 import 'package:daamduuqr_client/src/model/menu_delete_product_scheme.dart';
@@ -38,6 +38,7 @@ import 'package:daamduuqr_client/src/model/story_scheme.dart';
 import 'package:daamduuqr_client/src/model/token_scheme.dart';
 import 'package:daamduuqr_client/src/model/update_category_scheme.dart';
 import 'package:daamduuqr_client/src/model/update_contact_scheme.dart';
+import 'package:daamduuqr_client/src/model/update_customer_scheme.dart';
 import 'package:daamduuqr_client/src/model/update_establishment_scheme.dart';
 import 'package:daamduuqr_client/src/model/update_menu_scheme.dart';
 import 'package:daamduuqr_client/src/model/update_organization_scheme.dart';
@@ -195,6 +196,9 @@ ReturnType deserialize<ReturnType, BaseType>(
           as ReturnType;
     case 'UpdateContactScheme':
       return UpdateContactScheme.fromJson(value as Map<String, dynamic>)
+          as ReturnType;
+    case 'UpdateCustomerScheme':
+      return UpdateCustomerScheme.fromJson(value as Map<String, dynamic>)
           as ReturnType;
     case 'UpdateEstablishmentScheme':
       return UpdateEstablishmentScheme.fromJson(value as Map<String, dynamic>)

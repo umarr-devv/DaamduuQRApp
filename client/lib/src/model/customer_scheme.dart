@@ -24,6 +24,8 @@ class CustomerScheme {
 
     required  this.updateAt,
 
+    required  this.firebaseUid,
+
     required  this.email,
 
     required  this.phoneNumber,
@@ -66,6 +68,18 @@ class CustomerScheme {
 
 
   final DateTime updateAt;
+
+
+
+  @JsonKey(
+    
+    name: r'firebase_uid',
+    required: true,
+    includeIfNull: true,
+  )
+
+
+  final String? firebaseUid;
 
 
 
@@ -124,6 +138,7 @@ class CustomerScheme {
       other.id == id &&
       other.createAt == createAt &&
       other.updateAt == updateAt &&
+      other.firebaseUid == firebaseUid &&
       other.email == email &&
       other.phoneNumber == phoneNumber &&
       other.pushToken == pushToken &&
@@ -134,6 +149,7 @@ class CustomerScheme {
         id.hashCode +
         createAt.hashCode +
         updateAt.hashCode +
+        (firebaseUid == null ? 0 : firebaseUid.hashCode) +
         (email == null ? 0 : email.hashCode) +
         (phoneNumber == null ? 0 : phoneNumber.hashCode) +
         (pushToken == null ? 0 : pushToken.hashCode) +

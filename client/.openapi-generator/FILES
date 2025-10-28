@@ -63,6 +63,7 @@ doc/StoryScheme.md
 doc/TokenScheme.md
 doc/UpdateCategoryScheme.md
 doc/UpdateContactScheme.md
+doc/UpdateCustomerScheme.md
 doc/UpdateEstablishmentScheme.md
 doc/UpdateMenuScheme.md
 doc/UpdateOrganizationScheme.md
@@ -147,6 +148,7 @@ lib/src/model/story_scheme.dart
 lib/src/model/token_scheme.dart
 lib/src/model/update_category_scheme.dart
 lib/src/model/update_contact_scheme.dart
+lib/src/model/update_customer_scheme.dart
 lib/src/model/update_establishment_scheme.dart
 lib/src/model/update_menu_scheme.dart
 lib/src/model/update_organization_scheme.dart
@@ -161,3 +163,4 @@ lib/src/model/user_scheme.dart
 lib/src/model/validation_error.dart
 lib/src/model/validation_error_loc_inner.dart
 pubspec.yaml
+test/update_customer_scheme_test.dart
