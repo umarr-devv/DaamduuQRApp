@@ -149,6 +149,8 @@ flutter:
     - "assets/svg/som.svg"
     - "assets/svg/menu-food.svg"
     - "assets/svg/share.svg"
+    - "assets/svg/google.svg"
+    - "assets/svg/apple.svg"
 
     - "assets/icon/icon.png"
 

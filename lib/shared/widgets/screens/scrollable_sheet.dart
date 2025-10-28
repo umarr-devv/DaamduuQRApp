@@ -9,6 +9,7 @@ class CustomScrollableSheet extends StatelessWidget {
     this.initialChildSize = 0.85,
     this.maxChildSize = 0.9,
     this.minChildSize = 0.8,
+    this.closeButton = true,
     required this.child,
     this.actions = const [],
   });
@@ -16,6 +17,7 @@ class CustomScrollableSheet extends StatelessWidget {
   final Widget child;
   final Color? color;
   final List<Widget> actions;
+  final bool closeButton;
 
   final double initialChildSize;
   final double maxChildSize;
@@ -54,7 +56,10 @@ class CustomScrollableSheet extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  if (closeButton)
                   MaybePopButton(close: true),
+                  if (!closeButton)
+                  SizedBox(),
                   Row(spacing: 8, children: actions),
                 ],
               ),

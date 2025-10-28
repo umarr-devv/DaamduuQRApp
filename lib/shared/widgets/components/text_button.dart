@@ -13,6 +13,7 @@ class CustomTextButton extends StatefulWidget {
     this.radius = 64,
     this.animation = true,
     this.shadow = true,
+    this.colorFilter = true,
     this.background,
     this.foreground,
     this.padding,
@@ -25,6 +26,7 @@ class CustomTextButton extends StatefulWidget {
   final double fontSize;
   final bool animation;
   final bool shadow;
+  final bool colorFilter;
   final EdgeInsets? padding;
   final Color? background;
   final Color? foreground;
@@ -88,10 +90,10 @@ class _CustomTextButtonState extends State<CustomTextButton> {
                       widget.icon as String,
                       width: widget.size,
                       height: widget.size,
-                      colorFilter: ColorFilter.mode(
+                      colorFilter: widget.colorFilter? ColorFilter.mode(
                         widget.foreground ?? theme.custom.primaryForeground,
                         BlendMode.srcIn,
-                      ),
+                      ) : null,
                     )
                   : SizedBox(),
               Text(
