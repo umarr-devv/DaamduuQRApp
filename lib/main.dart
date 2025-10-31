@@ -13,6 +13,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get_it/get_it.dart';
 import 'package:talker_flutter/talker_flutter.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 Future<void> main() async {
   runZonedGuarded(
@@ -54,4 +55,7 @@ Future initDependencies() async {
 
   GetIt.I.registerSingleton<SecureStorage>(secureStorage);
   GetIt.I.registerSingleton<GeneralStorage>(generalStorage);
+
+  PackageInfo packageInfo = await PackageInfo.fromPlatform();
+  GetIt.I.registerSingleton<PackageInfo>(packageInfo);
 }
