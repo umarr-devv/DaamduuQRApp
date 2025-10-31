@@ -1,4 +1,4 @@
-import 'package:app/blocs/auth/auth_cubit.dart';
+import 'package:app/blocs/blocs.dart';
 import 'package:app/core/router/router.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +19,10 @@ class _AppScreenState extends State<AppScreen> {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (context) => AuthCubit())],
+      providers: [
+        BlocProvider(create: (context) => AuthCubit()),
+        BlocProvider(create: (context) => PermissionCubit()),
+      ],
       child: MaterialApp.router(
         title: 'DaamduuQR',
         theme: lightTheme,

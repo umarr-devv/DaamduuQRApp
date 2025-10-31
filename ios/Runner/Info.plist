@@ -49,6 +49,16 @@
 		<false/>
 		<key>NSCameraUsageDescription</key>
 		<string>This app needs camera access to scan QR codes</string>
+		<key>NSLocationWhenInUseUsageDescription</key>
+		<string>This app needs user location for recomandations</string>
+		<key>UIBackgroundModes</key>
+		<array>
+    		<string>location</string>
+    		<string>fetch</string>
+    		<string>remote-notification</string>
+		</array>
+		<key>NSUserTrackingUsageDescription</key>
+		<string>for push notifications</string>
 		<key>NSPhotoLibraryUsageDescription</key>
 		<string>This app needs photos access to get QR code from photo library</string>
 		<key>LSApplicationQueriesSchemes</key>
