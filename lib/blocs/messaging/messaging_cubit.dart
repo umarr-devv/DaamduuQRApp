@@ -1,5 +1,5 @@
+import 'package:app/service/service.dart';
 import 'package:equatable/equatable.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -10,7 +10,7 @@ class MessagingCubit extends HydratedCubit<MessagingState> {
   MessagingCubit() : super(MessagingInitial());
 
   Future update() async {
-    final pushToken = await FirebaseMessaging.instance.getToken();
+    final pushToken = await MessagingService.getPushToken();
     final newState = state.copyWith(pushToken);
     emit(MessagingUpdate(newState));
   }
