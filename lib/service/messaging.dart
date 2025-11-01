@@ -21,10 +21,11 @@ class MessagingService {
           apnsToken = await messaging.getAPNSToken();
           retries++;
         }
-
-        if (apnsToken == null) {
-          return null;
-        }
+        
+        // FOR DEBUG
+        // if (apnsToken == null) {
+        //   return null;
+        // }
       }
     }
     final pushToken = await FirebaseMessaging.instance.getToken();
