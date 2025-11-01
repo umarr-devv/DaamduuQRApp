@@ -10,7 +10,7 @@ class LocalNotificationService {
   late FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin;
 
   final _androidInitalizingSettings = const AndroidInitializationSettings(
-    '@mipmap/ic_icon',
+    'notification_icon',
   );
 
   final _iosInitalizingSettings = const DarwinInitializationSettings(
