@@ -33,7 +33,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
         SliverToBoxAdapter(child: ProfileContacts()),
         SliverToBoxAdapter(child: ProfileAppInfo()),
         SliverToBoxAdapter(child: NavBarSpace()),
-        SliverFillRemaining(),
       ],
     );
   }

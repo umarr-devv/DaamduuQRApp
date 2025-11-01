@@ -37,13 +37,12 @@ class FirebaseMessagingService {
   Future<void> _handlePushNotificationsToken() async {
     final token = await FirebaseMessaging.instance.getToken();
     pushToken = token;
-    FirebaseMessaging.instance.onTokenRefresh
-        .listen((pushToken) {
-          //
-        })
-        .onError((exc) {
-          talker.error(exc);
-        });
+    talker.info(pushToken ?? 'not found push token');
+    FirebaseMessaging.instance.onTokenRefresh.listen((pushToken) {}).onError((
+      exc,
+    ) {
+      talker.error(exc);
+    });
   }
 
   Future<void> _requestPermission() async {
