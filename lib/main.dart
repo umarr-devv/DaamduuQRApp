@@ -56,6 +56,14 @@ Future initDependencies() async {
   GetIt.I.registerSingleton<SecureStorage>(secureStorage);
   GetIt.I.registerSingleton<GeneralStorage>(generalStorage);
 
+  final localNotification = LocalNotificationService.instance();
+  await localNotification.init();
+  GetIt.I.registerSingleton<LocalNotificationService>(localNotification);
+
+  final messaging = FirebaseMessagingService.instance();
+  await messaging.init(localNotificationService: localNotification);
+  GetIt.I.registerSingleton<FirebaseMessagingService>(messaging);
+
   PackageInfo packageInfo = await PackageInfo.fromPlatform();
   GetIt.I.registerSingleton<PackageInfo>(packageInfo);
 }
