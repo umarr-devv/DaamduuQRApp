@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     
     <application
-        android:label="app"
+        android:label="DaamduuQR"
         android:name="${applicationName}"
         android:icon="@mipmap/lc_icon"
         android:usesCleartextTraffic="true"
