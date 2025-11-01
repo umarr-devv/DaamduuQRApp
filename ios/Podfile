@@ -1,29 +1,42 @@
 platform :ios, '15.0'
 
-use_frameworks!
-use_modular_headers!
+ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
-flutter_application_path = File.expand_path('..', __dir__)
-require File.expand_path(File.join(flutter_application_path, 'flutter_export_environment'))
+project 'Runner', {
+  'Debug' => :debug,
+  'Profile' => :release,
+  'Release' => :release,
+}
+
+def flutter_root
+  generated_xcode_build_settings_path = File.expand_path(File.join('..', 'Flutter', 'Generated.xcconfig'), __FILE__)
+  unless File.exist?(generated_xcode_build_settings_path)
+    raise "#{generated_xcode_build_settings_path} must exist. If you're running pod install manually, make sure flutter pub get is executed first"
+  end
+  File.read(generated_xcode_build_settings_path).scan(/FLUTTER_ROOT=(.*)/).flatten.first
+end
+
+load File.join(flutter_root, '.ios', 'Flutter', 'podhelper.rb')
 
 target 'Runner' do
   use_frameworks!
   use_modular_headers!
 
-  # Подключение плагинов
-  pod 'Flutter', :path => File.join(flutter_application_path, 'Flutter')
+  flutter_additional_pods
 
-  # Включаем нужные разрешения
-  post_install do |installer|
-    installer.pods_project.targets.each do |target|
-      target.build_configurations.each do |config|
-        config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= [
-          '$(inherited)',
-          'PERMISSION_CAMERA=1',
-          'PERMISSION_PHOTOS=1',
-          'PERMISSION_LOCATION_WHEN_IN_USE=1',
-        ]
-      end
+end
+
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    flutter_additional_ios_build_settings(target)
+    target.build_configurations.each do |config|
+      config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= [
+        '$(inherited)',
+        'PERMISSION_CAMERA=1',
+        'PERMISSION_LOCATION=1',
+        'PERMISSION_LOCATION_WHENINUSE=1',
+      ]
     end
   end
 end
