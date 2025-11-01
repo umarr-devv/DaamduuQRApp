@@ -12,11 +12,12 @@ class ProfileAppInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Container(
-      padding: const EdgeInsets.only(top: 48, left: 32, right: 32, bottom: 24),
+      alignment: Alignment.center,
+      padding: const EdgeInsets.only(top: 32, left: 32, right: 32),
       child: Text(
-        'version: ${packageInfo.version}',
+        'Версия ${packageInfo.version}',
         style: TextStyle(
-          fontSize: 14,
+          fontSize: 13,
           fontWeight: FontWeight.w500,
           color: theme.custom.secondaryForeground,
         ),
