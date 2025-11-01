@@ -31,8 +31,6 @@ class PermissionCubit extends HydratedCubit<PermissionState> {
       await permission.request();
     } else if (await permission.isPermanentlyDenied) {
       await openAppSettings();
-    } else {
-      talker.error(await permission.status);
     }
     await update();
   }
