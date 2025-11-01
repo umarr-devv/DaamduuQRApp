@@ -3,25 +3,27 @@ platform :ios, '15.0'
 use_frameworks!
 use_modular_headers!
 
+flutter_application_path = File.expand_path('..', __dir__)
+require File.expand_path(File.join(flutter_application_path, 'flutter_export_environment'))
+
 target 'Runner' do
-  flutter_application_path = File.join(File.dirname(__FILE__), '..')
-  eval(File.read(File.join(flutter_application_path, '.ios', 'Flutter', 'podhelper.rb')), binding)
-end
+  use_frameworks!
+  use_modular_headers!
 
-post_install do |installer|
-  installer.pods_project.targets.each do |target|
-    flutter_additional_ios_build_settings(target)
+  # Подключение плагинов
+  pod 'Flutter', :path => File.join(flutter_application_path, 'Flutter')
 
-    target.build_configurations.each do |config|
-      config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= [
-        '$(inherited)',
-
-        'PERMISSION_CAMERA=1',
-        'PERMISSION_LOCATION=1',
-        'PERMISSION_LOCATION_WHENINUSE=1',
-        'PERMISSION_NOTIFICATIONS=1',
-      ]
-
+  # Включаем нужные разрешения
+  post_install do |installer|
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= [
+          '$(inherited)',
+          'PERMISSION_CAMERA=1',
+          'PERMISSION_PHOTOS=1',
+          'PERMISSION_LOCATION_WHEN_IN_USE=1',
+        ]
+      end
     end
   end
 end
