@@ -20,7 +20,7 @@ class FirebaseMessagingService {
   }) async {
     _localNotificationService = localNotificationService;
 
-    _handlePushNotificationsToken();
+    await _handlePushNotificationsToken();
     _requestPermission();
     FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
     FirebaseMessaging.onMessage.listen(_firebaseMessagingForegroundHandler);
