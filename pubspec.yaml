@@ -94,18 +94,11 @@ flutter_native_splash:
   color: "#e44641"
   image: "assets/splash/splash_icon.png"
   branding: "assets/splash/light_splash_logo.png"
-  color_dark: "#2a2a2a"
-  image_dark: "assets/splash/splash_icon.png"
-  branding_dark: "assets/splash/dark_splash_logo.png"
   android_12:
     color: "#e44641"
     icon_background_color: "#e44641"
     image: "assets/splash/a12_splash_icon.png"
     branding: "assets/splash/a12_light_splash_logo.png"
-    color_dark: "#2a2a2a"
-    icon_background_color_dark: "#2a2a2a"
-    image_dark: "assets/splash/a12_splash_icon.png"
-    branding_dark: "assets/splash/a12_dark_splash_logo.png"
   android: true
   ios: true
   web: true
