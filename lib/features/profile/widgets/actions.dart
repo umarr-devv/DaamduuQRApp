@@ -1,4 +1,6 @@
+import 'package:app/core/router/router.dart';
 import 'package:app/shared/theme/theme.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -24,14 +26,20 @@ class ProfileActions extends StatefulWidget {
 }
 
 class _ProfileActionsState extends State<ProfileActions> {
-  final buttons = [
+  List<_ActionButtonData> get buttons => [
     _ActionButtonData(
       icon: 'assets/svg/map-marker.svg',
       description: 'Определяется автоматически',
       onTap: () {},
       label: 'Мой город',
     ),
-    _ActionButtonData(icon: 'assets/svg/time-past.svg', label: 'История'),
+    _ActionButtonData(
+      icon: 'assets/svg/time-past.svg',
+      label: 'История',
+      onTap: () {
+        AutoRouter.of(context).push(HistoryRoute());
+      },
+    ),
     _ActionButtonData(
       icon: 'assets/svg/shield-check.svg',
       label: 'Условия соглашения',

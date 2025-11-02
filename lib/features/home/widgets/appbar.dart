@@ -1,5 +1,7 @@
+import 'package:app/core/router/router.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:app/shared/widgets/widgets.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_tilt/flutter_tilt.dart';
@@ -56,7 +58,9 @@ class _HomeAppBarState extends State<HomeAppBar> {
           icon: 'assets/svg/bell.svg',
           radius: 12,
           shadow: !isCollapsed,
-          onTap: () {},
+          onTap: () {
+            AutoRouter.of(context).push(NotificationsRoute());
+          },
         ),
         SizedBox(width: 16),
       ],

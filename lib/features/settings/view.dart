@@ -1,3 +1,5 @@
+import 'package:app/features/settings/widgets/widgets.dart';
+import 'package:app/shared/theme/theme.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +9,10 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    final theme = Theme.of(context);
+    return Scaffold(
+      backgroundColor: theme.custom.primaryBackground,
+      body: CustomScrollView(slivers: [SettingsAppBar()]),
+    );
   }
 }

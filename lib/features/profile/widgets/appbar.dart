@@ -1,10 +1,10 @@
 import 'package:app/blocs/auth/auth_cubit.dart';
+import 'package:app/core/router/router.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:app/shared/widgets/widgets.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
-import 'package:talker_flutter/talker_flutter.dart';
 
 class ProfileAppBar extends StatefulWidget {
   const ProfileAppBar({super.key, required this.scrollController});
@@ -61,12 +61,7 @@ class _ProfileAppBarState extends State<ProfileAppBar> {
               shadow: !isCollapsed,
               radius: 12,
               onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        TalkerScreen(talker: GetIt.I<Talker>()),
-                  ),
-                );
+                AutoRouter.of(context).push(SettingsRoute());
               },
             ),
             if (state.customer != null)
