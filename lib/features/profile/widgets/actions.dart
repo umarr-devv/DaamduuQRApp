@@ -1,8 +1,11 @@
 import 'package:app/core/router/router.dart';
+import 'package:app/shared/dialogs/dialogs.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get_it/get_it.dart';
+import 'package:talker_flutter/talker_flutter.dart';
 
 class _ActionButtonData {
   _ActionButtonData({
@@ -30,7 +33,9 @@ class _ProfileActionsState extends State<ProfileActions> {
     _ActionButtonData(
       icon: 'assets/svg/map-marker.svg',
       description: 'Определяется автоматически',
-      onTap: () {},
+      onTap: () {
+        CitySelectDialog().show(context);
+      },
       label: 'Мой город',
     ),
     _ActionButtonData(
@@ -43,14 +48,27 @@ class _ProfileActionsState extends State<ProfileActions> {
     _ActionButtonData(
       icon: 'assets/svg/shield-check.svg',
       label: 'Условия соглашения',
+      onTap: () {
+        AppRulesDialog().show(context);
+      },
     ),
     _ActionButtonData(
       icon: 'assets/svg/interrogation.svg',
       label: 'Обратная связь',
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => TalkerScreen(talker: GetIt.I<Talker>()),
+          ),
+        );
+      },
     ),
     _ActionButtonData(
       icon: 'assets/svg/comment-info.svg',
       label: 'О приложении',
+      onTap: () {
+        AboutAppDialog().show(context);
+      },
     ),
   ];
 
