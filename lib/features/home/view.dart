@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
             SliverToBoxAdapter(child: HomeFilter()),
             SliverToBoxAdapter(child: HomeEstablishments()),
             HomeProducts(),
-            HomeProductsList(),
+            // HomeProductsList(),
             SliverToBoxAdapter(child: NavBarSpace()),
           ],
         ),
