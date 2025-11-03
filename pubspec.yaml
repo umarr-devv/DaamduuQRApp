@@ -2,7 +2,7 @@ name: app
 description: "A new Flutter project."
 publish_to: "none"
 
-version: 0.1.0+34
+version: 0.1.0+35
 
 environment:
   sdk: ^3.9.2
@@ -10,6 +10,7 @@ environment:
 dependencies:
   animate_do: ^4.2.0
   animated_bottom_navigation_bar: ^1.4.0
+  animated_flip_counter: ^0.3.4
   animations: ^2.0.11
   auto_route: ^10.1.0+1
   bloc: ^9.0.1
@@ -148,6 +149,7 @@ flutter:
     - "assets/svg/sign-in.svg"
     - "assets/svg/google.svg"
     - "assets/svg/apple.svg"
+    - "assets/svg/trash-xmark.svg"
 
     - "assets/icon/icon.png"
 

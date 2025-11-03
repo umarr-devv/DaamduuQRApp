@@ -9,7 +9,7 @@ class CustomTextButton extends StatefulWidget {
     required this.label,
     required this.onTap,
     this.size = 24,
-    this.fontSize = 14,
+    this.fontSize = 15,
     this.radius = 64,
     this.animation = true,
     this.shadow = true,

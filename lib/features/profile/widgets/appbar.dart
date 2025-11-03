@@ -95,7 +95,7 @@ class _AppBarTitle extends StatelessWidget {
       spacing: 8,
       children: [
         Text(
-          'Мой профиль',
+          'Мой Профиль',
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w600,

@@ -1,6 +1,7 @@
 export 'action_button.dart';
 export 'camera_overlay.dart';
 export 'contact.dart';
+export 'counter_button.dart';
 export 'currency.dart';
 export 'divider.dart';
 export 'establishment_type.dart';

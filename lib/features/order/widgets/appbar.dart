@@ -1,4 +1,5 @@
 import 'package:app/shared/theme/theme.dart';
+import 'package:app/shared/widgets/components/components.dart';
 import 'package:flutter/material.dart';
 
 class OrderAppBar extends StatefulWidget {
@@ -46,6 +47,19 @@ class _OrderAppBarState extends State<OrderAppBar> {
       pinned: true,
       shadowColor: theme.custom.highShadowColor,
       title: Text('Мой Заказ'),
+      actions: [
+        CustomTextButton(
+          label: 'Очистить',
+          icon: 'assets/svg/trash-xmark.svg',
+          radius: 12,
+          size: 20,
+          shadow: false,
+          background: theme.custom.transparent,
+          foreground: theme.custom.primaryColor,
+          onTap: () {},
+        ),
+        const SizedBox(width: 16),
+      ],
     );
   }
 }
