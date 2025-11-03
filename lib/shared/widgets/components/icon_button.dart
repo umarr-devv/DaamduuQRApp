@@ -11,6 +11,7 @@ class CustomIconButton extends StatefulWidget {
     this.radius = 64,
     this.animation = true,
     this.shadow = true,
+    this.shadowColor,
     this.background,
     this.foreground,
   });
@@ -20,6 +21,7 @@ class CustomIconButton extends StatefulWidget {
   final double size;
   final bool animation;
   final bool shadow;
+  final Color? shadowColor;
   final Color? background;
   final Color? foreground;
 
@@ -32,11 +34,13 @@ class _CustomIconButtonState extends State<CustomIconButton> {
 
   Future onPressed() async {
     if (widget.animation) {
+      if (!mounted) return;
       setState(() {
         scale = 0.8;
       });
       await Future.delayed(const Duration(milliseconds: 175));
       widget.onTap();
+      if (!mounted) return;
       setState(() {
         scale = 1;
       });
@@ -58,7 +62,7 @@ class _CustomIconButtonState extends State<CustomIconButton> {
             borderRadius: BorderRadiusGeometry.circular(widget.radius),
           ),
           shadowColor: widget.shadow
-              ? theme.custom.highShadowColor
+              ? widget.shadowColor ?? theme.custom.highShadowColor
               : theme.custom.transparent,
           elevation: 4,
           backgroundColor: widget.background ?? theme.custom.primaryBackground,
