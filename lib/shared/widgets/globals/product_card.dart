@@ -31,11 +31,11 @@ class ProductCard extends StatelessWidget {
               children: [
                 Expanded(child: _CardImage(product: product)),
                 _CardInfo(product: product),
+                _AddOrderButton(product: product),
               ],
             ),
           ),
           _FavoriteStatus(),
-          _AddOrderButton(product: product),
         ],
       ),
     );
@@ -57,7 +57,7 @@ class _AddOrderButton extends StatelessWidget {
         return Align(
           alignment: Alignment.bottomRight,
           child: Padding(
-            padding: const EdgeInsets.all(8),
+            padding: const EdgeInsets.only(bottom: 8, right: 8),
             child: CustomCounterButton(
               value: item?.quantity,
               onFirstAdd: () {
@@ -71,6 +71,11 @@ class _AddOrderButton extends StatelessWidget {
               onRemove: () {
                 if (item != null) {
                   cubit.setItem(item.copyWith(item.quantity - 1));
+                }
+              },
+              onClear: () {
+                if (item != null) {
+                  cubit.setItem(item.copyWith(0));
                 }
               },
             ),
