@@ -22,6 +22,7 @@ class _AppScreenState extends State<AppScreen> {
       providers: [
         BlocProvider(create: (context) => AuthCubit()),
         BlocProvider(create: (context) => PermissionCubit()),
+        BlocProvider(create: (context) => OrderCubit()),
       ],
       child: MaterialApp.router(
         title: 'DaamduuQR',
