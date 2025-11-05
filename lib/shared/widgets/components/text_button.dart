@@ -69,7 +69,7 @@ class _CustomTextButtonState extends State<CustomTextButton> {
               : theme.custom.transparent,
           padding: widget.padding,
           elevation: 4,
-          backgroundColor: widget.background ?? theme.custom.primaryBackground,
+          backgroundColor: widget.background ?? theme.custom.primaryBg,
         ),
         child: AnimatedScale(
           scale: scale,
@@ -82,8 +82,7 @@ class _CustomTextButtonState extends State<CustomTextButton> {
                   ? Icon(
                       widget.icon as IconData,
                       size: widget.size,
-                      color:
-                          widget.foreground ?? theme.custom.primaryForeground,
+                      color: widget.foreground ?? theme.custom.primaryFg,
                     )
                   : widget.icon is String
                   ? SvgPicture.asset(
@@ -92,8 +91,7 @@ class _CustomTextButtonState extends State<CustomTextButton> {
                       height: widget.size,
                       colorFilter: widget.colorFilter
                           ? ColorFilter.mode(
-                              widget.foreground ??
-                                  theme.custom.primaryForeground,
+                              widget.foreground ?? theme.custom.primaryFg,
                               BlendMode.srcIn,
                             )
                           : null,
@@ -101,11 +99,10 @@ class _CustomTextButtonState extends State<CustomTextButton> {
                   : SizedBox(),
               Text(
                 widget.label,
-                style: TextStyle(
+                style: theme.custom.labelLarge.copyWith(
                   fontSize: widget.fontSize,
-                  fontWeight: FontWeight.w500,
-                  color: widget.foreground ?? theme.custom.primaryForeground,
-                ),
+                  color: widget.foreground ?? theme.custom.primaryFg
+                )
               ),
             ],
           ),

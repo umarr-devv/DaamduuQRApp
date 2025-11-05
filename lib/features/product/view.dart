@@ -14,7 +14,7 @@ class ProductScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: theme.custom.primaryBackground,
+      backgroundColor: theme.custom.primaryBg,
       body: CustomScrollView(slivers: [ProductAppBar()]),
     );
   }

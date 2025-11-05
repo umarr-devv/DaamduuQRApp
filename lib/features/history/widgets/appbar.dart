@@ -30,18 +30,11 @@ class _AppBarTitle extends StatelessWidget {
           height: 20,
           width: 20,
           colorFilter: ColorFilter.mode(
-            theme.custom.primaryForeground,
+            theme.custom.primaryFg,
             BlendMode.srcIn,
           ),
         ),
-        Text(
-          'История',
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-            color: theme.custom.primaryForeground,
-          ),
-        ),
+        Text('История', style: theme.custom.titleLarge),
       ],
     );
   }

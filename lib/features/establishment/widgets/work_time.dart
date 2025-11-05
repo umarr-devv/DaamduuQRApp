@@ -95,22 +95,13 @@ class _WorkTimeTitke extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            'График работы',
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w500,
-              color: theme.custom.secondaryForeground,
-            ),
-          ),
+          Text('График работы', style: theme.custom.labelLargeAlt),
           Text(
             today.start == null || today.end == null
                 ? 'Выходной'
                 : 'c ${timeToStr(today.start)} до ${timeToStr(today.end)}',
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-              color: theme.custom.primaryColor,
+            style: theme.custom.labelMedium.copyWith(
+              color: theme.custom.primary,
             ),
           ),
         ],
@@ -134,44 +125,30 @@ class _WotkTimeCard extends StatelessWidget {
     final theme = Theme.of(context);
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 8),
-      constraints: BoxConstraints(minWidth: 64),
+      constraints: BoxConstraints(minWidth: 56),
       decoration: BoxDecoration(
-        color: weekdayNow
-            ? theme.custom.primaryColor
-            : theme.custom.secondaryBackground,
+        color: weekdayNow ? theme.custom.primary : theme.custom.secondaryBg,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
         children: [
           Text(
             workTime.label,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: weekdayNow
-                  ? theme.custom.white
-                  : theme.custom.secondaryForeground,
+            style: theme.custom.labelMedium.copyWith(
+              color: weekdayNow ? theme.custom.white : theme.custom.secondaryFg,
             ),
           ),
           const SizedBox(height: 8),
           Text(
             timeToStr(workTime.start),
-            style: TextStyle(
-              fontSize: 13,
-              fontWeight: FontWeight.w500,
-              color: weekdayNow
-                  ? theme.custom.white
-                  : theme.custom.primaryForeground,
+            style: theme.custom.labelSmall.copyWith(
+              color: weekdayNow ? theme.custom.white : theme.custom.primaryFg,
             ),
           ),
           Text(
             timeToStr(workTime.end),
-            style: TextStyle(
-              fontSize: 13,
-              fontWeight: FontWeight.w500,
-              color: weekdayNow
-                  ? theme.custom.white
-                  : theme.custom.primaryForeground,
+            style: theme.custom.labelSmall.copyWith(
+              color: weekdayNow ? theme.custom.white : theme.custom.primaryFg,
             ),
           ),
         ],

@@ -24,7 +24,7 @@ class _CatalogAppBarState extends State<CatalogAppBar> {
       bloc: BlocProvider.of<CatalogCubit>(context),
       builder: (context, state) {
         return SliverAppBar(
-          backgroundColor: theme.custom.primaryBackground,
+          backgroundColor: theme.custom.primaryBg,
           pinned: true,
           leading: MaybePopButton(shadow: false),
           title: _AppBarTitle(establishment: state.establishment),
@@ -70,20 +70,9 @@ class _AppBarTitle extends StatelessWidget {
       children: [
         Text(
           'Меню',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-            color: theme.custom.primaryColor,
-          ),
+          style: theme.custom.labelLarge.copyWith(color: theme.custom.primary),
         ),
-        Text(
-          establishment.name,
-          style: TextStyle(
-            fontSize: 13,
-            fontWeight: FontWeight.w500,
-            color: theme.custom.secondaryForeground,
-          ),
-        ),
+        Text(establishment.name, style: theme.custom.labelSmallAlt),
       ],
     );
   }

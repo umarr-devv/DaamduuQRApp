@@ -58,7 +58,7 @@ class _LoadingPlaceholder extends StatelessWidget {
           child: Container(
             width: 80,
             decoration: BoxDecoration(
-              color: theme.custom.primaryColor,
+              color: theme.custom.primary,
               borderRadius: BorderRadius.circular(64),
             ),
           ),
@@ -88,7 +88,7 @@ class _StoryItem extends StatelessWidget {
         padding: const EdgeInsets.all(2),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(128),
-          border: Border.all(color: theme.custom.info, width: 2),
+          border: Border.all(color: theme.custom.blue, width: 2),
         ),
         child: ClipRRect(
           borderRadius: BorderRadiusGeometry.circular(128),

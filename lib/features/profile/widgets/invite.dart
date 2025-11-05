@@ -12,7 +12,7 @@ class ProfileInvite extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: theme.custom.primaryBackground,
+        color: theme.custom.primaryBg,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
@@ -21,11 +21,7 @@ class ProfileInvite extends StatelessWidget {
           Text(
             'Хотите, чтобы ваша компания тоже была в этом приложении?',
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w400,
-              color: theme.custom.secondaryForeground,
-            ),
+            style: theme.custom.labelMediumAlt,
           ),
           SizedBox(
             width: double.infinity,
@@ -34,7 +30,7 @@ class ProfileInvite extends StatelessWidget {
               shadow: false,
               radius: 12,
               fontSize: 15,
-              background: theme.custom.primaryForeground,
+              background: theme.custom.primaryFg,
               foreground: theme.custom.white,
               onTap: () {},
             ),

@@ -17,8 +17,7 @@ class CustomLoadingScreen extends StatelessWidget {
     final theme = Theme.of(context);
     return Stack(
       children: [
-        if (!loading)
-        child,
+        if (!loading) child,
         IgnorePointer(
           ignoring: !loading,
           child: AnimatedOpacity(
@@ -26,8 +25,8 @@ class CustomLoadingScreen extends StatelessWidget {
             duration: const Duration(milliseconds: 275),
             curve: Curves.easeInOut,
             child: Container(
-              decoration: BoxDecoration(color: theme.custom.primaryBackground),
-              child: SpinKitRing(color: theme.custom.primaryColor),
+              decoration: BoxDecoration(color: theme.custom.primaryBg),
+              child: SpinKitRing(color: theme.custom.primary),
             ),
           ),
         ),

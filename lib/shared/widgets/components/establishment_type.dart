@@ -1,3 +1,4 @@
+import 'package:app/shared/theme/theme.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -33,6 +34,7 @@ class CustomEstablishmentType extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     final (icon, label) = getType();
     return Row(
       spacing: 6,
@@ -43,14 +45,7 @@ class CustomEstablishmentType extends StatelessWidget {
           width: 16,
           colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
         ),
-        Text(
-          label,
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-            color: color,
-          ),
-        ),
+        Text(label, style: theme.custom.labelMedium.copyWith(color: color)),
       ],
     );
   }

@@ -13,19 +13,11 @@ class FavoriteEmpty extends StatelessWidget {
         spacing: 12,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(
-            Icons.heart_broken,
-            size: 128,
-            color: theme.custom.secondaryForeground,
-          ),
+          Icon(Icons.heart_broken, size: 128, color: theme.custom.secondaryFg),
           Text(
             'У вас пока нет избранных\n заведений или позиций',
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w400,
-              color: theme.custom.secondaryForeground,
-            ),
+            style: theme.custom.labelLargeAlt,
           ),
         ],
       ),

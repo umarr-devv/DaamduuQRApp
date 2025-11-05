@@ -79,7 +79,7 @@ class _ProfileActionsState extends State<ProfileActions> {
       margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: theme.custom.primaryBackground,
+        color: theme.custom.primaryBg,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
@@ -107,7 +107,7 @@ class _ActionButton extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(6),
             decoration: BoxDecoration(
-              color: theme.custom.secondaryBackground,
+              color: theme.custom.secondaryBg,
               borderRadius: BorderRadius.circular(32),
             ),
             child: SvgPicture.asset(
@@ -115,7 +115,7 @@ class _ActionButton extends StatelessWidget {
               height: 24,
               width: 24,
               colorFilter: ColorFilter.mode(
-                theme.custom.secondaryForeground,
+                theme.custom.secondaryFg,
                 BlendMode.srcIn,
               ),
             ),
@@ -123,23 +123,9 @@ class _ActionButton extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                button.label,
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                  color: theme.custom.primaryForeground,
-                ),
-              ),
+              Text(button.label, style: theme.custom.labelLarge),
               if (button.description != null)
-                Text(
-                  button.description!,
-                  style: TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w400,
-                    color: theme.custom.secondaryForeground,
-                  ),
-                ),
+                Text(button.description!, style: theme.custom.labelSmallAlt),
             ],
           ),
         ],

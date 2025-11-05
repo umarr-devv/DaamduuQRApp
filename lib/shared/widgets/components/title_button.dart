@@ -41,7 +41,7 @@ class _CustomTitleButtonState extends State<CustomTitleButton> {
           });
         },
         style: IconButton.styleFrom(
-          backgroundColor: theme.custom.primaryBackground,
+          backgroundColor: theme.custom.primaryBg,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadiusGeometry.circular(8),
           ),
@@ -56,7 +56,7 @@ class _CustomTitleButtonState extends State<CustomTitleButton> {
           child: Icon(
             widget.icon,
             size: 20,
-            color: widget.color ?? theme.custom.primaryForeground,
+            color: widget.color ?? theme.custom.primaryFg,
           ),
         ),
       ),

@@ -41,8 +41,8 @@ class _OrderAppBarState extends State<OrderAppBar> {
     final theme = Theme.of(context);
     return SliverAppBar(
       backgroundColor: isCollapsed
-          ? theme.custom.primaryBackground
-          : theme.custom.secondaryBackground,
+          ? theme.custom.primaryBg
+          : theme.custom.secondaryBg,
       automaticallyImplyLeading: false,
       pinned: true,
       shadowColor: theme.custom.highShadowColor,
@@ -55,7 +55,7 @@ class _OrderAppBarState extends State<OrderAppBar> {
           size: 20,
           shadow: false,
           background: theme.custom.transparent,
-          foreground: theme.custom.primaryColor,
+          foreground: theme.custom.primary,
           onTap: () {},
         ),
         const SizedBox(width: 16),

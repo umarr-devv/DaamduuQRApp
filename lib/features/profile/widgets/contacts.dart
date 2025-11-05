@@ -43,7 +43,7 @@ class _ProfileContactsState extends State<ProfileContacts> {
               (i) => CustomIconButton(
                 icon: i.icon,
                 radius: 12,
-                foreground: theme.custom.secondaryForeground,
+                foreground: theme.custom.secondaryFg,
                 onTap: () {},
               ),
             )

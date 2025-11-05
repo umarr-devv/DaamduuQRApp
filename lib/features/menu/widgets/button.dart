@@ -14,7 +14,7 @@ class MenuActionButton extends StatelessWidget {
       onPressed: () {
         AutoRouter.of(context).push(ScannerRoute());
       },
-      backgroundColor: theme.custom.primaryForeground,
+      backgroundColor: theme.custom.primaryFg,
       splashColor: theme.custom.splashColor,
       shape: const CircleBorder(),
       child: SvgPicture.asset(

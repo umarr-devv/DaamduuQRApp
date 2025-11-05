@@ -11,35 +11,35 @@ class CustomThemeData {
     return brightness == Brightness.light ? light : dark;
   }
 
-  Color get primaryColor => Color(0xffe44641);
+  Color get primary => Color(0xffe44641);
 
-  Color get primaryBackground => const Color(0xFFffffff);
+  Color get primaryBg => const Color(0xFFffffff);
 
-  Color get secondaryBackground => const Color(0xFFF5F5F6);
+  Color get secondaryBg => const Color(0xFFF5F5F6);
 
-  Color get primaryForeground => const Color(0xff2a2a2a);
+  Color get primaryFg => const Color(0xff2a2a2a);
 
-  Color get secondaryForeground => Color(0xff767676);
-
-  Color get success => Color(0xFF7BA059);
-
-  Color get info => Color(0xff6c6cf4);
-
-  Color get warning => Color(0xFFEB631A);
-
-  Color get opacityWarning => warning.withValues(alpha: 0.175);
-
-  Color get yellow => Color(0xfffebc49);
+  Color get secondaryFg => Color(0xff767676);
 
   Color get black => Color(0xff000000);
 
   Color get white => Color(0xffffffff);
 
+  Color get green => Color(0xff48a357);
+
+  Color get blue => Color(0xff0d6efd);
+
+  Color get orange => Color(0xFFfd7e14);
+
+  Color get yellow => Color(0xffffc107);
+
   Color get transparent => Color(0x00000000);
 
-  Color get opacityForeground => primaryForeground.withValues(alpha: 0.2);
+  Color get opacityOrange => orange.withValues(alpha: 0.175);
 
-  Color get opacityBorder => primaryForeground.withValues(alpha: 0.1);
+  Color get opacityFg => primaryFg.withValues(alpha: 0.2);
+
+  Color get opacityBorder => primaryFg.withValues(alpha: 0.1);
 
   Color get opacityWhite => Color(0xffffffff).withValues(alpha: 0.75);
 
@@ -66,50 +66,71 @@ class CustomThemeData {
     ),
   ];
 
+  TextStyle get titleLarge =>
+      TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: primaryFg);
+
+  TextStyle get labelLarge =>
+      TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: primaryFg);
+
+  TextStyle get labelLargeAlt =>
+      TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: secondaryFg);
+
+  TextStyle get labelMedium =>
+      TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: primaryFg);
+
+  TextStyle get labelMediumAlt =>
+      TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: secondaryFg);
+
+  TextStyle get labelSmall =>
+      TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: primaryFg);
+
+  TextStyle get labelSmallAlt =>
+      TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: secondaryFg);
+
   ThemeData toTheme() {
     return ThemeData(
       useMaterial3: true,
       brightness: brightness,
-      primaryColor: primaryBackground,
-      scaffoldBackgroundColor: secondaryBackground,
+      primaryColor: primaryBg,
+      scaffoldBackgroundColor: secondaryBg,
       fontFamily: font,
       appBarTheme: AppBarTheme(
-        backgroundColor: primaryBackground,
-        surfaceTintColor: primaryBackground,
-        iconTheme: IconThemeData(color: primaryForeground),
+        backgroundColor: primaryBg,
+        surfaceTintColor: primaryBg,
+        iconTheme: IconThemeData(color: primaryFg),
       ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        backgroundColor: primaryBackground,
+        backgroundColor: primaryBg,
         showSelectedLabels: false,
         showUnselectedLabels: false,
         type: BottomNavigationBarType.fixed,
       ),
       colorScheme: ColorScheme.fromSeed(
         brightness: brightness,
-        seedColor: primaryColor,
-        primary: primaryBackground,
-        onPrimary: primaryForeground,
-        secondary: secondaryBackground,
-        onSecondary: secondaryForeground,
-        surface: secondaryBackground,
-        onSurface: primaryForeground,
+        seedColor: primary,
+        primary: primaryBg,
+        onPrimary: primaryFg,
+        secondary: secondaryBg,
+        onSecondary: secondaryFg,
+        surface: secondaryBg,
+        onSurface: primaryFg,
       ),
       textTheme: TextTheme(
         titleLarge: TextStyle(
           fontFamily: font,
-          color: primaryForeground,
+          color: primaryFg,
           fontWeight: FontWeight.w600,
           fontSize: 18,
         ),
         titleMedium: TextStyle(
           fontFamily: font,
-          color: primaryForeground,
+          color: primaryFg,
           fontWeight: FontWeight.w600,
           fontSize: 16,
         ),
         titleSmall: TextStyle(
           fontFamily: font,
-          color: primaryForeground,
+          color: primaryFg,
           fontWeight: FontWeight.w600,
           fontSize: 12,
         ),

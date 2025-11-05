@@ -56,7 +56,7 @@ class _DirectionButton extends StatelessWidget {
             longitude: establishment.longitude!.toDouble(),
           );
         },
-        background: theme.custom.primaryColor,
+        background: theme.custom.primary,
         foreground: theme.custom.white,
       );
     } else {
@@ -77,14 +77,7 @@ class _TitleAndInfo extends StatelessWidget {
       spacing: 2,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          establishment.name,
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-            color: theme.custom.primaryForeground,
-          ),
-        ),
+        Text(establishment.name, style: theme.custom.titleLarge),
         Row(
           spacing: 6,
           children: [
@@ -92,28 +85,19 @@ class _TitleAndInfo extends StatelessWidget {
               height: 12,
               width: 12,
               decoration: BoxDecoration(
-                color: theme.custom.success,
+                color: theme.custom.green,
                 borderRadius: BorderRadius.circular(12),
               ),
             ),
             Text(
               'Открыт до 22:00',
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                color: theme.custom.success,
+              style: theme.custom.labelMedium.copyWith(
+                color: theme.custom.green,
               ),
             ),
           ],
         ),
-        Text(
-          establishment.address,
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w400,
-            color: theme.custom.secondaryForeground,
-          ),
-        ),
+        Text(establishment.address, style: theme.custom.labelMediumAlt),
       ],
     );
   }

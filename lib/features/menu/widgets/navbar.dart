@@ -56,7 +56,7 @@ class _MenuNavBarState extends State<MenuNavBar> {
       notchSmoothness: NotchSmoothness.defaultEdge,
       leftCornerRadius: 24,
       rightCornerRadius: 24,
-      backgroundColor: theme.custom.primaryBackground,
+      backgroundColor: theme.custom.primaryBg,
       scaleFactor: -0.2,
       shadow: BoxShadow(
         color: theme.custom.shadowColor,
@@ -109,9 +109,7 @@ class _MenuNavBarItem extends StatelessWidget {
           height: 24,
           width: 24,
           colorFilter: ColorFilter.mode(
-            isActive
-                ? theme.custom.primaryColor
-                : theme.custom.secondaryForeground,
+            isActive ? theme.custom.primary : theme.custom.secondaryFg,
             BlendMode.srcIn,
           ),
         ),

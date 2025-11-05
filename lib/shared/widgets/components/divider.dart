@@ -13,7 +13,7 @@ class CustomDivider extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: verticalPadding),
       child: Divider(
-        color: theme.custom.opacityForeground,
+        color: theme.custom.opacityFg,
         indent: indent,
         endIndent: indent,
       ),

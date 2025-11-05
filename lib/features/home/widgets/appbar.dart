@@ -51,8 +51,8 @@ class _HomeAppBarState extends State<HomeAppBar> {
       pinned: true,
       title: _AppBarTitle(),
       backgroundColor: isCollapsed
-          ? theme.custom.primaryBackground
-          : theme.custom.secondaryBackground,
+          ? theme.custom.primaryBg
+          : theme.custom.secondaryBg,
       actions: [
         CustomIconButton(
           icon: 'assets/svg/bell.svg',
@@ -85,7 +85,7 @@ class _AppBarTitle extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(6),
             decoration: BoxDecoration(
-              color: theme.custom.primaryColor,
+              color: theme.custom.primary,
               borderRadius: BorderRadius.circular(8),
             ),
             child: SvgPicture.asset('assets/svg/icon.svg', height: 20),

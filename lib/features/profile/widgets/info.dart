@@ -18,7 +18,7 @@ class ProfileInfo extends StatelessWidget {
             margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: theme.custom.primaryBackground,
+              color: theme.custom.primaryBg,
               borderRadius: BorderRadius.circular(20),
             ),
             child: Row(
@@ -56,7 +56,7 @@ class _SignInButton extends StatelessWidget {
         label: 'Войти',
         fontSize: 16,
         radius: 12,
-        foreground: theme.custom.primaryForeground,
+        foreground: theme.custom.primaryFg,
         shadow: false,
         onTap: () {
           AuthDialog().show(context);
@@ -96,22 +96,8 @@ class _UserInfo extends StatelessWidget {
       spacing: 4,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          state.firebaseDisplayName ?? '',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-            color: theme.custom.primaryForeground,
-          ),
-        ),
-        Text(
-          state.firebaseEmail ?? '',
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w400,
-            color: theme.custom.secondaryForeground,
-          ),
-        ),
+        Text(state.firebaseDisplayName ?? '', style: theme.custom.labelLarge),
+        Text(state.firebaseEmail ?? '', style: theme.custom.labelMediumAlt),
       ],
     );
   }

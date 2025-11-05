@@ -26,7 +26,7 @@ class CustomSearchBar extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
         decoration: BoxDecoration(
-          color: theme.custom.primaryBackground,
+          color: theme.custom.primaryBg,
           borderRadius: BorderRadius.circular(16),
         ),
         child: Row(
@@ -37,7 +37,7 @@ class CustomSearchBar extends StatelessWidget {
               height: 20,
               width: 20,
               colorFilter: ColorFilter.mode(
-                theme.custom.secondaryForeground,
+                theme.custom.secondaryFg,
                 BlendMode.srcIn,
               ),
             ),
@@ -47,22 +47,14 @@ class CustomSearchBar extends StatelessWidget {
                 child: TextField(
                   enabled: enable,
                   autofocus: autofocus,
-                  cursorColor: theme.custom.primaryForeground,
+                  cursorColor: theme.custom.primaryFg,
                   controller: textController,
                   focusNode: focusNode,
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    color: theme.custom.primaryForeground,
-                  ),
+                  style: theme.custom.labelLargeAlt,
                   decoration: InputDecoration(
                     contentPadding: const EdgeInsets.all(0),
                     hintText: hintText,
-                    hintStyle: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      color: theme.custom.secondaryForeground,
-                    ),
+                    hintStyle: theme.custom.labelLarge,
                     border: OutlineInputBorder(borderSide: BorderSide.none),
                   ),
                 ),

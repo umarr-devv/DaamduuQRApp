@@ -24,9 +24,9 @@ class ProfileError extends StatelessWidget {
           margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: theme.custom.opacityWarning,
+            color: theme.custom.opacityOrange,
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: theme.custom.warning, width: 1),
+            border: Border.all(color: theme.custom.orange, width: 1),
           ),
           child: Column(
             spacing: 6,
@@ -73,20 +73,14 @@ class _ErrorItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       spacing: 4,
       children: [
-        Icon(
-          Icons.warning_amber_rounded,
-          size: 24,
-          color: theme.custom.warning,
-        ),
+        Icon(Icons.warning_amber_rounded, size: 24, color: theme.custom.orange),
         Expanded(
           child: Text(
             text,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w600,
-              color: theme.custom.warning,
+            style: theme.custom.labelMedium.copyWith(
+              color: theme.custom.orange,
             ),
           ),
         ),

@@ -19,10 +19,8 @@ class _FavoriteButtonState extends State<FavoriteButton> {
     final theme = Theme.of(context);
     return CustomIconButton(
       icon: favorite ? Icons.favorite_rounded : Icons.favorite_border_rounded,
-      background: theme.custom.primaryBackground,
-      foreground: favorite
-          ? theme.custom.primaryColor
-          : theme.custom.primaryForeground,
+      background: theme.custom.primaryBg,
+      foreground: favorite ? theme.custom.primary : theme.custom.primaryFg,
       shadow: widget.shadow,
       onTap: () {
         setState(() {

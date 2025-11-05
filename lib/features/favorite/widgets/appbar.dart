@@ -51,8 +51,8 @@ class _FavoriteAppBarState extends State<FavoriteAppBar> {
     final theme = Theme.of(context);
     return SliverAppBar(
       backgroundColor: isCollapsed
-          ? theme.custom.primaryBackground
-          : theme.custom.secondaryBackground,
+          ? theme.custom.primaryBg
+          : theme.custom.secondaryBg,
       automaticallyImplyLeading: false,
       pinned: true,
       shadowColor: theme.custom.highShadowColor,

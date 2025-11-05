@@ -22,7 +22,7 @@ class EstablishmentCard extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
         decoration: BoxDecoration(
-          color: theme.custom.primaryBackground,
+          color: theme.custom.primaryBg,
           boxShadow: theme.custom.boxShadow,
           borderRadius: BorderRadius.circular(16),
         ),
@@ -86,7 +86,7 @@ class _CardInfo extends StatelessWidget {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-      decoration: BoxDecoration(color: theme.custom.primaryBackground),
+      decoration: BoxDecoration(color: theme.custom.primaryBg),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -94,11 +94,7 @@ class _CardInfo extends StatelessWidget {
             establishment.name,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-              color: theme.custom.primaryForeground,
-            ),
+            style: theme.custom.labelMedium,
           ),
           Row(
             spacing: 4,
@@ -106,18 +102,14 @@ class _CardInfo extends StatelessWidget {
               Icon(
                 Icons.location_pin,
                 size: 16,
-                color: theme.custom.secondaryForeground,
+                color: theme.custom.secondaryFg,
               ),
               Expanded(
                 child: Text(
                   establishment.address,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500,
-                    color: theme.custom.secondaryForeground,
-                  ),
+                  style: theme.custom.labelSmallAlt,
                 ),
               ),
             ],

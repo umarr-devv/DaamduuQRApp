@@ -27,7 +27,7 @@ class CustomScrollableSheet extends StatelessWidget {
     final theme = Theme.of(context);
     showModalBottomSheet(
       context: context,
-      backgroundColor: theme.custom.primaryBackground,
+      backgroundColor: theme.custom.primaryBg,
       isScrollControlled: true,
       elevation: 4,
       shape: RoundedRectangleBorder(
@@ -56,10 +56,8 @@ class CustomScrollableSheet extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  if (closeButton)
-                  MaybePopButton(close: true),
-                  if (!closeButton)
-                  SizedBox(),
+                  if (closeButton) MaybePopButton(close: true),
+                  if (!closeButton) SizedBox(),
                   Row(spacing: 8, children: actions),
                 ],
               ),

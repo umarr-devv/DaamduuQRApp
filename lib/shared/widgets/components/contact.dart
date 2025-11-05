@@ -35,7 +35,7 @@ class CustomContactText extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
         decoration: BoxDecoration(
-          color: theme.custom.secondaryBackground,
+          color: theme.custom.secondaryBg,
           borderRadius: BorderRadius.circular(8),
         ),
         child: Row(
@@ -47,17 +47,13 @@ class CustomContactText extends StatelessWidget {
               height: 16,
               width: 16,
               colorFilter: ColorFilter.mode(
-                theme.custom.primaryForeground,
+                theme.custom.primaryFg,
                 BlendMode.srcIn,
               ),
             ),
             Text(
               contact.name ?? label,
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w500,
-                color: theme.custom.primaryForeground,
-              ),
+              style: theme.custom.labelSmall,
             ),
           ],
         ),

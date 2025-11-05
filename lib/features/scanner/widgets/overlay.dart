@@ -17,9 +17,7 @@ class ScannerOverlay extends StatelessWidget {
             offset: Offset(0, -200),
             child: Text(
               'Наведите камеру на QR',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
+              style: theme.custom.labelLarge.copyWith(
                 color: theme.custom.white,
               ),
             ),

@@ -122,16 +122,9 @@ class _AppBarTitle extends StatelessWidget {
         children: [
           CustomEstablishmentType(
             type: establishment.type,
-            color: theme.custom.secondaryForeground,
+            color: theme.custom.secondaryFg,
           ),
-          Text(
-            establishment.name,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w500,
-              color: theme.custom.primaryForeground,
-            ),
-          ),
+          Text(establishment.name, style: theme.custom.labelLarge),
         ],
       ),
     );
@@ -170,10 +163,7 @@ class _BackgroundImagesState extends State<_BackgroundImages> {
               height: mediaQuery.padding.top + 12,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [
-                    theme.custom.opacityForeground,
-                    theme.custom.transparent,
-                  ],
+                  colors: [theme.custom.opacityFg, theme.custom.transparent],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                 ),
@@ -186,7 +176,7 @@ class _BackgroundImagesState extends State<_BackgroundImages> {
                 height: 28,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: theme.custom.primaryBackground,
+                  color: theme.custom.primaryBg,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(16),
                     topRight: Radius.circular(16),

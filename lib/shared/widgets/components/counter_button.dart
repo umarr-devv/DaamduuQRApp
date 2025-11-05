@@ -25,7 +25,7 @@ class CustomCounterButton extends StatelessWidget {
       onTap: () {},
       child: Container(
         decoration: BoxDecoration(
-          color: theme.custom.secondaryBackground,
+          color: theme.custom.secondaryBg,
           borderRadius: BorderRadius.circular(64),
           border: Border.all(color: theme.custom.opacityBorder, width: 1),
         ),
@@ -35,8 +35,8 @@ class CustomCounterButton extends StatelessWidget {
               return CustomIconButton(
                 icon: Icons.add,
                 size: 20,
-                background: theme.custom.primaryBackground,
-                foreground: theme.custom.primaryForeground,
+                background: theme.custom.primaryBg,
+                foreground: theme.custom.primaryFg,
                 onTap: value == null ? onFirstAdd : onAdd,
               );
             } else {
@@ -50,21 +50,17 @@ class CustomCounterButton extends StatelessWidget {
                     onTap: value == null ? () {} : onRemove,
                   ),
                   SizedBox(
-                    height: 36,
+                    height: 32,
                     child: AnimatedFlipCounter(
                       value: value ?? 0,
                       duration: const Duration(milliseconds: 175),
-                      textStyle: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                        color: theme.custom.primaryForeground,
-                      ),
+                      textStyle: theme.custom.labelSmall,
                     ),
                   ),
                   CustomIconButton(
                     icon: Icons.add,
                     size: 20,
-                    background: theme.custom.primaryColor,
+                    background: theme.custom.primary,
                     foreground: theme.custom.white,
                     onTap: value == null ? onFirstAdd : onAdd,
                   ),

@@ -24,24 +24,16 @@ class CustomTitleText extends StatelessWidget {
           spacing: 4,
           children: [
             if (icon != null)
-              Icon(icon, size: 16, color: theme.custom.secondaryForeground),
+              Icon(icon, size: 16, color: theme.custom.secondaryFg),
             Text(
               title,
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w500,
-                color: theme.custom.primaryForeground,
-              ),
+              style: theme.custom.labelLarge,
             ),
           ],
         ),
         Text(
           text,
-          style: TextStyle(
-            fontSize: 13,
-            fontWeight: FontWeight.w500,
-            color: theme.custom.secondaryForeground,
-          ),
+          style: theme.custom.labelSmallAlt,
         ),
       ],
     );

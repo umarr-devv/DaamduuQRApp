@@ -41,7 +41,7 @@ class _EstablishmentScreenState extends State<EstablishmentScreen> {
     return MultiBlocProvider(
       providers: [BlocProvider.value(value: cubit)],
       child: Scaffold(
-        backgroundColor: theme.custom.primaryBackground,
+        backgroundColor: theme.custom.primaryBg,
         body: Stack(
           children: [
             CustomScrollView(

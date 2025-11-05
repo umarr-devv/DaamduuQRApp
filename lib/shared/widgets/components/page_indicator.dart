@@ -25,8 +25,8 @@ class CustomPageIndicator extends StatelessWidget {
           expansionFactor: 2.5,
           dotHeight: 8,
           dotWidth: 8,
-          dotColor: theme.custom.opacityForeground,
-          activeDotColor: theme.custom.primaryForeground,
+          dotColor: theme.custom.opacityFg,
+          activeDotColor: theme.custom.primaryFg,
         ),
       ),
     );
@@ -38,7 +38,7 @@ class CustomAnimationIndicator extends StatelessWidget {
     super.key,
     required this.currentIndex,
     required this.length,
-     this.color,
+    this.color,
   });
 
   final int currentIndex;
@@ -56,8 +56,8 @@ class CustomAnimationIndicator extends StatelessWidget {
         expansionFactor: 2.5,
         dotHeight: 8,
         dotWidth: 8,
-        dotColor: theme.custom.opacityForeground,
-        activeDotColor: color ?? theme.custom.primaryForeground,
+        dotColor: theme.custom.opacityFg,
+        activeDotColor: color ?? theme.custom.primaryFg,
       ),
     );
   }

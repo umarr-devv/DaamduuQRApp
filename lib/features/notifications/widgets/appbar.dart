@@ -30,17 +30,13 @@ class _AppBarTitle extends StatelessWidget {
           height: 20,
           width: 20,
           colorFilter: ColorFilter.mode(
-            theme.custom.primaryForeground,
+            theme.custom.primaryFg,
             BlendMode.srcIn,
           ),
         ),
         Text(
           'Уведомления',
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-            color: theme.custom.primaryForeground,
-          ),
+          style: theme.custom.titleLarge,
         ),
       ],
     );

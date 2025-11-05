@@ -12,13 +12,11 @@ class ProductLongCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return GestureDetector(
-      onTap: () {
-        ProductDetail(product: product).show(context);
-      },
+      onTap: () {},
       child: Container(
         padding: const EdgeInsets.all(2),
         decoration: BoxDecoration(
-          color: theme.custom.primaryBackground,
+          color: theme.custom.primaryBg,
           borderRadius: BorderRadius.circular(16),
           boxShadow: theme.custom.boxShadow,
         ),
@@ -87,33 +85,15 @@ class _CardInfo extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            product.name,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: theme.custom.primaryForeground,
-            ),
-          ),
-          Text(
-            product.category.name,
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              color: theme.custom.secondaryForeground,
-            ),
-          ),
+          Text(product.name, style: theme.custom.labelLarge),
+          Text(product.category.name, style: theme.custom.labelSmallAlt),
           Expanded(child: SizedBox()),
           Row(
             spacing: 4,
             children: [
               Text(
                 product.price.toStringAsFixed(1),
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                  color: theme.custom.primaryForeground,
-                ),
+                style: theme.custom.labelLarge,
               ),
               SomSymbol(),
             ],

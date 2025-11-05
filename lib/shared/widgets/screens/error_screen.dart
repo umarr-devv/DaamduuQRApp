@@ -1,5 +1,4 @@
 import 'package:app/shared/theme/theme.dart';
-import 'package:app/shared/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -24,40 +23,23 @@ class ErrorScreen extends StatelessWidget {
               height: 128,
               width: 128,
               colorFilter: ColorFilter.mode(
-                theme.custom.primaryForeground,
+                theme.custom.primaryFg,
                 BlendMode.srcIn,
               ),
             ),
             Text(
               'Нет соединения с сетью',
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-                color: theme.custom.primaryForeground,
-              ),
+              style: theme.custom.labelLarge,
             ),
             Text(
               'Проверьте соединение с сетью или же попробуйте чуть позже',
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
-                color: theme.custom.secondaryForeground,
-              ),
+              style: theme.custom.labelMediumAlt,
             ),
             const SizedBox(height: 12),
             if (retry != null)
-              SizedBox(
-                height: 48,
-                width: double.infinity,
-                child: CustomActionButton(
-                  icon: Icons.sync,
-                  label: 'Повторить',
-                  background: theme.custom.primaryForeground,
-                  onTap: retry!,
-                ),
-              ),
+              SizedBox(height: 48, width: double.infinity, child: Container()),
           ],
         ),
       ),

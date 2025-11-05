@@ -11,7 +11,7 @@ class ScannerInfo extends StatefulWidget {
 }
 
 class _ScannerInfoState extends State<ScannerInfo> {
-BarcodeCubit get cubit => BlocProvider.of<BarcodeCubit>(context);
+  BarcodeCubit get cubit => BlocProvider.of<BarcodeCubit>(context);
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +30,7 @@ BarcodeCubit get cubit => BlocProvider.of<BarcodeCubit>(context);
             ),
             child: Text(
               state.barcode ?? '',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
+              style: theme.custom.labelLarge.copyWith(
                 color: theme.custom.white,
               ),
             ),
