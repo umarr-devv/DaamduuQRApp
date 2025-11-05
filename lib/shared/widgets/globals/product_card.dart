@@ -1,8 +1,9 @@
 import 'package:app/blocs/order/order_cubit.dart';
+import 'package:app/core/router/router.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:app/shared/widgets/buttons/favorite.dart';
 import 'package:app/shared/widgets/components/components.dart';
-import 'package:app/shared/widgets/globals/global.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,7 +18,7 @@ class ProductCard extends StatelessWidget {
     final theme = Theme.of(context);
     return GestureDetector(
       onTap: () {
-        ProductDetail(product: product).show(context);
+        AutoRouter.of(context).push(ProductRoute(product: product));
       },
       child: Stack(
         children: [
@@ -71,11 +72,6 @@ class _AddOrderButton extends StatelessWidget {
               onRemove: () {
                 if (item != null) {
                   cubit.setItem(item.copyWith(item.quantity - 1));
-                }
-              },
-              onClear: () {
-                if (item != null) {
-                  cubit.setItem(item.copyWith(0));
                 }
               },
             ),

@@ -1,5 +1,4 @@
 import 'package:app/features/catalog/view.dart';
-import 'package:app/features/category/view.dart';
 import 'package:app/features/establishment/view.dart';
 import 'package:app/features/favorite/view.dart';
 import 'package:app/features/history/view.dart';
@@ -8,6 +7,7 @@ import 'package:app/features/init/view.dart';
 import 'package:app/features/menu/view.dart';
 import 'package:app/features/notifications/view.dart';
 import 'package:app/features/order/view.dart';
+import 'package:app/features/product/view.dart';
 import 'package:app/features/profile/view.dart';
 import 'package:app/features/scanner/view.dart';
 import 'package:app/features/search/view.dart';
@@ -39,7 +39,11 @@ class AppRouter extends RootStackRouter {
       transitionsBuilder: TransitionsBuilders.fadeIn,
     ),
     CustomRoute(
-      page: CategoryRoute.page,
+      page: CatalogRoute.page,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+    ),
+    CustomRoute(
+      page: ProductRoute.page,
       transitionsBuilder: TransitionsBuilders.fadeIn,
     ),
     CustomRoute(
@@ -53,10 +57,6 @@ class AppRouter extends RootStackRouter {
     CustomRoute(
       page: SearchRoute.page,
       transitionsBuilder: TransitionsBuilders.fadeIn,
-    ),
-    CustomRoute(
-      page: CatalogRoute.page,
-      transitionsBuilder: TransitionsBuilders.slideLeft,
     ),
     CustomRoute(
       page: HistoryRoute.page,

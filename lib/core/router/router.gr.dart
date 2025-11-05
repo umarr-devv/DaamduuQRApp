@@ -58,53 +58,6 @@ class CatalogRouteArgs {
 }
 
 /// generated route for
-/// [CategoryScreen]
-class CategoryRoute extends PageRouteInfo<CategoryRouteArgs> {
-  CategoryRoute({
-    Key? key,
-    required CategoryScheme category,
-    List<PageRouteInfo>? children,
-  }) : super(
-         CategoryRoute.name,
-         args: CategoryRouteArgs(key: key, category: category),
-         initialChildren: children,
-       );
-
-  static const String name = 'CategoryRoute';
-
-  static PageInfo page = PageInfo(
-    name,
-    builder: (data) {
-      final args = data.argsAs<CategoryRouteArgs>();
-      return CategoryScreen(key: args.key, category: args.category);
-    },
-  );
-}
-
-class CategoryRouteArgs {
-  const CategoryRouteArgs({this.key, required this.category});
-
-  final Key? key;
-
-  final CategoryScheme category;
-
-  @override
-  String toString() {
-    return 'CategoryRouteArgs{key: $key, category: $category}';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (other is! CategoryRouteArgs) return false;
-    return key == other.key && category == other.category;
-  }
-
-  @override
-  int get hashCode => key.hashCode ^ category.hashCode;
-}
-
-/// generated route for
 /// [EstablishmentScreen]
 class EstablishmentRoute extends PageRouteInfo<EstablishmentRouteArgs> {
   EstablishmentRoute({
@@ -264,6 +217,53 @@ class OrderRoute extends PageRouteInfo<void> {
       return const OrderScreen();
     },
   );
+}
+
+/// generated route for
+/// [ProductScreen]
+class ProductRoute extends PageRouteInfo<ProductRouteArgs> {
+  ProductRoute({
+    Key? key,
+    required ProductScheme product,
+    List<PageRouteInfo>? children,
+  }) : super(
+         ProductRoute.name,
+         args: ProductRouteArgs(key: key, product: product),
+         initialChildren: children,
+       );
+
+  static const String name = 'ProductRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ProductRouteArgs>();
+      return ProductScreen(key: args.key, product: args.product);
+    },
+  );
+}
+
+class ProductRouteArgs {
+  const ProductRouteArgs({this.key, required this.product});
+
+  final Key? key;
+
+  final ProductScheme product;
+
+  @override
+  String toString() {
+    return 'ProductRouteArgs{key: $key, product: $product}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! ProductRouteArgs) return false;
+    return key == other.key && product == other.product;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ product.hashCode;
 }
 
 /// generated route for
