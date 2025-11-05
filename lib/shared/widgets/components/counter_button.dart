@@ -54,7 +54,7 @@ class CustomCounterButton extends StatelessWidget {
                     child: AnimatedFlipCounter(
                       value: value ?? 0,
                       duration: const Duration(milliseconds: 175),
-                      textStyle: theme.custom.labelSmall,
+                      textStyle: theme.custom.labelLarge,
                     ),
                   ),
                   CustomIconButton(

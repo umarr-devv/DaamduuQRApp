@@ -143,12 +143,15 @@ class _CardImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadiusGeometry.only(
-        topLeft: Radius.circular(16),
-        topRight: Radius.circular(16),
+    return Hero(
+      tag: 'image_${product.id}',
+      child: ClipRRect(
+        borderRadius: BorderRadiusGeometry.only(
+          topLeft: Radius.circular(16),
+          topRight: Radius.circular(16),
+        ),
+        child: CustomImage(imageId: product.images[0].id),
       ),
-      child: CustomImage(imageId: product.images[0].id),
     );
   }
 }

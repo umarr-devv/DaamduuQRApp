@@ -9,7 +9,7 @@ part 'establishment_cubit.g.dart';
 part 'establishment_state.dart';
 
 class EstablishmentCubit extends HydratedCubit<EstablishmentState> {
-  EstablishmentCubit({required EstablishmentScheme establishment})
+  EstablishmentCubit(EstablishmentScheme establishment)
     : super(EstablishmentInitial(establishment: establishment));
 
   final client = GetIt.I<DaamduuqrClient>();

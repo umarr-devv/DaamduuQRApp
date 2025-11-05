@@ -24,7 +24,7 @@ class _EstablishmentScreenState extends State<EstablishmentScreen> {
   @override
   void initState() {
     super.initState();
-    cubit = EstablishmentCubit(establishment: widget.establishment);
+    cubit = EstablishmentCubit(widget.establishment);
     cubit.update();
   }
 
