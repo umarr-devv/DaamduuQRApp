@@ -19,7 +19,9 @@ class OrderCubit extends HydratedCubit<OrderState> {
     emit(OrderUpdate(newState));
   }
 
-  void setItem(OrderItem item) async {
+  void setItem(OrderItem? item) async {
+    if (item == null) return;
+
     final List<OrderItem> items = List.from(state.items);
     final oldItem = items.firstWhereLogTypeOrNull(
       (i) => i.product.id == item.product.id,

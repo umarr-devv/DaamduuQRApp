@@ -11,6 +11,7 @@ class CustomIconButton extends StatefulWidget {
     this.radius = 64,
     this.animation = true,
     this.shadow = true,
+    this.active = true,
     this.shadowColor,
     this.background,
     this.foreground,
@@ -21,6 +22,7 @@ class CustomIconButton extends StatefulWidget {
   final double size;
   final bool animation;
   final bool shadow;
+  final bool active;
   final Color? shadowColor;
   final Color? background;
   final Color? foreground;
@@ -38,8 +40,8 @@ class _CustomIconButtonState extends State<CustomIconButton> {
       setState(() {
         scale = 0.8;
       });
-      await Future.delayed(const Duration(milliseconds: 175));
       widget.onTap();
+      await Future.delayed(const Duration(milliseconds: 175));
       if (!mounted) return;
       setState(() {
         scale = 1;
@@ -52,41 +54,48 @@ class _CustomIconButtonState extends State<CustomIconButton> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return SizedBox(
-      height: widget.size + 16,
-      width: widget.size + 16,
-      child: IconButton(
-        onPressed: onPressed,
-        style: IconButton.styleFrom(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadiusGeometry.circular(widget.radius),
+    return Opacity(
+      opacity: widget.active ? 1 : 0.65,
+      child: SizedBox(
+        height: widget.size + 16,
+        width: widget.size + 16,
+        child: IconButton(
+          onPressed: () async {
+            if (widget.active) {
+              await onPressed();
+            }
+          },
+          style: IconButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadiusGeometry.circular(widget.radius),
+            ),
+            shadowColor: widget.shadow
+                ? widget.shadowColor ?? theme.custom.highShadowColor
+                : theme.custom.transparent,
+            elevation: 4,
+            backgroundColor: widget.background ?? theme.custom.primaryBg,
           ),
-          shadowColor: widget.shadow
-              ? widget.shadowColor ?? theme.custom.highShadowColor
-              : theme.custom.transparent,
-          elevation: 4,
-          backgroundColor: widget.background ?? theme.custom.primaryBg,
-        ),
-        icon: AnimatedScale(
-          scale: scale,
-          duration: const Duration(milliseconds: 175),
-          child: widget.icon is IconData
-              ? Icon(
-                  widget.icon as IconData,
-                  size: widget.size,
-                  color: widget.foreground ?? theme.custom.primaryFg,
-                )
-              : widget.icon is String
-              ? SvgPicture.asset(
-                  widget.icon as String,
-                  width: widget.size,
-                  height: widget.size,
-                  colorFilter: ColorFilter.mode(
-                    widget.foreground ?? theme.custom.primaryFg,
-                    BlendMode.srcIn,
-                  ),
-                )
-              : SizedBox(),
+          icon: AnimatedScale(
+            scale: scale,
+            duration: const Duration(milliseconds: 175),
+            child: widget.icon is IconData
+                ? Icon(
+                    widget.icon as IconData,
+                    size: widget.size,
+                    color: widget.foreground ?? theme.custom.primaryFg,
+                  )
+                : widget.icon is String
+                ? SvgPicture.asset(
+                    widget.icon as String,
+                    width: widget.size,
+                    height: widget.size,
+                    colorFilter: ColorFilter.mode(
+                      widget.foreground ?? theme.custom.primaryFg,
+                      BlendMode.srcIn,
+                    ),
+                  )
+                : SizedBox(),
+          ),
         ),
       ),
     );

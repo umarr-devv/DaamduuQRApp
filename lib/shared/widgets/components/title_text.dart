@@ -17,7 +17,6 @@ class CustomTitleText extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Column(
-      spacing: 2,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
@@ -25,16 +24,10 @@ class CustomTitleText extends StatelessWidget {
           children: [
             if (icon != null)
               Icon(icon, size: 16, color: theme.custom.secondaryFg),
-            Text(
-              title,
-              style: theme.custom.labelLarge,
-            ),
+            Text(title, style: theme.custom.labelMedium),
           ],
         ),
-        Text(
-          text,
-          style: theme.custom.labelSmallAlt,
-        ),
+        Text(text, style: theme.custom.labelMediumAlt),
       ],
     );
   }

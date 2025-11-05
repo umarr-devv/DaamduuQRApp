@@ -26,7 +26,12 @@ class ToMenuButton extends StatelessWidget {
               bottom: mediaQuery.padding.bottom + 4,
             ),
             width: double.infinity,
-            decoration: BoxDecoration(color: theme.custom.primaryBg),
+            decoration: BoxDecoration(
+              color: theme.custom.primaryBg,
+              border: Border(
+                top: BorderSide(color: theme.custom.opacityBorder, width: 1),
+              ),
+            ),
             child: SizedBox(
               height: 48,
               child: CustomTextButton(
@@ -35,7 +40,7 @@ class ToMenuButton extends StatelessWidget {
                 background: theme.custom.primary,
                 foreground: theme.custom.white,
                 radius: 12,
-                size: 24,
+                size: 20,
                 fontSize: 18,
                 shadow: false,
                 onTap: () {

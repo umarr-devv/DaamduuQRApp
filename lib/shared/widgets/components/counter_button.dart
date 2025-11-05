@@ -23,52 +23,40 @@ class CustomCounterButton extends StatelessWidget {
     final theme = Theme.of(context);
     return GestureDetector(
       onTap: () {},
-      child: Container(
-        decoration: BoxDecoration(
-          color: theme.custom.secondaryBg,
-          borderRadius: BorderRadius.circular(64),
-          border: Border.all(color: theme.custom.opacityBorder, width: 1),
-        ),
-        child: Builder(
-          builder: (context) {
-            if (value == null) {
-              return CustomIconButton(
+      child: Builder(
+        builder: (context) {
+          return Row(
+            mainAxisSize: MainAxisSize.min,
+            spacing: 12,
+            children: [
+              CustomIconButton(
+                icon: Icons.remove,
+                size: 24,
+                radius: 12,
+                shadow: false,
+                background: theme.custom.secondaryBg,
+                onTap: value == null ? () {} : onRemove,
+              ),
+              SizedBox(
+                height: 32,
+                child: AnimatedFlipCounter(
+                  value: value ?? 0,
+                  duration: const Duration(milliseconds: 175),
+                  textStyle: theme.custom.labelVeryLarge,
+                ),
+              ),
+              CustomIconButton(
                 icon: Icons.add,
-                size: 20,
-                background: theme.custom.primaryBg,
-                foreground: theme.custom.primaryFg,
+                size: 24,
+                radius: 12,
+                background: theme.custom.primary,
+                foreground: theme.custom.white,
+                shadow: false,
                 onTap: value == null ? onFirstAdd : onAdd,
-              );
-            } else {
-              return Row(
-                mainAxisSize: MainAxisSize.min,
-                spacing: 8,
-                children: [
-                  CustomIconButton(
-                    icon: Icons.remove,
-                    size: 20,
-                    onTap: value == null ? () {} : onRemove,
-                  ),
-                  SizedBox(
-                    height: 32,
-                    child: AnimatedFlipCounter(
-                      value: value ?? 0,
-                      duration: const Duration(milliseconds: 175),
-                      textStyle: theme.custom.labelLarge,
-                    ),
-                  ),
-                  CustomIconButton(
-                    icon: Icons.add,
-                    size: 20,
-                    background: theme.custom.primary,
-                    foreground: theme.custom.white,
-                    onTap: value == null ? onFirstAdd : onAdd,
-                  ),
-                ],
-              );
-            }
-          },
-        ),
+              ),
+            ],
+          );
+        },
       ),
     );
   }

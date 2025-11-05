@@ -77,7 +77,7 @@ class _TitleAndInfo extends StatelessWidget {
       spacing: 2,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(establishment.name, style: theme.custom.titleLarge),
+        Text(establishment.name, style: theme.custom.labelVeryLarge),
         Row(
           spacing: 6,
           children: [

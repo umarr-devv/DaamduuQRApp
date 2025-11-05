@@ -40,11 +40,13 @@ class _CustomTextButtonState extends State<CustomTextButton> {
 
   Future onPressed() async {
     if (widget.animation) {
-      widget.onTap();
+      if (!mounted) return;
       setState(() {
-        scale = 0.9;
+        scale = 0.8;
       });
+      widget.onTap();
       await Future.delayed(const Duration(milliseconds: 175));
+      if (!mounted) return;
       setState(() {
         scale = 1;
       });
@@ -101,8 +103,8 @@ class _CustomTextButtonState extends State<CustomTextButton> {
                 widget.label,
                 style: theme.custom.labelLarge.copyWith(
                   fontSize: widget.fontSize,
-                  color: widget.foreground ?? theme.custom.primaryFg
-                )
+                  color: widget.foreground ?? theme.custom.primaryFg,
+                ),
               ),
             ],
           ),

@@ -56,6 +56,7 @@ class _ProductAppBarState extends State<ProductAppBar> {
           toolbarHeight: toolbarHeight,
           expandedHeight: expandedHeight,
           elevation: 4,
+          centerTitle: false,
           shadowColor: theme.custom.highShadowColor,
           leading: MaybePopButton(shadow: !isCollapsed),
           title: _AppBarTitle(show: isCollapsed, product: state.product),

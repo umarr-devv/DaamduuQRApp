@@ -129,10 +129,16 @@ class _CardImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Hero(
       tag: 'image_${establishment.id}',
-      child: CustomImage(
-        imageId: establishment.images.isNotEmpty
-            ? establishment.images[0].id
-            : null,
+      child: ClipRRect(
+        borderRadius: BorderRadiusGeometry.only(
+          topLeft: Radius.circular(16),
+          topRight: Radius.circular(16),
+        ),
+        child: CustomImage(
+          imageId: establishment.images.isNotEmpty
+              ? establishment.images[0].id
+              : null,
+        ),
       ),
     );
   }

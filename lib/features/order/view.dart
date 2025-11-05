@@ -21,12 +21,14 @@ class _OrderScreenState extends State<OrderScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      controller: scrollController,
-      slivers: [
-        OrderAppBar(scrollController: scrollController),
-        SliverFillRemaining(),
-      ],
+    return Scaffold(
+      body: CustomScrollView(
+        controller: scrollController,
+        slivers: [
+          OrderAppBar(scrollController: scrollController),
+          SliverFillRemaining(),
+        ],
+      ),
     );
   }
 }

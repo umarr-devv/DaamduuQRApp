@@ -1,4 +1,3 @@
-import 'package:app/blocs/order/order_cubit.dart';
 import 'package:app/core/router/router.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:app/shared/widgets/buttons/favorite.dart';
@@ -6,7 +5,6 @@ import 'package:app/shared/widgets/components/components.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({super.key, required this.product});
@@ -32,64 +30,29 @@ class ProductCard extends StatelessWidget {
               children: [
                 Expanded(child: _CardImage(product: product)),
                 _CardInfo(product: product),
-                _AddOrderButton(product: product),
               ],
             ),
           ),
-          _FavoriteStatus(),
+          _FavoriteStatus(product: product),
         ],
       ),
     );
   }
 }
 
-class _AddOrderButton extends StatelessWidget {
-  const _AddOrderButton({required this.product});
+class _FavoriteStatus extends StatelessWidget {
+  const _FavoriteStatus({required this.product});
 
   final ProductScheme product;
 
   @override
   Widget build(BuildContext context) {
-    final cubit = BlocProvider.of<OrderCubit>(context);
-    return BlocBuilder<OrderCubit, OrderState>(
-      bloc: cubit,
-      builder: (context, state) {
-        final item = state.getOrderItem(product.id);
-        return Align(
-          alignment: Alignment.bottomRight,
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 8, right: 8),
-            child: CustomCounterButton(
-              value: item?.quantity,
-              onFirstAdd: () {
-                cubit.addItem(product);
-              },
-              onAdd: () {
-                if (item != null) {
-                  cubit.setItem(item.copyWith(item.quantity + 1));
-                }
-              },
-              onRemove: () {
-                if (item != null) {
-                  cubit.setItem(item.copyWith(item.quantity - 1));
-                }
-              },
-            ),
-          ),
-        );
-      },
-    );
-  }
-}
-
-class _FavoriteStatus extends StatelessWidget {
-  const _FavoriteStatus();
-
-  @override
-  Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.topRight,
-      child: Padding(padding: const EdgeInsets.all(8), child: FavoriteButton()),
+      child: Padding(
+        padding: const EdgeInsets.all(8),
+        child: Hero(tag: 'favorite_${product.id}', child: FavoriteButton()),
+      ),
     );
   }
 }

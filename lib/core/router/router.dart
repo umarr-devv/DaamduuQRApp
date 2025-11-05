@@ -47,6 +47,10 @@ class AppRouter extends RootStackRouter {
       transitionsBuilder: TransitionsBuilders.fadeIn,
     ),
     CustomRoute(
+      page: OrderRoute.page,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+    ),
+    CustomRoute(
       page: StoryRoute.page,
       transitionsBuilder: TransitionsBuilders.slideBottom,
     ),

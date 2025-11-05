@@ -69,6 +69,9 @@ class CustomThemeData {
   TextStyle get titleLarge =>
       TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: primaryFg);
 
+  TextStyle get labelVeryLarge =>
+      TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: primaryFg);
+
   TextStyle get labelLarge =>
       TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: primaryFg);
 
