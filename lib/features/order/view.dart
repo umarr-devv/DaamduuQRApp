@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 
 @RoutePage()
 class OrderScreen extends StatefulWidget {
-  const OrderScreen({super.key});
+  const OrderScreen({super.key, this.isInMenu = true});
+
+  final bool isInMenu;
 
   @override
   State<OrderScreen> createState() => _OrderScreenState();
