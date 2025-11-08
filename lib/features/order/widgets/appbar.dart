@@ -1,65 +1,58 @@
+import 'package:app/blocs/blocs.dart';
 import 'package:app/shared/theme/theme.dart';
-import 'package:app/shared/widgets/components/components.dart';
+import 'package:app/shared/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class OrderAppBar extends StatefulWidget {
-  const OrderAppBar({super.key, required this.scrollController});
+class OrderAppBar extends StatelessWidget {
+  const OrderAppBar({super.key, required this.isInMenu});
 
-  final ScrollController scrollController;
-
-  @override
-  State<OrderAppBar> createState() => _OrderAppBarState();
-}
-
-class _OrderAppBarState extends State<OrderAppBar> {
-  bool isCollapsed = false;
-
-  void scrollListener() {
-    if (widget.scrollController.offset > 12) {
-      if (!isCollapsed) {
-        setState(() {
-          isCollapsed = true;
-        });
-      }
-    } else if (widget.scrollController.offset < 12) {
-      if (isCollapsed) {
-        setState(() {
-          isCollapsed = false;
-        });
-      }
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    widget.scrollController.addListener(scrollListener);
-  }
+  final bool isInMenu;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return SliverAppBar(
-      backgroundColor: isCollapsed
-          ? theme.custom.primaryBg
-          : theme.custom.secondaryBg,
+      backgroundColor: theme.custom.secondaryBg,
       automaticallyImplyLeading: false,
       pinned: true,
-      shadowColor: theme.custom.highShadowColor,
-      title: Text('Мой Заказ'),
-      actions: [
-        CustomTextButton(
+      leading: isInMenu
+          ? null
+          : UnconstrainedBox(child: MaybePopButton(shadow: false)),
+      title: Text('Мой Заказ', style: theme.custom.titleLarge),
+      actions: [_AppBarActions(), const SizedBox(width: 16)],
+    );
+  }
+}
+
+class _AppBarActions extends StatelessWidget {
+  const _AppBarActions();
+
+  @override
+  Widget build(BuildContext context) {
+    final cubit = BlocProvider.of<OrderCubit>(context);
+    final theme = Theme.of(context);
+    return BlocBuilder<OrderCubit, OrderState>(
+      bloc: cubit,
+      builder: (context, state) {
+        final available = state.items.isNotEmpty;
+        return CustomTextButton(
           label: 'Очистить',
-          icon: 'assets/svg/trash-xmark.svg',
           radius: 12,
-          size: 20,
+          size: 24,
           shadow: false,
           background: theme.custom.transparent,
-          foreground: theme.custom.primary,
-          onTap: () {},
-        ),
-        const SizedBox(width: 16),
-      ],
+          foreground: available
+              ? theme.custom.primary
+              : theme.custom.secondaryFg,
+          animation: available,
+          onTap: () {
+            if (available) {
+              cubit.clearItems();
+            }
+          },
+        );
+      },
     );
   }
 }

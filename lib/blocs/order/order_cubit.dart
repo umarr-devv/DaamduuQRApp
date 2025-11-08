@@ -43,6 +43,11 @@ class OrderCubit extends HydratedCubit<OrderState> {
     emit(OrderUpdate(newState));
   }
 
+  void clearItems() {
+    final newState = state.copyWith(items: []);
+    emit(OrderUpdate(newState));
+  }
+
   @override
   Map<String, dynamic>? toJson(OrderState state) => state.toJson();
 
