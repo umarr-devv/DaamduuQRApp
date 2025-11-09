@@ -22,7 +22,7 @@ class GeneralStorage {
     await box.put(key.name, value);
   }
 
-  dynamic read(GeneralStorageKey key) {
+  T read<T>(GeneralStorageKey key) {
     return box.get(key.name);
   }
 
