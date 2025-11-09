@@ -51,7 +51,10 @@ class _FavoriteStatus extends StatelessWidget {
       alignment: Alignment.topRight,
       child: Padding(
         padding: const EdgeInsets.all(8),
-        child: Hero(tag: 'favorite_${product.id}', child: FavoriteButton()),
+        child: Hero(
+          tag: 'favorite_${product.id}',
+          child: FavoriteButton(id: product.id),
+        ),
       ),
     );
   }

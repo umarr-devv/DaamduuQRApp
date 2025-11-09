@@ -89,7 +89,7 @@ class _TitleActions extends StatelessWidget {
       children: [
         Hero(
           tag: 'favorite_${product.id}',
-          child: FavoriteButton(shadow: !isCollapsed),
+          child: FavoriteButton(shadow: !isCollapsed, id: product.id),
         ),
         ShareButton(shadow: !isCollapsed),
         const SizedBox(),

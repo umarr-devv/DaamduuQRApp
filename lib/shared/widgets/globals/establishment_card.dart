@@ -68,7 +68,7 @@ class _Actions extends StatelessWidget {
         padding: const EdgeInsets.all(8),
         child: Hero(
           tag: 'favorite_${establishment.id}',
-          child: FavoriteButton(),
+          child: FavoriteButton(id: establishment.id,),
         ),
       ),
     );
