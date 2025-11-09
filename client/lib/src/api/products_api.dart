@@ -11,6 +11,7 @@ import 'package:dio/dio.dart';
 
 import 'package:daamduuqr_client/src/model/create_portion_scheme.dart';
 import 'package:daamduuqr_client/src/model/create_product_scheme.dart';
+import 'package:daamduuqr_client/src/model/detail_product_scheme.dart';
 
 import 'package:daamduuqr_client/src/model/product_scheme.dart';
 import 'package:daamduuqr_client/src/model/update_portion_scheme.dart';
@@ -478,9 +479,9 @@ class ProductsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [ProductScheme] as data
+  /// Returns a [Future] containing a [Response] with a [DetailProductScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ProductScheme>> getProduct({
+  Future<Response<DetailProductScheme>> getProduct({
     required String productId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -510,15 +511,15 @@ class ProductsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ProductScheme? _responseData;
+    DetailProductScheme? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<ProductScheme, ProductScheme>(
+          : deserialize<DetailProductScheme, DetailProductScheme>(
               rawData,
-              'ProductScheme',
+              'DetailProductScheme',
               growable: true,
             );
     } catch (error, stackTrace) {
@@ -531,7 +532,7 @@ class ProductsApi {
       );
     }
 
-    return Response<ProductScheme>(
+    return Response<DetailProductScheme>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

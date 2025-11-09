@@ -16,6 +16,7 @@ import 'package:daamduuqr_client/src/model/create_product_scheme.dart';
 import 'package:daamduuqr_client/src/model/create_story_scheme.dart';
 import 'package:daamduuqr_client/src/model/create_user_scheme.dart';
 import 'package:daamduuqr_client/src/model/customer_scheme.dart';
+import 'package:daamduuqr_client/src/model/detail_product_scheme.dart';
 import 'package:daamduuqr_client/src/model/establishment_scheme.dart';
 import 'package:daamduuqr_client/src/model/file_scheme.dart';
 import 'package:daamduuqr_client/src/model/http_validation_error.dart';
@@ -24,6 +25,7 @@ import 'package:daamduuqr_client/src/model/login_user_scheme.dart';
 import 'package:daamduuqr_client/src/model/menu_add_product_scheme.dart';
 import 'package:daamduuqr_client/src/model/menu_delete_product_scheme.dart';
 import 'package:daamduuqr_client/src/model/menu_scheme.dart';
+import 'package:daamduuqr_client/src/model/messaging_scheme.dart';
 import 'package:daamduuqr_client/src/model/order_item_scheme.dart';
 import 'package:daamduuqr_client/src/model/order_scheme.dart';
 import 'package:daamduuqr_client/src/model/organization_scheme.dart';
@@ -32,6 +34,7 @@ import 'package:daamduuqr_client/src/model/place_scheme.dart';
 import 'package:daamduuqr_client/src/model/place_type_scheme.dart';
 import 'package:daamduuqr_client/src/model/portion_scheme.dart';
 import 'package:daamduuqr_client/src/model/product_scheme.dart';
+import 'package:daamduuqr_client/src/model/search_result_scheme.dart';
 import 'package:daamduuqr_client/src/model/story_add_establishment_scheme.dart';
 import 'package:daamduuqr_client/src/model/story_delete_establishment_scheme.dart';
 import 'package:daamduuqr_client/src/model/story_scheme.dart';
@@ -130,6 +133,9 @@ ReturnType deserialize<ReturnType, BaseType>(
     case 'CustomerScheme':
       return CustomerScheme.fromJson(value as Map<String, dynamic>)
           as ReturnType;
+    case 'DetailProductScheme':
+      return DetailProductScheme.fromJson(value as Map<String, dynamic>)
+          as ReturnType;
     case 'EstablishmentScheme':
       return EstablishmentScheme.fromJson(value as Map<String, dynamic>)
           as ReturnType;
@@ -152,6 +158,9 @@ ReturnType deserialize<ReturnType, BaseType>(
           as ReturnType;
     case 'MenuScheme':
       return MenuScheme.fromJson(value as Map<String, dynamic>) as ReturnType;
+    case 'MessagingScheme':
+      return MessagingScheme.fromJson(value as Map<String, dynamic>)
+          as ReturnType;
     case 'OrderCompleteStatus':
     case 'OrderItemScheme':
       return OrderItemScheme.fromJson(value as Map<String, dynamic>)
@@ -179,6 +188,9 @@ ReturnType deserialize<ReturnType, BaseType>(
       return ProductScheme.fromJson(value as Map<String, dynamic>)
           as ReturnType;
     case 'RoleType':
+    case 'SearchResultScheme':
+      return SearchResultScheme.fromJson(value as Map<String, dynamic>)
+          as ReturnType;
     case 'StoryAddEstablishmentScheme':
       return StoryAddEstablishmentScheme.fromJson(value as Map<String, dynamic>)
           as ReturnType;

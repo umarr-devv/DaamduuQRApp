@@ -15,11 +15,13 @@ import 'package:daamduuqr_client/src/api/establishments_api.dart';
 import 'package:daamduuqr_client/src/api/files_api.dart';
 import 'package:daamduuqr_client/src/api/health_api.dart';
 import 'package:daamduuqr_client/src/api/menus_api.dart';
+import 'package:daamduuqr_client/src/api/messaging_api.dart';
 import 'package:daamduuqr_client/src/api/orders_api.dart';
 import 'package:daamduuqr_client/src/api/organizations_api.dart';
 import 'package:daamduuqr_client/src/api/places_api.dart';
 import 'package:daamduuqr_client/src/api/products_api.dart';
 import 'package:daamduuqr_client/src/api/recommendations_api.dart';
+import 'package:daamduuqr_client/src/api/search_api.dart';
 import 'package:daamduuqr_client/src/api/stories_api.dart';
 import 'package:daamduuqr_client/src/api/users_api.dart';
 
@@ -122,6 +124,12 @@ class DaamduuqrClient {
     return MenusApi(dio);
   }
 
+  /// Get MessagingApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  MessagingApi getMessagingApi() {
+    return MessagingApi(dio);
+  }
+
   /// Get OrdersApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   OrdersApi getOrdersApi() {
@@ -150,6 +158,12 @@ class DaamduuqrClient {
   /// by doing that all interceptors will not be executed
   RecommendationsApi getRecommendationsApi() {
     return RecommendationsApi(dio);
+  }
+
+  /// Get SearchApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  SearchApi getSearchApi() {
+    return SearchApi(dio);
   }
 
   /// Get StoriesApi instance, base route and serializer can be overridden by a given but be careful,

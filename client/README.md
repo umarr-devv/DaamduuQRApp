@@ -101,6 +101,7 @@ Class | Method | HTTP request | Description
 [*MenusApi*](doc/MenusApi.md) | [**getMenuProducts**](doc/MenusApi.md#getmenuproducts) | **GET** /api/menus/{menu_id}/products | On Get Menu Products
 [*MenusApi*](doc/MenusApi.md) | [**menuAddProducts**](doc/MenusApi.md#menuaddproducts) | **PATCH** /api/menus/{menu_id}/products | On Menu Add Products
 [*MenusApi*](doc/MenusApi.md) | [**updateMenu**](doc/MenusApi.md#updatemenu) | **PUT** /api/menus/{menu_id} | On Update Menu
+[*MessagingApi*](doc/MessagingApi.md) | [**onSendMessagesApiMessagingSendPost**](doc/MessagingApi.md#onsendmessagesapimessagingsendpost) | **POST** /api/messaging/send | On Send Messages
 [*OrdersApi*](doc/OrdersApi.md) | [**createOrder**](doc/OrdersApi.md#createorder) | **POST** /api/orders | On Create Order
 [*OrdersApi*](doc/OrdersApi.md) | [**getOrder**](doc/OrdersApi.md#getorder) | **GET** /api/orders/{order_id} | On Get Order
 [*OrganizationsApi*](doc/OrganizationsApi.md) | [**createOrganization**](doc/OrganizationsApi.md#createorganization) | **POST** /api/organizations | On Create Organization
@@ -129,6 +130,8 @@ Class | Method | HTTP request | Description
 [*ProductsApi*](doc/ProductsApi.md) | [**updateProductPortion**](doc/ProductsApi.md#updateproductportion) | **PUT** /api/products/{product_id}/portions/{portion_id} | On Update Product Portion
 [*RecommendationsApi*](doc/RecommendationsApi.md) | [**getRecommendationsEstablishments**](doc/RecommendationsApi.md#getrecommendationsestablishments) | **GET** /api/recommendations/establishments | On Get Recommendations Establishments
 [*RecommendationsApi*](doc/RecommendationsApi.md) | [**getRecommendationsProducts**](doc/RecommendationsApi.md#getrecommendationsproducts) | **GET** /api/recommendations/products | On Get Recommendations Products
+[*SearchApi*](doc/SearchApi.md) | [**search**](doc/SearchApi.md#search) | **GET** /api/search | On Search
+[*SearchApi*](doc/SearchApi.md) | [**searchByEstablishment**](doc/SearchApi.md#searchbyestablishment) | **GET** /api/search/by_establishment | On Search By Establishment
 [*StoriesApi*](doc/StoriesApi.md) | [**addStoryContent**](doc/StoriesApi.md#addstorycontent) | **PATCH** /api/stories/{story_id}/content | On Add Story Content
 [*StoriesApi*](doc/StoriesApi.md) | [**addStoryEstablishments**](doc/StoriesApi.md#addstoryestablishments) | **PATCH** /api/stories/{story_id}/establishments | On Add Story Establishments
 [*StoriesApi*](doc/StoriesApi.md) | [**addStoryImage**](doc/StoriesApi.md#addstoryimage) | **PATCH** /api/stories/{story_id}/image | On Add Story Image
@@ -166,6 +169,7 @@ Class | Method | HTTP request | Description
  - [CreateStoryScheme](doc/CreateStoryScheme.md)
  - [CreateUserScheme](doc/CreateUserScheme.md)
  - [CustomerScheme](doc/CustomerScheme.md)
+ - [DetailProductScheme](doc/DetailProductScheme.md)
  - [EstablishmentScheme](doc/EstablishmentScheme.md)
  - [EstablishmentType](doc/EstablishmentType.md)
  - [FileScheme](doc/FileScheme.md)
@@ -175,6 +179,7 @@ Class | Method | HTTP request | Description
  - [MenuAddProductScheme](doc/MenuAddProductScheme.md)
  - [MenuDeleteProductScheme](doc/MenuDeleteProductScheme.md)
  - [MenuScheme](doc/MenuScheme.md)
+ - [MessagingScheme](doc/MessagingScheme.md)
  - [OrderCompleteStatus](doc/OrderCompleteStatus.md)
  - [OrderItemScheme](doc/OrderItemScheme.md)
  - [OrderItemStatus](doc/OrderItemStatus.md)
@@ -188,6 +193,7 @@ Class | Method | HTTP request | Description
  - [PortionScheme](doc/PortionScheme.md)
  - [ProductScheme](doc/ProductScheme.md)
  - [RoleType](doc/RoleType.md)
+ - [SearchResultScheme](doc/SearchResultScheme.md)
  - [StoryAddEstablishmentScheme](doc/StoryAddEstablishmentScheme.md)
  - [StoryDeleteEstablishmentScheme](doc/StoryDeleteEstablishmentScheme.md)
  - [StoryScheme](doc/StoryScheme.md)

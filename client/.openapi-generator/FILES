@@ -25,6 +25,7 @@ doc/CreateUserScheme.md
 doc/CustomerScheme.md
 doc/CustomersApi.md
 doc/DefaultApi.md
+doc/DetailProductScheme.md
 doc/EstablishmentScheme.md
 doc/EstablishmentType.md
 doc/EstablishmentsApi.md
@@ -38,6 +39,8 @@ doc/MenuAddProductScheme.md
 doc/MenuDeleteProductScheme.md
 doc/MenuScheme.md
 doc/MenusApi.md
+doc/MessagingApi.md
+doc/MessagingScheme.md
 doc/OrderCompleteStatus.md
 doc/OrderItemScheme.md
 doc/OrderItemStatus.md
@@ -56,6 +59,8 @@ doc/ProductScheme.md
 doc/ProductsApi.md
 doc/RecommendationsApi.md
 doc/RoleType.md
+doc/SearchApi.md
+doc/SearchResultScheme.md
 doc/StoriesApi.md
 doc/StoryAddEstablishmentScheme.md
 doc/StoryDeleteEstablishmentScheme.md
@@ -88,11 +93,13 @@ lib/src/api/establishments_api.dart
 lib/src/api/files_api.dart
 lib/src/api/health_api.dart
 lib/src/api/menus_api.dart
+lib/src/api/messaging_api.dart
 lib/src/api/orders_api.dart
 lib/src/api/organizations_api.dart
 lib/src/api/places_api.dart
 lib/src/api/products_api.dart
 lib/src/api/recommendations_api.dart
+lib/src/api/search_api.dart
 lib/src/api/stories_api.dart
 lib/src/api/users_api.dart
 lib/src/auth/api_key_auth.dart
@@ -120,6 +127,7 @@ lib/src/model/create_product_scheme.dart
 lib/src/model/create_story_scheme.dart
 lib/src/model/create_user_scheme.dart
 lib/src/model/customer_scheme.dart
+lib/src/model/detail_product_scheme.dart
 lib/src/model/establishment_scheme.dart
 lib/src/model/establishment_type.dart
 lib/src/model/file_scheme.dart
@@ -129,6 +137,7 @@ lib/src/model/login_user_scheme.dart
 lib/src/model/menu_add_product_scheme.dart
 lib/src/model/menu_delete_product_scheme.dart
 lib/src/model/menu_scheme.dart
+lib/src/model/messaging_scheme.dart
 lib/src/model/order_complete_status.dart
 lib/src/model/order_item_scheme.dart
 lib/src/model/order_item_status.dart
@@ -142,6 +151,7 @@ lib/src/model/place_type_scheme.dart
 lib/src/model/portion_scheme.dart
 lib/src/model/product_scheme.dart
 lib/src/model/role_type.dart
+lib/src/model/search_result_scheme.dart
 lib/src/model/story_add_establishment_scheme.dart
 lib/src/model/story_delete_establishment_scheme.dart
 lib/src/model/story_scheme.dart
@@ -163,4 +173,8 @@ lib/src/model/user_scheme.dart
 lib/src/model/validation_error.dart
 lib/src/model/validation_error_loc_inner.dart
 pubspec.yaml
-test/update_customer_scheme_test.dart
+test/detail_product_scheme_test.dart
+test/messaging_api_test.dart
+test/messaging_scheme_test.dart
+test/search_api_test.dart
+test/search_result_scheme_test.dart
