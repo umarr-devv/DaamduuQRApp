@@ -25,6 +25,7 @@ class _ProductScreenState extends State<ProductScreen> {
   void initState() {
     super.initState();
     cubit = ProductCubit(widget.product);
+    cubit.update();
   }
 
   @override
