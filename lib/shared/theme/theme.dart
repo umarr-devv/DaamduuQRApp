@@ -66,29 +66,61 @@ class CustomThemeData {
     ),
   ];
 
-  TextStyle get titleLarge =>
-      TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: primaryFg);
+  TextStyle get titleLarge => TextStyle(
+    fontFamily: font,
+    fontSize: 18,
+    fontWeight: FontWeight.w600,
+    color: primaryFg,
+  );
 
-  TextStyle get labelVeryLarge =>
-      TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: primaryFg);
+  TextStyle get labelVeryLarge => TextStyle(
+    fontFamily: font,
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+    color: primaryFg,
+  );
 
-  TextStyle get labelLarge =>
-      TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: primaryFg);
+  TextStyle get labelLarge => TextStyle(
+    fontFamily: font,
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    color: primaryFg,
+  );
 
-  TextStyle get labelLargeAlt =>
-      TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: secondaryFg);
+  TextStyle get labelLargeAlt => TextStyle(
+    fontFamily: font,
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: secondaryFg,
+  );
 
-  TextStyle get labelMedium =>
-      TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: primaryFg);
+  TextStyle get labelMedium => TextStyle(
+    fontFamily: font,
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: primaryFg,
+  );
 
-  TextStyle get labelMediumAlt =>
-      TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: secondaryFg);
+  TextStyle get labelMediumAlt => TextStyle(
+    fontFamily: font,
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: secondaryFg,
+  );
 
-  TextStyle get labelSmall =>
-      TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: primaryFg);
+  TextStyle get labelSmall => TextStyle(
+    fontFamily: font,
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    color: primaryFg,
+  );
 
-  TextStyle get labelSmallAlt =>
-      TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: secondaryFg);
+  TextStyle get labelSmallAlt => TextStyle(
+    fontFamily: font,
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+    color: secondaryFg,
+  );
 
   ThemeData toTheme() {
     return ThemeData(

@@ -50,6 +50,8 @@ class _ProductScreenState extends State<ProductScreen> {
                 ProductTitle(),
                 SliverToBoxAdapter(child: CustomDivider()),
                 ProductDescription(),
+                SliverToBoxAdapter(child: CustomDivider()),
+                ProductEstablishments(),
                 SliverFillRemaining(),
               ],
             ),

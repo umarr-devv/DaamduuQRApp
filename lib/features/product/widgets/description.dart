@@ -1,5 +1,5 @@
 import 'package:app/features/product/bloc/product/product_cubit.dart';
-import 'package:app/shared/widgets/widgets.dart';
+import 'package:app/shared/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,6 +8,7 @@ class ProductDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return BlocBuilder<ProductCubit, ProductState>(
       bloc: BlocProvider.of<ProductCubit>(context),
       builder: (context, state) {
@@ -16,18 +17,28 @@ class ProductDescription extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
               spacing: 12,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 if (state.product.description != null)
-                  CustomTitleText(
-                    icon: Icons.description,
-                    title: 'Описание',
-                    text: state.product.description!,
+                  Text(
+                    state.product.description ?? '',
+                    style: theme.custom.labelMedium,
                   ),
                 if (state.product.composition != null)
-                  CustomTitleText(
-                    icon: Icons.menu,
-                    title: 'Состав',
-                    text: state.product.composition!,
+                  RichText(
+                    text: TextSpan(
+                      style: theme.custom.labelMedium,
+                      children: [
+                        TextSpan(
+                          text: 'Состав: ',
+                          style: theme.custom.labelMediumAlt,
+                        ),
+                        TextSpan(
+                          text: state.product.composition ?? '',
+                          style: theme.custom.labelMedium,
+                        ),
+                      ],
+                    ),
                   ),
               ],
             ),
