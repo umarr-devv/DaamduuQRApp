@@ -1,5 +1,5 @@
 import 'package:app/features/search/bloc/search/search_cubit.dart';
-import 'package:app/features/search/widgets/appbar.dart';
+import 'package:app/features/search/widgets/widgets.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +34,15 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [BlocProvider.value(value: cubit)],
-      child: Scaffold(body: CustomScrollView(slivers: [SearchAppBar()])),
+      child: Scaffold(
+        body: CustomScrollView(
+          slivers: [
+            SearchAppBar(),
+            SearchFilters(),
+            SliverFillRemaining(child: SearchResult()),
+          ],
+        ),
+      ),
     );
   }
 }

@@ -33,6 +33,7 @@ class SearchCubit extends HydratedCubit<SearchState> {
         products: result.data?.products,
         establishments: result.data?.establishments,
       );
+      // FOR DEBUG
       await Future.delayed(const Duration(seconds: 1));
       emit(SearchLoaded(newState));
     } catch (exc) {
