@@ -1,4 +1,5 @@
 import 'package:daamduuqr_client/daamduuqr_client.dart';
+import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
@@ -18,7 +19,15 @@ class SearchCubit extends HydratedCubit<SearchState> {
   Future search(String query) async {
     emit(SearchLoading(state));
     try {
-      final result = await client.getSearchApi().search(query: query);
+      late Response<SearchResultScheme> result;
+      if (state.establishment != null) {
+        result = await client.getSearchApi().searchByEstablishment(
+          establishmentId: state.establishment!.id,
+          query: query,
+        );
+      } else {
+        result = await client.getSearchApi().search(query: query);
+      }
       final newState = state.copyWith(query: query, result: result.data);
       emit(SearchLoaded(newState));
     } catch (exc) {
@@ -44,6 +53,9 @@ class SearchCubit extends HydratedCubit<SearchState> {
       emit(SearchFailure());
     }
   }
+
+  @override
+  String get id => state.establishment?.id ?? 'search';
 
   @override
   Map<String, dynamic>? toJson(SearchState state) {
