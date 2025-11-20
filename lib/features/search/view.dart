@@ -6,22 +6,35 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 @RoutePage()
-class SearchScreen extends StatelessWidget {
+class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key, this.establishment});
 
   final EstablishmentScheme? establishment;
 
   @override
+  State<SearchScreen> createState() => _SearchScreenState();
+}
+
+class _SearchScreenState extends State<SearchScreen> {
+  late SearchCubit cubit;
+
+  @override
+  void initState() {
+    cubit = SearchCubit(establishment: widget.establishment);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    cubit.close();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => SearchCubit(establishment: establishment),
-        ),
-      ],
-      child: Scaffold(
-        body: CustomScrollView(slivers: [SearchAppBar()]),
-      ),
+      providers: [BlocProvider.value(value: cubit)],
+      child: Scaffold(body: CustomScrollView(slivers: [SearchAppBar()])),
     );
   }
 }

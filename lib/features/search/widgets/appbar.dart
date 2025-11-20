@@ -1,6 +1,10 @@
+import 'dart:async';
+
+import 'package:app/features/search/bloc/search/search_cubit.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:app/shared/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchAppBar extends StatelessWidget {
   const SearchAppBar({super.key});
@@ -28,7 +32,31 @@ class _AppBarTitle extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _AppBarTitleState extends State<_AppBarTitle> {
-  final textController = TextEditingController();
+  final controller = TextEditingController();
+  Timer? debounce;
+
+  SearchCubit get cubit => BlocProvider.of<SearchCubit>(context);
+
+  void onSearchChanged() {
+    if (debounce?.isActive ?? false) debounce!.cancel();
+
+    debounce = Timer(const Duration(milliseconds: 500), () {
+      cubit.search(controller.text);
+    });
+  }
+
+  @override
+  void initState() {
+    controller.addListener(onSearchChanged);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    debounce?.cancel();
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +71,7 @@ class _AppBarTitleState extends State<_AppBarTitle> {
             child: Hero(
               tag: 'searchbar',
               child: CustomSearchBar(
-                textController: textController,
+                textController: controller,
                 autofocus: true,
                 hintText: 'Блюда, закуски, напитки...',
               ),
