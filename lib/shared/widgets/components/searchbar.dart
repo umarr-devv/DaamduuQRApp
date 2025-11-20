@@ -50,11 +50,11 @@ class CustomSearchBar extends StatelessWidget {
                   cursorColor: theme.custom.primaryFg,
                   controller: textController,
                   focusNode: focusNode,
-                  style: theme.custom.labelLargeAlt,
+                  style: theme.custom.labelLarge,
                   decoration: InputDecoration(
                     contentPadding: const EdgeInsets.all(0),
                     hintText: hintText,
-                    hintStyle: theme.custom.labelLarge,
+                    hintStyle: theme.custom.labelLargeAlt,
                     border: OutlineInputBorder(borderSide: BorderSide.none),
                   ),
                 ),
