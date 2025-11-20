@@ -2,26 +2,35 @@ part of 'search_cubit.dart';
 
 @JsonSerializable()
 class SearchState extends Equatable {
-  const SearchState({this.result, this.establishment, this.query});
+  const SearchState({
+    this.products = const [],
+    this.establishments = const [],
+    this.establishment,
+    this.query,
+  });
 
-  final SearchResultScheme? result;
+  final List<ProductScheme> products;
+  final List<EstablishmentScheme> establishments;
   final EstablishmentScheme? establishment;
   final String? query;
 
   SearchState copyWith({
-    SearchResultScheme? result,
+    List<ProductScheme>? products,
+    List<EstablishmentScheme>? establishments,
     EstablishmentScheme? establishment,
     final String? query,
   }) {
     return SearchState(
-      result: result ?? this.result,
+      products: products ?? this.products,
+      establishments: establishments ?? this.establishments,
       establishment: establishment ?? this.establishment,
       query: query ?? this.query,
     );
   }
 
   SearchState.from(SearchState other)
-    : result = other.result,
+    : products = other.products,
+      establishments = other.establishments,
       establishment = other.establishment,
       query = other.query;
 
@@ -31,7 +40,7 @@ class SearchState extends Equatable {
   Map<String, dynamic> toJson() => _$SearchStateToJson(this);
 
   @override
-  List<Object?> get props => [result, establishment, query];
+  List<Object?> get props => [products, establishments, establishment, query];
 }
 
 final class SearchInitial extends SearchState {

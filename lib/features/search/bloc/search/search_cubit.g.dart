@@ -7,9 +7,16 @@ part of 'search_cubit.dart';
 // **************************************************************************
 
 SearchState _$SearchStateFromJson(Map<String, dynamic> json) => SearchState(
-  result: json['result'] == null
-      ? null
-      : SearchResultScheme.fromJson(json['result'] as Map<String, dynamic>),
+  products:
+      (json['products'] as List<dynamic>?)
+          ?.map((e) => ProductScheme.fromJson(e as Map<String, dynamic>))
+          .toList() ??
+      const [],
+  establishments:
+      (json['establishments'] as List<dynamic>?)
+          ?.map((e) => EstablishmentScheme.fromJson(e as Map<String, dynamic>))
+          .toList() ??
+      const [],
   establishment: json['establishment'] == null
       ? null
       : EstablishmentScheme.fromJson(
@@ -20,7 +27,8 @@ SearchState _$SearchStateFromJson(Map<String, dynamic> json) => SearchState(
 
 Map<String, dynamic> _$SearchStateToJson(SearchState instance) =>
     <String, dynamic>{
-      'result': instance.result,
+      'products': instance.products,
+      'establishments': instance.establishments,
       'establishment': instance.establishment,
       'query': instance.query,
     };

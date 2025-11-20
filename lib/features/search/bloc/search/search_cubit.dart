@@ -28,25 +28,12 @@ class SearchCubit extends HydratedCubit<SearchState> {
       } else {
         result = await client.getSearchApi().search(query: query);
       }
-      final newState = state.copyWith(query: query, result: result.data);
-      emit(SearchLoaded(newState));
-    } catch (exc) {
-      talker.error(exc);
-      emit(SearchFailure());
-    }
-  }
-
-  Future searchByEstablishment(String query) async {
-    if (state.establishment == null) {
-      return;
-    }
-    emit(SearchLoading(state));
-    try {
-      final result = await client.getSearchApi().searchByEstablishment(
-        establishmentId: state.establishment!.id,
+      final newState = state.copyWith(
         query: query,
+        products: result.data?.products,
+        establishments: result.data?.establishments,
       );
-      final newState = state.copyWith(query: query, result: result.data);
+      await Future.delayed(const Duration(seconds: 1));
       emit(SearchLoaded(newState));
     } catch (exc) {
       talker.error(exc);
