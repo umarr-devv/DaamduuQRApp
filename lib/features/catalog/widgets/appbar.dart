@@ -28,7 +28,7 @@ class _CatalogAppBarState extends State<CatalogAppBar> {
           pinned: true,
           leading: MaybePopButton(shadow: false),
           title: _AppBarTitle(establishment: state.establishment),
-          actions: [_AppBarActions()],
+          actions: [_AppBarActions(establishment: state.establishment)],
           bottom: CatalogCategories(),
         );
       },
@@ -37,7 +37,9 @@ class _CatalogAppBarState extends State<CatalogAppBar> {
 }
 
 class _AppBarActions extends StatelessWidget {
-  const _AppBarActions();
+  const _AppBarActions({required this.establishment});
+
+  final EstablishmentScheme establishment;
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +52,7 @@ class _AppBarActions extends StatelessWidget {
         onTap: () {
           AutoRouter.of(
             context,
-          ).push(SearchRoute(textController: TextEditingController()));
+          ).push(SearchRoute(establishment: establishment));
         },
       ),
     );

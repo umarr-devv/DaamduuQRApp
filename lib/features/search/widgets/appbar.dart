@@ -1,13 +1,9 @@
 import 'package:app/shared/theme/theme.dart';
 import 'package:app/shared/widgets/widgets.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 class SearchAppBar extends StatelessWidget {
-  const SearchAppBar({super.key, required this.textController, this.uniqueId});
-
-  final TextEditingController textController;
-  final String? uniqueId;
+  const SearchAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,19 +12,23 @@ class SearchAppBar extends StatelessWidget {
       backgroundColor: theme.custom.secondaryBg,
       automaticallyImplyLeading: false,
       toolbarHeight: 0,
-      bottom: _AppBarTitle(textController: textController, uniqueId: uniqueId),
+      bottom: _AppBarTitle(),
     );
   }
 }
 
-class _AppBarTitle extends StatelessWidget implements PreferredSizeWidget {
-  const _AppBarTitle({required this.textController, this.uniqueId});
-
-  final TextEditingController textController;
-  final String? uniqueId;
+class _AppBarTitle extends StatefulWidget implements PreferredSizeWidget {
+  const _AppBarTitle();
 
   @override
   Size get preferredSize => Size.fromHeight(64);
+
+  @override
+  State<_AppBarTitle> createState() => _AppBarTitleState();
+}
+
+class _AppBarTitleState extends State<_AppBarTitle> {
+  final textController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -38,17 +38,10 @@ class _AppBarTitle extends StatelessWidget implements PreferredSizeWidget {
       child: Row(
         spacing: 8,
         children: [
-          CustomIconButton(
-            icon: Icons.arrow_back,
-            background: theme.custom.transparent,
-            shadow: false,
-            onTap: () {
-              AutoRouter.of(context).maybePop();
-            },
-          ),
+          MaybePopButton(shadow: false, background: theme.custom.transparent),
           Expanded(
             child: Hero(
-              tag: uniqueId ?? 'searchbar',
+              tag: 'searchbar',
               child: CustomSearchBar(
                 textController: textController,
                 autofocus: true,

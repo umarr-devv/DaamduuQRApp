@@ -63,9 +63,7 @@ class _FavoriteAppBarState extends State<FavoriteAppBar> {
           radius: 12,
           shadow: !isCollapsed,
           onTap: () {
-            AutoRouter.of(
-              context,
-            ).push(SearchRoute(textController: textController));
+            AutoRouter.of(context).push(SearchRoute());
           },
         ),
         SizedBox(width: 16),

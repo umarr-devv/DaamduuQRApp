@@ -333,16 +333,11 @@ class ScannerRoute extends PageRouteInfo<void> {
 class SearchRoute extends PageRouteInfo<SearchRouteArgs> {
   SearchRoute({
     Key? key,
-    required TextEditingController textController,
-    String? uniqueId,
+    EstablishmentScheme? establishment,
     List<PageRouteInfo>? children,
   }) : super(
          SearchRoute.name,
-         args: SearchRouteArgs(
-           key: key,
-           textController: textController,
-           uniqueId: uniqueId,
-         ),
+         args: SearchRouteArgs(key: key, establishment: establishment),
          initialChildren: children,
        );
 
@@ -351,46 +346,35 @@ class SearchRoute extends PageRouteInfo<SearchRouteArgs> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      final args = data.argsAs<SearchRouteArgs>();
-      return SearchScreen(
-        key: args.key,
-        textController: args.textController,
-        uniqueId: args.uniqueId,
+      final args = data.argsAs<SearchRouteArgs>(
+        orElse: () => const SearchRouteArgs(),
       );
+      return SearchScreen(key: args.key, establishment: args.establishment);
     },
   );
 }
 
 class SearchRouteArgs {
-  const SearchRouteArgs({
-    this.key,
-    required this.textController,
-    this.uniqueId,
-  });
+  const SearchRouteArgs({this.key, this.establishment});
 
   final Key? key;
 
-  final TextEditingController textController;
-
-  final String? uniqueId;
+  final EstablishmentScheme? establishment;
 
   @override
   String toString() {
-    return 'SearchRouteArgs{key: $key, textController: $textController, uniqueId: $uniqueId}';
+    return 'SearchRouteArgs{key: $key, establishment: $establishment}';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     if (other is! SearchRouteArgs) return false;
-    return key == other.key &&
-        textController == other.textController &&
-        uniqueId == other.uniqueId;
+    return key == other.key && establishment == other.establishment;
   }
 
   @override
-  int get hashCode =>
-      key.hashCode ^ textController.hashCode ^ uniqueId.hashCode;
+  int get hashCode => key.hashCode ^ establishment.hashCode;
 }
 
 /// generated route for

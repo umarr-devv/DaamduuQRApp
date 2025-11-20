@@ -27,9 +27,7 @@ class _HomeSearchBarState extends State<HomeSearchBar> {
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       child: GestureDetector(
         onTap: () {
-          AutoRouter.of(context).push(
-            SearchRoute(textController: textController, uniqueId: uniqueId),
-          );
+          AutoRouter.of(context).push(SearchRoute());
         },
         child: Hero(
           tag: uniqueId,
