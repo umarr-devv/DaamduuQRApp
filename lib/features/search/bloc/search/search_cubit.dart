@@ -9,7 +9,8 @@ part 'search_cubit.g.dart';
 part 'search_state.dart';
 
 class SearchCubit extends HydratedCubit<SearchState> {
-  SearchCubit() : super(SearchInitial());
+  SearchCubit({EstablishmentScheme? establishment})
+    : super(SearchInitial(establishment: establishment));
 
   final client = GetIt.I<DaamduuqrClient>();
   final talker = GetIt.I<Talker>();
@@ -18,6 +19,24 @@ class SearchCubit extends HydratedCubit<SearchState> {
     emit(SearchLoading(state));
     try {
       final result = await client.getSearchApi().search(query: query);
+      final newState = state.copyWith(query: query, result: result.data);
+      emit(SearchLoaded(newState));
+    } catch (exc) {
+      talker.error(exc);
+      emit(SearchFailure());
+    }
+  }
+
+  Future searchByEstablishment(String query) async {
+    if (state.establishment == null) {
+      return;
+    }
+    emit(SearchLoading(state));
+    try {
+      final result = await client.getSearchApi().searchByEstablishment(
+        establishmentId: state.establishment!.id,
+        query: query,
+      );
       final newState = state.copyWith(query: query, result: result.data);
       emit(SearchLoaded(newState));
     } catch (exc) {
