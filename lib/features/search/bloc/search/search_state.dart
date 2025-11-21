@@ -6,13 +6,13 @@ class SearchState extends Equatable {
     this.products = const [],
     this.establishments = const [],
     this.establishment,
-    this.query,
+    this.query = '',
   });
 
   final List<ProductScheme> products;
   final List<EstablishmentScheme> establishments;
   final EstablishmentScheme? establishment;
-  final String? query;
+  final String query;
 
   SearchState copyWith({
     List<ProductScheme>? products,

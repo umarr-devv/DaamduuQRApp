@@ -47,8 +47,10 @@ class _AppBarTitleState extends State<_AppBarTitle> {
 
   @override
   void initState() {
-    controller.addListener(onSearchChanged);
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      controller.addListener(onSearchChanged);
+    });
   }
 
   @override

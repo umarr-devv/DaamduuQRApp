@@ -17,9 +17,7 @@ class SearchResult extends StatelessWidget {
         if (state is SearchLoading) {
           return Align(
             alignment: Alignment.center,
-            child: SpinKitRing(
-              size: 64,
-              color: theme.custom.primary),
+            child: SpinKitRing(size: 64, color: theme.custom.primary),
           );
         } else if (state is SearchLoaded && state.products.isEmpty) {
           return Column(
@@ -39,19 +37,22 @@ class SearchResult extends StatelessWidget {
             ],
           );
         } else {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 12,
-                crossAxisSpacing: 12,
-                childAspectRatio: 0.75,
+          return HeroMode(
+            enabled: false,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 12,
+                  crossAxisSpacing: 12,
+                  childAspectRatio: 0.75,
+                ),
+                itemBuilder: (context, index) {
+                  return ProductCard(product: state.products[index]);
+                },
+                itemCount: state.products.length,
               ),
-              itemBuilder: (context, index) {
-                return ProductCard(product: state.products[index]);
-              },
-              itemCount: state.products.length,
             ),
           );
         }

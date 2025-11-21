@@ -22,7 +22,7 @@ SearchState _$SearchStateFromJson(Map<String, dynamic> json) => SearchState(
       : EstablishmentScheme.fromJson(
           json['establishment'] as Map<String, dynamic>,
         ),
-  query: json['query'] as String?,
+  query: json['query'] as String? ?? '',
 );
 
 Map<String, dynamic> _$SearchStateToJson(SearchState instance) =>

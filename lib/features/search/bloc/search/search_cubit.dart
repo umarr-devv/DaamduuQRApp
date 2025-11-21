@@ -17,6 +17,7 @@ class SearchCubit extends HydratedCubit<SearchState> {
   final talker = GetIt.I<Talker>();
 
   Future search(String query) async {
+    if (state.query == query) return;
     emit(SearchLoading(state));
     try {
       late Response<SearchResultScheme> result;
