@@ -7,12 +7,14 @@ class CatalogState extends Equatable {
     this.categories = const [],
     this.products = const [],
     this.currentCategory,
+    required this.updateTime,
   });
 
   final EstablishmentScheme establishment;
   final List<CategoryScheme> categories;
   final List<ProductScheme> products;
   final CategoryScheme? currentCategory;
+  final DateTime updateTime;
 
   List<ProductScheme> get currenctProducts {
     if (currentCategory == null) {
@@ -28,12 +30,14 @@ class CatalogState extends Equatable {
     List<CategoryScheme>? categories,
     List<ProductScheme>? products,
     Object? currentCategory,
+    DateTime? updateTime,
   }) {
     return CatalogState(
       establishment: establishment,
       categories: categories ?? this.categories,
       products: products ?? this.products,
       currentCategory: undefCompare(currentCategory, this.currentCategory),
+      updateTime: DateTime.now(),
     );
   }
 
@@ -41,7 +45,8 @@ class CatalogState extends Equatable {
     : establishment = other.establishment,
       products = other.products,
       categories = other.categories,
-      currentCategory = other.currentCategory;
+      currentCategory = other.currentCategory,
+      updateTime = other.updateTime;
 
   factory CatalogState.fromJson(Map<String, dynamic> json) =>
       _$CatalogStateFromJson(json);
@@ -49,11 +54,11 @@ class CatalogState extends Equatable {
   Map<String, dynamic> toJson() => _$CatalogStateToJson(this);
 
   @override
-  List<Object?> get props => [establishment, categories, currentCategory];
+  List<Object?> get props => [establishment, categories, currentCategory, updateTime];
 }
 
 final class CatalogInitial extends CatalogState {
-  const CatalogInitial({required super.establishment});
+  const CatalogInitial({required super.establishment, required super.updateTime});
 }
 
 final class CatalogLoading extends CatalogState {

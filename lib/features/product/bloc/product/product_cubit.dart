@@ -9,14 +9,14 @@ part 'product_cubit.g.dart';
 part 'product_state.dart';
 
 class ProductCubit extends HydratedCubit<ProductState> {
-  ProductCubit(ProductScheme product) : super(ProductInitial(product: product));
+  ProductCubit(ProductScheme product)
+    : super(ProductInitial(product: product, updateTime: DateTime.now()));
 
   final client = GetIt.I<DaamduuqrClient>();
   final talker = GetIt.I<Talker>();
 
   Future update() async {
-    if (state.updateTime == null ||
-        DateTime.now().difference(state.updateTime!) > Duration(minutes: 5)) {
+    if (DateTime.now().difference(state.updateTime) > Duration(minutes: 5)) {
       await forceUpdate();
     }
   }

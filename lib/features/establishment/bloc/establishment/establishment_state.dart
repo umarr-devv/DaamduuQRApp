@@ -6,27 +6,32 @@ class EstablishmentState extends Equatable {
     required this.establishment,
     this.stories = const [],
     this.places = const [],
+    required this.updateTime
   });
   final EstablishmentScheme establishment;
   final List<StoryScheme> stories;
   final List<PlaceScheme> places;
+  final DateTime updateTime;
 
   EstablishmentState copyWith({
-    final List<StoryScheme>? stories,
-    final List<CategoryScheme>? categories,
-    final List<PlaceScheme>? places,
+     List<StoryScheme>? stories,
+     List<CategoryScheme>? categories,
+     List<PlaceScheme>? places,
+    DateTime? updateTime
   }) {
     return EstablishmentState(
       establishment: establishment,
       stories: stories ?? this.stories,
       places: places ?? this.places,
+      updateTime: DateTime.now(),
     );
   }
 
   EstablishmentState.from(EstablishmentState other)
     : establishment = other.establishment,
       stories = other.stories,
-      places = other.places;
+      places = other.places,
+      updateTime = other.updateTime;
 
   factory EstablishmentState.fromJson(Map<String, dynamic> json) =>
       _$EstablishmentStateFromJson(json);
@@ -34,12 +39,11 @@ class EstablishmentState extends Equatable {
   Map<String, dynamic> toJson() => _$EstablishmentStateToJson(this);
 
   @override
-  List<Object?> get props => [establishment, stories, places];
+  List<Object?> get props => [establishment, stories, places, updateTime];
 }
 
 final class EstablishmentInitial extends EstablishmentState {
-  const EstablishmentInitial({required super.establishment});
-  EstablishmentInitial.from(super.state) : super.from();
+  const EstablishmentInitial({required super.establishment, required super.updateTime});
 }
 
 final class EstablishmentLoading extends EstablishmentState {

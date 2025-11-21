@@ -5,12 +5,12 @@ class ProductState extends Equatable {
   const ProductState({
     required this.product,
     this.detailProduct,
-    this.updateTime,
+    required this.updateTime,
   });
 
   final ProductScheme product;
   final DetailProductScheme? detailProduct;
-  final DateTime? updateTime;
+  final DateTime updateTime;
 
   ProductState copyWith(DetailProductScheme? detailProduct) {
     return ProductState(
@@ -35,7 +35,7 @@ class ProductState extends Equatable {
 }
 
 final class ProductInitial extends ProductState {
-  const ProductInitial({required super.product});
+  const ProductInitial({required super.product, required super.updateTime});
 }
 
 final class ProductUpdating extends ProductState {

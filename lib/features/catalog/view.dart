@@ -22,7 +22,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
   @override
   void initState() {
     cubit = CatalogCubit(establishment: widget.establishment);
-    cubit.init();
+    cubit.update();
     super.initState();
   }
 

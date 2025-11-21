@@ -13,14 +13,12 @@ ProductState _$ProductStateFromJson(Map<String, dynamic> json) => ProductState(
       : DetailProductScheme.fromJson(
           json['detail_product'] as Map<String, dynamic>,
         ),
-  updateTime: json['update_time'] == null
-      ? null
-      : DateTime.parse(json['update_time'] as String),
+  updateTime: DateTime.parse(json['update_time'] as String),
 );
 
 Map<String, dynamic> _$ProductStateToJson(ProductState instance) =>
     <String, dynamic>{
       'product': instance.product,
       'detail_product': instance.detailProduct,
-      'update_time': instance.updateTime?.toIso8601String(),
+      'update_time': instance.updateTime.toIso8601String(),
     };

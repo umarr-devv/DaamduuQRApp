@@ -10,12 +10,23 @@ part 'establishment_state.dart';
 
 class EstablishmentCubit extends HydratedCubit<EstablishmentState> {
   EstablishmentCubit(EstablishmentScheme establishment)
-    : super(EstablishmentInitial(establishment: establishment));
+    : super(
+        EstablishmentInitial(
+          establishment: establishment,
+          updateTime: DateTime.now(),
+        ),
+      );
 
   final client = GetIt.I<DaamduuqrClient>();
   final talker = GetIt.I<Talker>();
 
   Future update() async {
+    if (DateTime.now().difference(state.updateTime) > Duration(minutes: 5)) {
+      await forceUpdate();
+    }
+  }
+
+  Future forceUpdate() async {
     emit(EstablishmentLoading(state));
     try {
       final newState = await getData();

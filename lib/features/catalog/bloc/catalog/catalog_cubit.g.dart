@@ -25,6 +25,7 @@ CatalogState _$CatalogStateFromJson(Map<String, dynamic> json) => CatalogState(
       : CategoryScheme.fromJson(
           json['current_category'] as Map<String, dynamic>,
         ),
+  updateTime: DateTime.parse(json['update_time'] as String),
 );
 
 Map<String, dynamic> _$CatalogStateToJson(CatalogState instance) =>
@@ -33,4 +34,5 @@ Map<String, dynamic> _$CatalogStateToJson(CatalogState instance) =>
       'categories': instance.categories,
       'products': instance.products,
       'current_category': instance.currentCategory,
+      'update_time': instance.updateTime.toIso8601String(),
     };
