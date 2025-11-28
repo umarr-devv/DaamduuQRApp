@@ -4,19 +4,12 @@ import 'package:flutter/material.dart';
 
 @RoutePage()
 class OrderScreen extends StatelessWidget {
-  const OrderScreen({super.key, this.isInMenu = true});
-
-  final bool isInMenu;
+  const OrderScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          OrderAppBar(isInMenu: isInMenu),
-          OrderProductsList(),
-        ],
-      ),
+      body: CustomScrollView(slivers: [OrderAppBar(), OrderProductsList()]),
     );
   }
 }

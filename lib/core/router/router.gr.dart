@@ -205,48 +205,18 @@ class NotificationsRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [OrderScreen]
-class OrderRoute extends PageRouteInfo<OrderRouteArgs> {
-  OrderRoute({Key? key, bool isInMenu = true, List<PageRouteInfo>? children})
-    : super(
-        OrderRoute.name,
-        args: OrderRouteArgs(key: key, isInMenu: isInMenu),
-        initialChildren: children,
-      );
+class OrderRoute extends PageRouteInfo<void> {
+  const OrderRoute({List<PageRouteInfo>? children})
+    : super(OrderRoute.name, initialChildren: children);
 
   static const String name = 'OrderRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      final args = data.argsAs<OrderRouteArgs>(
-        orElse: () => const OrderRouteArgs(),
-      );
-      return OrderScreen(key: args.key, isInMenu: args.isInMenu);
+      return const OrderScreen();
     },
   );
-}
-
-class OrderRouteArgs {
-  const OrderRouteArgs({this.key, this.isInMenu = true});
-
-  final Key? key;
-
-  final bool isInMenu;
-
-  @override
-  String toString() {
-    return 'OrderRouteArgs{key: $key, isInMenu: $isInMenu}';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (other is! OrderRouteArgs) return false;
-    return key == other.key && isInMenu == other.isInMenu;
-  }
-
-  @override
-  int get hashCode => key.hashCode ^ isInMenu.hashCode;
 }
 
 /// generated route for

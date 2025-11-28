@@ -93,7 +93,7 @@ class _AddButtons extends StatelessWidget {
                     radius: 12,
                     background: theme.custom.secondaryBg,
                     onTap: () {
-                      AutoRouter.of(context).push(OrderRoute(isInMenu: false));
+                      AutoRouter.of(context).navigate(OrderRoute());
                     },
                   );
                 } else {

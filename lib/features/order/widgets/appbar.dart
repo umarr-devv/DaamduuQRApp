@@ -5,9 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class OrderAppBar extends StatelessWidget {
-  const OrderAppBar({super.key, required this.isInMenu});
-
-  final bool isInMenu;
+  const OrderAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +14,6 @@ class OrderAppBar extends StatelessWidget {
       backgroundColor: theme.custom.secondaryBg,
       automaticallyImplyLeading: false,
       pinned: true,
-      leading: isInMenu
-          ? null
-          : UnconstrainedBox(child: MaybePopButton(shadow: false)),
       title: Text('Мой Заказ', style: theme.custom.titleLarge),
       actions: [_AppBarActions(), const SizedBox(width: 16)],
     );
