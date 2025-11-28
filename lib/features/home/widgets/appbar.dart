@@ -21,13 +21,13 @@ class _HomeAppBarState extends State<HomeAppBar> {
   bool isCollapsed = false;
 
   void scrollListener() {
-    if (widget.scrollController.offset > 12) {
+    if (widget.scrollController.offset > 1) {
       if (!isCollapsed) {
         setState(() {
           isCollapsed = true;
         });
       }
-    } else if (widget.scrollController.offset < 12) {
+    } else if (widget.scrollController.offset < 1) {
       if (isCollapsed) {
         setState(() {
           isCollapsed = false;
