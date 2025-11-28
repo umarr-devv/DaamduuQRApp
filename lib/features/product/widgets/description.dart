@@ -16,9 +16,21 @@ class ProductDescription extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
-              spacing: 12,
+              spacing: 6,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Row(
+                  spacing: 4,
+                  children: [
+                    Icon(Icons.history, color: theme.custom.green),
+                    Text(
+                      '45 мин',
+                      style: theme.custom.labelLarge.copyWith(
+                        color: theme.custom.green,
+                      ),
+                    ),
+                  ],
+                ),
                 if (state.product.description != null)
                   Text(
                     state.product.description ?? '',
