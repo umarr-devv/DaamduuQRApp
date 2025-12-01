@@ -13,7 +13,7 @@ class EstablishmentCubit extends HydratedCubit<EstablishmentState> {
     : super(
         EstablishmentInitial(
           establishment: establishment,
-          updateTime: DateTime.now(),
+          updateTime: DateTime(0),
         ),
       );
 

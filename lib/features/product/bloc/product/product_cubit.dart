@@ -10,7 +10,7 @@ part 'product_state.dart';
 
 class ProductCubit extends HydratedCubit<ProductState> {
   ProductCubit(ProductScheme product)
-    : super(ProductInitial(product: product, updateTime: DateTime.now()));
+    : super(ProductInitial(product: product, updateTime: DateTime(0)));
 
   final client = GetIt.I<DaamduuqrClient>();
   final talker = GetIt.I<Talker>();

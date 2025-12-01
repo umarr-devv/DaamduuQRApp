@@ -11,12 +11,14 @@ part 'catalog_state.dart';
 
 class CatalogCubit extends HydratedCubit<CatalogState> {
   CatalogCubit({required EstablishmentScheme establishment})
-    : super(CatalogInitial(establishment: establishment, updateTime: DateTime.now()));
+    : super(
+        CatalogInitial(establishment: establishment, updateTime: DateTime(0)),
+      );
 
   final client = GetIt.I<DaamduuqrClient>();
   final talker = GetIt.I<Talker>();
 
-    Future update() async {
+  Future update() async {
     if (DateTime.now().difference(state.updateTime) > Duration(minutes: 5)) {
       await forceUpdate();
     }
