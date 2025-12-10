@@ -18,7 +18,7 @@ class EstablishmentStories extends StatelessWidget {
       builder: (context, state) {
         if (state is EstablishmentLoading) {
           return _LoadingPlaceholder();
-        } else if (state.stories.isEmpty) {
+        } else if (state.detail == null) {
           return SizedBox();
         }
         return Container(
@@ -29,9 +29,9 @@ class EstablishmentStories extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.symmetric(horizontal: 16),
             itemBuilder: (context, index) =>
-                _StoryItem(story: state.stories[index]),
+                _StoryItem(story: state.detail!.stories[index]),
             separatorBuilder: (context, index) => SizedBox(width: 12),
-            itemCount: state.stories.length,
+            itemCount: state.detail!.stories.length,
           ),
         );
       },

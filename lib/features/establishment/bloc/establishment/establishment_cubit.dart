@@ -38,10 +38,10 @@ class EstablishmentCubit extends HydratedCubit<EstablishmentState> {
   }
 
   Future<EstablishmentState> getData() async {
-    final stories = await client.getStoriesApi().getStoriesByEstablishment(
+    final response = await client.getEstablishmentsApi().getEstablishment(
       establishmentId: state.establishment.id,
     );
-    return state.copyWith(stories: stories.data);
+    return state.copyWith(detail: response.data);
   }
 
   @override

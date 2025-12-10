@@ -11,23 +11,17 @@ EstablishmentState _$EstablishmentStateFromJson(Map<String, dynamic> json) =>
       establishment: EstablishmentScheme.fromJson(
         json['establishment'] as Map<String, dynamic>,
       ),
-      stories:
-          (json['stories'] as List<dynamic>?)
-              ?.map((e) => StoryScheme.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          const [],
-      places:
-          (json['places'] as List<dynamic>?)
-              ?.map((e) => PlaceScheme.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          const [],
+      detail: json['detail'] == null
+          ? null
+          : DetailEstablishmentScheme.fromJson(
+              json['detail'] as Map<String, dynamic>,
+            ),
       updateTime: DateTime.parse(json['update_time'] as String),
     );
 
 Map<String, dynamic> _$EstablishmentStateToJson(EstablishmentState instance) =>
     <String, dynamic>{
       'establishment': instance.establishment,
-      'stories': instance.stories,
-      'places': instance.places,
+      'detail': instance.detail,
       'update_time': instance.updateTime.toIso8601String(),
     };

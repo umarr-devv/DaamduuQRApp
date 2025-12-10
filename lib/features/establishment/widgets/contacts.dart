@@ -13,6 +13,9 @@ class EstablishmentContacts extends StatelessWidget {
     return BlocBuilder<EstablishmentCubit, EstablishmentState>(
       bloc: BlocProvider.of<EstablishmentCubit>(context),
       builder: (context, state) {
+        if (state.detail == null){
+          return SizedBox();
+        }
         return Container(
           padding: const EdgeInsets.only(left: 16, right: 16, bottom: 24),
           child: Column(
@@ -23,7 +26,7 @@ class EstablishmentContacts extends StatelessWidget {
               Wrap(
                 spacing: 8,
                 runSpacing: 8,
-                children: state.establishment.contacts
+                children: state.detail!.contacts
                     .map((i) => CustomContactText(contact: i))
                     .toList(),
               ),
