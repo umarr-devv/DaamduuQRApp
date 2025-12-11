@@ -332,7 +332,7 @@ packages:
   daamduuqr_client:
     dependency: "direct main"
     description:
-      path: "../DaamduuQRClient"
+      path: client
       relative: true
     source: path
     version: "1.0.0"
