@@ -27,7 +27,7 @@ class _AppScreenState extends State<AppScreen> {
       ],
       child: MaterialApp.router(
         title: 'DaamduuQR',
-        theme: lightTheme,
+        theme: CustomThemeData(brightness: Brightness.light).toTheme(),
         debugShowCheckedModeBanner: false,
         routerConfig: appRoute.config(
           navigatorObservers: () => [TalkerRouteObserver(GetIt.I<Talker>())],

@@ -45,7 +45,10 @@ class CustomEstablishmentType extends StatelessWidget {
           width: 16,
           colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
         ),
-        Text(label, style: theme.custom.labelMedium.copyWith(color: color)),
+        Text(
+          label,
+          style: theme.custom.defaultTextStyle.copyWith(color: color),
+        ),
       ],
     );
   }

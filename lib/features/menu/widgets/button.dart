@@ -14,14 +14,13 @@ class MenuActionButton extends StatelessWidget {
       onPressed: () {
         AutoRouter.of(context).push(ScannerRoute());
       },
-      backgroundColor: theme.custom.primaryFg,
-      splashColor: theme.custom.splashColor,
+      backgroundColor: theme.custom.foreground,
       shape: const CircleBorder(),
       child: SvgPicture.asset(
         'assets/svg/icon.svg',
         height: 28,
         width: 28,
-        colorFilter: ColorFilter.mode(theme.custom.white, BlendMode.srcIn),
+        colorFilter: ColorFilter.mode(theme.custom.background, BlendMode.srcIn),
       ),
     );
   }

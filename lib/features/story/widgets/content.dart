@@ -21,7 +21,7 @@ class _StoryContentState extends State<StoryContent> {
     final theme = Theme.of(context);
     return StoryItem(
       Container(
-        decoration: BoxDecoration(color: theme.custom.black),
+        decoration: BoxDecoration(color: theme.custom.foreground),
         alignment: Alignment.center,
         child: CustomImage(imageId: i.id, fit: BoxFit.contain),
       ),
@@ -35,8 +35,8 @@ class _StoryContentState extends State<StoryContent> {
     return StoryView(
       storyItems: stories,
       controller: controller,
-      indicatorColor: theme.custom.opacityWhite,
-      indicatorForegroundColor: theme.custom.primary,
+      indicatorColor: theme.custom.onPrimary,
+      indicatorForegroundColor: theme.custom.accent,
       onComplete: () {
         AutoRouter.of(context).maybePop();
       },

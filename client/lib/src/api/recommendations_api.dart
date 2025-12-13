@@ -3,16 +3,14 @@
 //
 
 import 'dart:async';
-
 // ignore: unused_import
 import 'dart:convert';
-import 'package:daamduuqr_client/src/deserialize.dart';
-import 'package:dio/dio.dart';
 
+import 'package:daamduuqr_client/src/deserialize.dart';
 import 'package:daamduuqr_client/src/model/establishment_scheme.dart';
 import 'package:daamduuqr_client/src/model/establishment_type.dart';
-import 'package:daamduuqr_client/src/model/http_validation_error.dart';
 import 'package:daamduuqr_client/src/model/product_scheme.dart';
+import 'package:dio/dio.dart';
 
 class RecommendationsApi {
 

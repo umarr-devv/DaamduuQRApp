@@ -41,13 +41,10 @@ class _CustomTitleButtonState extends State<CustomTitleButton> {
           });
         },
         style: IconButton.styleFrom(
-          backgroundColor: theme.custom.primaryBg,
+          backgroundColor: theme.custom.background,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadiusGeometry.circular(8),
           ),
-          shadowColor: widget.shadow
-              ? theme.custom.shadowColor
-              : theme.custom.transparent,
           elevation: 12,
         ),
         icon: AnimatedScale(
@@ -56,7 +53,7 @@ class _CustomTitleButtonState extends State<CustomTitleButton> {
           child: Icon(
             widget.icon,
             size: 20,
-            color: widget.color ?? theme.custom.primaryFg,
+            color: widget.color ?? theme.custom.foreground,
           ),
         ),
       ),

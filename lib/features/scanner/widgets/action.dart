@@ -17,8 +17,8 @@ class ScannerAction extends StatelessWidget {
           CustomIconButton(
             icon: Icons.close,
             radius: 12,
-            background: theme.custom.primaryFg,
-            foreground: theme.custom.white,
+            background: theme.custom.foreground,
+            foreground: theme.custom.background,
             onTap: () {
               AutoRouter.of(context).maybePop();
             },

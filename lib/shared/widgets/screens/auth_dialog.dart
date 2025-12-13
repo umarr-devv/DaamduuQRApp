@@ -64,7 +64,7 @@ class _Progress extends StatelessWidget {
     final theme = Theme.of(context);
     return Container(
       padding: const EdgeInsets.only(top: 160),
-      child: SpinKitRing(color: theme.custom.primary),
+      child: SpinKitRing(color: theme.custom.accent),
     );
   }
 }
@@ -78,17 +78,17 @@ class _DialogRules extends StatelessWidget {
     return RichText(
       textAlign: TextAlign.center,
       text: TextSpan(
-        style: theme.custom.labelSmall,
+        style: theme.custom.defaultTextStyle,
         children: [
           TextSpan(text: 'Авторизовываясь в нашей системе, вы принимаете '),
           TextSpan(
             text: 'условия соглашения',
-            style: TextStyle(color: theme.custom.primary),
+            style: TextStyle(color: theme.custom.accent),
           ),
           TextSpan(text: ' и '),
           TextSpan(
             text: 'конфеденциальности',
-            style: TextStyle(color: theme.custom.primary),
+            style: TextStyle(color: theme.custom.accent),
           ),
         ],
       ),
@@ -111,7 +111,7 @@ class _DialogButtons extends StatelessWidget {
           child: CustomTextButton(
             icon: 'assets/svg/google.svg',
             label: 'Google',
-            background: theme.custom.secondaryBg,
+            background: theme.custom.secondary,
             shadow: false,
             radius: 12,
             fontSize: 16,
@@ -126,7 +126,7 @@ class _DialogButtons extends StatelessWidget {
           child: CustomTextButton(
             icon: 'assets/svg/apple.svg',
             label: 'Apple ID',
-            background: theme.custom.secondaryBg,
+            background: theme.custom.secondary,
             shadow: false,
             radius: 12,
             fontSize: 16,
@@ -159,16 +159,10 @@ class _DialogTitle extends StatelessWidget {
               borderRadius: BorderRadiusGeometry.circular(8),
               child: Image.asset('assets/icon/icon.png', height: 32, width: 32),
             ),
-            Text(
-              'Войти',
-              style: theme.custom.titleLarge,
-            ),
+            Text('Войти', style: theme.custom.defaultTextStyle),
           ],
         ),
-        Text(
-          'Выберите способ входа',
-          style: theme.custom.labelMediumAlt,
-        ),
+        Text('Выберите способ входа', style: theme.custom.defaultTextStyle),
       ],
     );
   }

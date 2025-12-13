@@ -3,19 +3,17 @@
 //
 
 import 'dart:async';
-
 // ignore: unused_import
 import 'dart:convert';
-import 'package:daamduuqr_client/src/deserialize.dart';
-import 'package:dio/dio.dart';
 
+import 'package:daamduuqr_client/src/deserialize.dart';
 import 'package:daamduuqr_client/src/model/create_portion_scheme.dart';
 import 'package:daamduuqr_client/src/model/create_product_scheme.dart';
 import 'package:daamduuqr_client/src/model/detail_product_scheme.dart';
-import 'package:daamduuqr_client/src/model/http_validation_error.dart';
 import 'package:daamduuqr_client/src/model/product_scheme.dart';
 import 'package:daamduuqr_client/src/model/update_portion_scheme.dart';
 import 'package:daamduuqr_client/src/model/update_product_scheme.dart';
+import 'package:dio/dio.dart';
 
 class ProductsApi {
 

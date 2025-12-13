@@ -56,13 +56,9 @@ class _MenuNavBarState extends State<MenuNavBar> {
       notchSmoothness: NotchSmoothness.defaultEdge,
       leftCornerRadius: 24,
       rightCornerRadius: 24,
-      backgroundColor: theme.custom.primaryBg,
+      backgroundColor: theme.custom.background,
       scaleFactor: -0.2,
-      shadow: BoxShadow(
-        color: theme.custom.shadowColor,
-        offset: Offset(0, -2),
-        blurRadius: 4,
-      ),
+      shadow: BoxShadow(offset: Offset(0, -2), blurRadius: 4),
       onTap: (index) {
         widget.tabsRouter.setActiveIndex(index);
       },
@@ -109,7 +105,7 @@ class _MenuNavBarItem extends StatelessWidget {
           height: 24,
           width: 24,
           colorFilter: ColorFilter.mode(
-            isActive ? theme.custom.primary : theme.custom.secondaryFg,
+            isActive ? theme.custom.accent : theme.custom.onSecondary,
             BlendMode.srcIn,
           ),
         ),

@@ -11,7 +11,7 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: theme.custom.primaryBg,
+      backgroundColor: theme.custom.background,
       body: CustomScrollView(slivers: [SettingsAppBar()]),
     );
   }

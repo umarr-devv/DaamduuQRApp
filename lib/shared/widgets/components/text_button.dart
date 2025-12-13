@@ -66,12 +66,9 @@ class _CustomTextButtonState extends State<CustomTextButton> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadiusGeometry.circular(widget.radius),
           ),
-          shadowColor: widget.shadow
-              ? theme.custom.veryHighShadowColor
-              : theme.custom.transparent,
           padding: widget.padding,
           elevation: 4,
-          backgroundColor: widget.background ?? theme.custom.primaryBg,
+          backgroundColor: widget.background ?? theme.custom.background,
         ),
         child: AnimatedScale(
           scale: scale,
@@ -84,7 +81,7 @@ class _CustomTextButtonState extends State<CustomTextButton> {
                   ? Icon(
                       widget.icon as IconData,
                       size: widget.size,
-                      color: widget.foreground ?? theme.custom.primaryFg,
+                      color: widget.foreground ?? theme.custom.foreground,
                     )
                   : widget.icon is String
                   ? SvgPicture.asset(
@@ -93,7 +90,7 @@ class _CustomTextButtonState extends State<CustomTextButton> {
                       height: widget.size,
                       colorFilter: widget.colorFilter
                           ? ColorFilter.mode(
-                              widget.foreground ?? theme.custom.primaryFg,
+                              widget.foreground ?? theme.custom.foreground,
                               BlendMode.srcIn,
                             )
                           : null,
@@ -101,9 +98,9 @@ class _CustomTextButtonState extends State<CustomTextButton> {
                   : SizedBox(),
               Text(
                 widget.label,
-                style: theme.custom.labelLarge.copyWith(
+                style: theme.custom.defaultTextStyle.copyWith(
                   fontSize: widget.fontSize,
-                  color: widget.foreground ?? theme.custom.primaryFg,
+                  color: widget.foreground ?? theme.custom.foreground,
                 ),
               ),
             ],

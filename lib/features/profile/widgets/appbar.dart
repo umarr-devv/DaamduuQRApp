@@ -49,10 +49,9 @@ class _ProfileAppBarState extends State<ProfileAppBar> {
       builder: (context, state) {
         return SliverAppBar(
           backgroundColor: isCollapsed
-              ? theme.custom.primaryBg
-              : theme.custom.secondaryBg,
+              ? theme.custom.background
+              : theme.custom.secondary,
           pinned: true,
-          shadowColor: theme.custom.highShadowColor,
           automaticallyImplyLeading: false,
           title: _AppBarTitle(),
           actions: [
@@ -70,7 +69,6 @@ class _ProfileAppBarState extends State<ProfileAppBar> {
                 child: CustomIconButton(
                   icon: Icons.exit_to_app_rounded,
                   shadow: !isCollapsed,
-                  foreground: theme.custom.orange,
                   radius: 12,
                   onTap: () {
                     cubit.signOut();
@@ -93,7 +91,7 @@ class _AppBarTitle extends StatelessWidget {
     final theme = Theme.of(context);
     return Row(
       spacing: 8,
-      children: [Text('Мой Профиль', style: theme.custom.titleLarge)],
+      children: [Text('Мой Профиль', style: theme.custom.defaultTextStyle)],
     );
   }
 }

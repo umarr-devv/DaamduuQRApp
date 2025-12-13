@@ -11,10 +11,10 @@ class OrderAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return SliverAppBar(
-      backgroundColor: theme.custom.secondaryBg,
+      backgroundColor: theme.custom.secondary,
       automaticallyImplyLeading: false,
       pinned: true,
-      title: Text('Мой Заказ', style: theme.custom.titleLarge),
+      title: Text('Мой Заказ', style: theme.custom.defaultTextStyle),
       actions: [_AppBarActions(), const SizedBox(width: 16)],
     );
   }
@@ -38,8 +38,8 @@ class _AppBarActions extends StatelessWidget {
           shadow: false,
           background: theme.custom.transparent,
           foreground: available
-              ? theme.custom.primary
-              : theme.custom.secondaryFg,
+              ? theme.custom.accent
+              : theme.custom.onSecondary,
           animation: available,
           onTap: () {
             if (available) {

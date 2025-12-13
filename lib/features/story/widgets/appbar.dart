@@ -11,8 +11,8 @@ class StoryAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return AppBar(
-      backgroundColor: theme.custom.black,
-      surfaceTintColor: theme.custom.black,
+      backgroundColor: theme.custom.foreground,
+      surfaceTintColor: theme.custom.foreground,
       automaticallyImplyLeading: false,
     );
   }

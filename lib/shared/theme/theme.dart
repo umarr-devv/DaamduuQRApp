@@ -11,164 +11,73 @@ class CustomThemeData {
     return brightness == Brightness.light ? light : dark;
   }
 
-  Color get primary => Color(0xffe44641);
+  Color get accent => Color(0xffe44641);
 
-  Color get primaryBg => const Color(0xFFffffff);
+  Color get background => const Color(0xFFffffff);
 
-  Color get secondaryBg => const Color(0xFFF5F5F6);
+  Color get foreground => const Color(0xff2a2a2a);
 
-  Color get primaryFg => const Color(0xff2a2a2a);
+  Color get primary => Color(0xFF18181B);
 
-  Color get secondaryFg => Color(0xff767676);
+  Color get onPrimary => Color(0xffffffff);
 
-  Color get black => Color(0xff000000);
+  Color get secondary => const Color(0xFFF5F5F6);
 
-  Color get white => Color(0xffffffff);
+  Color get onSecondary => Color(0xff767676);
 
-  Color get green => Color(0xff48a357);
+  Color get muted => Color(0xFFF4F4F5);
 
-  Color get blue => Color(0xff0d6efd);
+  Color get onMuted => Color(0xFF71717A);
 
-  Color get orange => Color(0xFFfd7e14);
+  Color get destructive => Color(0xFFEF4444);
 
-  Color get yellow => Color(0xffffc107);
+  Color get onDestructive => Color(0xFFFAFAFA);
+
+  Color get error => Color(0xFFEF4444);
+
+  Color get onError => Color(0xFFFAFAFA);
 
   Color get transparent => Color(0x00000000);
 
-  Color get opacityOrange => orange.withValues(alpha: 0.175);
+  Color get border => Color(0xFFE4E4E7);
 
-  Color get opacityFg => primaryFg.withValues(alpha: 0.2);
+  Color get barrier => Color(0x33000000);
 
-  Color get opacityBorder => primaryFg.withValues(alpha: 0.1);
+  Color get black => Color(0xff000000);
 
-  Color get opacityWhite => Color(0xffffffff).withValues(alpha: 0.75);
+  TextStyle get defaultTextStyle =>
+      TextStyle(fontWeight: FontWeight.w500, color: foreground, fontSize: 14);
 
-  Color get opacityBlack => black.withValues(alpha: 0.5);
+  TextStyle get secondaryTextStyle =>
+      TextStyle(fontWeight: FontWeight.w400, color: onSecondary, fontSize: 14);
 
-  Color get splashColor => Color(0xffffffff).withValues(alpha: 0.125);
-
-  Color get shadowColor => Color(0xff000000).withValues(alpha: 0.05);
-
-  Color get highShadowColor => Color(0xff000000).withValues(alpha: 0.175);
-
-  Color get veryHighShadowColor => Color(0xff000000).withValues(alpha: 0.5);
-
-  Color get shimmerBase => black.withValues(alpha: 0.1);
-
-  Color get shimmerHighlight => black.withValues(alpha: 0.2);
-
-  List<BoxShadow> get boxShadow => [
-    BoxShadow(
-      color: shadowColor,
-      offset: Offset(2, 2),
-      blurRadius: 8,
-      spreadRadius: -2,
-    ),
-  ];
-
-  TextStyle get titleLarge => TextStyle(
-    fontFamily: font,
-    fontSize: 18,
-    fontWeight: FontWeight.w600,
-    color: primaryFg,
-  );
-
-  TextStyle get labelVeryLarge => TextStyle(
-    fontFamily: font,
-    fontSize: 18,
-    fontWeight: FontWeight.w500,
-    color: primaryFg,
-  );
-
-  TextStyle get labelLarge => TextStyle(
-    fontFamily: font,
-    fontSize: 16,
-    fontWeight: FontWeight.w500,
-    color: primaryFg,
-  );
-
-  TextStyle get labelLargeAlt => TextStyle(
-    fontFamily: font,
-    fontSize: 16,
-    fontWeight: FontWeight.w400,
-    color: secondaryFg,
-  );
-
-  TextStyle get labelMedium => TextStyle(
-    fontFamily: font,
-    fontSize: 14,
-    fontWeight: FontWeight.w500,
-    color: primaryFg,
-  );
-
-  TextStyle get labelMediumAlt => TextStyle(
-    fontFamily: font,
-    fontSize: 14,
-    fontWeight: FontWeight.w400,
-    color: secondaryFg,
-  );
-
-  TextStyle get labelSmall => TextStyle(
-    fontFamily: font,
-    fontSize: 12,
-    fontWeight: FontWeight.w500,
-    color: primaryFg,
-  );
-
-  TextStyle get labelSmallAlt => TextStyle(
-    fontFamily: font,
-    fontSize: 12,
-    fontWeight: FontWeight.w400,
-    color: secondaryFg,
-  );
+  TextStyle get primaryTextStyle =>
+      TextStyle(fontWeight: FontWeight.w500, color: onPrimary, fontSize: 14);
 
   ThemeData toTheme() {
     return ThemeData(
       useMaterial3: true,
       brightness: brightness,
-      primaryColor: primaryBg,
-      scaffoldBackgroundColor: secondaryBg,
+      primaryColor: primary,
+      scaffoldBackgroundColor: background,
       fontFamily: font,
-      appBarTheme: AppBarTheme(
-        backgroundColor: primaryBg,
-        surfaceTintColor: primaryBg,
-        iconTheme: IconThemeData(color: primaryFg),
-      ),
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        backgroundColor: primaryBg,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        type: BottomNavigationBarType.fixed,
-      ),
-      colorScheme: ColorScheme.fromSeed(
+      colorScheme: ColorScheme(
         brightness: brightness,
-        seedColor: primary,
-        primary: primaryBg,
-        onPrimary: primaryFg,
-        secondary: secondaryBg,
-        onSecondary: secondaryFg,
-        surface: secondaryBg,
-        onSurface: primaryFg,
+        primary: primary,
+        onPrimary: onPrimary,
+        secondary: secondary,
+        onSecondary: onSecondary,
+        error: error,
+        onError: onError,
+        surface: background,
+        onSurface: foreground,
       ),
-      textTheme: TextTheme(
-        titleLarge: TextStyle(
-          fontFamily: font,
-          color: primaryFg,
-          fontWeight: FontWeight.w600,
-          fontSize: 18,
-        ),
-        titleMedium: TextStyle(
-          fontFamily: font,
-          color: primaryFg,
-          fontWeight: FontWeight.w600,
-          fontSize: 16,
-        ),
-        titleSmall: TextStyle(
-          fontFamily: font,
-          color: primaryFg,
-          fontWeight: FontWeight.w600,
-          fontSize: 12,
-        ),
+      dividerTheme: DividerThemeData(
+        color: barrier,
+        indent: 16,
+        endIndent: 16,
+        space: 12,
+        thickness: 1,
       ),
     );
   }
@@ -177,6 +86,3 @@ class CustomThemeData {
 extension ThemeExtension on ThemeData {
   CustomThemeData get custom => CustomThemeData(brightness: brightness);
 }
-
-final lightTheme = CustomThemeData(brightness: Brightness.light).toTheme();
-final darkTheme = CustomThemeData(brightness: Brightness.dark).toTheme();

@@ -13,7 +13,7 @@ class SearchAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return SliverAppBar(
-      backgroundColor: theme.custom.secondaryBg,
+      backgroundColor: theme.custom.secondary,
       automaticallyImplyLeading: false,
       toolbarHeight: 0,
       bottom: _AppBarTitle(),

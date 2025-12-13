@@ -1,5 +1,4 @@
 import 'package:app/features/notifications/widgets/widgets.dart';
-import 'package:app/shared/theme/theme.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -9,10 +8,6 @@ class NotificationsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Scaffold(
-      backgroundColor: theme.custom.primaryBg,
-      body: CustomScrollView(slivers: [NotificationAppBar()]),
-    );
+    return Scaffold(body: CustomScrollView(slivers: [NotificationAppBar()]));
   }
 }

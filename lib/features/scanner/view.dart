@@ -16,7 +16,7 @@ class ScannerScreen extends StatelessWidget {
     return MultiBlocProvider(
       providers: [BlocProvider(create: (context) => BarcodeCubit())],
       child: Scaffold(
-        backgroundColor: theme.custom.black,
+        backgroundColor: theme.custom.foreground,
         appBar: ScannerAppBar(),
         body: Stack(
           children: [

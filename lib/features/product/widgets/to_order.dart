@@ -29,9 +29,9 @@ class ToOrderButtons extends StatelessWidget {
             ),
             width: double.infinity,
             decoration: BoxDecoration(
-              color: theme.custom.primaryBg,
+              color: theme.custom.background,
               border: Border(
-                top: BorderSide(color: theme.custom.opacityBorder, width: 1),
+                top: BorderSide(color: theme.custom.border, width: 1),
               ),
             ),
             child: _AddButtons(product: state.product),
@@ -61,9 +61,8 @@ class _AddButtons extends StatelessWidget {
             CustomIconButton(
               icon: Icons.delete,
               radius: 12,
-              background: theme.custom.secondaryBg,
+              background: theme.custom.secondary,
               shadow: false,
-              shadowColor: theme.custom.veryHighShadowColor,
               active: item != null,
               onTap: () {
                 cubit.setItem(item?.copyWith(0));
@@ -91,7 +90,7 @@ class _AddButtons extends StatelessWidget {
                     fontSize: 16,
                     shadow: false,
                     radius: 12,
-                    background: theme.custom.secondaryBg,
+                    background: theme.custom.secondary,
                     onTap: () {
                       AutoRouter.of(context).navigate(OrderRoute());
                     },
@@ -103,8 +102,8 @@ class _AddButtons extends StatelessWidget {
                     fontSize: 16,
                     shadow: false,
                     radius: 12,
-                    background: theme.custom.primary,
-                    foreground: theme.custom.white,
+                    background: theme.custom.accent,
+                    foreground: theme.custom.background,
                     onTap: () {
                       cubit.addItem(product);
                     },

@@ -30,8 +30,8 @@ class _ScannerInfoState extends State<ScannerInfo> {
             ),
             child: Text(
               state.barcode ?? '',
-              style: theme.custom.labelLarge.copyWith(
-                color: theme.custom.white,
+              style: theme.custom.defaultTextStyle.copyWith(
+                color: theme.custom.background,
               ),
             ),
           ),

@@ -46,13 +46,12 @@ class _HomeAppBarState extends State<HomeAppBar> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return SliverAppBar(
-      shadowColor: theme.custom.highShadowColor,
       toolbarHeight: toolbarHeight,
       pinned: true,
       title: _AppBarTitle(),
       backgroundColor: isCollapsed
-          ? theme.custom.primaryBg
-          : theme.custom.secondaryBg,
+          ? theme.custom.background
+          : theme.custom.secondary,
       actions: [
         CustomIconButton(
           icon: 'assets/svg/bell.svg',
@@ -85,7 +84,7 @@ class _AppBarTitle extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(6),
             decoration: BoxDecoration(
-              color: theme.custom.primary,
+              color: theme.custom.accent,
               borderRadius: BorderRadius.circular(8),
             ),
             child: SvgPicture.asset('assets/svg/icon.svg', height: 20),
