@@ -12,33 +12,24 @@ class EstablishmentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return GestureDetector(
       onTap: () {
         AutoRouter.of(
           context,
         ).push(EstablishmentRoute(establishment: establishment));
       },
-      child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-        decoration: BoxDecoration(
-          color: theme.custom.background,
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadiusGeometry.circular(16),
-          child: Stack(
-            children: [
-              Column(
-                children: [
-                  Expanded(child: _CardImage(establishment: establishment)),
-                  _CardInfo(establishment: establishment),
-                ],
-              ),
-              _Actions(establishment: establishment),
-              _AvailableStatus(),
-            ],
-          ),
+      child: Card(
+        child: Stack(
+          children: [
+            Column(
+              children: [
+                Expanded(child: _CardImage(establishment: establishment)),
+                _CardInfo(establishment: establishment),
+              ],
+            ),
+            _Actions(establishment: establishment),
+            _AvailableStatus(),
+          ],
         ),
       ),
     );
@@ -83,9 +74,7 @@ class _CardInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Container(
-      width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-      decoration: BoxDecoration(color: theme.custom.background),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -108,7 +97,7 @@ class _CardInfo extends StatelessWidget {
                   establishment.address,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: theme.custom.labelTextStyle,
+                  style: theme.custom.secondaryTextStyle,
                 ),
               ),
             ],

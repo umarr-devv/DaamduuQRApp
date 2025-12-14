@@ -1,97 +1,154 @@
 import 'package:app/core/router/router.dart';
-import 'package:app/shared/theme/theme.dart';
-import 'package:app/shared/widgets/widgets.dart';
+import 'package:app/features/home/bloc/home/home_cubit.dart';
+import 'package:app/shared/shared.dart';
+import 'package:app/utils/undefined.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:flutter_tilt/flutter_tilt.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-class HomeAppBar extends StatefulWidget {
-  const HomeAppBar({super.key, required this.scrollController});
-
-  final ScrollController scrollController;
-
-  @override
-  State<HomeAppBar> createState() => _HomeAppBarState();
-}
-
-class _HomeAppBarState extends State<HomeAppBar> {
-  double toolbarHeight = 64;
-
-  bool isCollapsed = false;
-
-  void scrollListener() {
-    if (widget.scrollController.offset > 1) {
-      if (!isCollapsed) {
-        setState(() {
-          isCollapsed = true;
-        });
-      }
-    } else if (widget.scrollController.offset < 1) {
-      if (isCollapsed) {
-        setState(() {
-          isCollapsed = false;
-        });
-      }
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    widget.scrollController.addListener(scrollListener);
-  }
+class HomeAppBar extends StatelessWidget {
+  const HomeAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return SliverAppBar(
-      shadowColor: theme.custom.shadow,
-      toolbarHeight: toolbarHeight,
-      pinned: true,
-      title: _AppBarTitle(),
-      backgroundColor: isCollapsed
-          ? theme.custom.background
-          : theme.custom.secondary,
+      backgroundColor: theme.custom.secondary,
+      title: SvgPicture.asset('assets/svg/logo-full.svg', height: 32),
+      centerTitle: false,
       actions: [
         CustomIconButton(
           icon: 'assets/svg/bell.svg',
+          onTap: () {},
           radius: 12,
-          shadow: !isCollapsed,
-          onTap: () {
-            AutoRouter.of(context).push(NotificationsRoute());
-          },
+          shadow: false,
         ),
         SizedBox(width: 16),
       ],
+      bottom: _AppBarBottom(),
     );
   }
 }
 
-class _AppBarTitle extends StatelessWidget {
-  const _AppBarTitle();
+class _AppBarBottom extends StatelessWidget implements PreferredSizeWidget {
+  const _AppBarBottom();
+
+  @override
+  Size get preferredSize => Size.fromHeight(106);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(children: [_AppBarSearch(), _AppBarFilter()]);
+  }
+}
+
+class _AppBarSearch extends StatelessWidget {
+  const _AppBarSearch();
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        AutoRouter.of(context).push(SearchRoute());
+      },
+      child: Hero(
+        tag: 'searchbar',
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: CustomSearchBar(
+            hintText: 'Поищите свои любимые сладости',
+            enable: false,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _AppBarFilter extends StatefulWidget {
+  const _AppBarFilter();
+
+  @override
+  State<_AppBarFilter> createState() => _AppBarFilterState();
+}
+
+class _AppBarFilterState extends State<_AppBarFilter> {
+  void onTap(EstablishmentType? type) {
+    BlocProvider.of<HomeCubit>(context).setType(type ?? undefined);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<HomeCubit, HomeState>(
+      bloc: BlocProvider.of<HomeCubit>(context),
+      builder: (context, state) {
+        return SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+          child: Row(
+            spacing: 8,
+            children:
+                [
+                  _FilterItem(
+                    type: null,
+                    onTap: onTap,
+                    currentType: state.type,
+                  ),
+                ] +
+                EstablishmentType.values
+                    .map(
+                      (i) => _FilterItem(
+                        type: i,
+                        onTap: onTap,
+                        currentType: state.type,
+                      ),
+                    )
+                    .toList(),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _FilterItem extends StatefulWidget {
+  const _FilterItem({
+    required this.type,
+    required this.onTap,
+    required this.currentType,
+  });
+
+  final EstablishmentType? type;
+  final void Function(EstablishmentType?) onTap;
+  final EstablishmentType? currentType;
+
+  @override
+  State<_FilterItem> createState() => _FilterItemState();
+}
+
+class _FilterItemState extends State<_FilterItem> {
+  bool get active => widget.currentType == widget.type;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Tilt(
-      lightShadowMode: LightShadowMode.base,
-      shadowConfig: ShadowConfig(disable: true),
-      tiltConfig: TiltConfig(angle: 8),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        spacing: 8,
-        children: [
-          Container(
-            padding: const EdgeInsets.all(6),
-            decoration: BoxDecoration(
-              color: theme.custom.primary,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: SvgPicture.asset('assets/svg/icon.svg', height: 20),
-          ),
-          SvgPicture.asset('assets/svg/logo.svg', height: 20),
-        ],
+    return GestureDetector(
+      onTap: () {
+        widget.onTap(widget.type);
+      },
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 175),
+        padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
+        decoration: BoxDecoration(
+          color: active ? theme.custom.primary : theme.custom.background,
+          borderRadius: BorderRadius.circular(32),
+        ),
+        child: CustomEstablishmentType(
+          type: widget.type,
+          color: active ? theme.custom.background : theme.custom.onSecondary,
+        ),
       ),
     );
   }

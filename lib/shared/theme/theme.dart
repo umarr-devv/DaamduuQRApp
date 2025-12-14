@@ -39,16 +39,23 @@ class CustomThemeData {
 
   TextStyle get labelTextStyle => TextStyle(
     fontFamily: font,
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: FontWeight.w600,
     color: foreground,
   );
 
   TextStyle get secondaryTextStyle => TextStyle(
     fontFamily: font,
-    fontSize: 14,
-    fontWeight: FontWeight.w500,
+    fontSize: 13,
+    fontWeight: FontWeight.w400,
     color: onSecondary,
+  );
+
+  TextStyle get priceTextStyle => TextStyle(
+    fontFamily: font,
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+    color: foreground,
   );
 
   ThemeData toTheme() {
@@ -60,13 +67,39 @@ class CustomThemeData {
       fontFamily: font,
       colorScheme: ColorScheme.fromSeed(
         brightness: brightness,
-        seedColor: accent,
+        seedColor: primary,
         primary: primary,
         onPrimary: onPrimary,
         secondary: secondary,
         onSecondary: onSecondary,
         surface: secondary,
         onSurface: foreground,
+      ),
+      appBarTheme: AppBarThemeData(
+        backgroundColor: background,
+        surfaceTintColor: transparent,
+        titleTextStyle: TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.w600,
+          color: primary,
+        ),
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        contentPadding: const EdgeInsets.all(0),
+        hintStyle: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
+          color: onSecondary,
+        ),
+        border: OutlineInputBorder(borderSide: BorderSide.none),
+      ),
+      cardTheme: CardThemeData(
+        clipBehavior: Clip.antiAlias,
+        color: background,
+        shadowColor: black.withValues(alpha: 0.1),
+        elevation: 4,
+        margin: const EdgeInsets.all(0),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       ),
     );
   }
@@ -75,6 +108,3 @@ class CustomThemeData {
 extension ThemeExtension on ThemeData {
   CustomThemeData get custom => CustomThemeData(brightness: brightness);
 }
-
-final lightTheme = CustomThemeData(brightness: Brightness.light).toTheme();
-final darkTheme = CustomThemeData(brightness: Brightness.dark).toTheme();

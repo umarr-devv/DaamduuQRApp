@@ -59,8 +59,9 @@ class _MenuNavBarState extends State<MenuNavBar> {
       backgroundColor: theme.custom.background,
       scaleFactor: -0.2,
       shadow: BoxShadow(
-        offset: Offset(0, -2),
+        offset: Offset(0, -1),
         blurRadius: 4,
+        color: theme.custom.shadow,
       ),
       onTap: (index) {
         widget.tabsRouter.setActiveIndex(index);
@@ -108,7 +109,7 @@ class _MenuNavBarItem extends StatelessWidget {
           height: 24,
           width: 24,
           colorFilter: ColorFilter.mode(
-            isActive ? theme.custom.primary : theme.custom.onSecondary,
+            isActive ? theme.custom.accent : theme.custom.onSecondary,
             BlendMode.srcIn,
           ),
         ),

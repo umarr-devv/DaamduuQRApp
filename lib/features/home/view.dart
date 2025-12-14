@@ -34,19 +34,15 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [BlocProvider(create: (context) => cubit)],
-      child: Scaffold(
-        body: CustomScrollView(
-          controller: scrollController,
-          slivers: [
-            HomeAppBar(scrollController: scrollController),
-            SliverToBoxAdapter(child: HomeSearchBar()),
-            SliverToBoxAdapter(child: HomeFilter()),
-            SliverToBoxAdapter(child: HomeEstablishments()),
-            HomeProducts(),
-            // HomeProductsList(),
-            SliverToBoxAdapter(child: NavBarSpace()),
-          ],
-        ),
+      child: CustomScrollView(
+        controller: scrollController,
+        slivers: [
+          HomeAppBar(),
+          SliverToBoxAdapter(child: HomeEstablishments()),
+          HomeProducts(),
+          // HomeProductsList(),
+          SliverToBoxAdapter(child: NavBarSpace()),
+        ],
       ),
     );
   }

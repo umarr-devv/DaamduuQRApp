@@ -13,27 +13,22 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return GestureDetector(
       onTap: () {
         AutoRouter.of(context).push(ProductRoute(product: product));
       },
-      child: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              color: theme.custom.background,
-            ),
-            child: Column(
+      child: Card(
+        child: Stack(
+          children: [
+            Column(
               children: [
                 Expanded(child: _CardImage(product: product)),
                 _CardInfo(product: product),
               ],
             ),
-          ),
-          _FavoriteStatus(product: product),
-        ],
+            _FavoriteStatus(product: product),
+          ],
+        ),
       ),
     );
   }
@@ -68,11 +63,12 @@ class _CardPrice extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
       spacing: 2,
       children: [
         Text(
-          product.price.toStringAsFixed(1),
-          style: theme.custom.labelTextStyle,
+          product.price.toStringAsFixed(0),
+          style: theme.custom.priceTextStyle,
         ),
         SomSymbol(),
       ],
@@ -94,8 +90,18 @@ class _CardInfo extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(product.name, style: theme.custom.labelTextStyle),
-          Text(product.category.name, style: theme.custom.labelTextStyle),
+          Text(
+            product.name,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: theme.custom.labelTextStyle,
+          ),
+          Text(
+            product.category.name,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: theme.custom.secondaryTextStyle,
+          ),
           const SizedBox(height: 8),
           _CardPrice(product: product),
         ],
@@ -113,13 +119,7 @@ class _CardImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Hero(
       tag: 'image_${product.id}',
-      child: ClipRRect(
-        borderRadius: BorderRadiusGeometry.only(
-          topLeft: Radius.circular(16),
-          topRight: Radius.circular(16),
-        ),
-        child: CustomImage(imageId: product.images[0].id),
-      ),
+      child: CustomImage(imageId: product.images[0].id),
     );
   }
 }

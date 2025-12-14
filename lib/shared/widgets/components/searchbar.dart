@@ -5,14 +5,14 @@ import 'package:flutter_svg/svg.dart';
 class CustomSearchBar extends StatelessWidget {
   const CustomSearchBar({
     super.key,
-    required this.textController,
+    this.textController,
     this.focusNode,
     this.enable = true,
     this.autofocus = false,
     this.hintText = '',
   });
 
-  final TextEditingController textController;
+  final TextEditingController? textController;
   final FocusNode? focusNode;
   final bool enable;
   final bool autofocus;
@@ -34,8 +34,8 @@ class CustomSearchBar extends StatelessWidget {
           children: [
             SvgPicture.asset(
               'assets/svg/search.svg',
-              height: 20,
-              width: 20,
+              height: 24,
+              width: 24,
               colorFilter: ColorFilter.mode(
                 theme.custom.onSecondary,
                 BlendMode.srcIn,
@@ -51,12 +51,7 @@ class CustomSearchBar extends StatelessWidget {
                   controller: textController,
                   focusNode: focusNode,
                   style: theme.custom.labelTextStyle,
-                  decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.all(0),
-                    hintText: hintText,
-                    hintStyle: theme.custom.labelTextStyle,
-                    border: OutlineInputBorder(borderSide: BorderSide.none),
-                  ),
+                  decoration: InputDecoration(hintText: hintText),
                 ),
               ),
             ),

@@ -39,7 +39,12 @@ class _HomeEstablishmentsState extends State<HomeEstablishments> {
                 },
               ),
               items: state.establishments
-                  .map((i) => EstablishmentCard(establishment: i))
+                  .map(
+                    (i) => Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 6),
+                      child: EstablishmentCard(establishment: i),
+                    ),
+                  )
                   .toList(),
             ),
             CustomAnimationIndicator(

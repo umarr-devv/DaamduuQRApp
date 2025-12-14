@@ -2,7 +2,7 @@ name: app
 description: "A new Flutter project."
 publish_to: "none"
 
-version: 0.1.0+44
+version: 0.1.01+45
 
 environment:
   sdk: ^3.10.1
@@ -150,6 +150,8 @@ flutter:
     - "assets/svg/google.svg"
     - "assets/svg/apple.svg"
     - "assets/svg/trash-xmark.svg"
+    - "assets/svg/logo-full.svg"
+
 
     - "assets/icon/icon.png"
 
