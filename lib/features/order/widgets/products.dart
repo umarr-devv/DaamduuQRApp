@@ -81,7 +81,10 @@ class _CardActions extends StatelessWidget {
         ),
         Row(
           children: [
-            Text(item.sum.toStringAsFixed(1), style: theme.custom.labelLarge),
+            Text(
+              item.sum.toStringAsFixed(1),
+              style: theme.custom.labelTextStyle,
+            ),
             SomSymbol(size: 12),
           ],
         ),
@@ -104,13 +107,13 @@ class _CardInfo extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(product.category.name, style: theme.custom.labelSmallAlt),
-        Text(product.name, style: theme.custom.labelLarge),
+        Text(product.category.name, style: theme.custom.labelTextStyle),
+        Text(product.name, style: theme.custom.labelTextStyle),
         SizedBox(height: 8),
         CustomCounterButton(
           value: item.quantity,
           iconSize: 20,
-          removeColor: theme.custom.primaryBg,
+          removeColor: theme.custom.background,
           onFirstAdd: () {},
           onAdd: () {
             cubit.setItem(item.copyWith(item.quantity + 1));

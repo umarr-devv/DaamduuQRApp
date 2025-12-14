@@ -16,9 +16,8 @@ class ProductLongCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(2),
         decoration: BoxDecoration(
-          color: theme.custom.primaryBg,
+          color: theme.custom.background,
           borderRadius: BorderRadius.circular(16),
-          boxShadow: theme.custom.boxShadow,
         ),
         child: Stack(
           children: [
@@ -85,15 +84,15 @@ class _CardInfo extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(product.name, style: theme.custom.labelLarge),
-          Text(product.category.name, style: theme.custom.labelSmallAlt),
+          Text(product.name, style: theme.custom.labelTextStyle),
+          Text(product.category.name, style: theme.custom.labelTextStyle),
           Expanded(child: SizedBox()),
           Row(
             spacing: 4,
             children: [
               Text(
                 product.price.toStringAsFixed(1),
-                style: theme.custom.labelLarge,
+                style: theme.custom.labelTextStyle,
               ),
               SomSymbol(),
             ],

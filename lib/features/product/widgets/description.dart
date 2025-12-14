@@ -22,11 +22,11 @@ class ProductDescription extends StatelessWidget {
                 Row(
                   spacing: 4,
                   children: [
-                    Icon(Icons.history, color: theme.custom.green),
+                    Icon(Icons.history),
                     Text(
                       '45 мин',
-                      style: theme.custom.labelLarge.copyWith(
-                        color: theme.custom.green,
+                      style: theme.custom.labelTextStyle.copyWith(
+                    
                       ),
                     ),
                   ],
@@ -34,20 +34,20 @@ class ProductDescription extends StatelessWidget {
                 if (state.product.description != null)
                   Text(
                     state.product.description ?? '',
-                    style: theme.custom.labelMedium,
+                    style: theme.custom.labelTextStyle,
                   ),
                 if (state.product.composition != null)
                   RichText(
                     text: TextSpan(
-                      style: theme.custom.labelMedium,
+                      style: theme.custom.labelTextStyle,
                       children: [
                         TextSpan(
                           text: 'Состав: ',
-                          style: theme.custom.labelMediumAlt,
+                          style: theme.custom.labelTextStyle,
                         ),
                         TextSpan(
                           text: state.product.composition ?? '',
-                          style: theme.custom.labelMedium,
+                          style: theme.custom.labelTextStyle,
                         ),
                       ],
                     ),

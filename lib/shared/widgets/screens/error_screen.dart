@@ -23,19 +23,19 @@ class ErrorScreen extends StatelessWidget {
               height: 128,
               width: 128,
               colorFilter: ColorFilter.mode(
-                theme.custom.primaryFg,
+                theme.custom.foreground,
                 BlendMode.srcIn,
               ),
             ),
             Text(
               'Нет соединения с сетью',
               textAlign: TextAlign.center,
-              style: theme.custom.labelLarge,
+              style: theme.custom.labelTextStyle,
             ),
             Text(
               'Проверьте соединение с сетью или же попробуйте чуть позже',
               textAlign: TextAlign.center,
-              style: theme.custom.labelMediumAlt,
+              style: theme.custom.labelTextStyle,
             ),
             const SizedBox(height: 12),
             if (retry != null)

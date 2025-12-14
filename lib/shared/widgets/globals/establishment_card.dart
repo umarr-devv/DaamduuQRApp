@@ -22,8 +22,7 @@ class EstablishmentCard extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
         decoration: BoxDecoration(
-          color: theme.custom.primaryBg,
-          boxShadow: theme.custom.boxShadow,
+          color: theme.custom.background,
           borderRadius: BorderRadius.circular(16),
         ),
         child: ClipRRect(
@@ -68,7 +67,7 @@ class _Actions extends StatelessWidget {
         padding: const EdgeInsets.all(8),
         child: Hero(
           tag: 'favorite_${establishment.id}',
-          child: FavoriteButton(id: establishment.id,),
+          child: FavoriteButton(id: establishment.id),
         ),
       ),
     );
@@ -86,7 +85,7 @@ class _CardInfo extends StatelessWidget {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-      decoration: BoxDecoration(color: theme.custom.primaryBg),
+      decoration: BoxDecoration(color: theme.custom.background),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -94,7 +93,7 @@ class _CardInfo extends StatelessWidget {
             establishment.name,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: theme.custom.labelMedium,
+            style: theme.custom.labelTextStyle,
           ),
           Row(
             spacing: 4,
@@ -102,14 +101,14 @@ class _CardInfo extends StatelessWidget {
               Icon(
                 Icons.location_pin,
                 size: 16,
-                color: theme.custom.secondaryFg,
+                color: theme.custom.onSecondary,
               ),
               Expanded(
                 child: Text(
                   establishment.address,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: theme.custom.labelSmallAlt,
+                  style: theme.custom.labelTextStyle,
                 ),
               ),
             ],

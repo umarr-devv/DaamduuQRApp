@@ -79,7 +79,7 @@ class _ProfileActionsState extends State<ProfileActions> {
       margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: theme.custom.primaryBg,
+        color: theme.custom.background,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
@@ -107,7 +107,7 @@ class _ActionButton extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(6),
             decoration: BoxDecoration(
-              color: theme.custom.secondaryBg,
+              color: theme.custom.secondary,
               borderRadius: BorderRadius.circular(32),
             ),
             child: SvgPicture.asset(
@@ -115,7 +115,7 @@ class _ActionButton extends StatelessWidget {
               height: 24,
               width: 24,
               colorFilter: ColorFilter.mode(
-                theme.custom.secondaryFg,
+                theme.custom.onSecondary,
                 BlendMode.srcIn,
               ),
             ),
@@ -123,9 +123,9 @@ class _ActionButton extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(button.label, style: theme.custom.labelLarge),
+              Text(button.label, style: theme.custom.labelTextStyle),
               if (button.description != null)
-                Text(button.description!, style: theme.custom.labelSmallAlt),
+                Text(button.description!, style: theme.custom.labelTextStyle),
             ],
           ),
         ],

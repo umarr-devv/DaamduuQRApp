@@ -81,12 +81,12 @@ class _FilterItemState extends State<_FilterItem> {
         duration: const Duration(milliseconds: 175),
         padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
         decoration: BoxDecoration(
-          color: active ? theme.custom.primary : theme.custom.primaryBg,
+          color: active ? theme.custom.primary : theme.custom.background,
           borderRadius: BorderRadius.circular(12),
         ),
         child: CustomEstablishmentType(
           type: widget.type,
-          color: active ? theme.custom.white : theme.custom.secondaryFg,
+          color: active ? theme.custom.background : theme.custom.onSecondary,
         ),
       ),
     );

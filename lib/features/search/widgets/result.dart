@@ -29,11 +29,11 @@ class SearchResult extends StatelessWidget {
                 height: 96,
                 width: 96,
                 colorFilter: ColorFilter.mode(
-                  theme.custom.secondaryFg,
+                  theme.custom.onSecondary,
                   BlendMode.srcIn,
                 ),
               ),
-              Text('Ничего не найдено', style: theme.custom.labelMediumAlt),
+              Text('Ничего не найдено', style: theme.custom.labelTextStyle),
             ],
           );
         } else {

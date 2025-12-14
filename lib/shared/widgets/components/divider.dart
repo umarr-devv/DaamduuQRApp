@@ -1,4 +1,3 @@
-import 'package:app/shared/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class CustomDivider extends StatelessWidget {
@@ -9,11 +8,9 @@ class CustomDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Padding(
       padding: EdgeInsets.symmetric(vertical: verticalPadding),
       child: Divider(
-        color: theme.custom.opacityFg,
         indent: indent,
         endIndent: indent,
       ),

@@ -22,8 +22,8 @@ class FavoriteButton extends StatelessWidget {
           icon: favorite
               ? Icons.favorite_rounded
               : Icons.favorite_border_rounded,
-          background: theme.custom.primaryBg,
-          foreground: favorite ? theme.custom.primary : theme.custom.primaryFg,
+          background: theme.custom.background,
+          foreground: favorite ? theme.custom.primary : theme.custom.foreground,
           shadow: shadow,
           onTap: () {
             if (favorite) {

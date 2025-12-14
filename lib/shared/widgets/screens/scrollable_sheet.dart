@@ -27,7 +27,7 @@ class CustomScrollableSheet extends StatelessWidget {
     final theme = Theme.of(context);
     showModalBottomSheet(
       context: context,
-      backgroundColor: theme.custom.primaryBg,
+      backgroundColor: theme.custom.background,
       isScrollControlled: true,
       elevation: 4,
       shape: RoundedRectangleBorder(

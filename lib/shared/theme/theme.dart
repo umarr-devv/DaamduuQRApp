@@ -11,164 +11,62 @@ class CustomThemeData {
     return brightness == Brightness.light ? light : dark;
   }
 
-  Color get primary => Color(0xffe44641);
+  Color get accent => Color(0xffe44641);
 
-  Color get primaryBg => const Color(0xFFffffff);
+  Color get primary => Color(0xFF18181B);
 
-  Color get secondaryBg => const Color(0xFFF5F5F6);
+  Color get onPrimary => Color(0xffffffff);
 
-  Color get primaryFg => const Color(0xff2a2a2a);
+  Color get background => const Color(0xFFffffff);
 
-  Color get secondaryFg => Color(0xff767676);
+  Color get foreground => const Color(0xff2a2a2a);
+
+  Color get secondary => const Color(0xFFF5F5F6);
+
+  Color get onSecondary => Color(0xff767676);
+
+  Color get barrier => Color(0x33000000);
+
+  Color get border => Color(0xFFE4E4E7);
 
   Color get black => Color(0xff000000);
 
-  Color get white => Color(0xffffffff);
+  Color get shadow => black.withValues(alpha: 0.05);
 
-  Color get green => Color(0xff48a357);
-
-  Color get blue => Color(0xff0d6efd);
-
-  Color get orange => Color(0xFFfd7e14);
-
-  Color get yellow => Color(0xffffc107);
+  Color get muted => Color(0xFFC8C8C8);
 
   Color get transparent => Color(0x00000000);
 
-  Color get opacityOrange => orange.withValues(alpha: 0.175);
-
-  Color get opacityFg => primaryFg.withValues(alpha: 0.2);
-
-  Color get opacityBorder => primaryFg.withValues(alpha: 0.1);
-
-  Color get opacityWhite => Color(0xffffffff).withValues(alpha: 0.75);
-
-  Color get opacityBlack => black.withValues(alpha: 0.5);
-
-  Color get splashColor => Color(0xffffffff).withValues(alpha: 0.125);
-
-  Color get shadowColor => Color(0xff000000).withValues(alpha: 0.05);
-
-  Color get highShadowColor => Color(0xff000000).withValues(alpha: 0.175);
-
-  Color get veryHighShadowColor => Color(0xff000000).withValues(alpha: 0.5);
-
-  Color get shimmerBase => black.withValues(alpha: 0.1);
-
-  Color get shimmerHighlight => black.withValues(alpha: 0.2);
-
-  List<BoxShadow> get boxShadow => [
-    BoxShadow(
-      color: shadowColor,
-      offset: Offset(2, 2),
-      blurRadius: 8,
-      spreadRadius: -2,
-    ),
-  ];
-
-  TextStyle get titleLarge => TextStyle(
+  TextStyle get labelTextStyle => TextStyle(
     fontFamily: font,
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: FontWeight.w600,
-    color: primaryFg,
+    color: foreground,
   );
 
-  TextStyle get labelVeryLarge => TextStyle(
-    fontFamily: font,
-    fontSize: 18,
-    fontWeight: FontWeight.w500,
-    color: primaryFg,
-  );
-
-  TextStyle get labelLarge => TextStyle(
-    fontFamily: font,
-    fontSize: 16,
-    fontWeight: FontWeight.w500,
-    color: primaryFg,
-  );
-
-  TextStyle get labelLargeAlt => TextStyle(
-    fontFamily: font,
-    fontSize: 16,
-    fontWeight: FontWeight.w400,
-    color: secondaryFg,
-  );
-
-  TextStyle get labelMedium => TextStyle(
+  TextStyle get secondaryTextStyle => TextStyle(
     fontFamily: font,
     fontSize: 14,
     fontWeight: FontWeight.w500,
-    color: primaryFg,
-  );
-
-  TextStyle get labelMediumAlt => TextStyle(
-    fontFamily: font,
-    fontSize: 14,
-    fontWeight: FontWeight.w400,
-    color: secondaryFg,
-  );
-
-  TextStyle get labelSmall => TextStyle(
-    fontFamily: font,
-    fontSize: 12,
-    fontWeight: FontWeight.w500,
-    color: primaryFg,
-  );
-
-  TextStyle get labelSmallAlt => TextStyle(
-    fontFamily: font,
-    fontSize: 12,
-    fontWeight: FontWeight.w400,
-    color: secondaryFg,
+    color: onSecondary,
   );
 
   ThemeData toTheme() {
     return ThemeData(
       useMaterial3: true,
       brightness: brightness,
-      primaryColor: primaryBg,
-      scaffoldBackgroundColor: secondaryBg,
+      primaryColor: background,
+      scaffoldBackgroundColor: secondary,
       fontFamily: font,
-      appBarTheme: AppBarTheme(
-        backgroundColor: primaryBg,
-        surfaceTintColor: primaryBg,
-        iconTheme: IconThemeData(color: primaryFg),
-      ),
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        backgroundColor: primaryBg,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        type: BottomNavigationBarType.fixed,
-      ),
       colorScheme: ColorScheme.fromSeed(
         brightness: brightness,
-        seedColor: primary,
-        primary: primaryBg,
-        onPrimary: primaryFg,
-        secondary: secondaryBg,
-        onSecondary: secondaryFg,
-        surface: secondaryBg,
-        onSurface: primaryFg,
-      ),
-      textTheme: TextTheme(
-        titleLarge: TextStyle(
-          fontFamily: font,
-          color: primaryFg,
-          fontWeight: FontWeight.w600,
-          fontSize: 18,
-        ),
-        titleMedium: TextStyle(
-          fontFamily: font,
-          color: primaryFg,
-          fontWeight: FontWeight.w600,
-          fontSize: 16,
-        ),
-        titleSmall: TextStyle(
-          fontFamily: font,
-          color: primaryFg,
-          fontWeight: FontWeight.w600,
-          fontSize: 12,
-        ),
+        seedColor: accent,
+        primary: primary,
+        onPrimary: onPrimary,
+        secondary: secondary,
+        onSecondary: onSecondary,
+        surface: secondary,
+        onSurface: foreground,
       ),
     );
   }

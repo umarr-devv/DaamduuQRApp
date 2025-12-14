@@ -41,7 +41,7 @@ class CustomCounterButton extends StatelessWidget {
                 size: iconSize,
                 radius: 12,
                 shadow: false,
-                background: removeColor ?? theme.custom.secondaryBg,
+                background: removeColor ?? theme.custom.secondary,
                 onTap: value == null ? () {} : onRemove,
               ),
               SizedBox(
@@ -49,7 +49,7 @@ class CustomCounterButton extends StatelessWidget {
                 child: AnimatedFlipCounter(
                   value: value ?? 0,
                   duration: const Duration(milliseconds: 175),
-                  textStyle: theme.custom.labelLarge.copyWith(
+                  textStyle: theme.custom.labelTextStyle.copyWith(
                     fontSize: fontSize,
                   ),
                 ),
@@ -59,7 +59,7 @@ class CustomCounterButton extends StatelessWidget {
                 size: iconSize,
                 radius: 12,
                 background: theme.custom.primary,
-                foreground: theme.custom.white,
+                foreground: theme.custom.background,
                 shadow: false,
                 onTap: value == null ? onFirstAdd : onAdd,
               ),

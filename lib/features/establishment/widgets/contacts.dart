@@ -13,7 +13,7 @@ class EstablishmentContacts extends StatelessWidget {
     return BlocBuilder<EstablishmentCubit, EstablishmentState>(
       bloc: BlocProvider.of<EstablishmentCubit>(context),
       builder: (context, state) {
-        if (state.detail == null){
+        if (state.detail == null) {
           return SizedBox();
         }
         return Container(
@@ -22,7 +22,7 @@ class EstablishmentContacts extends StatelessWidget {
             spacing: 12,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Контакты', style: theme.custom.labelLargeAlt),
+              Text('Контакты', style: theme.custom.labelTextStyle),
               Wrap(
                 spacing: 8,
                 runSpacing: 8,

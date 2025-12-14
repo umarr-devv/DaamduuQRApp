@@ -25,7 +25,7 @@ class ProductEstablishments extends StatelessWidget {
                 spacing: 12,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Заведения', style: theme.custom.labelMediumAlt),
+                  Text('Заведения', style: theme.custom.labelTextStyle),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: state.detailProduct!.establishments!.map((i) {
@@ -60,7 +60,7 @@ class _EstablishmentItem extends StatelessWidget {
             spacing: 4,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(establishment.name, style: theme.custom.labelMedium),
+              Text(establishment.name, style: theme.custom.labelTextStyle),
               Row(
                 spacing: 8,
                 children: [
@@ -69,14 +69,14 @@ class _EstablishmentItem extends StatelessWidget {
                     height: 20,
                     width: 20,
                     colorFilter: ColorFilter.mode(
-                      theme.custom.secondaryFg,
+                      theme.custom.onSecondary,
                       BlendMode.srcIn,
                     ),
                   ),
                   Expanded(
                     child: Text(
                       establishment.address,
-                      style: theme.custom.labelSmallAlt,
+                      style: theme.custom.labelTextStyle,
                     ),
                   ),
                 ],

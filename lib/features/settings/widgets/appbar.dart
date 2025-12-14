@@ -24,8 +24,8 @@ class _AppBarTitle extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       spacing: 8,
       children: [
-        Icon(Icons.settings, size: 24, color: theme.custom.primaryFg),
-        Text('Настройки', style: theme.custom.titleLarge),
+        Icon(Icons.settings, size: 24, color: theme.custom.foreground),
+        Text('Настройки', style: theme.custom.labelTextStyle),
       ],
     );
   }

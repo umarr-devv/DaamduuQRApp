@@ -43,8 +43,8 @@ class _ProductInfo extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(product.category.name, style: theme.custom.labelSmallAlt),
-        Text(product.name, style: theme.custom.labelVeryLarge),
+        Text(product.category.name, style: theme.custom.labelTextStyle),
+        Text(product.name, style: theme.custom.labelTextStyle),
       ],
     );
   }
@@ -61,7 +61,7 @@ class _ProductPrice extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
       decoration: BoxDecoration(
-        color: theme.custom.secondaryBg,
+        color: theme.custom.secondary,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
@@ -69,7 +69,7 @@ class _ProductPrice extends StatelessWidget {
         children: [
           Text(
             product.price.toStringAsFixed(1),
-            style: theme.custom.labelLarge.copyWith(fontSize: 18),
+            style: theme.custom.labelTextStyle.copyWith(fontSize: 18),
           ),
           SomSymbol(),
         ],

@@ -16,7 +16,7 @@ class ProfileAppInfo extends StatelessWidget {
       padding: const EdgeInsets.only(top: 32, left: 32, right: 32),
       child: Text(
         'Версия ${packageInfo.version}',
-        style: theme.custom.labelSmallAlt,
+        style: theme.custom.labelTextStyle,
       ),
     );
   }

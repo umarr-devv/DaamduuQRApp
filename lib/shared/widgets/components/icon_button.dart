@@ -70,10 +70,10 @@ class _CustomIconButtonState extends State<CustomIconButton> {
               borderRadius: BorderRadiusGeometry.circular(widget.radius),
             ),
             shadowColor: widget.shadow
-                ? widget.shadowColor ?? theme.custom.highShadowColor
+                ? widget.shadowColor ?? theme.custom.shadow
                 : theme.custom.transparent,
             elevation: 4,
-            backgroundColor: widget.background ?? theme.custom.primaryBg,
+            backgroundColor: widget.background ?? theme.custom.background,
           ),
           icon: AnimatedScale(
             scale: scale,
@@ -82,7 +82,7 @@ class _CustomIconButtonState extends State<CustomIconButton> {
                 ? Icon(
                     widget.icon as IconData,
                     size: widget.size,
-                    color: widget.foreground ?? theme.custom.primaryFg,
+                    color: widget.foreground ?? theme.custom.foreground,
                   )
                 : widget.icon is String
                 ? SvgPicture.asset(
@@ -90,7 +90,7 @@ class _CustomIconButtonState extends State<CustomIconButton> {
                     width: widget.size,
                     height: widget.size,
                     colorFilter: ColorFilter.mode(
-                      widget.foreground ?? theme.custom.primaryFg,
+                      widget.foreground ?? theme.custom.foreground,
                       BlendMode.srcIn,
                     ),
                   )

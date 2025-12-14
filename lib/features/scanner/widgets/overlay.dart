@@ -10,15 +10,15 @@ class ScannerOverlay extends StatelessWidget {
     final theme = Theme.of(context);
     return Stack(
       children: [
-        CustomQRScannerOverlay(overlayColor: theme.custom.opacityBlack),
+        CustomQRScannerOverlay(overlayColor: theme.custom.black.withValues(alpha: 0.25)),
         Align(
           alignment: Alignment.center,
           child: Transform.translate(
             offset: Offset(0, -200),
             child: Text(
               'Наведите камеру на QR',
-              style: theme.custom.labelLarge.copyWith(
-                color: theme.custom.white,
+              style: theme.custom.labelTextStyle.copyWith(
+                color: theme.custom.background,
               ),
             ),
           ),

@@ -54,11 +54,11 @@ class _EstablishmentAppBarState extends State<EstablishmentAppBar> {
       bloc: cubit,
       builder: (context, state) {
         return SliverAppBar(
-          backgroundColor: theme.custom.white,
+          backgroundColor: theme.custom.background,
           toolbarHeight: toolbarHeight,
           expandedHeight: expandedHeight,
           elevation: 4,
-          shadowColor: theme.custom.highShadowColor,
+          shadowColor: theme.custom.shadow,
           leading: MaybePopButton(shadow: !isCollapsed),
           title: _AppBarTitle(
             show: isCollapsed,
@@ -122,9 +122,9 @@ class _AppBarTitle extends StatelessWidget {
         children: [
           CustomEstablishmentType(
             type: establishment.type,
-            color: theme.custom.secondaryFg,
+            color: theme.custom.onSecondary,
           ),
-          Text(establishment.name, style: theme.custom.labelLarge),
+          Text(establishment.name, style: theme.custom.labelTextStyle),
         ],
       ),
     );
@@ -163,7 +163,10 @@ class _BackgroundImagesState extends State<_BackgroundImages> {
               height: mediaQuery.padding.top + 12,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [theme.custom.opacityFg, theme.custom.transparent],
+                  colors: [
+                    theme.custom.foreground.withValues(alpha: 0.1),
+                    theme.custom.transparent,
+                  ],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                 ),
@@ -176,7 +179,7 @@ class _BackgroundImagesState extends State<_BackgroundImages> {
                 height: 28,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: theme.custom.primaryBg,
+                  color: theme.custom.background,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(16),
                     topRight: Radius.circular(16),

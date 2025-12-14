@@ -27,10 +27,7 @@ class ToMenuButton extends StatelessWidget {
             ),
             width: double.infinity,
             decoration: BoxDecoration(
-              color: theme.custom.primaryBg,
-              border: Border(
-                top: BorderSide(color: theme.custom.opacityBorder, width: 1),
-              ),
+              color: theme.custom.background,
             ),
             child: SizedBox(
               height: 48,
@@ -38,7 +35,7 @@ class ToMenuButton extends StatelessWidget {
                 icon: 'assets/svg/menu-food.svg',
                 label: 'Меню',
                 background: theme.custom.primary,
-                foreground: theme.custom.white,
+                foreground: theme.custom.background,
                 radius: 12,
                 size: 20,
                 fontSize: 18,

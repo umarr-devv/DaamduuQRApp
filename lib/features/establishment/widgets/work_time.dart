@@ -95,12 +95,12 @@ class _WorkTimeTitke extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text('График работы', style: theme.custom.labelLargeAlt),
+          Text('График работы', style: theme.custom.labelTextStyle),
           Text(
             today.start == null || today.end == null
                 ? 'Выходной'
                 : 'c ${timeToStr(today.start)} до ${timeToStr(today.end)}',
-            style: theme.custom.labelMedium.copyWith(
+            style: theme.custom.labelTextStyle.copyWith(
               color: theme.custom.primary,
             ),
           ),
@@ -127,28 +127,34 @@ class _WotkTimeCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8),
       constraints: BoxConstraints(minWidth: 56),
       decoration: BoxDecoration(
-        color: weekdayNow ? theme.custom.primary : theme.custom.secondaryBg,
+        color: weekdayNow ? theme.custom.primary : theme.custom.secondary,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
         children: [
           Text(
             workTime.label,
-            style: theme.custom.labelMedium.copyWith(
-              color: weekdayNow ? theme.custom.white : theme.custom.secondaryFg,
+            style: theme.custom.labelTextStyle.copyWith(
+              color: weekdayNow
+                  ? theme.custom.background
+                  : theme.custom.onSecondary,
             ),
           ),
           const SizedBox(height: 8),
           Text(
             timeToStr(workTime.start),
-            style: theme.custom.labelSmall.copyWith(
-              color: weekdayNow ? theme.custom.white : theme.custom.primaryFg,
+            style: theme.custom.labelTextStyle.copyWith(
+              color: weekdayNow
+                  ? theme.custom.background
+                  : theme.custom.foreground,
             ),
           ),
           Text(
             timeToStr(workTime.end),
-            style: theme.custom.labelSmall.copyWith(
-              color: weekdayNow ? theme.custom.white : theme.custom.primaryFg,
+            style: theme.custom.labelTextStyle.copyWith(
+              color: weekdayNow
+                  ? theme.custom.background
+                  : theme.custom.foreground,
             ),
           ),
         ],

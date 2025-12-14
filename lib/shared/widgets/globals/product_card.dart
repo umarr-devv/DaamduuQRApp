@@ -23,8 +23,7 @@ class ProductCard extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
-              color: theme.custom.primaryBg,
-              boxShadow: theme.custom.boxShadow,
+              color: theme.custom.background,
             ),
             child: Column(
               children: [
@@ -71,7 +70,10 @@ class _CardPrice extends StatelessWidget {
     return Row(
       spacing: 2,
       children: [
-        Text(product.price.toStringAsFixed(1), style: theme.custom.labelLarge),
+        Text(
+          product.price.toStringAsFixed(1),
+          style: theme.custom.labelTextStyle,
+        ),
         SomSymbol(),
       ],
     );
@@ -92,8 +94,8 @@ class _CardInfo extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(product.name, style: theme.custom.labelMedium),
-          Text(product.category.name, style: theme.custom.labelSmallAlt),
+          Text(product.name, style: theme.custom.labelTextStyle),
+          Text(product.category.name, style: theme.custom.labelTextStyle),
           const SizedBox(height: 8),
           _CardPrice(product: product),
         ],
