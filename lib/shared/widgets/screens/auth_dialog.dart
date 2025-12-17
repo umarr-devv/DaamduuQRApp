@@ -36,12 +36,11 @@ class AuthDialog extends StatelessWidget {
                 child: Container(
                   padding: const EdgeInsets.all(24),
                   child: Column(
+                    spacing: 24,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       _DialogTitle(),
-                      SizedBox(height: 24),
                       _DialogButtons(),
-                      SizedBox(height: 64),
                       _DialogRules(),
                     ],
                   ),
@@ -78,17 +77,17 @@ class _DialogRules extends StatelessWidget {
     return RichText(
       textAlign: TextAlign.center,
       text: TextSpan(
-        style: theme.custom.label,
+        style: TextStyle(fontSize: 13, color: theme.custom.foreground),
         children: [
           TextSpan(text: 'Авторизовываясь в нашей системе, вы принимаете '),
           TextSpan(
             text: 'условия соглашения',
-            style: TextStyle(color: theme.custom.onMuted),
+            style: TextStyle(color: theme.custom.primary),
           ),
           TextSpan(text: ' и '),
           TextSpan(
             text: 'конфеденциальности',
-            style: TextStyle(color: theme.custom.onMuted),
+            style: TextStyle(color: theme.custom.primary),
           ),
         ],
       ),
@@ -111,7 +110,7 @@ class _DialogButtons extends StatelessWidget {
           child: CustomTextButton(
             icon: 'assets/svg/google.svg',
             label: 'Google',
-            background: theme.custom.secondary,
+            background: theme.custom.muted,
             shadow: false,
             radius: 12,
             fontSize: 16,
@@ -126,7 +125,7 @@ class _DialogButtons extends StatelessWidget {
           child: CustomTextButton(
             icon: 'assets/svg/apple.svg',
             label: 'Apple ID',
-            background: theme.custom.secondary,
+            background: theme.custom.muted,
             shadow: false,
             radius: 12,
             fontSize: 16,
@@ -159,10 +158,10 @@ class _DialogTitle extends StatelessWidget {
               borderRadius: BorderRadiusGeometry.circular(8),
               child: Image.asset('assets/icon/icon.png', height: 32, width: 32),
             ),
-            Text('Войти', style: theme.custom.label),
+            Text('Войти', style: theme.custom.title),
           ],
         ),
-        Text('Выберите способ входа', style: theme.custom.label),
+        Text('Выберите способ входа', style: theme.custom.subtitle),
       ],
     );
   }

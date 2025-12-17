@@ -76,8 +76,8 @@ class _UserAvatar extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadiusGeometry.circular(64),
       child: SizedBox(
-        height: 64,
-        width: 64,
+        height: 48,
+        width: 48,
         child: CustomImage(url: state.firebasePhotoUrl),
       ),
     );
@@ -96,8 +96,18 @@ class _UserInfo extends StatelessWidget {
       spacing: 4,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(state.firebaseDisplayName ?? '', style: theme.custom.label),
-        Text(state.firebaseEmail ?? '', style: theme.custom.label),
+        Text(
+          state.firebaseDisplayName ?? '',
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: theme.custom.label,
+        ),
+        Text(
+          state.firebaseEmail ?? '',
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: theme.custom.subtitle,
+        ),
       ],
     );
   }

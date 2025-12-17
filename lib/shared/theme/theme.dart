@@ -94,6 +94,7 @@ class CustomThemeData {
         onSecondary: onSecondary,
         surface: background,
         onSurface: foreground,
+        error: error,
       ),
       appBarTheme: AppBarThemeData(
         backgroundColor: background,

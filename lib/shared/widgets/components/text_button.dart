@@ -66,6 +66,9 @@ class _CustomTextButtonState extends State<CustomTextButton> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadiusGeometry.circular(widget.radius),
           ),
+          overlayColor:
+              widget.foreground?.withValues(alpha: 0.15) ??
+              theme.custom.foreground.withValues(alpha: 0.15),
           shadowColor: widget.shadow
               ? theme.custom.shadow
               : theme.custom.transparent,
