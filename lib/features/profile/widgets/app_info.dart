@@ -14,10 +14,7 @@ class ProfileAppInfo extends StatelessWidget {
     return Container(
       alignment: Alignment.center,
       padding: const EdgeInsets.only(top: 32, left: 32, right: 32),
-      child: Text(
-        'Версия ${packageInfo.version}',
-        style: theme.custom.labelTextStyle,
-      ),
+      child: Text('Версия ${packageInfo.version}', style: theme.custom.label),
     );
   }
 }

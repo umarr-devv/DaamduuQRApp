@@ -16,7 +16,7 @@ class EstablishmentTitle extends StatelessWidget {
       builder: (context, state) {
         return Container(
           padding: const EdgeInsets.only(
-            top: 8,
+            top: 2,
             left: 16,
             right: 16,
             bottom: 12,
@@ -56,7 +56,7 @@ class _DirectionButton extends StatelessWidget {
             longitude: establishment.longitude!.toDouble(),
           );
         },
-        background: theme.custom.accent,
+        background: theme.custom.primary,
         foreground: theme.custom.background,
       );
     } else {
@@ -76,22 +76,8 @@ class _TitleAndInfo extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          establishment.name,
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.w500,
-            color: theme.custom.foreground,
-          ),
-        ),
-        Text(
-          establishment.address,
-          style: TextStyle(
-            fontSize: 13,
-            fontWeight: FontWeight.w400,
-            color: theme.custom.onMuted,
-          ),
-        ),
+        Text(establishment.name, style: theme.custom.title),
+        Text(establishment.address, style: theme.custom.subtitle),
       ],
     );
   }

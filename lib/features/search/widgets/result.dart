@@ -17,7 +17,7 @@ class SearchResult extends StatelessWidget {
         if (state is SearchLoading) {
           return Align(
             alignment: Alignment.center,
-            child: SpinKitRing(size: 64, color: theme.custom.primary),
+            child: SpinKitRing(size: 64, color: theme.custom.onMuted),
           );
         } else if (state is SearchLoaded && state.products.isEmpty) {
           return Column(
@@ -29,11 +29,11 @@ class SearchResult extends StatelessWidget {
                 height: 96,
                 width: 96,
                 colorFilter: ColorFilter.mode(
-                  theme.custom.onSecondary,
+                  theme.custom.onMuted,
                   BlendMode.srcIn,
                 ),
               ),
-              Text('Ничего не найдено', style: theme.custom.labelTextStyle),
+              Text('Ничего не найдено', style: theme.custom.label),
             ],
           );
         } else {

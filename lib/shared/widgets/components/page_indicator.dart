@@ -25,7 +25,7 @@ class CustomPageIndicator extends StatelessWidget {
           expansionFactor: 2.5,
           dotHeight: 8,
           dotWidth: 8,
-          dotColor: theme.custom.muted,
+          dotColor: theme.custom.foreground.withValues(alpha: 0.35),
           activeDotColor: theme.custom.foreground,
         ),
       ),
@@ -56,7 +56,7 @@ class CustomAnimationIndicator extends StatelessWidget {
         expansionFactor: 2.5,
         dotHeight: 8,
         dotWidth: 8,
-        dotColor: theme.custom.muted,
+        dotColor: theme.custom.foreground.withValues(alpha: 0.35),
         activeDotColor: color ?? theme.custom.foreground,
       ),
     );

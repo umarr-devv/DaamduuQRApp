@@ -21,7 +21,7 @@ class ProfileInvite extends StatelessWidget {
           Text(
             'Хотите, чтобы ваша компания тоже была в этом приложении?',
             textAlign: TextAlign.center,
-            style: theme.custom.labelTextStyle,
+            style: theme.custom.label,
           ),
           SizedBox(
             width: double.infinity,

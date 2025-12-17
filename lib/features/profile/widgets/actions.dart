@@ -107,7 +107,7 @@ class _ActionButton extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(6),
             decoration: BoxDecoration(
-              color: theme.custom.secondary,
+              color: theme.custom.muted,
               borderRadius: BorderRadius.circular(32),
             ),
             child: SvgPicture.asset(
@@ -115,7 +115,7 @@ class _ActionButton extends StatelessWidget {
               height: 24,
               width: 24,
               colorFilter: ColorFilter.mode(
-                theme.custom.onSecondary,
+                theme.custom.onMuted,
                 BlendMode.srcIn,
               ),
             ),
@@ -123,9 +123,9 @@ class _ActionButton extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(button.label, style: theme.custom.labelTextStyle),
+              Text(button.label, style: theme.custom.label),
               if (button.description != null)
-                Text(button.description!, style: theme.custom.labelTextStyle),
+                Text(button.description!, style: theme.custom.subtitle),
             ],
           ),
         ],

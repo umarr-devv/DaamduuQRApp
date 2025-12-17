@@ -32,7 +32,7 @@ class _ProfileContactsState extends State<ProfileContacts> {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       decoration: BoxDecoration(
-        // color: theme.custom.primaryBackground,
+        // color: theme.custom.onMutedBackground,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
@@ -43,7 +43,7 @@ class _ProfileContactsState extends State<ProfileContacts> {
               (i) => CustomIconButton(
                 icon: i.icon,
                 radius: 12,
-                foreground: theme.custom.onSecondary,
+                foreground: theme.custom.onMuted,
                 onTap: () {},
               ),
             )

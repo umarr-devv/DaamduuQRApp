@@ -88,7 +88,7 @@ class _CategoryButton extends StatelessWidget {
       duration: const Duration(milliseconds: 175),
       padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 16),
       decoration: BoxDecoration(
-        color: selected ? theme.custom.primary : theme.custom.secondary,
+        color: selected ? theme.custom.secondary : theme.custom.muted,
         borderRadius: BorderRadius.circular(64),
       ),
       child: Text(
@@ -96,7 +96,7 @@ class _CategoryButton extends StatelessWidget {
         style: TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.w500,
-          color: selected ? theme.custom.onPrimary : theme.custom.onSecondary,
+          color: selected ? theme.custom.onPrimary : theme.custom.onMuted,
         ),
       ),
     );

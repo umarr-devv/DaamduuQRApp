@@ -27,7 +27,6 @@ class _CatalogAppBarState extends State<CatalogAppBar> {
           backgroundColor: theme.custom.background,
           pinned: true,
           leading: MaybePopButton(shadow: false),
-          centerTitle: false,
           title: _AppBarTitle(establishment: state.establishment),
           actions: [_AppBarActions(establishment: state.establishment)],
           bottom: CatalogCategories(),
@@ -76,7 +75,7 @@ class _AppBarTitle extends StatelessWidget {
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w500,
-            color: theme.custom.accent,
+            color: theme.custom.primary,
           ),
         ),
         Text(

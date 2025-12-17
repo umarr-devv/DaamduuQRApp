@@ -30,12 +30,12 @@ class ErrorScreen extends StatelessWidget {
             Text(
               'Нет соединения с сетью',
               textAlign: TextAlign.center,
-              style: theme.custom.labelTextStyle,
+              style: theme.custom.label,
             ),
             Text(
               'Проверьте соединение с сетью или же попробуйте чуть позже',
               textAlign: TextAlign.center,
-              style: theme.custom.labelTextStyle,
+              style: theme.custom.label,
             ),
             const SizedBox(height: 12),
             if (retry != null)

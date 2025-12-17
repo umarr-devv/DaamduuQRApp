@@ -36,7 +36,7 @@ class CustomScreenRefreshIndicator extends StatelessWidget {
             children: [
               Container(
                 height: 48,
-                decoration: BoxDecoration(color: theme.custom.primary),
+                decoration: BoxDecoration(color: theme.custom.onMuted),
               ),
               Transform.translate(
                 offset: Offset(0, (48 * progress).toDouble()),

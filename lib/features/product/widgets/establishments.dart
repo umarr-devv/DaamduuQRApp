@@ -6,7 +6,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class ProductEstablishments extends StatelessWidget {
   const ProductEstablishments({super.key});
@@ -25,8 +24,9 @@ class ProductEstablishments extends StatelessWidget {
                 spacing: 12,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Заведения', style: theme.custom.labelTextStyle),
+                  Text('Заведения', style: theme.custom.label),
                   Column(
+                    spacing: 8,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: state.detailProduct!.establishments!.map((i) {
                       return _EstablishmentItem(establishment: i);
@@ -57,26 +57,23 @@ class _EstablishmentItem extends StatelessWidget {
       children: [
         Expanded(
           child: Column(
-            spacing: 4,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(establishment.name, style: theme.custom.labelTextStyle),
+              Text(establishment.name, style: theme.custom.label),
               Row(
-                spacing: 8,
+                spacing: 4,
                 children: [
-                  SvgPicture.asset(
-                    "assets/svg/map-marker.svg",
-                    height: 20,
-                    width: 20,
-                    colorFilter: ColorFilter.mode(
-                      theme.custom.onSecondary,
-                      BlendMode.srcIn,
-                    ),
+                  Icon(
+                    Icons.location_on,
+                    color: theme.custom.onMuted,
+                    size: 16,
                   ),
                   Expanded(
                     child: Text(
                       establishment.address,
-                      style: theme.custom.labelTextStyle,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: theme.custom.subtitle,
                     ),
                   ),
                 ],

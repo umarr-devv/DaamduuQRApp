@@ -38,7 +38,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
     return MultiBlocProvider(
       providers: [BlocProvider.value(value: cubit)],
       child: Scaffold(
-        backgroundColor: theme.custom.secondary,
+        backgroundColor: theme.custom.muted,
         body: CustomScrollView(
           slivers: [CatalogAppBar(), CatelogProducts(), SliverFillRemaining()],
         ),

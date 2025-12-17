@@ -26,7 +26,7 @@ class CustomLoadingScreen extends StatelessWidget {
             curve: Curves.easeInOut,
             child: Container(
               decoration: BoxDecoration(color: theme.custom.background),
-              child: SpinKitRing(color: theme.custom.primary),
+              child: SpinKitRing(color: theme.custom.onMuted),
             ),
           ),
         ),

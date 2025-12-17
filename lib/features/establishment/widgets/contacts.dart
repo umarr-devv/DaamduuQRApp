@@ -22,7 +22,7 @@ class EstablishmentContacts extends StatelessWidget {
             spacing: 12,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Контакты', style: theme.custom.labelTextStyle),
+              Text('Контакты', style: theme.custom.label),
               Wrap(
                 spacing: 8,
                 runSpacing: 8,

@@ -48,7 +48,7 @@ class _ProductScreenState extends State<ProductScreen> {
               slivers: [
                 ProductAppBar(scrollController: scrollController),
                 ProductTitle(),
-                SliverToBoxAdapter(child: CustomDivider()),
+                SliverToBoxAdapter(child: Divider()),
                 ProductDescription(),
                 SliverToBoxAdapter(child: CustomDivider()),
                 ProductEstablishments(),

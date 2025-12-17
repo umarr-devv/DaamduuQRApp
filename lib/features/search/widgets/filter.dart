@@ -19,13 +19,10 @@ class SearchFilters extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Поиск по заведению',
-                    style: theme.custom.labelTextStyle,
-                  ),
+                  Text('Поиск по заведению', style: theme.custom.label),
                   Text(
                     state.establishment?.name ?? '',
-                    style: theme.custom.labelTextStyle,
+                    style: theme.custom.label,
                   ),
                 ],
               ),

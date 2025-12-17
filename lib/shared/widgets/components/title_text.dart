@@ -22,12 +22,11 @@ class CustomTitleText extends StatelessWidget {
         Row(
           spacing: 4,
           children: [
-            if (icon != null)
-              Icon(icon, size: 16, color: theme.custom.onSecondary),
-            Text(title, style: theme.custom.labelTextStyle),
+            if (icon != null) Icon(icon, size: 16, color: theme.custom.onMuted),
+            Text(title, style: theme.custom.label),
           ],
         ),
-        Text(text, style: theme.custom.labelTextStyle),
+        Text(text, style: theme.custom.label),
       ],
     );
   }

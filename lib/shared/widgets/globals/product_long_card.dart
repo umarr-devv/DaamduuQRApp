@@ -84,16 +84,13 @@ class _CardInfo extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(product.name, style: theme.custom.labelTextStyle),
-          Text(product.category.name, style: theme.custom.labelTextStyle),
+          Text(product.name, style: theme.custom.label),
+          Text(product.category.name, style: theme.custom.label),
           Expanded(child: SizedBox()),
           Row(
             spacing: 4,
             children: [
-              Text(
-                product.price.toStringAsFixed(1),
-                style: theme.custom.labelTextStyle,
-              ),
+              Text(product.price.toStringAsFixed(1), style: theme.custom.label),
               SomSymbol(),
             ],
           ),

@@ -8,8 +8,6 @@ class OrderScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: CustomScrollView(slivers: [OrderAppBar(), OrderProductsList()]),
-    );
+    return CustomScrollView(slivers: [OrderAppBar(), OrderProductsList()]);
   }
 }

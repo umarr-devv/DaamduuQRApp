@@ -1,5 +1,6 @@
 import 'package:app/features/search/bloc/search/search_cubit.dart';
 import 'package:app/features/search/widgets/widgets.dart';
+import 'package:app/shared/theme/theme.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
@@ -32,9 +33,11 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return MultiBlocProvider(
       providers: [BlocProvider.value(value: cubit)],
       child: Scaffold(
+        backgroundColor: theme.custom.muted,
         body: CustomScrollView(
           slivers: [
             SearchAppBar(),

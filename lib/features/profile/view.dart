@@ -25,7 +25,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return CustomScrollView(
       controller: scrollController,
       slivers: [
-        ProfileAppBar(scrollController: scrollController),
+        ProfileAppBar(),
         SliverToBoxAdapter(child: ProfileInfo()),
         SliverToBoxAdapter(child: ProfileError()),
         SliverToBoxAdapter(child: ProfileActions()),

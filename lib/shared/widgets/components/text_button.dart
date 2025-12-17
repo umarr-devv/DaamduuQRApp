@@ -101,7 +101,7 @@ class _CustomTextButtonState extends State<CustomTextButton> {
                   : SizedBox(),
               Text(
                 widget.label,
-                style: theme.custom.labelTextStyle.copyWith(
+                style: theme.custom.label.copyWith(
                   fontSize: widget.fontSize,
                   color: widget.foreground ?? theme.custom.foreground,
                 ),

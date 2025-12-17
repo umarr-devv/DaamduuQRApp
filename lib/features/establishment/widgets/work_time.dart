@@ -63,7 +63,7 @@ class _EstablishmentWorkTimeState extends State<EstablishmentWorkTime> {
           scrollDirection: Axis.horizontal,
           padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
           child: Row(
-            spacing: 8,
+            spacing: 12,
             children: workTimes
                 .map(
                   (i) => _WotkTimeCard(
@@ -95,16 +95,12 @@ class _WorkTimeTitle extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text('График работы', style: theme.custom.labelTextStyle),
+          Text('График работы', style: theme.custom.label),
           Text(
             today.start == null || today.end == null
                 ? 'Выходной'
                 : 'c ${timeToStr(today.start)} до ${timeToStr(today.end)}',
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-              color: theme.custom.onMuted,
-            ),
+            style: theme.custom.subtitle,
           ),
         ],
       ),
@@ -129,8 +125,8 @@ class _WotkTimeCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8),
       constraints: BoxConstraints(minWidth: 56),
       decoration: BoxDecoration(
-        color: weekdayNow ? theme.custom.primary : theme.custom.secondary,
-        borderRadius: BorderRadius.circular(12),
+        color: weekdayNow ? theme.custom.secondary : theme.custom.transparent,
+        borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
         children: [
@@ -141,7 +137,7 @@ class _WotkTimeCard extends StatelessWidget {
               fontWeight: FontWeight.w500,
               color: weekdayNow
                   ? theme.custom.background
-                  : theme.custom.foreground,
+                  : theme.custom.onMuted,
             ),
           ),
           const SizedBox(height: 8),
@@ -151,7 +147,7 @@ class _WotkTimeCard extends StatelessWidget {
               fontWeight: FontWeight.w500,
               color: weekdayNow
                   ? theme.custom.background
-                  : theme.custom.foreground,
+                  : theme.custom.onMuted,
             ),
           ),
           Text(
@@ -160,7 +156,7 @@ class _WotkTimeCard extends StatelessWidget {
               fontWeight: FontWeight.w500,
               color: weekdayNow
                   ? theme.custom.background
-                  : theme.custom.foreground,
+                  : theme.custom.onMuted,
             ),
           ),
         ],

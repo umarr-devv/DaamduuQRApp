@@ -61,7 +61,7 @@ class _AddButtons extends StatelessWidget {
             CustomIconButton(
               icon: Icons.delete,
               radius: 12,
-              background: theme.custom.secondary,
+              background: theme.custom.muted,
               shadow: false,
               shadowColor: theme.custom.shadow,
               active: item != null,
@@ -92,6 +92,7 @@ class _AddButtons extends StatelessWidget {
                     shadow: false,
                     radius: 12,
                     background: theme.custom.secondary,
+                    foreground: theme.custom.onSecondary,
                     onTap: () {
                       AutoRouter.of(context).navigate(OrderRoute());
                     },

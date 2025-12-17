@@ -23,9 +23,8 @@ class ProfileError extends StatelessWidget {
           margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-  
             borderRadius: BorderRadius.circular(16),
-            border: Border.all( width: 1),
+            border: Border.all(width: 1),
           ),
           child: Column(
             spacing: 6,
@@ -78,9 +77,7 @@ class _ErrorItem extends StatelessWidget {
             text,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: theme.custom.labelTextStyle.copyWith(
-          
-            ),
+            style: theme.custom.label.copyWith(),
           ),
         ),
         SizedBox(

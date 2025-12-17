@@ -18,7 +18,7 @@ class SomSymbol extends StatelessWidget {
         height: size,
         width: size,
         colorFilter: ColorFilter.mode(
-          color ?? theme.custom.onSecondary,
+          color ?? theme.custom.onMuted,
           BlendMode.srcIn,
         ),
       ),

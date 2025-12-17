@@ -81,10 +81,7 @@ class _CardActions extends StatelessWidget {
         ),
         Row(
           children: [
-            Text(
-              item.sum.toStringAsFixed(1),
-              style: theme.custom.labelTextStyle,
-            ),
+            Text(item.sum.toStringAsFixed(1), style: theme.custom.label),
             SomSymbol(size: 12),
           ],
         ),
@@ -107,8 +104,8 @@ class _CardInfo extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(product.category.name, style: theme.custom.labelTextStyle),
-        Text(product.name, style: theme.custom.labelTextStyle),
+        Text(product.category.name, style: theme.custom.subtitle),
+        Text(product.name, style: theme.custom.label),
         SizedBox(height: 8),
         CustomCounterButton(
           value: item.quantity,

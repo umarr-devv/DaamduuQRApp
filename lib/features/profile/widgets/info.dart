@@ -96,11 +96,8 @@ class _UserInfo extends StatelessWidget {
       spacing: 4,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          state.firebaseDisplayName ?? '',
-          style: theme.custom.labelTextStyle,
-        ),
-        Text(state.firebaseEmail ?? '', style: theme.custom.labelTextStyle),
+        Text(state.firebaseDisplayName ?? '', style: theme.custom.label),
+        Text(state.firebaseEmail ?? '', style: theme.custom.label),
       ],
     );
   }

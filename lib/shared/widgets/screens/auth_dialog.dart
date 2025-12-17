@@ -64,7 +64,7 @@ class _Progress extends StatelessWidget {
     final theme = Theme.of(context);
     return Container(
       padding: const EdgeInsets.only(top: 160),
-      child: SpinKitRing(color: theme.custom.primary),
+      child: SpinKitRing(color: theme.custom.onMuted),
     );
   }
 }
@@ -78,17 +78,17 @@ class _DialogRules extends StatelessWidget {
     return RichText(
       textAlign: TextAlign.center,
       text: TextSpan(
-        style: theme.custom.labelTextStyle,
+        style: theme.custom.label,
         children: [
           TextSpan(text: 'Авторизовываясь в нашей системе, вы принимаете '),
           TextSpan(
             text: 'условия соглашения',
-            style: TextStyle(color: theme.custom.primary),
+            style: TextStyle(color: theme.custom.onMuted),
           ),
           TextSpan(text: ' и '),
           TextSpan(
             text: 'конфеденциальности',
-            style: TextStyle(color: theme.custom.primary),
+            style: TextStyle(color: theme.custom.onMuted),
           ),
         ],
       ),
@@ -159,10 +159,10 @@ class _DialogTitle extends StatelessWidget {
               borderRadius: BorderRadiusGeometry.circular(8),
               child: Image.asset('assets/icon/icon.png', height: 32, width: 32),
             ),
-            Text('Войти', style: theme.custom.labelTextStyle),
+            Text('Войти', style: theme.custom.label),
           ],
         ),
-        Text('Выберите способ входа', style: theme.custom.labelTextStyle),
+        Text('Выберите способ входа', style: theme.custom.label),
       ],
     );
   }

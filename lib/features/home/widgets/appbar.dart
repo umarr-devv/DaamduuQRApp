@@ -15,9 +15,9 @@ class HomeAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return SliverAppBar(
-      backgroundColor: theme.custom.secondary,
+      backgroundColor: theme.custom.muted,
       title: SvgPicture.asset('assets/svg/logo-full.svg', height: 32),
-      centerTitle: false,
+
       actions: [
         CustomIconButton(
           icon: 'assets/svg/bell.svg',
@@ -142,12 +142,12 @@ class _FilterItemState extends State<_FilterItem> {
         duration: const Duration(milliseconds: 175),
         padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
         decoration: BoxDecoration(
-          color: active ? theme.custom.primary : theme.custom.background,
+          color: active ? theme.custom.secondary : theme.custom.background,
           borderRadius: BorderRadius.circular(32),
         ),
         child: CustomEstablishmentType(
           type: widget.type,
-          color: active ? theme.custom.background : theme.custom.onSecondary,
+          color: active ? theme.custom.background : theme.custom.onMuted,
         ),
       ),
     );

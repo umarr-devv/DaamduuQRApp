@@ -37,7 +37,7 @@ class CustomSearchBar extends StatelessWidget {
               height: 24,
               width: 24,
               colorFilter: ColorFilter.mode(
-                theme.custom.onSecondary,
+                theme.custom.onMuted,
                 BlendMode.srcIn,
               ),
             ),
@@ -50,7 +50,7 @@ class CustomSearchBar extends StatelessWidget {
                   cursorColor: theme.custom.foreground,
                   controller: textController,
                   focusNode: focusNode,
-                  style: theme.custom.labelTextStyle,
+                  style: theme.custom.label,
                   decoration: InputDecoration(hintText: hintText),
                 ),
               ),

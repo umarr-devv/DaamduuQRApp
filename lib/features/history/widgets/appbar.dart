@@ -34,7 +34,7 @@ class _AppBarTitle extends StatelessWidget {
             BlendMode.srcIn,
           ),
         ),
-        Text('История', style: theme.custom.labelTextStyle),
+        Text('История', style: theme.custom.label),
       ],
     );
   }

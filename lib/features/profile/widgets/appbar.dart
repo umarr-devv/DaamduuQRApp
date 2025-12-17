@@ -6,39 +6,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ProfileAppBar extends StatefulWidget {
-  const ProfileAppBar({super.key, required this.scrollController});
-
-  final ScrollController scrollController;
-
-  @override
-  State<ProfileAppBar> createState() => _ProfileAppBarState();
-}
-
-class _ProfileAppBarState extends State<ProfileAppBar> {
-  bool isCollapsed = false;
-
-  void scrollListener() {
-    if (widget.scrollController.offset > 12) {
-      if (!isCollapsed) {
-        setState(() {
-          isCollapsed = true;
-        });
-      }
-    } else if (widget.scrollController.offset < 12) {
-      if (isCollapsed) {
-        setState(() {
-          isCollapsed = false;
-        });
-      }
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    widget.scrollController.addListener(scrollListener);
-  }
+class ProfileAppBar extends StatelessWidget {
+  const ProfileAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -48,17 +17,14 @@ class _ProfileAppBarState extends State<ProfileAppBar> {
       bloc: cubit,
       builder: (context, state) {
         return SliverAppBar(
-          backgroundColor: isCollapsed
-              ? theme.custom.background
-              : theme.custom.secondary,
+          backgroundColor: theme.custom.muted,
           pinned: true,
           shadowColor: theme.custom.shadow,
           automaticallyImplyLeading: false,
-          title: _AppBarTitle(),
+          title: Text('Мой Профиль'),
           actions: [
             CustomIconButton(
               icon: Icons.settings,
-              shadow: !isCollapsed,
               radius: 12,
               onTap: () {
                 AutoRouter.of(context).push(SettingsRoute());
@@ -69,8 +35,6 @@ class _ProfileAppBarState extends State<ProfileAppBar> {
                 padding: const EdgeInsets.only(left: 8),
                 child: CustomIconButton(
                   icon: Icons.exit_to_app_rounded,
-                  shadow: !isCollapsed,
-      
                   radius: 12,
                   onTap: () {
                     cubit.signOut();
@@ -81,19 +45,6 @@ class _ProfileAppBarState extends State<ProfileAppBar> {
           ],
         );
       },
-    );
-  }
-}
-
-class _AppBarTitle extends StatelessWidget {
-  const _AppBarTitle();
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Row(
-      spacing: 8,
-      children: [Text('Мой Профиль', style: theme.custom.labelTextStyle)],
     );
   }
 }

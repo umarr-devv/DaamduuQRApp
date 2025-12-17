@@ -109,7 +109,7 @@ class _MenuNavBarItem extends StatelessWidget {
           height: 24,
           width: 24,
           colorFilter: ColorFilter.mode(
-            isActive ? theme.custom.accent : theme.custom.onSecondary,
+            isActive ? theme.custom.primary : theme.custom.onMuted,
             BlendMode.srcIn,
           ),
         ),

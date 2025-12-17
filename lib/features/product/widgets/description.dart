@@ -19,35 +19,41 @@ class ProductDescription extends StatelessWidget {
               spacing: 6,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  spacing: 4,
-                  children: [
-                    Icon(Icons.history),
-                    Text(
-                      '45 мин',
-                      style: theme.custom.labelTextStyle.copyWith(
-                    
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 4,
+                    horizontal: 8,
+                  ),
+                  decoration: BoxDecoration(
+                    color: theme.custom.muted,
+                    borderRadius: BorderRadius.circular(64),
+                  ),
+                  child: Row(
+                    spacing: 4,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.history, color: theme.custom.onMuted),
+                      Text(
+                        '${state.product.cookingMinute.toStringAsFixed(0)} мин',
+                        style: theme.custom.subtitle,
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 if (state.product.description != null)
                   Text(
                     state.product.description ?? '',
-                    style: theme.custom.labelTextStyle,
+                    style: theme.custom.text,
                   ),
                 if (state.product.composition != null)
                   RichText(
                     text: TextSpan(
-                      style: theme.custom.labelTextStyle,
+                      style: theme.custom.label,
                       children: [
-                        TextSpan(
-                          text: 'Состав: ',
-                          style: theme.custom.labelTextStyle,
-                        ),
+                        TextSpan(text: 'Состав: ', style: theme.custom.label),
                         TextSpan(
                           text: state.product.composition ?? '',
-                          style: theme.custom.labelTextStyle,
+                          style: theme.custom.text,
                         ),
                       ],
                     ),

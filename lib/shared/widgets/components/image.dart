@@ -36,7 +36,7 @@ class CustomImage extends StatelessWidget {
             placeholder: (context, url) {
               return Padding(
                 padding: const EdgeInsets.all(4),
-                child: SpinKitPulse(color: theme.custom.primary),
+                child: SpinKitPulse(color: theme.custom.onMuted),
               );
             },
           );

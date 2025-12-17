@@ -11,21 +11,19 @@ class CustomThemeData {
     return brightness == Brightness.light ? light : dark;
   }
 
-  Color get accent => Color(0xffe44641);
-
-  Color get primary => Color(0xFF18181B);
-
-  Color get onPrimary => Color(0xffffffff);
-
   Color get background => const Color(0xFFffffff);
 
   Color get foreground => const Color(0xff2a2a2a);
 
-  Color get secondary => const Color(0xFFF5F5F6);
+  Color get primary => Color(0xffe44641);
 
-  Color get onSecondary => Color(0xff2a2a2a);
+  Color get onPrimary => Color(0xffffffff);
 
-  Color get muted => Color(0xFFC8C8C8);
+  Color get secondary => const Color(0xFF18181B);
+
+  Color get onSecondary => Color(0xffffffff);
+
+  Color get muted => Color(0xFFF5F5F6);
 
   Color get onMuted => Color(0xFF5A5A5A);
 
@@ -37,24 +35,40 @@ class CustomThemeData {
 
   Color get shadow => black.withValues(alpha: 0.05);
 
-  Color get highShadow => black.withValues(alpha: 0.1);
-
   Color get success => Color(0xff16a34a);
+
+  Color get error => Color(0xffdc2626);
+
+  Color get info => Color(0xff2563eb);
 
   Color get transparent => Color(0x00000000);
 
-  TextStyle get labelTextStyle => TextStyle(
+  TextStyle get label => TextStyle(
     fontFamily: font,
     fontSize: 15,
+    fontWeight: FontWeight.w500,
+    color: foreground,
+  );
+
+  TextStyle get title => TextStyle(
+    fontFamily: font,
+    fontSize: 18,
     fontWeight: FontWeight.w600,
     color: foreground,
   );
 
-  TextStyle get secondaryTextStyle => TextStyle(
+  TextStyle get subtitle => TextStyle(
     fontFamily: font,
     fontSize: 13,
     fontWeight: FontWeight.w400,
-    color: onSecondary,
+    color: onMuted,
+  );
+
+  TextStyle get text => TextStyle(
+    fontFamily: font,
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: onMuted,
   );
 
   TextStyle get priceTextStyle => TextStyle(
@@ -69,7 +83,7 @@ class CustomThemeData {
       useMaterial3: true,
       brightness: brightness,
       primaryColor: background,
-      scaffoldBackgroundColor: secondary,
+      scaffoldBackgroundColor: background,
       fontFamily: font,
       colorScheme: ColorScheme.fromSeed(
         brightness: brightness,
@@ -78,16 +92,19 @@ class CustomThemeData {
         onPrimary: onPrimary,
         secondary: secondary,
         onSecondary: onSecondary,
-        surface: secondary,
+        surface: background,
         onSurface: foreground,
       ),
       appBarTheme: AppBarThemeData(
         backgroundColor: background,
         surfaceTintColor: transparent,
+        shadowColor: black.withValues(alpha: 0.125),
+        elevation: 4,
+        centerTitle: false,
         titleTextStyle: TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.w600,
-          color: primary,
+          color: foreground,
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
@@ -95,7 +112,7 @@ class CustomThemeData {
         hintStyle: TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w400,
-          color: onSecondary,
+          color: onMuted,
         ),
         border: OutlineInputBorder(borderSide: BorderSide.none),
       ),
@@ -106,6 +123,12 @@ class CustomThemeData {
         elevation: 4,
         margin: const EdgeInsets.all(0),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      ),
+      dividerTheme: DividerThemeData(
+        color: border,
+        thickness: 1,
+        indent: 32,
+        endIndent: 32,
       ),
     );
   }

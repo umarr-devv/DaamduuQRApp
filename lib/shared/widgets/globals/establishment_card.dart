@@ -82,22 +82,18 @@ class _CardInfo extends StatelessWidget {
             establishment.name,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: theme.custom.labelTextStyle,
+            style: theme.custom.label,
           ),
           Row(
             spacing: 4,
             children: [
-              Icon(
-                Icons.location_pin,
-                size: 16,
-                color: theme.custom.onSecondary,
-              ),
+              Icon(Icons.location_pin, size: 16, color: theme.custom.onMuted),
               Expanded(
                 child: Text(
                   establishment.address,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: theme.custom.secondaryTextStyle,
+                  style: theme.custom.subtitle,
                 ),
               ),
             ],

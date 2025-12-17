@@ -37,7 +37,7 @@ class ToMenuButton extends StatelessWidget {
               child: CustomTextButton(
                 icon: 'assets/svg/menu-food.svg',
                 label: 'Меню',
-                background: theme.custom.primary,
+                background: theme.custom.secondary,
                 foreground: theme.custom.background,
                 radius: 12,
                 size: 20,

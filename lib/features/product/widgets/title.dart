@@ -15,7 +15,7 @@ class ProductTitle extends StatelessWidget {
       builder: (context, state) {
         return SliverToBoxAdapter(
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.only(top: 4, left: 16, right: 16),
             child: Row(
               spacing: 12,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -43,8 +43,8 @@ class _ProductInfo extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(product.category.name, style: theme.custom.labelTextStyle),
-        Text(product.name, style: theme.custom.labelTextStyle),
+        Text(product.category.name, style: theme.custom.title),
+        Text(product.name, style: theme.custom.subtitle),
       ],
     );
   }
@@ -61,15 +61,15 @@ class _ProductPrice extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
       decoration: BoxDecoration(
-        color: theme.custom.secondary,
+        color: theme.custom.muted,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
         spacing: 4,
         children: [
           Text(
-            product.price.toStringAsFixed(1),
-            style: theme.custom.labelTextStyle.copyWith(fontSize: 18),
+            product.price.toStringAsFixed(0),
+            style: theme.custom.priceTextStyle,
           ),
           SomSymbol(),
         ],

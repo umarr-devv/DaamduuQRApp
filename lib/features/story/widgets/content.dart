@@ -36,6 +36,7 @@ class _StoryContentState extends State<StoryContent> {
       storyItems: stories,
       controller: controller,
       indicatorForegroundColor: theme.custom.primary,
+      indicatorColor: theme.custom.onPrimary,
       onComplete: () {
         AutoRouter.of(context).maybePop();
       },
