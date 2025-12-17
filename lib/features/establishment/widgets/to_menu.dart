@@ -28,6 +28,9 @@ class ToMenuButton extends StatelessWidget {
             width: double.infinity,
             decoration: BoxDecoration(
               color: theme.custom.background,
+              border: Border(
+                top: BorderSide(color: theme.custom.border, width: 1),
+              ),
             ),
             child: SizedBox(
               height: 48,

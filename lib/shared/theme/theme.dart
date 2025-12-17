@@ -23,7 +23,11 @@ class CustomThemeData {
 
   Color get secondary => const Color(0xFFF5F5F6);
 
-  Color get onSecondary => Color(0xff767676);
+  Color get onSecondary => Color(0xff2a2a2a);
+
+  Color get muted => Color(0xFFC8C8C8);
+
+  Color get onMuted => Color(0xFF5A5A5A);
 
   Color get barrier => Color(0x33000000);
 
@@ -33,7 +37,9 @@ class CustomThemeData {
 
   Color get shadow => black.withValues(alpha: 0.05);
 
-  Color get muted => Color(0xFFC8C8C8);
+  Color get highShadow => black.withValues(alpha: 0.1);
+
+  Color get success => Color(0xff16a34a);
 
   Color get transparent => Color(0x00000000);
 

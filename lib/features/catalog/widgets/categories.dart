@@ -89,12 +89,14 @@ class _CategoryButton extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 16),
       decoration: BoxDecoration(
         color: selected ? theme.custom.primary : theme.custom.secondary,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(64),
       ),
       child: Text(
         category?.name ?? 'Все',
-        style: theme.custom.labelTextStyle.copyWith(
-          color: selected ? theme.custom.background : theme.custom.onSecondary,
+        style: TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+          color: selected ? theme.custom.onPrimary : theme.custom.onSecondary,
         ),
       ),
     );

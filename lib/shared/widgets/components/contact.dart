@@ -47,11 +47,18 @@ class CustomContactText extends StatelessWidget {
               height: 16,
               width: 16,
               colorFilter: ColorFilter.mode(
-                theme.custom.foreground,
+                theme.custom.onSecondary,
                 BlendMode.srcIn,
               ),
             ),
-            Text(contact.name ?? label, style: theme.custom.labelTextStyle),
+            Text(
+              contact.name ?? label,
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                color: theme.custom.onSecondary,
+              ),
+            ),
           ],
         ),
       ),

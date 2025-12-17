@@ -1,6 +1,4 @@
 import 'package:app/core/router/router.dart';
-import 'package:app/features/menu/widgets/button.dart';
-import 'package:app/features/menu/widgets/navbar.dart';
 import 'package:app/features/menu/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';

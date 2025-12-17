@@ -57,9 +57,10 @@ class _EstablishmentAppBarState extends State<EstablishmentAppBar> {
           backgroundColor: theme.custom.background,
           toolbarHeight: toolbarHeight,
           expandedHeight: expandedHeight,
-          elevation: 4,
-          shadowColor: theme.custom.shadow,
+          elevation: 2,
+          shadowColor: theme.custom.highShadow,
           leading: MaybePopButton(shadow: !isCollapsed),
+          centerTitle: false,
           title: _AppBarTitle(
             show: isCollapsed,
             establishment: state.establishment,
@@ -118,6 +119,7 @@ class _AppBarTitle extends StatelessWidget {
     return Opacity(
       opacity: show ? 1 : 0,
       child: Column(
+        spacing: 2,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomEstablishmentType(

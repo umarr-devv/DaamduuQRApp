@@ -1,5 +1,6 @@
 import 'package:app/core/router/router.dart';
 import 'package:app/features/establishment/bloc/establishment/establishment_cubit.dart';
+import 'package:app/shared/shared.dart';
 import 'package:app/shared/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
@@ -44,6 +45,7 @@ class _StoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return GestureDetector(
       onTap: () {
         AutoRouter.of(context).push(StoryRoute(story: story));
@@ -52,7 +54,10 @@ class _StoryItem extends StatelessWidget {
         height: 80,
         width: 80,
         padding: const EdgeInsets.all(2),
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(128)),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(128),
+          border: Border.all(color: theme.custom.primary, width: 2),
+        ),
         child: ClipRRect(
           borderRadius: BorderRadiusGeometry.circular(128),
           child: CustomImage(imageId: story.imageId),

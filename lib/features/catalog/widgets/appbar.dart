@@ -27,6 +27,7 @@ class _CatalogAppBarState extends State<CatalogAppBar> {
           backgroundColor: theme.custom.background,
           pinned: true,
           leading: MaybePopButton(shadow: false),
+          centerTitle: false,
           title: _AppBarTitle(establishment: state.establishment),
           actions: [_AppBarActions(establishment: state.establishment)],
           bottom: CatalogCategories(),
@@ -72,11 +73,20 @@ class _AppBarTitle extends StatelessWidget {
       children: [
         Text(
           'Меню',
-          style: theme.custom.labelTextStyle.copyWith(
-            color: theme.custom.primary,
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+            color: theme.custom.accent,
           ),
         ),
-        Text(establishment.name, style: theme.custom.labelTextStyle),
+        Text(
+          establishment.name,
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w400,
+            color: theme.custom.foreground,
+          ),
+        ),
       ],
     );
   }

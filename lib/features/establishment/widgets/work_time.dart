@@ -58,7 +58,7 @@ class _EstablishmentWorkTimeState extends State<EstablishmentWorkTime> {
       crossAxisAlignment: CrossAxisAlignment.start,
       spacing: 8,
       children: [
-        _WorkTimeTitke(workTimes: workTimes),
+        _WorkTimeTitle(workTimes: workTimes),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
@@ -79,8 +79,8 @@ class _EstablishmentWorkTimeState extends State<EstablishmentWorkTime> {
   }
 }
 
-class _WorkTimeTitke extends StatelessWidget {
-  const _WorkTimeTitke({required this.workTimes});
+class _WorkTimeTitle extends StatelessWidget {
+  const _WorkTimeTitle({required this.workTimes});
 
   final List<_WorkTimeData> workTimes;
   int get weekday => DateTime.now().weekday;
@@ -100,8 +100,10 @@ class _WorkTimeTitke extends StatelessWidget {
             today.start == null || today.end == null
                 ? 'Выходной'
                 : 'c ${timeToStr(today.start)} до ${timeToStr(today.end)}',
-            style: theme.custom.labelTextStyle.copyWith(
-              color: theme.custom.primary,
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+              color: theme.custom.onMuted,
             ),
           ),
         ],
@@ -134,16 +136,19 @@ class _WotkTimeCard extends StatelessWidget {
         children: [
           Text(
             workTime.label,
-            style: theme.custom.labelTextStyle.copyWith(
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
               color: weekdayNow
                   ? theme.custom.background
-                  : theme.custom.onSecondary,
+                  : theme.custom.foreground,
             ),
           ),
           const SizedBox(height: 8),
           Text(
             timeToStr(workTime.start),
-            style: theme.custom.labelTextStyle.copyWith(
+            style: TextStyle(
+              fontWeight: FontWeight.w500,
               color: weekdayNow
                   ? theme.custom.background
                   : theme.custom.foreground,
@@ -151,7 +156,8 @@ class _WotkTimeCard extends StatelessWidget {
           ),
           Text(
             timeToStr(workTime.end),
-            style: theme.custom.labelTextStyle.copyWith(
+            style: TextStyle(
+              fontWeight: FontWeight.w500,
               color: weekdayNow
                   ? theme.custom.background
                   : theme.custom.foreground,

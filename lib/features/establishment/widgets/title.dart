@@ -56,7 +56,7 @@ class _DirectionButton extends StatelessWidget {
             longitude: establishment.longitude!.toDouble(),
           );
         },
-        background: theme.custom.primary,
+        background: theme.custom.accent,
         foreground: theme.custom.background,
       );
     } else {
@@ -74,28 +74,24 @@ class _TitleAndInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Column(
-      spacing: 2,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(establishment.name, style: theme.custom.labelTextStyle),
-        Row(
-          spacing: 6,
-          children: [
-            Container(
-              height: 12,
-              width: 12,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-              ),
-            ),
-            Text(
-              'Открыт до 22:00',
-              style: theme.custom.labelTextStyle.copyWith(
-              ),
-            ),
-          ],
+        Text(
+          establishment.name,
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
+            color: theme.custom.foreground,
+          ),
         ),
-        Text(establishment.address, style: theme.custom.labelTextStyle),
+        Text(
+          establishment.address,
+          style: TextStyle(
+            fontSize: 13,
+            fontWeight: FontWeight.w400,
+            color: theme.custom.onMuted,
+          ),
+        ),
       ],
     );
   }

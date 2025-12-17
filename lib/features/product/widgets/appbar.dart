@@ -57,7 +57,7 @@ class _ProductAppBarState extends State<ProductAppBar> {
           expandedHeight: expandedHeight,
           elevation: 4,
           centerTitle: false,
-          shadowColor: theme.custom.shadow,
+          shadowColor: theme.custom.highShadow,
           leading: MaybePopButton(shadow: !isCollapsed),
           title: _AppBarTitle(show: isCollapsed, product: state.product),
           actions: [
@@ -112,8 +112,22 @@ class _AppBarTitle extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(product.category.name, style: theme.custom.labelTextStyle),
-          Text(product.name, style: theme.custom.labelTextStyle),
+          Text(
+            product.category.name,
+            style: TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.w400,
+              color: theme.custom.onMuted,
+            ),
+          ),
+          Text(
+            product.name,
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              color: theme.custom.foreground,
+            ),
+          ),
         ],
       ),
     );
@@ -152,7 +166,10 @@ class _BackgroundImagesState extends State<_BackgroundImages> {
               height: mediaQuery.padding.top + 12,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [theme.custom.foreground.withValues(alpha: 0.1), theme.custom.transparent],
+                  colors: [
+                    theme.custom.foreground.withValues(alpha: 0.1),
+                    theme.custom.transparent,
+                  ],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                 ),
