@@ -19,41 +19,43 @@ class _HomeEstablishmentsState extends State<HomeEstablishments> {
     return BlocBuilder<HomeCubit, HomeState>(
       bloc: BlocProvider.of<HomeCubit>(context),
       builder: (context, state) {
-        return Padding(
-          padding: const EdgeInsets.only(top: 4),
-          child: Column(
-            spacing: 8,
-            children: [
-              CarouselSlider(
-                options: CarouselOptions(
-                  height: 240,
-                  viewportFraction: 0.85,
-                  autoPlay: true,
-                  autoPlayInterval: const Duration(seconds: 5),
-                  pauseAutoPlayInFiniteScroll: true,
-                  pauseAutoPlayOnManualNavigate: true,
-                  pauseAutoPlayOnTouch: true,
-                  enableInfiniteScroll: false,
-                  onPageChanged: (index, reason) {
-                    setState(() {
-                      currentIndex = index;
-                    });
-                  },
+        return SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 4),
+            child: Column(
+              spacing: 8,
+              children: [
+                CarouselSlider(
+                  options: CarouselOptions(
+                    height: 240,
+                    viewportFraction: 0.85,
+                    autoPlay: true,
+                    autoPlayInterval: const Duration(seconds: 5),
+                    pauseAutoPlayInFiniteScroll: true,
+                    pauseAutoPlayOnManualNavigate: true,
+                    pauseAutoPlayOnTouch: true,
+                    enableInfiniteScroll: false,
+                    onPageChanged: (index, reason) {
+                      setState(() {
+                        currentIndex = index;
+                      });
+                    },
+                  ),
+                  items: state.establishments
+                      .map(
+                        (i) => Container(
+                          margin: const EdgeInsets.all(6),
+                          child: EstablishmentCard(establishment: i),
+                        ),
+                      )
+                      .toList(),
                 ),
-                items: state.establishments
-                    .map(
-                      (i) => Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 6),
-                        child: EstablishmentCard(establishment: i),
-                      ),
-                    )
-                    .toList(),
-              ),
-              CustomAnimationIndicator(
-                currentIndex: currentIndex,
-                length: state.establishments.length,
-              ),
-            ],
+                CustomAnimationIndicator(
+                  currentIndex: currentIndex,
+                  length: state.establishments.length,
+                ),
+              ],
+            ),
           ),
         );
       },

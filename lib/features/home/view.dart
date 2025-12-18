@@ -1,4 +1,5 @@
 import 'package:app/features/home/bloc/home/home_cubit.dart';
+import 'package:app/features/home/widgets/appbar.dart';
 import 'package:app/features/home/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -35,11 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
       providers: [BlocProvider(create: (context) => cubit)],
       child: CustomScrollView(
         controller: scrollController,
-        slivers: [
-          HomeAppBar(),
-          SliverToBoxAdapter(child: HomeEstablishments()),
-          HomeProducts(),
-        ],
+        slivers: [HomeAppBar(), HomeEstablishments(), HomeProducts()],
       ),
     );
   }

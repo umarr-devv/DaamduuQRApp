@@ -16,8 +16,7 @@ class HomeAppBar extends StatelessWidget {
     final theme = Theme.of(context);
     return SliverAppBar(
       backgroundColor: theme.custom.muted,
-      title: SvgPicture.asset('assets/svg/logo-full.svg', height: 32),
-
+      title: SvgPicture.asset('assets/svg/logo-full.svg', height: 28),
       actions: [
         CustomIconButton(
           icon: 'assets/svg/bell.svg',

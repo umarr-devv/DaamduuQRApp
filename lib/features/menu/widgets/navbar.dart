@@ -67,6 +67,9 @@ class _ScanButton extends StatelessWidget {
       style: IconButton.styleFrom(
         backgroundColor: theme.custom.secondary,
         padding: const EdgeInsets.all(12),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadiusGeometry.circular(64),
+        ),
       ),
       icon: SvgPicture.asset(
         'assets/svg/icon.svg',
@@ -105,7 +108,7 @@ class _MenuNavBarItemState extends State<_MenuNavBarItem> {
         AutoTabsRouter.of(context).setActiveIndex(widget.index);
       },
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         decoration: BoxDecoration(color: theme.custom.transparent),
         child: SvgPicture.asset(
           active ? widget.activeIcon : widget.inactiveIcon,

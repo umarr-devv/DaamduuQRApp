@@ -1,6 +1,5 @@
 import 'package:app/core/router/router.dart';
 import 'package:app/features/menu/widgets/widgets.dart';
-import 'package:app/shared/theme/theme.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -22,7 +21,6 @@ class _MenuScreenState extends State<MenuScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return AutoTabsRouter.pageView(
       routes: [HomeRoute(), OrderRoute(), FavoriteRoute(), ProfileRoute()],
       physics: const NeverScrollableScrollPhysics(),
@@ -30,9 +28,8 @@ class _MenuScreenState extends State<MenuScreen> {
       curve: Curves.easeIn,
       builder: (context, child, controller) {
         return Scaffold(
-          resizeToAvoidBottomInset: false,
           body: child,
-          backgroundColor: theme.custom.muted,
+          resizeToAvoidBottomInset: false,
           bottomNavigationBar: MenuNavBar(),
         );
       },
