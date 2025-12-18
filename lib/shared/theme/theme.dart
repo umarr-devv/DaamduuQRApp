@@ -134,6 +134,12 @@ class CustomThemeData {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadiusGeometry.circular(12),
           ),
+          backgroundColor: secondary,
+          textStyle: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+            color: onSecondary,
+          ),
         ),
       ),
       cardTheme: CardThemeData(

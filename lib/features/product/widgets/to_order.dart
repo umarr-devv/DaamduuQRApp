@@ -55,62 +55,38 @@ class _AddButtons extends StatelessWidget {
       bloc: cubit,
       builder: (context, state) {
         final item = state.getOrderItem(product.id);
+        if (item == null) {
+          return FilledButton(
+            onPressed: () {},
+            child: Text('Добавить в корзину'),
+          );
+        } else {}
         return Row(
           spacing: 16,
           children: [
-            CustomIconButton(
-              icon: Icons.delete,
-              radius: 12,
-              background: theme.custom.muted,
-              shadow: false,
-              shadowColor: theme.custom.shadow,
-              active: item != null,
-              onTap: () {
-                cubit.setItem(item?.copyWith(0));
-              },
-            ),
             CustomCounterButton(
-              value: item?.quantity,
+              value: item.quantity,
               onFirstAdd: () {
                 cubit.addItem(product);
               },
               onAdd: () {
-                cubit.setItem(item?.copyWith(item.quantity + 1));
+                cubit.setItem(item.copyWith(item.quantity + 1));
               },
               onRemove: () {
-                cubit.setItem(item?.copyWith(item.quantity - 1));
+                cubit.setItem(item.copyWith(item.quantity - 1));
               },
             ),
             Expanded(child: SizedBox()),
-            Builder(
-              builder: (context) {
-                if (item != null) {
-                  return CustomTextButton(
-                    icon: Icons.arrow_forward,
-                    label: 'В корзину',
-                    fontSize: 16,
-                    shadow: false,
-                    radius: 12,
-                    background: theme.custom.secondary,
-                    foreground: theme.custom.onSecondary,
-                    onTap: () {
-                      AutoRouter.of(context).navigate(OrderRoute());
-                    },
-                  );
-                } else {
-                  return CustomTextButton(
-                    icon: Icons.add,
-                    label: 'Добавить',
-                    fontSize: 16,
-                    shadow: false,
-                    radius: 12,
-                    background: theme.custom.primary,
-                    foreground: theme.custom.background,
-                    onTap: () {
-                      cubit.addItem(product);
-                    },
-                  );
-                }
+            CustomTextButton(
+              icon: Icons.arrow_forward,
+              label: 'В корзину',
+              fontSize: 16,
+              shadow: false,
+              radius: 12,
+              background: theme.custom.secondary,
+              foreground: theme.custom.onSecondary,
+              onTap: () {
+                AutoRouter.of(context).navigate(OrderRoute());
               },
             ),
           ],
