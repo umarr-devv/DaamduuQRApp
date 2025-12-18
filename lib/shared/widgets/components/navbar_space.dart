@@ -6,6 +6,6 @@ class NavBarSpace extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    return SizedBox(height: mediaQuery.padding.bottom + 64);
+    return SizedBox(height: mediaQuery.padding.bottom);
   }
 }

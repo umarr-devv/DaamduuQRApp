@@ -28,8 +28,10 @@ class _MenuScreenState extends State<MenuScreen> {
       curve: Curves.easeIn,
       builder: (context, child, controller) {
         return Scaffold(
+          appBar: MenuAppBar(),
           body: child,
           resizeToAvoidBottomInset: false,
+          extendBody: true,
           bottomNavigationBar: MenuNavBar(),
         );
       },
