@@ -66,10 +66,7 @@ class _CardPrice extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       spacing: 2,
       children: [
-        Text(
-          product.price.toStringAsFixed(0),
-          style: theme.custom.priceTextStyle,
-        ),
+        Text(product.price.toStringAsFixed(0), style: theme.custom.price),
         SomSymbol(),
       ],
     );

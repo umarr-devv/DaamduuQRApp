@@ -71,7 +71,7 @@ class CustomThemeData {
     color: onMuted,
   );
 
-  TextStyle get priceTextStyle => TextStyle(
+  TextStyle get price => TextStyle(
     fontFamily: font,
     fontSize: 18,
     fontWeight: FontWeight.w500,

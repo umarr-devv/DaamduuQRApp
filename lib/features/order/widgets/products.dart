@@ -17,7 +17,7 @@ class OrderProductsList extends StatelessWidget {
       bloc: cubit,
       builder: (context, state) {
         return SliverPadding(
-          padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           sliver: SliverList.separated(
             itemBuilder: (context, index) {
               return _OrderItemCard(item: state.items[index]);
@@ -75,15 +75,10 @@ class _CardActions extends StatelessWidget {
           radius: 12,
           size: 20,
           shadow: false,
+          foreground: theme.custom.error,
           onTap: () {
             cubit.setItem(item.copyWith(0));
           },
-        ),
-        Row(
-          children: [
-            Text(item.sum.toStringAsFixed(1), style: theme.custom.label),
-            SomSymbol(size: 12),
-          ],
         ),
       ],
     );
@@ -104,9 +99,31 @@ class _CardInfo extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(product.category.name, style: theme.custom.subtitle),
-        Text(product.name, style: theme.custom.label),
-        SizedBox(height: 8),
+        Text(
+          product.name,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+            color: theme.custom.foreground,
+          ),
+        ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              product.price.toStringAsFixed(2),
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                color: theme.custom.onMuted,
+              ),
+            ),
+            SomSymbol(size: 12),
+          ],
+        ),
+        SizedBox(height: 4),
         CustomCounterButton(
           value: item.quantity,
           iconSize: 20,

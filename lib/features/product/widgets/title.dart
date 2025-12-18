@@ -67,10 +67,7 @@ class _ProductPrice extends StatelessWidget {
       child: Row(
         spacing: 4,
         children: [
-          Text(
-            product.price.toStringAsFixed(0),
-            style: theme.custom.priceTextStyle,
-          ),
+          Text(product.price.toStringAsFixed(0), style: theme.custom.price),
           SomSymbol(),
         ],
       ),
