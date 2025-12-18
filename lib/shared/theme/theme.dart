@@ -83,7 +83,7 @@ class CustomThemeData {
       useMaterial3: true,
       brightness: brightness,
       primaryColor: background,
-      scaffoldBackgroundColor: background,
+      scaffoldBackgroundColor: muted,
       fontFamily: font,
       colorScheme: ColorScheme.fromSeed(
         brightness: brightness,
@@ -95,10 +95,13 @@ class CustomThemeData {
         surface: background,
         onSurface: foreground,
         error: error,
+        outline: border,
+        secondaryContainer: muted,
+        onSecondaryContainer: foreground,
       ),
       appBarTheme: AppBarThemeData(
-        backgroundColor: background,
-        surfaceTintColor: transparent,
+        backgroundColor: muted,
+        surfaceTintColor: background,
         shadowColor: black.withValues(alpha: 0.125),
         elevation: 4,
         centerTitle: false,
@@ -117,6 +120,14 @@ class CustomThemeData {
           color: onMuted,
         ),
         border: OutlineInputBorder(borderSide: BorderSide.none),
+      ),
+      iconButtonTheme: IconButtonThemeData(
+        style: IconButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadiusGeometry.circular(12),
+          ),
+          backgroundColor: background,
+        ),
       ),
       cardTheme: CardThemeData(
         clipBehavior: Clip.antiAlias,
