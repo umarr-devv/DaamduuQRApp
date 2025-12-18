@@ -31,7 +31,6 @@ class _MenuScreenState extends State<MenuScreen> {
           appBar: MenuAppBar(),
           body: child,
           resizeToAvoidBottomInset: false,
-          extendBody: true,
           bottomNavigationBar: MenuNavBar(),
         );
       },
