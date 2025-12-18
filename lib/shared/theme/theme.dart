@@ -108,6 +108,7 @@ class CustomThemeData {
           color: foreground,
         ),
       ),
+      bottomAppBarTheme: BottomAppBarThemeData(color: background),
       inputDecorationTheme: InputDecorationTheme(
         contentPadding: const EdgeInsets.all(0),
         hintStyle: TextStyle(

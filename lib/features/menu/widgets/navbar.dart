@@ -1,115 +1,118 @@
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:app/core/router/router.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class _MenuNavBarItemData {
-  _MenuNavBarItemData({
-    required this.activeSvgIcon,
-    required this.inactiveSvgIcon,
-  });
-  final String activeSvgIcon;
-  final String inactiveSvgIcon;
-}
-
-class MenuNavBar extends StatefulWidget {
-  const MenuNavBar({super.key, required this.tabsRouter});
-
-  final TabsRouter tabsRouter;
-
-  @override
-  State<MenuNavBar> createState() => _MenuNavBarState();
-}
-
-class _MenuNavBarState extends State<MenuNavBar> {
-  final items = [
-    _MenuNavBarItemData(
-      activeSvgIcon: 'assets/svg/house-fill.svg',
-      inactiveSvgIcon: 'assets/svg/house.svg',
-    ),
-    _MenuNavBarItemData(
-      activeSvgIcon: 'assets/svg/shopping-basket-fill.svg',
-      inactiveSvgIcon: 'assets/svg/shopping-basket.svg',
-    ),
-    _MenuNavBarItemData(
-      activeSvgIcon: 'assets/svg/heart-fill.svg',
-      inactiveSvgIcon: 'assets/svg/heart.svg',
-    ),
-    _MenuNavBarItemData(
-      activeSvgIcon: 'assets/svg/user-fill.svg',
-      inactiveSvgIcon: 'assets/svg/user.svg',
-    ),
-  ];
-
-  void onTap(int index) {
-    widget.tabsRouter.setActiveIndex(index);
-  }
+class MenuNavBar extends StatelessWidget {
+  const MenuNavBar({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
     final theme = Theme.of(context);
-    return AnimatedBottomNavigationBar.builder(
-      height: 80,
-      activeIndex: widget.tabsRouter.activeIndex,
-      gapLocation: GapLocation.center,
-      notchSmoothness: NotchSmoothness.defaultEdge,
-      leftCornerRadius: 24,
-      rightCornerRadius: 24,
-      backgroundColor: theme.custom.background,
-      scaleFactor: -0.2,
-      shadow: BoxShadow(
-        offset: Offset(0, -1),
-        blurRadius: 4,
-        color: theme.custom.shadow,
+    return Container(
+      height: 64 + mediaQuery.padding.bottom,
+      decoration: BoxDecoration(
+        border: Border(top: BorderSide(color: theme.custom.border, width: 1)),
       ),
-      onTap: (index) {
-        widget.tabsRouter.setActiveIndex(index);
-      },
-      tabBuilder: (index, isActive) {
-        return _MenuNavBarItem(
-          item: items[index],
-          isActive: isActive,
-          index: index,
-        );
-      },
-      itemCount: items.length,
+      child: Stack(
+        children: [
+          BottomAppBar(
+            height: 64,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                _MenuNavBarItem(
+                  activeIcon: 'assets/svg/house-fill.svg',
+                  inactiveIcon: 'assets/svg/house.svg',
+                  index: 0,
+                ),
+                _MenuNavBarItem(
+                  activeIcon: 'assets/svg/shopping-basket-fill.svg',
+                  inactiveIcon: 'assets/svg/shopping-basket.svg',
+                  index: 1,
+                ),
+                SizedBox(width: 36),
+                _MenuNavBarItem(
+                  activeIcon: 'assets/svg/heart-fill.svg',
+                  inactiveIcon: 'assets/svg/heart.svg',
+                  index: 2,
+                ),
+                _MenuNavBarItem(
+                  activeIcon: 'assets/svg/user-fill.svg',
+                  inactiveIcon: 'assets/svg/user.svg',
+                  index: 3,
+                ),
+              ],
+            ),
+          ),
+          Center(child: SafeArea(child: _ScanButton())),
+        ],
+      ),
     );
   }
 }
 
-class _MenuNavBarItem extends StatelessWidget {
-  const _MenuNavBarItem({
-    required this.item,
-    required this.isActive,
-    required this.index,
-  });
-
-  final _MenuNavBarItemData item;
-  final bool isActive;
-  final int index;
-
-  EdgeInsets padding() {
-    if (index == 0 || index == 1) {
-      return const EdgeInsets.only(left: 16);
-    } else if (index == 2 || index == 3) {
-      return const EdgeInsets.only(right: 16);
-    }
-    return const EdgeInsets.all(0);
-  }
+class _ScanButton extends StatelessWidget {
+  const _ScanButton();
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return UnconstrainedBox(
-      child: Padding(
-        padding: padding(),
+    return IconButton.filled(
+      onPressed: () {
+        AutoRouter.of(context).push(ScannerRoute());
+      },
+      style: IconButton.styleFrom(
+        backgroundColor: theme.custom.secondary,
+        padding: const EdgeInsets.all(12),
+      ),
+      icon: SvgPicture.asset(
+        'assets/svg/icon.svg',
+        height: 24,
+        width: 24,
+        colorFilter: ColorFilter.mode(theme.custom.background, BlendMode.srcIn),
+      ),
+    );
+  }
+}
+
+class _MenuNavBarItem extends StatefulWidget {
+  const _MenuNavBarItem({
+    required this.activeIcon,
+    required this.inactiveIcon,
+    required this.index,
+  });
+  final String activeIcon;
+  final String inactiveIcon;
+  final int index;
+
+  @override
+  State<_MenuNavBarItem> createState() => _MenuNavBarItemState();
+}
+
+class _MenuNavBarItemState extends State<_MenuNavBarItem> {
+  TabsRouter get tabsRouter => AutoTabsRouter.of(context);
+
+  bool get active => tabsRouter.activeIndex == widget.index;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return GestureDetector(
+      onTap: () {
+        AutoTabsRouter.of(context).setActiveIndex(widget.index);
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
+        decoration: BoxDecoration(color: theme.custom.transparent),
         child: SvgPicture.asset(
-          isActive ? item.activeSvgIcon : item.inactiveSvgIcon,
+          active ? widget.activeIcon : widget.inactiveIcon,
           height: 24,
           width: 24,
           colorFilter: ColorFilter.mode(
-            isActive ? theme.custom.primary : theme.custom.onMuted,
+            active ? theme.custom.primary : theme.custom.onMuted,
             BlendMode.srcIn,
           ),
         ),

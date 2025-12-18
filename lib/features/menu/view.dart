@@ -27,19 +27,13 @@ class _MenuScreenState extends State<MenuScreen> {
       routes: [HomeRoute(), OrderRoute(), FavoriteRoute(), ProfileRoute()],
       physics: const NeverScrollableScrollPhysics(),
       duration: const Duration(milliseconds: 175),
-      curve: Curves.bounceInOut,
+      curve: Curves.easeIn,
       builder: (context, child, controller) {
-        final tabsRouter = AutoTabsRouter.of(context);
         return Scaffold(
-          appBar: MenuEmptyAppbar(),
           resizeToAvoidBottomInset: false,
-          extendBody: true,
           body: child,
           backgroundColor: theme.custom.muted,
-          floatingActionButton: MenuActionButton(),
-          floatingActionButtonLocation:
-              FloatingActionButtonLocation.centerDocked,
-          bottomNavigationBar: MenuNavBar(tabsRouter: tabsRouter),
+          bottomNavigationBar: MenuNavBar(),
         );
       },
     );

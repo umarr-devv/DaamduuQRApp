@@ -1,6 +1,5 @@
 import 'package:app/features/home/bloc/home/home_cubit.dart';
 import 'package:app/features/home/widgets/widgets.dart';
-import 'package:app/shared/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,8 +39,6 @@ class _HomeScreenState extends State<HomeScreen> {
           HomeAppBar(),
           SliverToBoxAdapter(child: HomeEstablishments()),
           HomeProducts(),
-          // HomeProductsList(),
-          SliverToBoxAdapter(child: NavBarSpace()),
         ],
       ),
     );
