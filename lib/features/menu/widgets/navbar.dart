@@ -20,39 +20,34 @@ class MenuNavBar extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          ClipRect(
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
-              child: BottomAppBar(
-                height: 64,
-                color: theme.custom.background.withValues(alpha: 0.75),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    _MenuNavBarItem(
-                      activeIcon: 'assets/svg/house-fill.svg',
-                      inactiveIcon: 'assets/svg/house.svg',
-                      index: 0,
-                    ),
-                    _MenuNavBarItem(
-                      activeIcon: 'assets/svg/shopping-basket-fill.svg',
-                      inactiveIcon: 'assets/svg/shopping-basket.svg',
-                      index: 1,
-                    ),
-                    SizedBox(width: 36),
-                    _MenuNavBarItem(
-                      activeIcon: 'assets/svg/heart-fill.svg',
-                      inactiveIcon: 'assets/svg/heart.svg',
-                      index: 2,
-                    ),
-                    _MenuNavBarItem(
-                      activeIcon: 'assets/svg/user-fill.svg',
-                      inactiveIcon: 'assets/svg/user.svg',
-                      index: 3,
-                    ),
-                  ],
+          BottomAppBar(
+            height: 64,
+            color: theme.custom.background,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                _MenuNavBarItem(
+                  activeIcon: 'assets/svg/house-fill.svg',
+                  inactiveIcon: 'assets/svg/house.svg',
+                  index: 0,
                 ),
-              ),
+                _MenuNavBarItem(
+                  activeIcon: 'assets/svg/shopping-basket-fill.svg',
+                  inactiveIcon: 'assets/svg/shopping-basket.svg',
+                  index: 1,
+                ),
+                SizedBox(width: 36),
+                _MenuNavBarItem(
+                  activeIcon: 'assets/svg/heart-fill.svg',
+                  inactiveIcon: 'assets/svg/heart.svg',
+                  index: 2,
+                ),
+                _MenuNavBarItem(
+                  activeIcon: 'assets/svg/user-fill.svg',
+                  inactiveIcon: 'assets/svg/user.svg',
+                  index: 3,
+                ),
+              ],
             ),
           ),
           Center(child: SafeArea(child: _ScanButton())),
