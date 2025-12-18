@@ -1,9 +1,11 @@
 import 'dart:ui';
 
+import 'package:app/blocs/order/order_cubit.dart';
 import 'package:app/core/router/router.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class MenuNavBar extends StatelessWidget {
@@ -31,12 +33,8 @@ class MenuNavBar extends StatelessWidget {
                   inactiveIcon: 'assets/svg/house.svg',
                   index: 0,
                 ),
-                _MenuNavBarItem(
-                  activeIcon: 'assets/svg/shopping-basket-fill.svg',
-                  inactiveIcon: 'assets/svg/shopping-basket.svg',
-                  index: 1,
-                ),
-                SizedBox(width: 36),
+                _BasketNavBarItem(),
+                SizedBox(width: 42),
                 _MenuNavBarItem(
                   activeIcon: 'assets/svg/heart-fill.svg',
                   inactiveIcon: 'assets/svg/heart.svg',
@@ -53,6 +51,51 @@ class MenuNavBar extends StatelessWidget {
           Center(child: SafeArea(child: _ScanButton())),
         ],
       ),
+    );
+  }
+}
+
+class _BasketNavBarItem extends StatelessWidget {
+  const _BasketNavBarItem();
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return BlocBuilder<OrderCubit, OrderState>(
+      bloc: BlocProvider.of<OrderCubit>(context),
+      builder: (context, state) {
+        return Stack(
+          children: [
+            _MenuNavBarItem(
+              activeIcon: 'assets/svg/shopping-basket-fill.svg',
+              inactiveIcon: 'assets/svg/shopping-basket.svg',
+              index: 1,
+            ),
+            Positioned(
+              top: 0,
+              right: 0,
+              child: Container(
+                height: 22,
+                width: 22,
+                decoration: BoxDecoration(
+                  color: theme.custom.background,
+                  borderRadius: BorderRadius.circular(64),
+                  border: Border.all(color: theme.custom.border),
+                ),
+                alignment: Alignment.center,
+                child: Text(
+                  state.items.length.toStringAsFixed(0),
+                  style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w600,
+                    color: theme.custom.foreground,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }
@@ -111,7 +154,7 @@ class _MenuNavBarItemState extends State<_MenuNavBarItem> {
         AutoTabsRouter.of(context).setActiveIndex(widget.index);
       },
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
         decoration: BoxDecoration(color: theme.custom.transparent),
         child: SvgPicture.asset(
           active ? widget.activeIcon : widget.inactiveIcon,

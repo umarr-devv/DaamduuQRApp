@@ -129,6 +129,13 @@ class CustomThemeData {
           backgroundColor: background,
         ),
       ),
+      filledButtonTheme: FilledButtonThemeData(
+        style: FilledButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadiusGeometry.circular(12),
+          ),
+        ),
+      ),
       cardTheme: CardThemeData(
         clipBehavior: Clip.antiAlias,
         color: background,
