@@ -7,6 +7,8 @@ class CustomThemeData {
 
   final font = 'Manrope';
 
+  final monoFont = 'RobotoMono';
+
   Color by({required Color light, required Color dark}) {
     return brightness == Brightness.light ? light : dark;
   }
@@ -72,7 +74,7 @@ class CustomThemeData {
   );
 
   TextStyle get price => TextStyle(
-    fontFamily: font,
+    fontFamily: monoFont,
     fontSize: 18,
     fontWeight: FontWeight.w500,
     color: foreground,

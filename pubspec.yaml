@@ -2,7 +2,7 @@ name: app
 description: "A new Flutter project."
 publish_to: "none"
 
-version: 0.1.02+51
+version: 0.1.02+52
 
 environment:
   sdk: ^3.10.1
@@ -184,3 +184,19 @@ flutter:
           weight: 300
         - asset: "assets/fonts/Manrope/Manrope-ExtraLight.ttf"
           weight: 200
+    - family: RobotoMono
+      fonts:
+        - asset: "assets/fonts/RobotoMono/RobotoMono-Bold.ttf"
+          weight: 700
+        - asset: "assets/fonts/RobotoMono/RobotoMono-SemiBold.ttf"
+          weight: 600
+        - asset: "assets/fonts/RobotoMono/RobotoMono-Medium.ttf"
+          weight: 500
+        - asset: "assets/fonts/RobotoMono/RobotoMono-Regular.ttf"
+          weight: 400
+        - asset: "assets/fonts/RobotoMono/RobotoMono-Light.ttf"
+          weight: 300
+        - asset: "assets/fonts/RobotoMono/RobotoMono-ExtraLight.ttf"
+          weight: 200
+        - asset: "assets/fonts/RobotoMono/RobotoMono-Thin.ttf"
+          weight: 100
