@@ -8,7 +8,7 @@ class OrderState extends Equatable {
   final EstablishmentScheme? establishment;
   final PlaceScheme? place;
 
-  num get totalSum => items.map((i) => i.sum).toList().reduce((a, b) => a + b);
+  num get totalSum => items.fold<num>(0, (sum, item) => sum + item.sum);
 
   OrderItem? getOrderItem(String productId) {
     return items.firstWhereLogTypeOrNull((i) => i.product.id == productId);

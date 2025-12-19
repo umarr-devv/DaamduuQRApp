@@ -1,5 +1,4 @@
 import 'package:app/shared/theme/theme.dart';
-import 'package:app/shared/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class CustomCounterButton extends StatelessWidget {
@@ -35,13 +34,9 @@ class CustomCounterButton extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             spacing: 12,
             children: [
-              CustomIconButton(
-                icon: Icons.remove,
-                size: iconSize,
-                radius: 12,
-                shadow: false,
-                background: removeColor ?? theme.custom.muted,
-                onTap: value == null ? () {} : onRemove,
+              IconButton.outlined(
+                onPressed: onRemove,
+                icon: Icon(Icons.remove),
               ),
               Text(
                 value?.toStringAsFixed(0) ?? '0',
@@ -51,14 +46,12 @@ class CustomCounterButton extends StatelessWidget {
                   color: theme.custom.foreground,
                 ),
               ),
-              CustomIconButton(
-                icon: Icons.add,
-                size: iconSize,
-                radius: 12,
-                background: theme.custom.primary,
-                foreground: theme.custom.onPrimary,
-                shadow: false,
-                onTap: value == null ? onFirstAdd : onAdd,
+              IconButton.filled(
+                onPressed: value == null ? onFirstAdd : onAdd,
+                style: IconButton.styleFrom(
+                  backgroundColor: theme.custom.secondary,
+                ),
+                icon: Icon(Icons.add),
               ),
             ],
           );

@@ -49,7 +49,6 @@ class _AddButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final cubit = BlocProvider.of<OrderCubit>(context);
     return BlocBuilder<OrderCubit, OrderState>(
       bloc: cubit,
@@ -57,7 +56,9 @@ class _AddButtons extends StatelessWidget {
         final item = state.getOrderItem(product.id);
         if (item == null) {
           return FilledButton(
-            onPressed: () {},
+            onPressed: () {
+              cubit.addItem(product);
+            },
             child: Text('Добавить в корзину'),
           );
         } else {}
@@ -77,17 +78,15 @@ class _AddButtons extends StatelessWidget {
               },
             ),
             Expanded(child: SizedBox()),
-            CustomTextButton(
-              icon: Icons.arrow_forward,
-              label: 'В корзину',
-              fontSize: 16,
-              shadow: false,
-              radius: 12,
-              background: theme.custom.secondary,
-              foreground: theme.custom.onSecondary,
-              onTap: () {
+            FilledButton(
+              onPressed: () {
                 AutoRouter.of(context).navigate(OrderRoute());
               },
+              child: Row(
+                spacing: 4,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [Icon(Icons.arrow_forward), Text('В корзину')],
+              ),
             ),
           ],
         );
