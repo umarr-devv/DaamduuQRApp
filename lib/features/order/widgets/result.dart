@@ -1,5 +1,6 @@
 import 'package:app/blocs/blocs.dart';
 import 'package:app/shared/shared.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -27,66 +28,29 @@ class OrderResult extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    'Стоимость',
-                    style: theme.custom.subtitle.copyWith(fontSize: 16),
-                  ),
+                  Text('Сумма', style: theme.custom.label),
                   Row(
                     children: [
                       Text(
                         state.totalSum.toStringAsFixed(0),
-                        style: theme.custom.price.copyWith(fontSize: 16),
-                      ),
-                      SomSymbol(size: 14),
-                    ],
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Услуга',
-                    style: theme.custom.subtitle.copyWith(fontSize: 16),
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        '0',
-                        style: theme.custom.price.copyWith(fontSize: 16),
-                      ),
-                      SomSymbol(size: 14),
-                    ],
-                  ),
-                ],
-              ),
-              Divider(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Сумма',
-                    style: theme.custom.title.copyWith(fontSize: 20),
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        state.totalSum.toStringAsFixed(0),
-                        style: theme.custom.price.copyWith(fontSize: 20),
+                        style: theme.custom.price,
                       ),
                       SomSymbol(size: 16),
                     ],
                   ),
                 ],
               ),
-              const SizedBox(),
               SizedBox(
                 width: double.infinity,
                 child: FilledButton(
                   onPressed: () {},
-                  child: Text(
-                    'Подтвредить заказ',
-                    style: TextStyle(fontSize: 16),
+                  child: Row(
+                    spacing: 4,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(FluentIcons.checkmark_24_regular),
+                      Text('Подтвердить заказ'),
+                    ],
                   ),
                 ),
               ),

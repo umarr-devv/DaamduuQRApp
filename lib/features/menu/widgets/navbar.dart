@@ -62,36 +62,43 @@ class _BasketNavBarItem extends StatelessWidget {
     return BlocBuilder<OrderCubit, OrderState>(
       bloc: BlocProvider.of<OrderCubit>(context),
       builder: (context, state) {
-        return Stack(
-          children: [
-            _MenuNavBarItem(
-              activeIcon: 'assets/svg/shopping-basket-fill.svg',
-              inactiveIcon: 'assets/svg/shopping-basket.svg',
-              index: 1,
-            ),
-            Positioned(
-              top: 0,
-              right: 0,
-              child: Container(
-                height: 22,
-                width: 22,
-                decoration: BoxDecoration(
-                  color: theme.custom.background,
-                  borderRadius: BorderRadius.circular(64),
-                  border: Border.all(color: theme.custom.border),
-                ),
-                alignment: Alignment.center,
-                child: Text(
-                  state.items.length.toStringAsFixed(0),
-                  style: TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600,
-                    color: theme.custom.foreground,
+        return GestureDetector(
+          onTap: () {
+            AutoTabsRouter.of(context).setActiveIndex(1);
+          },
+          child: Stack(
+            children: [
+              _MenuNavBarItem(
+                activeIcon: 'assets/svg/shopping-basket-fill.svg',
+                inactiveIcon: 'assets/svg/shopping-basket.svg',
+                index: 1,
+                disable: true,
+              ),
+              if (state.items.isNotEmpty)
+                Positioned(
+                  top: 0,
+                  right: 0,
+                  child: Container(
+                    height: 22,
+                    width: 22,
+                    decoration: BoxDecoration(
+                      color: theme.custom.background,
+                      borderRadius: BorderRadius.circular(64),
+                      border: Border.all(color: theme.custom.border),
+                    ),
+                    alignment: Alignment.center,
+                    child: Text(
+                      state.items.length.toStringAsFixed(0),
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        color: theme.custom.primary,
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-          ],
+            ],
+          ),
         );
       },
     );
@@ -130,10 +137,12 @@ class _MenuNavBarItem extends StatefulWidget {
     required this.activeIcon,
     required this.inactiveIcon,
     required this.index,
+    this.disable = false,
   });
   final String activeIcon;
   final String inactiveIcon;
   final int index;
+  final bool disable;
 
   @override
   State<_MenuNavBarItem> createState() => _MenuNavBarItemState();
@@ -148,9 +157,11 @@ class _MenuNavBarItemState extends State<_MenuNavBarItem> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return GestureDetector(
-      onTap: () {
-        AutoTabsRouter.of(context).setActiveIndex(widget.index);
-      },
+      onTap: widget.disable
+          ? null
+          : () {
+              AutoTabsRouter.of(context).setActiveIndex(widget.index);
+            },
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
         decoration: BoxDecoration(color: theme.custom.transparent),

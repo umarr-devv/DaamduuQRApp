@@ -126,7 +126,7 @@ class _CardInfo extends StatelessWidget {
         SizedBox(height: 4),
         CustomCounterButton(
           value: item.quantity,
-          iconSize: 20,
+          iconSize: 16,
           removeColor: theme.custom.background,
           onFirstAdd: () {},
           onAdd: () {

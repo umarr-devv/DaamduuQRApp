@@ -87,7 +87,7 @@ class CustomThemeData {
       fontFamily: font,
       colorScheme: ColorScheme.fromSeed(
         brightness: brightness,
-        seedColor: primary,
+        seedColor: black,
         primary: primary,
         onPrimary: onPrimary,
         secondary: secondary,
@@ -127,7 +127,7 @@ class CustomThemeData {
             borderRadius: BorderRadiusGeometry.circular(12),
           ),
           backgroundColor: background,
-          foregroundColor: foreground
+          surfaceTintColor: transparent,
         ),
       ),
       filledButtonTheme: FilledButtonThemeData(
@@ -136,11 +136,7 @@ class CustomThemeData {
             borderRadius: BorderRadiusGeometry.circular(12),
           ),
           backgroundColor: secondary,
-          textStyle: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-            color: onSecondary,
-          ),
+          textStyle: TextStyle(color: onSecondary),
         ),
       ),
       cardTheme: CardThemeData(

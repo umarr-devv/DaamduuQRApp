@@ -11,6 +11,7 @@ class CustomCounterButton extends StatelessWidget {
     this.removeColor,
     this.iconSize = 24,
     this.fontSize = 18,
+    this.radius = 12,
   });
 
   final int? value;
@@ -22,6 +23,7 @@ class CustomCounterButton extends StatelessWidget {
   final double iconSize;
   final double fontSize;
   final Color? removeColor;
+  final double radius;
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +36,18 @@ class CustomCounterButton extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             spacing: 12,
             children: [
-              IconButton.outlined(
-                onPressed: onRemove,
-                icon: Icon(Icons.remove),
+              SizedBox(
+                height: iconSize + 16,
+                width: iconSize + 16,
+                child: IconButton.outlined(
+                  onPressed: onRemove,
+                  style: IconButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadiusGeometry.circular(radius),
+                    ),
+                  ),
+                  icon: Icon(Icons.remove, size: iconSize),
+                ),
               ),
               Text(
                 value?.toStringAsFixed(0) ?? '0',
@@ -46,12 +57,19 @@ class CustomCounterButton extends StatelessWidget {
                   color: theme.custom.foreground,
                 ),
               ),
-              IconButton.filled(
-                onPressed: value == null ? onFirstAdd : onAdd,
-                style: IconButton.styleFrom(
-                  backgroundColor: theme.custom.secondary,
+              SizedBox(
+                height: iconSize + 16,
+                width: iconSize + 16,
+                child: IconButton.filled(
+                  onPressed: value == null ? onFirstAdd : onAdd,
+                  style: IconButton.styleFrom(
+                    backgroundColor: theme.custom.secondary,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadiusGeometry.circular(radius),
+                    ),
+                  ),
+                  icon: Icon(Icons.add, size: iconSize),
                 ),
-                icon: Icon(Icons.add),
               ),
             ],
           );
