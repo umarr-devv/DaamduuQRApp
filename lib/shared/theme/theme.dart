@@ -127,6 +127,7 @@ class CustomThemeData {
             borderRadius: BorderRadiusGeometry.circular(12),
           ),
           backgroundColor: background,
+          foregroundColor: foreground
         ),
       ),
       filledButtonTheme: FilledButtonThemeData(

@@ -1,4 +1,5 @@
 import 'package:app/shared/theme/theme.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 
 class OrderAppBar extends StatelessWidget {
@@ -12,6 +13,10 @@ class OrderAppBar extends StatelessWidget {
       automaticallyImplyLeading: false,
       pinned: true,
       title: Text('Мой Заказ'),
+      actions: [
+        IconButton(onPressed: () {}, icon: Icon(FluentIcons.chat_24_regular)),
+        const SizedBox(width: 16),
+      ],
     );
   }
 }

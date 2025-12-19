@@ -1,6 +1,6 @@
 import 'package:app/shared/theme/theme.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class CustomSearchBar extends StatelessWidget {
   const CustomSearchBar({
@@ -24,22 +24,18 @@ class CustomSearchBar extends StatelessWidget {
     return Material(
       type: MaterialType.transparency,
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         decoration: BoxDecoration(
           color: theme.custom.background,
           borderRadius: BorderRadius.circular(16),
         ),
         child: Row(
-          spacing: 8,
+          spacing: 4,
           children: [
-            SvgPicture.asset(
-              'assets/svg/search.svg',
-              height: 24,
-              width: 24,
-              colorFilter: ColorFilter.mode(
-                theme.custom.onMuted,
-                BlendMode.srcIn,
-              ),
+            Icon(
+              FluentIcons.search_28_regular,
+              size: 28,
+              color: theme.custom.onMuted,
             ),
             Expanded(
               child: SizedBox(

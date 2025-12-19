@@ -1,7 +1,5 @@
-import 'package:app/core/router/router.dart';
 import 'package:app/shared/theme/theme.dart';
-import 'package:app/shared/widgets/components/components.dart';
-import 'package:auto_route/auto_route.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 
 class FavoriteAppBar extends StatelessWidget {
@@ -17,13 +15,7 @@ class FavoriteAppBar extends StatelessWidget {
       shadowColor: theme.custom.shadow,
       title: Text('Мои Избранные'),
       actions: [
-        CustomIconButton(
-          icon: 'assets/svg/search.svg',
-          radius: 12,
-          onTap: () {
-            AutoRouter.of(context).push(SearchRoute());
-          },
-        ),
+        IconButton(onPressed: () {}, icon: Icon(FluentIcons.search_24_regular)),
         SizedBox(width: 16),
       ],
     );

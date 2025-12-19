@@ -25,6 +25,7 @@ dependencies:
   firebase_auth: ^6.1.1
   firebase_core: ^4.2.0
   firebase_messaging: ^16.0.3
+  fluentui_system_icons: ^1.1.273
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1
@@ -151,7 +152,6 @@ flutter:
     - "assets/svg/apple.svg"
     - "assets/svg/trash-xmark.svg"
     - "assets/svg/logo-full.svg"
-
 
     - "assets/icon/icon.png"
 

@@ -4,6 +4,7 @@ import 'package:app/shared/shared.dart';
 import 'package:app/utils/undefined.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -18,12 +19,7 @@ class HomeAppBar extends StatelessWidget {
       backgroundColor: theme.custom.muted,
       title: SvgPicture.asset('assets/svg/logo-full.svg', height: 28),
       actions: [
-        CustomIconButton(
-          icon: 'assets/svg/bell.svg',
-          onTap: () {},
-          radius: 12,
-          shadow: false,
-        ),
+        IconButton(onPressed: () {}, icon: Icon(FluentIcons.alert_24_regular)),
         SizedBox(width: 16),
       ],
       bottom: _AppBarBottom(),
