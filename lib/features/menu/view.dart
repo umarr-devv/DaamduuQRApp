@@ -1,3 +1,4 @@
+import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:app/core/router/router.dart';
 import 'package:app/features/menu/widgets/widgets.dart';
 import 'package:app/shared/shared.dart';
@@ -29,12 +30,14 @@ class _MenuScreenState extends State<MenuScreen> {
       duration: const Duration(milliseconds: 175),
       curve: Curves.easeIn,
       builder: (context, child, controller) {
-        return Scaffold(
-          backgroundColor: theme.custom.muted,
-          appBar: MenuAppBar(),
-          body: child,
-          resizeToAvoidBottomInset: false,
-          bottomNavigationBar: MenuNavBar(),
+        return ThemeSwitchingArea(
+          child: Scaffold(
+            backgroundColor: theme.custom.muted,
+            appBar: MenuAppBar(),
+            body: child,
+            resizeToAvoidBottomInset: false,
+            bottomNavigationBar: MenuNavBar(),
+          ),
         );
       },
     );

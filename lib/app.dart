@@ -1,3 +1,4 @@
+import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:app/blocs/blocs.dart';
 import 'package:app/core/router/router.dart';
 import 'package:app/shared/theme/theme.dart';
@@ -15,6 +16,7 @@ class AppScreen extends StatefulWidget {
 
 class _AppScreenState extends State<AppScreen> {
   final appRoute = AppRouter();
+  final themeCubit = ThemeCubit();
 
   @override
   Widget build(BuildContext context) {
@@ -24,14 +26,22 @@ class _AppScreenState extends State<AppScreen> {
         BlocProvider(create: (context) => PermissionCubit()),
         BlocProvider(create: (context) => OrderCubit()),
         BlocProvider(create: (context) => FavoriteCubit()),
+        BlocProvider.value(value: themeCubit),
       ],
-      child: MaterialApp.router(
-        title: 'DaamduuQR',
-        theme: CustomThemeData(brightness: Brightness.light).toTheme(),
-        debugShowCheckedModeBanner: false,
-        routerConfig: appRoute.config(
-          navigatorObservers: () => [TalkerRouteObserver(GetIt.I<Talker>())],
-        ),
+      child: ThemeProvider(
+        initTheme: themeCubit.state.isDarkTheme ? darkTheme : lightTheme,
+        builder: (context, theme) {
+          return MaterialApp.router(
+            title: 'DaamduuQR',
+            theme: theme,
+            debugShowCheckedModeBanner: false,
+            routerConfig: appRoute.config(
+              navigatorObservers: () => [
+                TalkerRouteObserver(GetIt.I<Talker>()),
+              ],
+            ),
+          );
+        },
       ),
     );
   }

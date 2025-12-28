@@ -1,3 +1,5 @@
+import 'package:animated_theme_switcher/animated_theme_switcher.dart';
+import 'package:app/blocs/blocs.dart';
 import 'package:app/core/router/router.dart';
 import 'package:app/features/home/bloc/home/home_cubit.dart';
 import 'package:app/shared/shared.dart';
@@ -19,6 +21,21 @@ class HomeAppBar extends StatelessWidget {
       backgroundColor: theme.custom.muted,
       title: SvgPicture.asset('assets/svg/logo-full.svg', height: 28),
       actions: [
+        ThemeSwitcher(
+          builder: (context) {
+            final isDarkTheme = theme.brightness == Brightness.dark;
+            return IconButton(
+              onPressed: () {
+                ThemeSwitcher.of(context).changeTheme(
+                  theme: isDarkTheme ? lightTheme : darkTheme,
+                  isReversed: !isDarkTheme,
+                );
+                BlocProvider.of<ThemeCubit>(context).switchTheme();
+              },
+              icon: Icon(isDarkTheme ? Icons.nightlight_rounded : Icons.sunny),
+            );
+          },
+        ),
         IconButton(onPressed: () {}, icon: Icon(FluentIcons.alert_24_filled)),
         SizedBox(width: 16),
       ],
