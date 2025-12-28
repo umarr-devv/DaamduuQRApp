@@ -19,7 +19,7 @@ class HomeAppBar extends StatelessWidget {
       backgroundColor: theme.custom.muted,
       title: SvgPicture.asset('assets/svg/logo-full.svg', height: 28),
       actions: [
-        IconButton(onPressed: () {}, icon: Icon(FluentIcons.alert_24_regular)),
+        IconButton(onPressed: () {}, icon: Icon(FluentIcons.alert_24_filled)),
         SizedBox(width: 16),
       ],
       bottom: _AppBarBottom(),

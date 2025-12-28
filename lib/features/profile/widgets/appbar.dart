@@ -19,7 +19,7 @@ class ProfileAppBar extends StatelessWidget {
           pinned: true,
           shadowColor: theme.custom.shadow,
           automaticallyImplyLeading: false,
-          title: Text('Мой Профиль'),
+          title: Text('Профиль'),
           actions: [
             IconButton(
               onPressed: () {},

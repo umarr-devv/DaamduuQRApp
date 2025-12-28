@@ -13,7 +13,7 @@ class FavoriteAppBar extends StatelessWidget {
       automaticallyImplyLeading: false,
       pinned: true,
       shadowColor: theme.custom.shadow,
-      title: Text('Мои Избранные'),
+      title: Text('Избранные'),
       actions: [
         IconButton(onPressed: () {}, icon: Icon(FluentIcons.search_24_regular)),
         SizedBox(width: 16),

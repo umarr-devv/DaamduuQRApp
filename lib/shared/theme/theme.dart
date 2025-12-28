@@ -89,7 +89,7 @@ class CustomThemeData {
       fontFamily: font,
       colorScheme: ColorScheme.fromSeed(
         brightness: brightness,
-        seedColor: black,
+        seedColor: foreground,
         primary: primary,
         onPrimary: onPrimary,
         secondary: secondary,
@@ -100,6 +100,7 @@ class CustomThemeData {
         outline: border,
         secondaryContainer: muted,
         onSecondaryContainer: foreground,
+        onSurfaceVariant: foreground,
       ),
       appBarTheme: AppBarThemeData(
         backgroundColor: background,
@@ -108,7 +109,7 @@ class CustomThemeData {
         elevation: 4,
         centerTitle: false,
         titleTextStyle: TextStyle(
-          fontSize: 16,
+          fontSize: 20,
           fontWeight: FontWeight.w500,
           color: foreground,
         ),

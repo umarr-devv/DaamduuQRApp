@@ -127,6 +127,7 @@ class _WotkTimeCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: weekdayNow ? theme.custom.secondary : theme.custom.transparent,
         borderRadius: BorderRadius.circular(10),
+        border: weekdayNow ? null : Border.all(color: theme.custom.border),
       ),
       child: Column(
         children: [
