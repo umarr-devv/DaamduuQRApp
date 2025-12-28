@@ -8,6 +8,11 @@ class PromotionsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(slivers: [PromotionsAppBar()]);
+    return CustomScrollView(
+      slivers: [
+        PromotionsAppBar(),
+        SliverFillRemaining(child: PromotionPlaceholder()),
+      ],
+    );
   }
 }

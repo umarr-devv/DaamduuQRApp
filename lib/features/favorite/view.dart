@@ -11,8 +11,7 @@ class FavoriteScreen extends StatelessWidget {
     return CustomScrollView(
       slivers: [
         FavoriteAppBar(),
-        SliverFillRemaining(child: FavoriteEmpty()),
-        // SliverToBoxAdapter(child: NavBarSpace()),
+        SliverFillRemaining(child: FavoritePlaceholder()),
       ],
     );
   }
