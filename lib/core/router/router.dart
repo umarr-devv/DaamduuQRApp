@@ -9,6 +9,7 @@ import 'package:app/features/notifications/view.dart';
 import 'package:app/features/order/view.dart';
 import 'package:app/features/product/view.dart';
 import 'package:app/features/profile/view.dart';
+import 'package:app/features/promotions/view.dart';
 import 'package:app/features/scanner/view.dart';
 import 'package:app/features/search/view.dart';
 import 'package:app/features/settings/view.dart';
@@ -29,10 +30,14 @@ class AppRouter extends RootStackRouter {
       initial: true,
       children: [
         AutoRoute(page: HomeRoute.page),
+        AutoRoute(page: PromotionsRoute.page),
         AutoRoute(page: FavoriteRoute.page),
-        AutoRoute(page: OrderRoute.page),
         AutoRoute(page: ProfileRoute.page),
       ],
+    ),
+    CustomRoute(
+      page: OrderRoute.page,
+      transitionsBuilder: TransitionsBuilders.slideBottom,
     ),
     CustomRoute(
       page: EstablishmentRoute.page,

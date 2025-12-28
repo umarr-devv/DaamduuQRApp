@@ -23,13 +23,13 @@ class ProfileAppBar extends StatelessWidget {
           actions: [
             IconButton(
               onPressed: () {},
-              icon: Icon(FluentIcons.settings_24_regular),
+              icon: Icon(FluentIcons.settings_24_filled),
             ),
 
             if (state.customer != null)
               IconButton(
                 onPressed: () {},
-                icon: Icon(FluentIcons.sign_out_24_regular),
+                icon: Icon(FluentIcons.sign_out_24_filled),
               ),
             SizedBox(width: 16),
           ],

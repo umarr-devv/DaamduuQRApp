@@ -1,3 +1,4 @@
+import 'package:app/shared/shared.dart';
 import 'package:flutter/material.dart';
 
 class MenuAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -8,6 +9,11 @@ class MenuAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(elevation: 0, automaticallyImplyLeading: false);
+    final theme = Theme.of(context);
+    return AppBar(
+      elevation: 0,
+      backgroundColor: theme.custom.muted,
+      automaticallyImplyLeading: false,
+    );
   }
 }

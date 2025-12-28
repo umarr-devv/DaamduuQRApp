@@ -1,4 +1,4 @@
-import 'package:app/blocs/order/order_cubit.dart';
+import 'package:app/blocs/blocs.dart';
 import 'package:app/core/router/router.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:auto_route/auto_route.dart';
@@ -31,8 +31,12 @@ class MenuNavBar extends StatelessWidget {
                   inactiveIcon: 'assets/svg/house.svg',
                   index: 0,
                 ),
-                _BasketNavBarItem(),
-                SizedBox(width: 42),
+                _MenuNavBarItem(
+                  activeIcon: 'assets/svg/ticket-fill.svg',
+                  inactiveIcon: 'assets/svg/ticket.svg',
+                  index: 1,
+                ),
+                SizedBox(width: 48),
                 _MenuNavBarItem(
                   activeIcon: 'assets/svg/heart-fill.svg',
                   inactiveIcon: 'assets/svg/heart.svg',
@@ -53,8 +57,8 @@ class MenuNavBar extends StatelessWidget {
   }
 }
 
-class _BasketNavBarItem extends StatelessWidget {
-  const _BasketNavBarItem();
+class _ScanButton extends StatelessWidget {
+  const _ScanButton();
 
   @override
   Widget build(BuildContext context) {
@@ -62,72 +66,81 @@ class _BasketNavBarItem extends StatelessWidget {
     return BlocBuilder<OrderCubit, OrderState>(
       bloc: BlocProvider.of<OrderCubit>(context),
       builder: (context, state) {
-        return GestureDetector(
-          onTap: () {
-            AutoTabsRouter.of(context).setActiveIndex(1);
-          },
-          child: Stack(
+        if (state.items.isNotEmpty) {
+          return Stack(
             children: [
-              _MenuNavBarItem(
-                activeIcon: 'assets/svg/shopping-basket-fill.svg',
-                inactiveIcon: 'assets/svg/shopping-basket.svg',
-                index: 1,
-                disable: true,
+              IconButton.filled(
+                onPressed: () {
+                  AutoRouter.of(context).push(OrderRoute());
+                },
+                style: IconButton.styleFrom(
+                  backgroundColor: theme.custom.secondary,
+                  padding: const EdgeInsets.all(12),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusGeometry.circular(64),
+                  ),
+                ),
+                icon: SvgPicture.asset(
+                  'assets/svg/receipt.svg',
+                  height: 24,
+                  width: 24,
+                  colorFilter: ColorFilter.mode(
+                    theme.custom.background,
+                    BlendMode.srcIn,
+                  ),
+                ),
               ),
-              if (state.items.isNotEmpty)
-                Positioned(
-                  top: 0,
-                  right: 0,
-                  child: Container(
-                    height: 22,
-                    width: 22,
-                    decoration: BoxDecoration(
+              Positioned(
+                top: 0,
+                right: 0,
+                child: Container(
+                  height: 24,
+                  width: 24,
+                  decoration: BoxDecoration(
+                    color: theme.custom.primary,
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(
                       color: theme.custom.background,
-                      borderRadius: BorderRadius.circular(64),
-                      border: Border.all(color: theme.custom.border),
+                      width: 2,
                     ),
-                    alignment: Alignment.center,
-                    child: Text(
-                      state.items.length.toStringAsFixed(0),
-                      style: TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w600,
-                        color: theme.custom.primary,
-                      ),
+                  ),
+                  alignment: Alignment.center,
+                  child: Text(
+                    state.items.length.toStringAsFixed(0),
+                    style: TextStyle(
+                      fontSize: 11,
+                      fontWeight: FontWeight.w900,
+                      color: theme.custom.onSecondary,
                     ),
                   ),
                 ),
+              ),
             ],
-          ),
-        );
+          );
+        } else {
+          return IconButton.filled(
+            onPressed: () {
+              AutoRouter.of(context).push(ScannerRoute());
+            },
+            style: IconButton.styleFrom(
+              backgroundColor: theme.custom.secondary,
+              padding: const EdgeInsets.all(12),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadiusGeometry.circular(64),
+              ),
+            ),
+            icon: SvgPicture.asset(
+              'assets/svg/icon.svg',
+              height: 24,
+              width: 24,
+              colorFilter: ColorFilter.mode(
+                theme.custom.background,
+                BlendMode.srcIn,
+              ),
+            ),
+          );
+        }
       },
-    );
-  }
-}
-
-class _ScanButton extends StatelessWidget {
-  const _ScanButton();
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return IconButton.filled(
-      onPressed: () {
-        AutoRouter.of(context).push(ScannerRoute());
-      },
-      style: IconButton.styleFrom(
-        backgroundColor: theme.custom.secondary,
-        padding: const EdgeInsets.all(12),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadiusGeometry.circular(64),
-        ),
-      ),
-      icon: SvgPicture.asset(
-        'assets/svg/icon.svg',
-        height: 24,
-        width: 24,
-        colorFilter: ColorFilter.mode(theme.custom.background, BlendMode.srcIn),
-      ),
     );
   }
 }
@@ -137,12 +150,10 @@ class _MenuNavBarItem extends StatefulWidget {
     required this.activeIcon,
     required this.inactiveIcon,
     required this.index,
-    this.disable = false,
   });
   final String activeIcon;
   final String inactiveIcon;
   final int index;
-  final bool disable;
 
   @override
   State<_MenuNavBarItem> createState() => _MenuNavBarItemState();
@@ -157,11 +168,9 @@ class _MenuNavBarItemState extends State<_MenuNavBarItem> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return GestureDetector(
-      onTap: widget.disable
-          ? null
-          : () {
-              AutoTabsRouter.of(context).setActiveIndex(widget.index);
-            },
+      onTap: () {
+        AutoTabsRouter.of(context).setActiveIndex(widget.index);
+      },
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
         decoration: BoxDecoration(color: theme.custom.transparent),

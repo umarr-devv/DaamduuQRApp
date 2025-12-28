@@ -80,7 +80,7 @@ class _AddButtons extends StatelessWidget {
             Expanded(child: SizedBox()),
             FilledButton(
               onPressed: () {
-                AutoRouter.of(context).navigate(OrderRoute());
+                AutoRouter.of(context).push(OrderRoute());
               },
               child: Row(
                 spacing: 4,

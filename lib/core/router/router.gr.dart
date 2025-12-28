@@ -283,6 +283,22 @@ class ProfileRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [PromotionsScreen]
+class PromotionsRoute extends PageRouteInfo<void> {
+  const PromotionsRoute({List<PageRouteInfo>? children})
+    : super(PromotionsRoute.name, initialChildren: children);
+
+  static const String name = 'PromotionsRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const PromotionsScreen();
+    },
+  );
+}
+
+/// generated route for
 /// [ScannerScreen]
 class ScannerRoute extends PageRouteInfo<void> {
   const ScannerRoute({List<PageRouteInfo>? children})

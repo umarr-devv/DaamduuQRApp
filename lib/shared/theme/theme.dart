@@ -85,7 +85,7 @@ class CustomThemeData {
       useMaterial3: true,
       brightness: brightness,
       primaryColor: background,
-      scaffoldBackgroundColor: muted,
+      scaffoldBackgroundColor: background,
       fontFamily: font,
       colorScheme: ColorScheme.fromSeed(
         brightness: brightness,
@@ -102,14 +102,14 @@ class CustomThemeData {
         onSecondaryContainer: foreground,
       ),
       appBarTheme: AppBarThemeData(
-        backgroundColor: muted,
+        backgroundColor: background,
         surfaceTintColor: background,
         shadowColor: black.withValues(alpha: 0.125),
         elevation: 4,
         centerTitle: false,
         titleTextStyle: TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.w600,
+          fontSize: 16,
+          fontWeight: FontWeight.w500,
           color: foreground,
         ),
       ),
@@ -137,8 +137,11 @@ class CustomThemeData {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadiusGeometry.circular(12),
           ),
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
           backgroundColor: secondary,
-          textStyle: TextStyle(color: onSecondary),
+          iconSize: 24,
+          iconColor: onSecondary,
+          textStyle: TextStyle(fontSize: 16, color: onSecondary),
         ),
       ),
       cardTheme: CardThemeData(

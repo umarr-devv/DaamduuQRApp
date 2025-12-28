@@ -1,4 +1,4 @@
-import 'package:app/shared/theme/theme.dart';
+import 'package:app/shared/widgets/buttons/pop.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 
@@ -7,15 +7,13 @@ class OrderAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return SliverAppBar(
-      backgroundColor: theme.custom.muted,
-      automaticallyImplyLeading: false,
       pinned: true,
       title: Text('Мой Заказ'),
+      leading: MaybePopButton(),
       actions: [
-        IconButton(onPressed: () {}, icon: Icon(FluentIcons.chat_24_regular)),
-        const SizedBox(width: 16),
+        IconButton(onPressed: () {}, icon: Icon(FluentIcons.chat_24_filled)),
+        const SizedBox(width: 8),
       ],
     );
   }

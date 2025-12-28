@@ -8,13 +8,19 @@ class OrderScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        CustomScrollView(
-          slivers: [OrderAppBar(), OrderProductsList(), SliverFillRemaining()],
-        ),
-        Align(alignment: Alignment.bottomCenter, child: OrderResult()),
-      ],
+    return Scaffold(
+      body: Stack(
+        children: [
+          CustomScrollView(
+            slivers: [
+              OrderAppBar(),
+              OrderProductsList(),
+              SliverFillRemaining(),
+            ],
+          ),
+          Align(alignment: Alignment.bottomCenter, child: OrderResult()),
+        ],
+      ),
     );
   }
 }
