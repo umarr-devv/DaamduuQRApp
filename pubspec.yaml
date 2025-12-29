@@ -112,20 +112,16 @@ flutter:
   assets:
     - ".env"
     - "assets/svg/icon.svg"
+    - "assets/svg/icon_bg.svg"
     - "assets/svg/logo.svg"
     - "assets/svg/house.svg"
     - "assets/svg/house-fill.svg"
     - "assets/svg/heart.svg"
     - "assets/svg/heart-fill.svg"
-    - "assets/svg/map-marker.svg"
-    - "assets/svg/map-marker-fill.svg"
     - "assets/svg/user.svg"
     - "assets/svg/user-fill.svg"
     - "assets/svg/qr.svg"
-    - "assets/svg/bell.svg"
     - "assets/svg/search.svg"
-    - "assets/svg/empty-set.svg"
-    - "assets/svg/face-sad-sweat.svg"
     - "assets/svg/croissant.svg"
     - "assets/svg/cup-straw-swoosh.svg"
     - "assets/svg/french-fries.svg"
@@ -138,20 +134,14 @@ flutter:
     - "assets/svg/phone.svg"
     - "assets/svg/telegram.svg"
     - "assets/svg/whatsapp.svg"
-    - "assets/svg/shopping-basket.svg"
-    - "assets/svg/shopping-basket-fill.svg"
-    - "assets/svg/list.svg"
     - "assets/svg/time-past.svg"
     - "assets/svg/shield-check.svg"
     - "assets/svg/interrogation.svg"
     - "assets/svg/comment-info.svg"
     - "assets/svg/som.svg"
     - "assets/svg/menu-food.svg"
-    - "assets/svg/share.svg"
-    - "assets/svg/sign-in.svg"
     - "assets/svg/google.svg"
     - "assets/svg/apple.svg"
-    - "assets/svg/trash-xmark.svg"
     - "assets/svg/logo-full.svg"
     - "assets/svg/ticket.svg"
     - "assets/svg/ticket-fill.svg"
@@ -164,9 +154,6 @@ flutter:
     - "assets/splash/splash_icon.png"
     - "assets/splash/splash_logo.png"
 
-    - "assets/placeholder/establishment.png"
-    - "assets/placeholder/product.png"
-    - "assets/placeholder/category.png"
     - "assets/placeholder/default.png"
 
   fonts:
@@ -202,3 +189,15 @@ flutter:
           weight: 200
         - asset: "assets/fonts/RobotoMono/RobotoMono-Thin.ttf"
           weight: 100
+    - family: Comfortaa
+      fonts:
+        - asset: "assets/fonts/Comfortaa/Comfortaa-Bold.ttf"
+          weight: 700
+        - asset: "assets/fonts/RobotoMono/RobotoMono-SemiBold.ttf"
+          weight: 600
+        - asset: "assets/fonts/Comfortaa/Comfortaa-Medium.ttf"
+          weight: 500
+        - asset: "assets/fonts/Comfortaa/Comfortaa-Regular.ttf"
+          weight: 400
+        - asset: "assets/fonts/Comfortaa/Comfortaa-Light.ttf"
+          weight: 300

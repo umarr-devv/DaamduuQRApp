@@ -5,8 +5,12 @@ class CustomThemeData {
 
   final Brightness brightness;
 
-  final font = 'Manrope';
-  final monoFont = 'RobotoMono';
+  final manrope = 'Manrope';
+  final comfortaa = 'Comfortaa';
+  final robotoMono = 'RobotoMono';
+
+  String get font => comfortaa;
+  String get monoFont => robotoMono;
 
   Color by({required Color light, required Color dark}) {
     return brightness == Brightness.light ? light : dark;
