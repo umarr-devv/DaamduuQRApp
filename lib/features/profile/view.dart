@@ -1,5 +1,4 @@
 import 'package:app/features/profile/widgets/widgets.dart';
-import 'package:app/shared/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +31,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
         SliverToBoxAdapter(child: ProfileInvite()),
         SliverToBoxAdapter(child: ProfileContacts()),
         SliverToBoxAdapter(child: ProfileAppInfo()),
-        SliverToBoxAdapter(child: NavBarSpace()),
       ],
     );
   }

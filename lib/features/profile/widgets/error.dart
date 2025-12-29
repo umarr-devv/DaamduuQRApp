@@ -1,6 +1,5 @@
 import 'package:app/blocs/blocs.dart';
 import 'package:app/shared/theme/theme.dart';
-import 'package:app/shared/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -82,13 +81,7 @@ class _ErrorItem extends StatelessWidget {
         ),
         SizedBox(
           height: 32,
-          child: CustomTextButton(
-            label: 'Исправить',
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            shadow: false,
-            radius: 8,
-            onTap: onFix,
-          ),
+          child: TextButton(onPressed: onFix, child: Text('Исправить')),
         ),
       ],
     );

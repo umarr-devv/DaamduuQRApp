@@ -26,11 +26,9 @@ class ProfileInfo extends StatelessWidget {
               children: [
                 _UserAvatar(state),
                 Expanded(child: _UserInfo(state)),
-                CustomIconButton(
-                  icon: Icons.chevron_right_rounded,
-                  shadow: false,
-                  background: theme.custom.transparent,
-                  onTap: () {},
+                IconButton(
+                  icon: Icon(Icons.chevron_right_rounded),
+                  onPressed: () {},
                 ),
               ],
             ),
@@ -48,17 +46,11 @@ class _SignInButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-      child: CustomTextButton(
-        icon: "assets/svg/sign-in.svg",
-        label: 'Войти',
-        fontSize: 16,
-        radius: 12,
-        foreground: theme.custom.foreground,
-        shadow: false,
-        onTap: () {
+      child: FilledButton(
+        child: Text('Войти'),
+        onPressed: () {
           AuthDialog().show(context);
         },
       ),

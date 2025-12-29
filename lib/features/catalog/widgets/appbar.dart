@@ -3,9 +3,9 @@ import 'package:app/features/catalog/bloc/catalog/catalog_cubit.dart';
 import 'package:app/features/catalog/widgets/categories.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:app/shared/widgets/buttons/buttons.dart';
-import 'package:app/shared/widgets/components/components.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,37 +24,24 @@ class _CatalogAppBarState extends State<CatalogAppBar> {
       bloc: BlocProvider.of<CatalogCubit>(context),
       builder: (context, state) {
         return SliverAppBar(
+          toolbarHeight: 64,
           backgroundColor: theme.custom.background,
           pinned: true,
-          leading: MaybePopButton(shadow: false),
+          leading: MaybePopButton(),
           title: _AppBarTitle(establishment: state.establishment),
-          actions: [_AppBarActions(establishment: state.establishment)],
+          actions: [
+            IconButton(
+              onPressed: () {
+                AutoRouter.of(
+                  context,
+                ).push(SearchRoute(establishment: state.establishment));
+              },
+              icon: Icon(FluentIcons.search_24_regular),
+            ),
+          ],
           bottom: CatalogCategories(),
         );
       },
-    );
-  }
-}
-
-class _AppBarActions extends StatelessWidget {
-  const _AppBarActions({required this.establishment});
-
-  final EstablishmentScheme establishment;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 8),
-      child: CustomIconButton(
-        icon: 'assets/svg/search.svg',
-        shadow: false,
-        radius: 12,
-        onTap: () {
-          AutoRouter.of(
-            context,
-          ).push(SearchRoute(establishment: establishment));
-        },
-      ),
     );
   }
 }

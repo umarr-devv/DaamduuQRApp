@@ -1,7 +1,6 @@
 import 'package:app/core/router/router.dart';
 import 'package:app/features/establishment/bloc/establishment/establishment_cubit.dart';
 import 'package:app/shared/theme/theme.dart';
-import 'package:app/shared/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,23 +31,13 @@ class ToMenuButton extends StatelessWidget {
                 top: BorderSide(color: theme.custom.border, width: 1),
               ),
             ),
-            child: SizedBox(
-              height: 48,
-              child: CustomTextButton(
-                icon: 'assets/svg/menu-food.svg',
-                label: 'Меню',
-                background: theme.custom.secondary,
-                foreground: theme.custom.background,
-                radius: 12,
-                size: 20,
-                fontSize: 18,
-                shadow: false,
-                onTap: () {
-                  AutoRouter.of(
-                    context,
-                  ).push(CatalogRoute(establishment: state.establishment));
-                },
-              ),
+            child: FilledButton(
+              onPressed: () {
+                AutoRouter.of(
+                  context,
+                ).push(CatalogRoute(establishment: state.establishment));
+              },
+              child: Text('Меню'),
             ),
           ),
         );

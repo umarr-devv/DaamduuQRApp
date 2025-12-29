@@ -56,42 +56,20 @@ class _ProductAppBarState extends State<ProductAppBar> {
           toolbarHeight: toolbarHeight,
           expandedHeight: expandedHeight,
 
-          leading: MaybePopButton(shadow: !isCollapsed),
+          leading: MaybePopButton(),
           title: _AppBarTitle(show: isCollapsed, product: state.product),
           actions: [
-            _TitleActions(isCollapsed: isCollapsed, product: state.product),
+            FavoriteButton(id: state.product.id),
+            ShareButton(),
+            const SizedBox(width: 8),
           ],
           pinned: true,
           flexibleSpace: FlexibleSpaceBar(
             background: _BackgroundImages(state.product),
           ),
-          systemOverlayStyle: isCollapsed
-              ? SystemUiOverlayStyle.dark
-              : SystemUiOverlayStyle.light,
+          systemOverlayStyle: isCollapsed ? null : SystemUiOverlayStyle.light,
         );
       },
-    );
-  }
-}
-
-class _TitleActions extends StatelessWidget {
-  const _TitleActions({required this.isCollapsed, required this.product});
-
-  final bool isCollapsed;
-  final ProductScheme product;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      spacing: 8,
-      children: [
-        Hero(
-          tag: 'favorite_${product.id}',
-          child: FavoriteButton(shadow: !isCollapsed, id: product.id),
-        ),
-        ShareButton(shadow: !isCollapsed),
-        const SizedBox(),
-      ],
     );
   }
 }

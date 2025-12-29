@@ -64,6 +64,7 @@ class CustomCounterButton extends StatelessWidget {
                   onPressed: value == null ? onFirstAdd : onAdd,
                   style: IconButton.styleFrom(
                     backgroundColor: theme.custom.secondary,
+                    foregroundColor: theme.custom.onSecondary,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadiusGeometry.circular(radius),
                     ),

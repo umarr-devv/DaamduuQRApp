@@ -69,7 +69,7 @@ class _AppBarTitleState extends State<_AppBarTitle> {
       child: Row(
         spacing: 8,
         children: [
-          MaybePopButton(shadow: false, background: theme.custom.transparent),
+          MaybePopButton(background: theme.custom.transparent),
           Expanded(
             child: Hero(
               tag: 'searchbar',

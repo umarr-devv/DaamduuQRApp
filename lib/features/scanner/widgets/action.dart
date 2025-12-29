@@ -1,6 +1,5 @@
 import 'package:app/shared/theme/theme.dart';
-import 'package:app/shared/widgets/components/components.dart';
-import 'package:auto_route/auto_route.dart';
+import 'package:app/shared/widgets/buttons/buttons.dart';
 import 'package:flutter/material.dart';
 
 class ScannerAction extends StatelessWidget {
@@ -14,14 +13,10 @@ class ScannerAction extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          CustomIconButton(
-            icon: Icons.close,
-            radius: 12,
-            background: theme.custom.foreground,
-            foreground: theme.custom.background,
-            onTap: () {
-              AutoRouter.of(context).maybePop();
-            },
+          MaybePopButton(
+            close: true,
+            background: theme.custom.transparent,
+            foreground: theme.custom.white,
           ),
         ],
       ),

@@ -96,7 +96,7 @@ class _CategoryButton extends StatelessWidget {
         style: TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.w500,
-          color: selected ? theme.custom.onPrimary : theme.custom.onMuted,
+          color: selected ? theme.custom.onSecondary : theme.custom.onMuted,
         ),
       ),
     );

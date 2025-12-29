@@ -1,5 +1,4 @@
 import 'package:app/shared/shared.dart';
-import 'package:app/shared/widgets/buttons/pop.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

@@ -64,21 +64,16 @@ class _CardActions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final cubit = BlocProvider.of<OrderCubit>(context);
     return Column(
       spacing: 12,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        CustomIconButton(
-          icon: Icons.delete,
-          radius: 12,
-          size: 20,
-          shadow: false,
-          foreground: theme.custom.error,
-          onTap: () {
+        IconButton(
+          onPressed: () {
             cubit.setItem(item.copyWith(0));
           },
+          icon: Icon(Icons.delete),
         ),
       ],
     );

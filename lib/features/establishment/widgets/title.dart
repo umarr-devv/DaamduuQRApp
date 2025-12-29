@@ -1,8 +1,8 @@
 import 'package:app/features/establishment/bloc/establishment/establishment_cubit.dart';
 import 'package:app/shared/theme/theme.dart';
-import 'package:app/shared/widgets/widgets.dart';
 import 'package:app/utils/geo.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -47,17 +47,23 @@ class _DirectionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     if (establishment.latitude != null && establishment.longitude != null) {
-      return CustomIconButton(
-        icon: Icons.directions,
-        shadow: false,
-        onTap: () async {
+      return IconButton(
+        onPressed: () async {
           await openGeo(
             latitude: establishment.latitude!.toDouble(),
             longitude: establishment.longitude!.toDouble(),
           );
         },
-        background: theme.custom.primary,
-        foreground: theme.custom.background,
+        style: IconButton.styleFrom(
+          backgroundColor: theme.custom.primary,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadiusGeometry.circular(64),
+          ),
+        ),
+        icon: Icon(
+          FluentIcons.directions_24_filled,
+          color: theme.custom.onPrimary,
+        ),
       );
     } else {
       return const SizedBox();

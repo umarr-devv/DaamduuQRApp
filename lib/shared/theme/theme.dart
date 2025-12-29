@@ -44,6 +44,8 @@ class CustomThemeData {
 
   Color get black => const Color(0xFF000000);
 
+  Color get white => const Color(0xFFffffff);
+
   Color get shadow => by(
     light: black.withValues(alpha: 0.05),
     dark: black.withValues(alpha: 0.4),
@@ -114,8 +116,8 @@ class CustomThemeData {
         error: error,
         outline: border,
         secondaryContainer: muted,
-        onSecondaryContainer: foreground,
-        onSurfaceVariant: foreground,
+        // onSecondaryContainer: foreground,
+        // onSurfaceVariant: foreground,
       ),
       appBarTheme: AppBarThemeData(
         backgroundColor: background,
@@ -123,6 +125,7 @@ class CustomThemeData {
         shadowColor: black.withValues(alpha: 0.125),
         elevation: 4,
         centerTitle: false,
+        toolbarHeight: 64,
         titleTextStyle: TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.w500,
@@ -148,6 +151,17 @@ class CustomThemeData {
           surfaceTintColor: transparent,
         ),
       ),
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          textStyle: TextStyle(fontSize: 16),
+          iconColor: foreground,
+          backgroundColor: muted,
+          foregroundColor: foreground,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadiusGeometry.circular(12),
+          ),
+        ),
+      ),
       filledButtonTheme: FilledButtonThemeData(
         style: FilledButton.styleFrom(
           shape: RoundedRectangleBorder(
@@ -157,7 +171,18 @@ class CustomThemeData {
           backgroundColor: secondary,
           iconSize: 24,
           iconColor: onSecondary,
+          foregroundColor: onSecondary,
           textStyle: TextStyle(fontSize: 16, color: onSecondary),
+        ),
+      ),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+            side: BorderSide(color: border, width: 1),
+          ),
+          foregroundColor: foreground,
+          textStyle: TextStyle(fontSize: 16, color: foreground),
         ),
       ),
       cardTheme: CardThemeData(

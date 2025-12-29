@@ -8,7 +8,7 @@ class SettingsAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      leading: UnconstrainedBox(child: MaybePopButton(shadow: false)),
+      leading: UnconstrainedBox(child: MaybePopButton()),
       title: _AppBarTitle(),
     );
   }

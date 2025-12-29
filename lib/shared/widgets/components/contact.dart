@@ -36,7 +36,7 @@ class CustomContactText extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
         decoration: BoxDecoration(
           color: theme.custom.muted,
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(64),
         ),
         child: Row(
           spacing: 6,

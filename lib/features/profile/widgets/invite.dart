@@ -1,5 +1,4 @@
 import 'package:app/shared/theme/theme.dart';
-import 'package:app/shared/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class ProfileInvite extends StatelessWidget {
@@ -16,23 +15,18 @@ class ProfileInvite extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
-        spacing: 16,
+        spacing: 12,
         children: [
           Text(
             'Хотите, чтобы ваша компания тоже была в этом приложении?',
             textAlign: TextAlign.center,
-            style: theme.custom.label,
+            style: theme.custom.subtitle,
           ),
           SizedBox(
             width: double.infinity,
-            child: CustomTextButton(
-              label: 'Подать заявку',
-              shadow: false,
-              radius: 12,
-              fontSize: 15,
-              background: theme.custom.foreground,
-              foreground: theme.custom.background,
-              onTap: () {},
+            child: OutlinedButton(
+              child: Text('Подать заявку'),
+              onPressed: () {},
             ),
           ),
         ],

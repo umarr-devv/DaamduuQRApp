@@ -1,7 +1,6 @@
 import 'package:app/core/router/router.dart';
 import 'package:app/features/product/bloc/product/product_cubit.dart';
 import 'package:app/shared/theme/theme.dart';
-import 'package:app/shared/widgets/components/icon_button.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
@@ -81,16 +80,14 @@ class _EstablishmentItem extends StatelessWidget {
             ],
           ),
         ),
-        CustomIconButton(
-          icon: Icons.chevron_right,
-          shadow: false,
-          radius: 12,
-          background: theme.custom.transparent,
-          onTap: () {
+        IconButton(
+          icon: Icon(Icons.chevron_right),
+          onPressed: () {
             AutoRouter.of(
               context,
             ).push(EstablishmentRoute(establishment: establishment));
           },
+          
         ),
       ],
     );

@@ -9,7 +9,7 @@ class NotificationAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      leading: UnconstrainedBox(child: MaybePopButton(shadow: false)),
+      leading: MaybePopButton(),
       title: _AppBarTitle(),
     );
   }

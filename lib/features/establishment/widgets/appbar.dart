@@ -57,49 +57,23 @@ class _EstablishmentAppBarState extends State<EstablishmentAppBar> {
           backgroundColor: theme.custom.background,
           toolbarHeight: toolbarHeight,
           expandedHeight: expandedHeight,
-          leading: MaybePopButton(shadow: !isCollapsed),
-
+          pinned: true,
+          leading: MaybePopButton(),
           title: _AppBarTitle(
             show: isCollapsed,
             establishment: state.establishment,
           ),
           actions: [
-            _TitleActions(
-              isCollapsed: isCollapsed,
-              establishment: state.establishment,
-            ),
+            FavoriteButton(id: state.establishment.id),
+            ShareButton(),
+            SizedBox(width: 8),
           ],
-          pinned: true,
           flexibleSpace: FlexibleSpaceBar(
             background: _BackgroundImages(state.establishment),
           ),
-          systemOverlayStyle: isCollapsed
-              ? SystemUiOverlayStyle.dark
-              : SystemUiOverlayStyle.light,
+          systemOverlayStyle: isCollapsed ? null : SystemUiOverlayStyle.light,
         );
       },
-    );
-  }
-}
-
-class _TitleActions extends StatelessWidget {
-  const _TitleActions({required this.isCollapsed, required this.establishment});
-
-  final bool isCollapsed;
-  final EstablishmentScheme establishment;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      spacing: 8,
-      children: [
-        Hero(
-          tag: 'favorite_${establishment.id}',
-          child: FavoriteButton(shadow: !isCollapsed, id: establishment.id),
-        ),
-        ShareButton(shadow: !isCollapsed),
-        const SizedBox(),
-      ],
     );
   }
 }

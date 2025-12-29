@@ -1,6 +1,6 @@
 import 'package:app/shared/theme/theme.dart';
-import 'package:app/shared/widgets/components/icon_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class _ContactData {
   _ContactData({required this.icon, required this.label, required this.url});
@@ -36,15 +36,19 @@ class _ProfileContactsState extends State<ProfileContacts> {
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
-        spacing: 12,
         mainAxisAlignment: MainAxisAlignment.center,
         children: contacts
             .map(
-              (i) => CustomIconButton(
-                icon: i.icon,
-                radius: 12,
-                foreground: theme.custom.onMuted,
-                onTap: () {},
+              (i) => IconButton(
+                icon: SvgPicture.asset(
+                  i.icon,
+                  height: 24,
+                  colorFilter: ColorFilter.mode(
+                    theme.custom.onMuted,
+                    BlendMode.srcIn,
+                  ),
+                ),
+                onPressed: () {},
               ),
             )
             .toList(),

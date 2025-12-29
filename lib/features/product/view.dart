@@ -1,7 +1,6 @@
 import 'package:app/features/product/bloc/product/product_cubit.dart';
 import 'package:app/features/product/widgets/widgets.dart';
 import 'package:app/shared/theme/theme.dart';
-import 'package:app/shared/widgets/components/components.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
@@ -50,7 +49,7 @@ class _ProductScreenState extends State<ProductScreen> {
                 ProductTitle(),
                 SliverToBoxAdapter(child: Divider()),
                 ProductDescription(),
-                SliverToBoxAdapter(child: CustomDivider()),
+                SliverToBoxAdapter(child: Divider()),
                 ProductEstablishments(),
                 SliverFillRemaining(),
               ],

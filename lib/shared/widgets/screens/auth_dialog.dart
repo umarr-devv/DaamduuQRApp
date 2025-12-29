@@ -5,6 +5,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class AuthDialog extends StatelessWidget {
   const AuthDialog({super.key});
@@ -101,38 +102,33 @@ class _DialogButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = BlocProvider.of<AuthCubit>(context);
-    final theme = Theme.of(context);
     return Column(
       spacing: 8,
       children: [
-        SizedBox(
-          width: double.infinity,
-          child: CustomTextButton(
-            icon: 'assets/svg/google.svg',
-            label: 'Google',
-            background: theme.custom.muted,
-            shadow: false,
-            radius: 12,
-            fontSize: 16,
-            colorFilter: false,
-            onTap: () {
-              cubit.signInWithGoogle();
-            },
+        TextButton(
+          onPressed: () {
+            cubit.signInWithGoogle();
+          },
+          child: Row(
+            spacing: 4,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset('assets/svg/google.svg', height: 24),
+              Text('Google'),
+            ],
           ),
         ),
-        SizedBox(
-          width: double.infinity,
-          child: CustomTextButton(
-            icon: 'assets/svg/apple.svg',
-            label: 'Apple ID',
-            background: theme.custom.muted,
-            shadow: false,
-            radius: 12,
-            fontSize: 16,
-            colorFilter: false,
-            onTap: () {
-              cubit.signInWithAppleID();
-            },
+        TextButton(
+          onPressed: () {
+            cubit.signInWithAppleID();
+          },
+          child: Row(
+            spacing: 4,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset('assets/svg/apple.svg', height: 24),
+              Text('Apple ID'),
+            ],
           ),
         ),
       ],
