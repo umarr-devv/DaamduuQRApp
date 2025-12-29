@@ -96,12 +96,12 @@ flutter_launcher_icons:
 flutter_native_splash:
   color: "#e44641"
   image: "assets/splash/splash_icon.png"
-  branding: "assets/splash/light_splash_logo.png"
+  branding: "assets/splash/splash_logo.png"
   android_12:
     color: "#e44641"
     icon_background_color: "#e44641"
     image: "assets/splash/a12_splash_icon.png"
-    branding: "assets/splash/a12_light_splash_logo.png"
+    branding: "assets/splash/a12_splash_logo.png"
   android: true
   ios: true
   web: true
@@ -160,11 +160,9 @@ flutter:
     - "assets/icon/icon.png"
 
     - "assets/splash/a12_splash_icon.png"
-    - "assets/splash/a12_dark_splash_logo.png"
-    - "assets/splash/a12_light_splash_logo.png"
+    - "assets/splash/a12_splash_logo.png"
     - "assets/splash/splash_icon.png"
-    - "assets/splash/dark_splash_logo.png"
-    - "assets/splash/light_splash_logo.png"
+    - "assets/splash/splash_logo.png"
 
     - "assets/placeholder/establishment.png"
     - "assets/placeholder/product.png"
