@@ -146,6 +146,8 @@ flutter:
     - "assets/svg/ticket.svg"
     - "assets/svg/ticket-fill.svg"
     - "assets/svg/receipt.svg"
+    - "assets/svg/list.svg"
+    - "assets/svg/map-marker.svg"
 
     - "assets/icon/icon.png"
 
