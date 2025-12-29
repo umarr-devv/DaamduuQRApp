@@ -9,7 +9,7 @@ class CustomThemeData {
   final comfortaa = 'Comfortaa';
   final robotoMono = 'RobotoMono';
 
-  String get font => comfortaa;
+  String get font => manrope;
   String get monoFont => robotoMono;
 
   Color by({required Color light, required Color dark}) {

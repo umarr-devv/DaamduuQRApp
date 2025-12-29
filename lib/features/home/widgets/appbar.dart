@@ -19,7 +19,37 @@ class HomeAppBar extends StatelessWidget {
     final theme = Theme.of(context);
     return SliverAppBar(
       backgroundColor: theme.custom.muted,
-      title: SvgPicture.asset('assets/svg/logo-full.svg', height: 28),
+      title: Row(
+        spacing: 8,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          SvgPicture.asset('assets/svg/icon_bg.svg', height: 32),
+          RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: 'Daamduu',
+                  style: TextStyle(
+                    fontFamily: theme.custom.comfortaa,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    color: theme.custom.foreground,
+                  ),
+                ),
+                TextSpan(
+                  text: 'QR',
+                  style: TextStyle(
+                    fontFamily: theme.custom.comfortaa,
+                    fontSize: 22,
+                    fontWeight: FontWeight.w700,
+                    color: theme.custom.primary,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
       actions: [
         ThemeSwitcher(
           builder: (context) {
