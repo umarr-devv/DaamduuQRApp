@@ -17,7 +17,10 @@ class MaybePopButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return UnconstrainedBox(
       child: IconButton(
-        icon: Icon(close ? Icons.close : Icons.arrow_back, color: foreground),
+        icon: Icon(
+          close ? Icons.close : Icons.arrow_back_ios_new_rounded,
+          color: foreground,
+        ),
         style: IconButton.styleFrom(backgroundColor: background),
         onPressed: () {
           AutoRouter.of(context).maybePop();

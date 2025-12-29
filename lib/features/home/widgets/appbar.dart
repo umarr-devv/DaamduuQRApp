@@ -32,7 +32,11 @@ class HomeAppBar extends StatelessWidget {
                 );
                 BlocProvider.of<ThemeCubit>(context).switchTheme();
               },
-              icon: Icon(isDarkTheme ? Icons.nightlight_rounded : Icons.sunny),
+              icon: Icon(
+                isDarkTheme
+                    ? FluentIcons.weather_moon_24_filled
+                    : FluentIcons.weather_sunny_24_filled,
+              ),
             );
           },
         ),
