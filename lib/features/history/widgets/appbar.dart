@@ -8,10 +8,7 @@ class HistoryAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverAppBar(
-      leading: MaybePopButton(),
-      title: _AppBarTitle(),
-    );
+    return SliverAppBar(leading: MaybePopButton(), title: _AppBarTitle());
   }
 }
 
@@ -26,7 +23,7 @@ class _AppBarTitle extends StatelessWidget {
       spacing: 8,
       children: [
         SvgPicture.asset(
-          'assets/svg/time-past.svg',
+          'assets/svg/time_past.svg',
           height: 20,
           width: 20,
           colorFilter: ColorFilter.mode(

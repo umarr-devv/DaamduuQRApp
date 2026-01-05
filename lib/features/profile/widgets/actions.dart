@@ -31,7 +31,7 @@ class ProfileActions extends StatefulWidget {
 class _ProfileActionsState extends State<ProfileActions> {
   List<_ActionButtonData> get buttons => [
     _ActionButtonData(
-      icon: 'assets/svg/map-marker.svg',
+      icon: 'assets/svg/map_marker.svg',
       description: 'Определяется автоматически',
       onTap: () {
         CitySelectDialog().show(context);
@@ -39,14 +39,14 @@ class _ProfileActionsState extends State<ProfileActions> {
       label: 'Мой город',
     ),
     _ActionButtonData(
-      icon: 'assets/svg/time-past.svg',
+      icon: 'assets/svg/time_past.svg',
       label: 'История',
       onTap: () {
         AutoRouter.of(context).push(HistoryRoute());
       },
     ),
     _ActionButtonData(
-      icon: 'assets/svg/shield-check.svg',
+      icon: 'assets/svg/shield_check.svg',
       label: 'Условия соглашения',
       onTap: () {
         AppRulesDialog().show(context);
@@ -64,7 +64,7 @@ class _ProfileActionsState extends State<ProfileActions> {
       },
     ),
     _ActionButtonData(
-      icon: 'assets/svg/comment-info.svg',
+      icon: 'assets/svg/comment_info.svg',
       label: 'О приложении',
       onTap: () {
         AboutAppDialog().show(context);

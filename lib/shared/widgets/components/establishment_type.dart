@@ -19,15 +19,15 @@ class CustomEstablishmentType extends StatelessWidget {
       case EstablishmentType.restaurant:
         return ('assets/svg/restaurant.svg', 'Рестораны');
       case EstablishmentType.fastFood:
-        return ('assets/svg/hamburger-soda.svg', 'Фастфуды');
+        return ('assets/svg/hamburger_soda.svg', 'Фастфуды');
       case EstablishmentType.cafe:
-        return ('assets/svg/mug-hot-alt.svg', 'Кафе');
+        return ('assets/svg/mug_hot_alt.svg', 'Кафе');
       case EstablishmentType.confectionery:
         return ('assets/svg/croissant.svg', 'Кондитерские');
       case EstablishmentType.bar:
-        return ('assets/svg/glass-cheers.svg', 'Бары');
+        return ('assets/svg/glass_cheers.svg', 'Бары');
       case EstablishmentType.coffeeShop:
-        return ('assets/svg/cup-straw-swoosh.svg', 'Кофейни');
+        return ('assets/svg/cup_straw_swoosh.svg', 'Кофейни');
     }
   }
 

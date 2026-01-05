@@ -27,23 +27,23 @@ class MenuNavBar extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 _MenuNavBarItem(
-                  activeIcon: 'assets/svg/house-fill.svg',
+                  activeIcon: 'assets/svg/house_fill.svg',
                   inactiveIcon: 'assets/svg/house.svg',
                   index: 0,
                 ),
                 _MenuNavBarItem(
-                  activeIcon: 'assets/svg/ticket-fill.svg',
+                  activeIcon: 'assets/svg/ticket_fill.svg',
                   inactiveIcon: 'assets/svg/ticket.svg',
                   index: 1,
                 ),
                 SizedBox(width: 48),
                 _MenuNavBarItem(
-                  activeIcon: 'assets/svg/heart-fill.svg',
+                  activeIcon: 'assets/svg/heart_fill.svg',
                   inactiveIcon: 'assets/svg/heart.svg',
                   index: 2,
                 ),
                 _MenuNavBarItem(
-                  activeIcon: 'assets/svg/user-fill.svg',
+                  activeIcon: 'assets/svg/user_fill.svg',
                   inactiveIcon: 'assets/svg/user.svg',
                   index: 3,
                 ),
