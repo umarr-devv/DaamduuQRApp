@@ -9,6 +9,7 @@ class ProfileError extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     final cubit = BlocProvider.of<PermissionCubit>(context);
     return BlocBuilder<PermissionCubit, PermissionState>(
       bloc: cubit,
@@ -20,10 +21,11 @@ class ProfileError extends StatelessWidget {
         }
         return Container(
           margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-          padding: const EdgeInsets.all(12),
+          padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
+            color: theme.custom.error.withValues(alpha: 0.125),
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(width: 1),
+            border: Border.all(color: theme.custom.error),
           ),
           child: Column(
             spacing: 6,
@@ -68,21 +70,22 @@ class _ErrorItem extends StatelessWidget {
     final theme = Theme.of(context);
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
-      spacing: 4,
+      spacing: 6,
       children: [
-        Icon(Icons.warning_amber_rounded, size: 24),
+        Icon(Icons.warning_amber_rounded, color: theme.custom.foreground),
         Expanded(
           child: Text(
             text,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: theme.custom.label.copyWith(),
+            style: TextStyle(
+              fontSize: 18,
+              color: theme.custom.foreground,
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ),
-        SizedBox(
-          height: 32,
-          child: TextButton(onPressed: onFix, child: Text('Исправить')),
-        ),
+        TextButton(onPressed: onFix, child: Text('Исправить')),
       ],
     );
   }
