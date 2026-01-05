@@ -3,29 +3,30 @@
 //
 
 import 'dart:async';
+
 // ignore: unused_import
 import 'dart:convert';
-
 import 'package:daamduuqr_client/src/deserialize.dart';
+import 'package:dio/dio.dart';
+
 import 'package:daamduuqr_client/src/model/create_user_scheme.dart';
+
 import 'package:daamduuqr_client/src/model/login_user_scheme.dart';
 import 'package:daamduuqr_client/src/model/token_scheme.dart';
 import 'package:daamduuqr_client/src/model/update_user_scheme.dart';
 import 'package:daamduuqr_client/src/model/user_scheme.dart';
-import 'package:dio/dio.dart';
 
 class UsersApi {
-
   final Dio _dio;
 
   const UsersApi(this._dio);
 
   /// On Add User Image
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [jwtToken] 
-  /// * [file] 
+  /// * [jwtToken]
+  /// * [file]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -35,7 +36,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [UserScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<UserScheme>> addUserImage({ 
+  Future<Response<UserScheme>> addUserImage({
     required String jwtToken,
     required MultipartFile file,
     CancelToken? cancelToken,
@@ -48,28 +49,17 @@ class UsersApi {
     final _path = r'/api/users/image';
     final _options = Options(
       method: r'PATCH',
-      headers: <String, dynamic>{
-        r'jwt-token': jwtToken,
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{r'jwt-token': jwtToken, ...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'multipart/form-data',
       validateStatus: validateStatus,
     );
 
     dynamic _bodyData;
 
-    try {
-
-    } catch(error, stackTrace) {
+    try {} catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -88,8 +78,14 @@ class UsersApi {
     UserScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<UserScheme, UserScheme>(rawData, 'UserScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<UserScheme, UserScheme>(
+              rawData,
+              'UserScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -113,10 +109,10 @@ _responseData = rawData == null ? null : deserialize<UserScheme, UserScheme>(raw
   }
 
   /// On Create User
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [createUserScheme] 
+  /// * [createUserScheme]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -126,7 +122,7 @@ _responseData = rawData == null ? null : deserialize<UserScheme, UserScheme>(raw
   ///
   /// Returns a [Future] containing a [Response] with a [UserScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<UserScheme>> createUser({ 
+  Future<Response<UserScheme>> createUser({
     required CreateUserScheme createUserScheme,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -138,13 +134,8 @@ _responseData = rawData == null ? null : deserialize<UserScheme, UserScheme>(raw
     final _path = r'/api/users';
     final _options = Options(
       method: r'POST',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -152,13 +143,10 @@ _responseData = rawData == null ? null : deserialize<UserScheme, UserScheme>(raw
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(createUserScheme);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(createUserScheme);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -177,8 +165,14 @@ _bodyData=jsonEncode(createUserScheme);
     UserScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<UserScheme, UserScheme>(rawData, 'UserScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<UserScheme, UserScheme>(
+              rawData,
+              'UserScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -202,11 +196,11 @@ _responseData = rawData == null ? null : deserialize<UserScheme, UserScheme>(raw
   }
 
   /// On Delete User Image
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [fileId] 
-  /// * [jwtToken] 
+  /// * [fileId]
+  /// * [jwtToken]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -216,7 +210,7 @@ _responseData = rawData == null ? null : deserialize<UserScheme, UserScheme>(raw
   ///
   /// Returns a [Future] containing a [Response] with a [UserScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<UserScheme>> deleteUserImage({ 
+  Future<Response<UserScheme>> deleteUserImage({
     required String fileId,
     required String jwtToken,
     CancelToken? cancelToken,
@@ -226,17 +220,16 @@ _responseData = rawData == null ? null : deserialize<UserScheme, UserScheme>(raw
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/users/image/{file_id}'.replaceAll('{' r'file_id' '}', fileId.toString());
+    final _path = r'/api/users/image/{file_id}'.replaceAll(
+      '{'
+      r'file_id'
+      '}',
+      fileId.toString(),
+    );
     final _options = Options(
       method: r'DELETE',
-      headers: <String, dynamic>{
-        r'jwt-token': jwtToken,
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{r'jwt-token': jwtToken, ...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       validateStatus: validateStatus,
     );
 
@@ -251,8 +244,14 @@ _responseData = rawData == null ? null : deserialize<UserScheme, UserScheme>(raw
     UserScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<UserScheme, UserScheme>(rawData, 'UserScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<UserScheme, UserScheme>(
+              rawData,
+              'UserScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -276,10 +275,10 @@ _responseData = rawData == null ? null : deserialize<UserScheme, UserScheme>(raw
   }
 
   /// On Get User
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [jwtToken] 
+  /// * [jwtToken]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -289,7 +288,7 @@ _responseData = rawData == null ? null : deserialize<UserScheme, UserScheme>(raw
   ///
   /// Returns a [Future] containing a [Response] with a [UserScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<UserScheme>> getUser({ 
+  Future<Response<UserScheme>> getUser({
     required String jwtToken,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -301,14 +300,8 @@ _responseData = rawData == null ? null : deserialize<UserScheme, UserScheme>(raw
     final _path = r'/api/users';
     final _options = Options(
       method: r'GET',
-      headers: <String, dynamic>{
-        r'jwt-token': jwtToken,
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{r'jwt-token': jwtToken, ...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       validateStatus: validateStatus,
     );
 
@@ -323,8 +316,14 @@ _responseData = rawData == null ? null : deserialize<UserScheme, UserScheme>(raw
     UserScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<UserScheme, UserScheme>(rawData, 'UserScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<UserScheme, UserScheme>(
+              rawData,
+              'UserScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -348,10 +347,10 @@ _responseData = rawData == null ? null : deserialize<UserScheme, UserScheme>(raw
   }
 
   /// On Login User
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [loginUserScheme] 
+  /// * [loginUserScheme]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -361,7 +360,7 @@ _responseData = rawData == null ? null : deserialize<UserScheme, UserScheme>(raw
   ///
   /// Returns a [Future] containing a [Response] with a [TokenScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<TokenScheme>> loginUser({ 
+  Future<Response<TokenScheme>> loginUser({
     required LoginUserScheme loginUserScheme,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -373,13 +372,8 @@ _responseData = rawData == null ? null : deserialize<UserScheme, UserScheme>(raw
     final _path = r'/api/users/login';
     final _options = Options(
       method: r'POST',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -387,13 +381,10 @@ _responseData = rawData == null ? null : deserialize<UserScheme, UserScheme>(raw
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(loginUserScheme);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(loginUserScheme);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -412,8 +403,14 @@ _bodyData=jsonEncode(loginUserScheme);
     TokenScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<TokenScheme, TokenScheme>(rawData, 'TokenScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<TokenScheme, TokenScheme>(
+              rawData,
+              'TokenScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -437,11 +434,11 @@ _responseData = rawData == null ? null : deserialize<TokenScheme, TokenScheme>(r
   }
 
   /// On Update User
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [jwtToken] 
-  /// * [updateUserScheme] 
+  /// * [jwtToken]
+  /// * [updateUserScheme]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -451,7 +448,7 @@ _responseData = rawData == null ? null : deserialize<TokenScheme, TokenScheme>(r
   ///
   /// Returns a [Future] containing a [Response] with a [UserScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<UserScheme>> updateUser({ 
+  Future<Response<UserScheme>> updateUser({
     required String jwtToken,
     required UpdateUserScheme updateUserScheme,
     CancelToken? cancelToken,
@@ -464,14 +461,8 @@ _responseData = rawData == null ? null : deserialize<TokenScheme, TokenScheme>(r
     final _path = r'/api/users';
     final _options = Options(
       method: r'PUT',
-      headers: <String, dynamic>{
-        r'jwt-token': jwtToken,
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{r'jwt-token': jwtToken, ...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -479,13 +470,10 @@ _responseData = rawData == null ? null : deserialize<TokenScheme, TokenScheme>(r
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(updateUserScheme);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(updateUserScheme);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -504,8 +492,14 @@ _bodyData=jsonEncode(updateUserScheme);
     UserScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<UserScheme, UserScheme>(rawData, 'UserScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<UserScheme, UserScheme>(
+              rawData,
+              'UserScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -527,5 +521,4 @@ _responseData = rawData == null ? null : deserialize<UserScheme, UserScheme>(raw
       extra: _response.extra,
     );
   }
-
 }

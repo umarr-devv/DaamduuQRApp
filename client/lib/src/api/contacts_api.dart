@@ -3,26 +3,27 @@
 //
 
 import 'dart:async';
+
 // ignore: unused_import
 import 'dart:convert';
-
 import 'package:daamduuqr_client/src/deserialize.dart';
-import 'package:daamduuqr_client/src/model/contact_scheme.dart';
-import 'package:daamduuqr_client/src/model/create_contact_scheme.dart';
-import 'package:daamduuqr_client/src/model/update_contact_scheme.dart';
 import 'package:dio/dio.dart';
 
-class ContactsApi {
+import 'package:daamduuqr_client/src/model/contact_scheme.dart';
+import 'package:daamduuqr_client/src/model/create_contact_scheme.dart';
 
+import 'package:daamduuqr_client/src/model/update_contact_scheme.dart';
+
+class ContactsApi {
   final Dio _dio;
 
   const ContactsApi(this._dio);
 
   /// On Create Contact
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [createContactScheme] 
+  /// * [createContactScheme]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -32,7 +33,7 @@ class ContactsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [ContactScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ContactScheme>> createContact({ 
+  Future<Response<ContactScheme>> createContact({
     required CreateContactScheme createContactScheme,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -44,13 +45,8 @@ class ContactsApi {
     final _path = r'/api/contacts';
     final _options = Options(
       method: r'POST',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -58,13 +54,10 @@ class ContactsApi {
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(createContactScheme);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(createContactScheme);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -83,8 +76,14 @@ _bodyData=jsonEncode(createContactScheme);
     ContactScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<ContactScheme, ContactScheme>(rawData, 'ContactScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<ContactScheme, ContactScheme>(
+              rawData,
+              'ContactScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -108,10 +107,10 @@ _responseData = rawData == null ? null : deserialize<ContactScheme, ContactSchem
   }
 
   /// On Get Contact
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [contactId] 
+  /// * [contactId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -121,7 +120,7 @@ _responseData = rawData == null ? null : deserialize<ContactScheme, ContactSchem
   ///
   /// Returns a [Future] containing a [Response] with a [ContactScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ContactScheme>> getContact({ 
+  Future<Response<ContactScheme>> getContact({
     required String contactId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -130,16 +129,16 @@ _responseData = rawData == null ? null : deserialize<ContactScheme, ContactSchem
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/contacts/{contact_id}'.replaceAll('{' r'contact_id' '}', contactId.toString());
+    final _path = r'/api/contacts/{contact_id}'.replaceAll(
+      '{'
+      r'contact_id'
+      '}',
+      contactId.toString(),
+    );
     final _options = Options(
       method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       validateStatus: validateStatus,
     );
 
@@ -154,8 +153,14 @@ _responseData = rawData == null ? null : deserialize<ContactScheme, ContactSchem
     ContactScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<ContactScheme, ContactScheme>(rawData, 'ContactScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<ContactScheme, ContactScheme>(
+              rawData,
+              'ContactScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -179,11 +184,11 @@ _responseData = rawData == null ? null : deserialize<ContactScheme, ContactSchem
   }
 
   /// On Update Contact
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [contactId] 
-  /// * [updateContactScheme] 
+  /// * [contactId]
+  /// * [updateContactScheme]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -193,7 +198,7 @@ _responseData = rawData == null ? null : deserialize<ContactScheme, ContactSchem
   ///
   /// Returns a [Future] containing a [Response] with a [ContactScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ContactScheme>> updateContact({ 
+  Future<Response<ContactScheme>> updateContact({
     required String contactId,
     required UpdateContactScheme updateContactScheme,
     CancelToken? cancelToken,
@@ -203,16 +208,16 @@ _responseData = rawData == null ? null : deserialize<ContactScheme, ContactSchem
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/contacts/{contact_id}'.replaceAll('{' r'contact_id' '}', contactId.toString());
+    final _path = r'/api/contacts/{contact_id}'.replaceAll(
+      '{'
+      r'contact_id'
+      '}',
+      contactId.toString(),
+    );
     final _options = Options(
       method: r'PUT',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -220,13 +225,10 @@ _responseData = rawData == null ? null : deserialize<ContactScheme, ContactSchem
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(updateContactScheme);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(updateContactScheme);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -245,8 +247,14 @@ _bodyData=jsonEncode(updateContactScheme);
     ContactScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<ContactScheme, ContactScheme>(rawData, 'ContactScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<ContactScheme, ContactScheme>(
+              rawData,
+              'ContactScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -268,5 +276,4 @@ _responseData = rawData == null ? null : deserialize<ContactScheme, ContactSchem
       extra: _response.extra,
     );
   }
-
 }

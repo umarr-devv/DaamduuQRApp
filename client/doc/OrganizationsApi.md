@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**getOrganizationEstablishments**](OrganizationsApi.md#getorganizationestablishments) | **GET** /api/organizations/{organization_id}/establishments | On Get Organization Establishments
 [**getOrganizationMenus**](OrganizationsApi.md#getorganizationmenus) | **GET** /api/organizations/{organization_id}/menus | On Get Organization Menus
 [**getOrganizationPlaceTypes**](OrganizationsApi.md#getorganizationplacetypes) | **GET** /api/organizations/{organization_id}/place_types | On Get Organization Place Types
+[**getOrganizationPlaces**](OrganizationsApi.md#getorganizationplaces) | **GET** /api/organizations/{organization_id}/places | On Get Organization Places
 [**getOrganizationProducts**](OrganizationsApi.md#getorganizationproducts) | **GET** /api/organizations/{organization_id}/products | On Get Organization Products
 [**updateOrganization**](OrganizationsApi.md#updateorganization) | **PUT** /api/organizations/{organization_id} | On Update Organization
 
@@ -253,6 +254,47 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**List&lt;PlaceTypeScheme&gt;**](PlaceTypeScheme.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getOrganizationPlaces**
+> List<PlaceScheme> getOrganizationPlaces(organizationId)
+
+On Get Organization Places
+
+### Example
+```dart
+import 'package:daamduuqr_client/api.dart';
+
+final api = DaamduuqrClient().getOrganizationsApi();
+final String organizationId = organizationId_example; // String | 
+
+try {
+    final response = api.getOrganizationPlaces(organizationId);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling OrganizationsApi->getOrganizationPlaces: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organizationId** | **String**|  | 
+
+### Return type
+
+[**List&lt;PlaceScheme&gt;**](PlaceScheme.md)
 
 ### Authorization
 

@@ -3,32 +3,33 @@
 //
 
 import 'dart:async';
+
 // ignore: unused_import
 import 'dart:convert';
-
 import 'package:daamduuqr_client/src/deserialize.dart';
+import 'package:dio/dio.dart';
+
 import 'package:daamduuqr_client/src/model/create_place_group_scheme.dart';
 import 'package:daamduuqr_client/src/model/create_place_scheme.dart';
 import 'package:daamduuqr_client/src/model/create_place_type_scheme.dart';
+
 import 'package:daamduuqr_client/src/model/place_group_scheme.dart';
 import 'package:daamduuqr_client/src/model/place_scheme.dart';
 import 'package:daamduuqr_client/src/model/place_type_scheme.dart';
 import 'package:daamduuqr_client/src/model/update_place_group_scheme.dart';
 import 'package:daamduuqr_client/src/model/update_place_scheme.dart';
 import 'package:daamduuqr_client/src/model/update_place_type_scheme.dart';
-import 'package:dio/dio.dart';
 
 class PlacesApi {
-
   final Dio _dio;
 
   const PlacesApi(this._dio);
 
   /// On Create Place
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [createPlaceScheme] 
+  /// * [createPlaceScheme]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -38,7 +39,7 @@ class PlacesApi {
   ///
   /// Returns a [Future] containing a [Response] with a [PlaceScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<PlaceScheme>> createPlace({ 
+  Future<Response<PlaceScheme>> createPlace({
     required CreatePlaceScheme createPlaceScheme,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -50,13 +51,8 @@ class PlacesApi {
     final _path = r'/api/places';
     final _options = Options(
       method: r'POST',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -64,13 +60,10 @@ class PlacesApi {
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(createPlaceScheme);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(createPlaceScheme);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -89,8 +82,14 @@ _bodyData=jsonEncode(createPlaceScheme);
     PlaceScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<PlaceScheme, PlaceScheme>(rawData, 'PlaceScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<PlaceScheme, PlaceScheme>(
+              rawData,
+              'PlaceScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -114,10 +113,10 @@ _responseData = rawData == null ? null : deserialize<PlaceScheme, PlaceScheme>(r
   }
 
   /// On Create Place Group
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [createPlaceGroupScheme] 
+  /// * [createPlaceGroupScheme]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -127,7 +126,7 @@ _responseData = rawData == null ? null : deserialize<PlaceScheme, PlaceScheme>(r
   ///
   /// Returns a [Future] containing a [Response] with a [PlaceGroupScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<PlaceGroupScheme>> createPlaceGroup({ 
+  Future<Response<PlaceGroupScheme>> createPlaceGroup({
     required CreatePlaceGroupScheme createPlaceGroupScheme,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -139,13 +138,8 @@ _responseData = rawData == null ? null : deserialize<PlaceScheme, PlaceScheme>(r
     final _path = r'/api/places/groups';
     final _options = Options(
       method: r'POST',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -153,13 +147,10 @@ _responseData = rawData == null ? null : deserialize<PlaceScheme, PlaceScheme>(r
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(createPlaceGroupScheme);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(createPlaceGroupScheme);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -178,8 +169,14 @@ _bodyData=jsonEncode(createPlaceGroupScheme);
     PlaceGroupScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<PlaceGroupScheme, PlaceGroupScheme>(rawData, 'PlaceGroupScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<PlaceGroupScheme, PlaceGroupScheme>(
+              rawData,
+              'PlaceGroupScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -203,10 +200,10 @@ _responseData = rawData == null ? null : deserialize<PlaceGroupScheme, PlaceGrou
   }
 
   /// On Create Place Type
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [createPlaceTypeScheme] 
+  /// * [createPlaceTypeScheme]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -216,7 +213,7 @@ _responseData = rawData == null ? null : deserialize<PlaceGroupScheme, PlaceGrou
   ///
   /// Returns a [Future] containing a [Response] with a [PlaceTypeScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<PlaceTypeScheme>> createTypeType({ 
+  Future<Response<PlaceTypeScheme>> createTypeType({
     required CreatePlaceTypeScheme createPlaceTypeScheme,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -228,13 +225,8 @@ _responseData = rawData == null ? null : deserialize<PlaceGroupScheme, PlaceGrou
     final _path = r'/api/places/types';
     final _options = Options(
       method: r'POST',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -242,13 +234,10 @@ _responseData = rawData == null ? null : deserialize<PlaceGroupScheme, PlaceGrou
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(createPlaceTypeScheme);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(createPlaceTypeScheme);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -267,8 +256,14 @@ _bodyData=jsonEncode(createPlaceTypeScheme);
     PlaceTypeScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<PlaceTypeScheme, PlaceTypeScheme>(rawData, 'PlaceTypeScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<PlaceTypeScheme, PlaceTypeScheme>(
+              rawData,
+              'PlaceTypeScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -292,10 +287,10 @@ _responseData = rawData == null ? null : deserialize<PlaceTypeScheme, PlaceTypeS
   }
 
   /// On Get Place
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [placeId] 
+  /// * [placeId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -305,7 +300,7 @@ _responseData = rawData == null ? null : deserialize<PlaceTypeScheme, PlaceTypeS
   ///
   /// Returns a [Future] containing a [Response] with a [PlaceScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<PlaceScheme>> getPlace({ 
+  Future<Response<PlaceScheme>> getPlace({
     required String placeId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -314,16 +309,16 @@ _responseData = rawData == null ? null : deserialize<PlaceTypeScheme, PlaceTypeS
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/places/{place_id}'.replaceAll('{' r'place_id' '}', placeId.toString());
+    final _path = r'/api/places/{place_id}'.replaceAll(
+      '{'
+      r'place_id'
+      '}',
+      placeId.toString(),
+    );
     final _options = Options(
       method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       validateStatus: validateStatus,
     );
 
@@ -338,8 +333,14 @@ _responseData = rawData == null ? null : deserialize<PlaceTypeScheme, PlaceTypeS
     PlaceScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<PlaceScheme, PlaceScheme>(rawData, 'PlaceScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<PlaceScheme, PlaceScheme>(
+              rawData,
+              'PlaceScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -363,10 +364,10 @@ _responseData = rawData == null ? null : deserialize<PlaceScheme, PlaceScheme>(r
   }
 
   /// On Get Place Group
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [placeGroupId] 
+  /// * [placeGroupId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -376,7 +377,7 @@ _responseData = rawData == null ? null : deserialize<PlaceScheme, PlaceScheme>(r
   ///
   /// Returns a [Future] containing a [Response] with a [PlaceGroupScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<PlaceGroupScheme>> getPlaceGroup({ 
+  Future<Response<PlaceGroupScheme>> getPlaceGroup({
     required String placeGroupId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -385,16 +386,16 @@ _responseData = rawData == null ? null : deserialize<PlaceScheme, PlaceScheme>(r
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/places/groups/{place_group_id}'.replaceAll('{' r'place_group_id' '}', placeGroupId.toString());
+    final _path = r'/api/places/groups/{place_group_id}'.replaceAll(
+      '{'
+      r'place_group_id'
+      '}',
+      placeGroupId.toString(),
+    );
     final _options = Options(
       method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       validateStatus: validateStatus,
     );
 
@@ -409,8 +410,14 @@ _responseData = rawData == null ? null : deserialize<PlaceScheme, PlaceScheme>(r
     PlaceGroupScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<PlaceGroupScheme, PlaceGroupScheme>(rawData, 'PlaceGroupScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<PlaceGroupScheme, PlaceGroupScheme>(
+              rawData,
+              'PlaceGroupScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -434,10 +441,10 @@ _responseData = rawData == null ? null : deserialize<PlaceGroupScheme, PlaceGrou
   }
 
   /// On Get Place Type
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [placeTypeId] 
+  /// * [placeTypeId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -447,7 +454,7 @@ _responseData = rawData == null ? null : deserialize<PlaceGroupScheme, PlaceGrou
   ///
   /// Returns a [Future] containing a [Response] with a [PlaceTypeScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<PlaceTypeScheme>> getPlaceType({ 
+  Future<Response<PlaceTypeScheme>> getPlaceType({
     required String placeTypeId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -456,16 +463,16 @@ _responseData = rawData == null ? null : deserialize<PlaceGroupScheme, PlaceGrou
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/places/types/{place_type_id}'.replaceAll('{' r'place_type_id' '}', placeTypeId.toString());
+    final _path = r'/api/places/types/{place_type_id}'.replaceAll(
+      '{'
+      r'place_type_id'
+      '}',
+      placeTypeId.toString(),
+    );
     final _options = Options(
       method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       validateStatus: validateStatus,
     );
 
@@ -480,8 +487,14 @@ _responseData = rawData == null ? null : deserialize<PlaceGroupScheme, PlaceGrou
     PlaceTypeScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<PlaceTypeScheme, PlaceTypeScheme>(rawData, 'PlaceTypeScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<PlaceTypeScheme, PlaceTypeScheme>(
+              rawData,
+              'PlaceTypeScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -505,11 +518,11 @@ _responseData = rawData == null ? null : deserialize<PlaceTypeScheme, PlaceTypeS
   }
 
   /// On Update Place
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [placeId] 
-  /// * [updatePlaceScheme] 
+  /// * [placeId]
+  /// * [updatePlaceScheme]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -519,7 +532,7 @@ _responseData = rawData == null ? null : deserialize<PlaceTypeScheme, PlaceTypeS
   ///
   /// Returns a [Future] containing a [Response] with a [PlaceScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<PlaceScheme>> updatePlace({ 
+  Future<Response<PlaceScheme>> updatePlace({
     required String placeId,
     required UpdatePlaceScheme updatePlaceScheme,
     CancelToken? cancelToken,
@@ -529,16 +542,16 @@ _responseData = rawData == null ? null : deserialize<PlaceTypeScheme, PlaceTypeS
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/places/{place_id}'.replaceAll('{' r'place_id' '}', placeId.toString());
+    final _path = r'/api/places/{place_id}'.replaceAll(
+      '{'
+      r'place_id'
+      '}',
+      placeId.toString(),
+    );
     final _options = Options(
       method: r'PUT',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -546,13 +559,10 @@ _responseData = rawData == null ? null : deserialize<PlaceTypeScheme, PlaceTypeS
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(updatePlaceScheme);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(updatePlaceScheme);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -571,8 +581,14 @@ _bodyData=jsonEncode(updatePlaceScheme);
     PlaceScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<PlaceScheme, PlaceScheme>(rawData, 'PlaceScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<PlaceScheme, PlaceScheme>(
+              rawData,
+              'PlaceScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -596,11 +612,11 @@ _responseData = rawData == null ? null : deserialize<PlaceScheme, PlaceScheme>(r
   }
 
   /// On Update Place Group
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [placeGroupId] 
-  /// * [updatePlaceGroupScheme] 
+  /// * [placeGroupId]
+  /// * [updatePlaceGroupScheme]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -610,7 +626,7 @@ _responseData = rawData == null ? null : deserialize<PlaceScheme, PlaceScheme>(r
   ///
   /// Returns a [Future] containing a [Response] with a [PlaceGroupScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<PlaceGroupScheme>> updatePlaceGroup({ 
+  Future<Response<PlaceGroupScheme>> updatePlaceGroup({
     required String placeGroupId,
     required UpdatePlaceGroupScheme updatePlaceGroupScheme,
     CancelToken? cancelToken,
@@ -620,16 +636,16 @@ _responseData = rawData == null ? null : deserialize<PlaceScheme, PlaceScheme>(r
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/places/groups/{place_group_id}'.replaceAll('{' r'place_group_id' '}', placeGroupId.toString());
+    final _path = r'/api/places/groups/{place_group_id}'.replaceAll(
+      '{'
+      r'place_group_id'
+      '}',
+      placeGroupId.toString(),
+    );
     final _options = Options(
       method: r'PUT',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -637,13 +653,10 @@ _responseData = rawData == null ? null : deserialize<PlaceScheme, PlaceScheme>(r
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(updatePlaceGroupScheme);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(updatePlaceGroupScheme);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -662,8 +675,14 @@ _bodyData=jsonEncode(updatePlaceGroupScheme);
     PlaceGroupScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<PlaceGroupScheme, PlaceGroupScheme>(rawData, 'PlaceGroupScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<PlaceGroupScheme, PlaceGroupScheme>(
+              rawData,
+              'PlaceGroupScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -687,11 +706,11 @@ _responseData = rawData == null ? null : deserialize<PlaceGroupScheme, PlaceGrou
   }
 
   /// On Update Place Type
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [placeTypeId] 
-  /// * [updatePlaceTypeScheme] 
+  /// * [placeTypeId]
+  /// * [updatePlaceTypeScheme]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -701,7 +720,7 @@ _responseData = rawData == null ? null : deserialize<PlaceGroupScheme, PlaceGrou
   ///
   /// Returns a [Future] containing a [Response] with a [PlaceTypeScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<PlaceTypeScheme>> updatePlaceType({ 
+  Future<Response<PlaceTypeScheme>> updatePlaceType({
     required String placeTypeId,
     required UpdatePlaceTypeScheme updatePlaceTypeScheme,
     CancelToken? cancelToken,
@@ -711,16 +730,16 @@ _responseData = rawData == null ? null : deserialize<PlaceGroupScheme, PlaceGrou
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/places/types/{place_type_id}'.replaceAll('{' r'place_type_id' '}', placeTypeId.toString());
+    final _path = r'/api/places/types/{place_type_id}'.replaceAll(
+      '{'
+      r'place_type_id'
+      '}',
+      placeTypeId.toString(),
+    );
     final _options = Options(
       method: r'PUT',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -728,13 +747,10 @@ _responseData = rawData == null ? null : deserialize<PlaceGroupScheme, PlaceGrou
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(updatePlaceTypeScheme);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(updatePlaceTypeScheme);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -753,8 +769,14 @@ _bodyData=jsonEncode(updatePlaceTypeScheme);
     PlaceTypeScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<PlaceTypeScheme, PlaceTypeScheme>(rawData, 'PlaceTypeScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<PlaceTypeScheme, PlaceTypeScheme>(
+              rawData,
+              'PlaceTypeScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -776,5 +798,4 @@ _responseData = rawData == null ? null : deserialize<PlaceTypeScheme, PlaceTypeS
       extra: _response.extra,
     );
   }
-
 }

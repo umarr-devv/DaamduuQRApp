@@ -3,28 +3,29 @@
 //
 
 import 'dart:async';
+
 // ignore: unused_import
 import 'dart:convert';
-
 import 'package:daamduuqr_client/src/deserialize.dart';
-import 'package:daamduuqr_client/src/model/category_scheme.dart';
-import 'package:daamduuqr_client/src/model/create_category_scheme.dart';
-import 'package:daamduuqr_client/src/model/product_scheme.dart';
-import 'package:daamduuqr_client/src/model/update_category_scheme.dart';
 import 'package:dio/dio.dart';
 
-class CategoriesApi {
+import 'package:daamduuqr_client/src/model/category_scheme.dart';
+import 'package:daamduuqr_client/src/model/create_category_scheme.dart';
 
+import 'package:daamduuqr_client/src/model/product_scheme.dart';
+import 'package:daamduuqr_client/src/model/update_category_scheme.dart';
+
+class CategoriesApi {
   final Dio _dio;
 
   const CategoriesApi(this._dio);
 
   /// On Add Category Image
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [categoryId] 
-  /// * [file] 
+  /// * [categoryId]
+  /// * [file]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -34,7 +35,7 @@ class CategoriesApi {
   ///
   /// Returns a [Future] containing a [Response] with a [CategoryScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<CategoryScheme>> addCategoryImage({ 
+  Future<Response<CategoryScheme>> addCategoryImage({
     required String categoryId,
     required MultipartFile file,
     CancelToken? cancelToken,
@@ -44,30 +45,25 @@ class CategoriesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/categories/{category_id}/image'.replaceAll('{' r'category_id' '}', categoryId.toString());
+    final _path = r'/api/categories/{category_id}/image'.replaceAll(
+      '{'
+      r'category_id'
+      '}',
+      categoryId.toString(),
+    );
     final _options = Options(
       method: r'PATCH',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'multipart/form-data',
       validateStatus: validateStatus,
     );
 
     dynamic _bodyData;
 
-    try {
-
-    } catch(error, stackTrace) {
+    try {} catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -86,8 +82,14 @@ class CategoriesApi {
     CategoryScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<CategoryScheme, CategoryScheme>(rawData, 'CategoryScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<CategoryScheme, CategoryScheme>(
+              rawData,
+              'CategoryScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -111,10 +113,10 @@ _responseData = rawData == null ? null : deserialize<CategoryScheme, CategorySch
   }
 
   /// On Create Categoiry
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [createCategoryScheme] 
+  /// * [createCategoryScheme]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -124,7 +126,7 @@ _responseData = rawData == null ? null : deserialize<CategoryScheme, CategorySch
   ///
   /// Returns a [Future] containing a [Response] with a [CategoryScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<CategoryScheme>> createCategory({ 
+  Future<Response<CategoryScheme>> createCategory({
     required CreateCategoryScheme createCategoryScheme,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -136,13 +138,8 @@ _responseData = rawData == null ? null : deserialize<CategoryScheme, CategorySch
     final _path = r'/api/categories';
     final _options = Options(
       method: r'POST',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -150,13 +147,10 @@ _responseData = rawData == null ? null : deserialize<CategoryScheme, CategorySch
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(createCategoryScheme);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(createCategoryScheme);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -175,8 +169,14 @@ _bodyData=jsonEncode(createCategoryScheme);
     CategoryScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<CategoryScheme, CategoryScheme>(rawData, 'CategoryScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<CategoryScheme, CategoryScheme>(
+              rawData,
+              'CategoryScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -200,11 +200,11 @@ _responseData = rawData == null ? null : deserialize<CategoryScheme, CategorySch
   }
 
   /// On Delete Category Image
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [categoryId] 
-  /// * [fileId] 
+  /// * [categoryId]
+  /// * [fileId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -214,7 +214,7 @@ _responseData = rawData == null ? null : deserialize<CategoryScheme, CategorySch
   ///
   /// Returns a [Future] containing a [Response] with a [CategoryScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<CategoryScheme>> deleteCategoryImage({ 
+  Future<Response<CategoryScheme>> deleteCategoryImage({
     required String categoryId,
     required String fileId,
     CancelToken? cancelToken,
@@ -224,16 +224,23 @@ _responseData = rawData == null ? null : deserialize<CategoryScheme, CategorySch
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/categories/{category_id}/image/{file_id}'.replaceAll('{' r'category_id' '}', categoryId.toString()).replaceAll('{' r'file_id' '}', fileId.toString());
+    final _path = r'/api/categories/{category_id}/image/{file_id}'
+        .replaceAll(
+          '{'
+          r'category_id'
+          '}',
+          categoryId.toString(),
+        )
+        .replaceAll(
+          '{'
+          r'file_id'
+          '}',
+          fileId.toString(),
+        );
     final _options = Options(
       method: r'DELETE',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       validateStatus: validateStatus,
     );
 
@@ -248,8 +255,14 @@ _responseData = rawData == null ? null : deserialize<CategoryScheme, CategorySch
     CategoryScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<CategoryScheme, CategoryScheme>(rawData, 'CategoryScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<CategoryScheme, CategoryScheme>(
+              rawData,
+              'CategoryScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -273,10 +286,10 @@ _responseData = rawData == null ? null : deserialize<CategoryScheme, CategorySch
   }
 
   /// On Get Categories By Establishment
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [establishmentId] 
+  /// * [establishmentId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -286,7 +299,7 @@ _responseData = rawData == null ? null : deserialize<CategoryScheme, CategorySch
   ///
   /// Returns a [Future] containing a [Response] with a [List<CategoryScheme>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<CategoryScheme>>> getCategoriesByEstablishment({ 
+  Future<Response<List<CategoryScheme>>> getCategoriesByEstablishment({
     required String establishmentId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -295,16 +308,17 @@ _responseData = rawData == null ? null : deserialize<CategoryScheme, CategorySch
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/categories/by_establishment/{establishment_id}'.replaceAll('{' r'establishment_id' '}', establishmentId.toString());
+    final _path = r'/api/categories/by_establishment/{establishment_id}'
+        .replaceAll(
+          '{'
+          r'establishment_id'
+          '}',
+          establishmentId.toString(),
+        );
     final _options = Options(
       method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       validateStatus: validateStatus,
     );
 
@@ -319,8 +333,14 @@ _responseData = rawData == null ? null : deserialize<CategoryScheme, CategorySch
     List<CategoryScheme>? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<List<CategoryScheme>, CategoryScheme>(rawData, 'List<CategoryScheme>', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<List<CategoryScheme>, CategoryScheme>(
+              rawData,
+              'List<CategoryScheme>',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -344,10 +364,10 @@ _responseData = rawData == null ? null : deserialize<List<CategoryScheme>, Categ
   }
 
   /// On Get Category
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [categoryId] 
+  /// * [categoryId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -357,7 +377,7 @@ _responseData = rawData == null ? null : deserialize<List<CategoryScheme>, Categ
   ///
   /// Returns a [Future] containing a [Response] with a [CategoryScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<CategoryScheme>> getCategory({ 
+  Future<Response<CategoryScheme>> getCategory({
     required String categoryId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -366,16 +386,16 @@ _responseData = rawData == null ? null : deserialize<List<CategoryScheme>, Categ
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/categories/{category_id}'.replaceAll('{' r'category_id' '}', categoryId.toString());
+    final _path = r'/api/categories/{category_id}'.replaceAll(
+      '{'
+      r'category_id'
+      '}',
+      categoryId.toString(),
+    );
     final _options = Options(
       method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       validateStatus: validateStatus,
     );
 
@@ -390,8 +410,14 @@ _responseData = rawData == null ? null : deserialize<List<CategoryScheme>, Categ
     CategoryScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<CategoryScheme, CategoryScheme>(rawData, 'CategoryScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<CategoryScheme, CategoryScheme>(
+              rawData,
+              'CategoryScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -415,10 +441,10 @@ _responseData = rawData == null ? null : deserialize<CategoryScheme, CategorySch
   }
 
   /// On Get Category Products
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [categoryId] 
+  /// * [categoryId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -428,7 +454,7 @@ _responseData = rawData == null ? null : deserialize<CategoryScheme, CategorySch
   ///
   /// Returns a [Future] containing a [Response] with a [List<ProductScheme>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<ProductScheme>>> getCategoryProducts({ 
+  Future<Response<List<ProductScheme>>> getCategoryProducts({
     required String categoryId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -437,16 +463,16 @@ _responseData = rawData == null ? null : deserialize<CategoryScheme, CategorySch
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/categories/{category_id}/products'.replaceAll('{' r'category_id' '}', categoryId.toString());
+    final _path = r'/api/categories/{category_id}/products'.replaceAll(
+      '{'
+      r'category_id'
+      '}',
+      categoryId.toString(),
+    );
     final _options = Options(
       method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       validateStatus: validateStatus,
     );
 
@@ -461,8 +487,14 @@ _responseData = rawData == null ? null : deserialize<CategoryScheme, CategorySch
     List<ProductScheme>? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<List<ProductScheme>, ProductScheme>(rawData, 'List<ProductScheme>', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<List<ProductScheme>, ProductScheme>(
+              rawData,
+              'List<ProductScheme>',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -486,11 +518,11 @@ _responseData = rawData == null ? null : deserialize<List<ProductScheme>, Produc
   }
 
   /// On Update Category
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [categoryId] 
-  /// * [updateCategoryScheme] 
+  /// * [categoryId]
+  /// * [updateCategoryScheme]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -500,7 +532,7 @@ _responseData = rawData == null ? null : deserialize<List<ProductScheme>, Produc
   ///
   /// Returns a [Future] containing a [Response] with a [CategoryScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<CategoryScheme>> updateCategory({ 
+  Future<Response<CategoryScheme>> updateCategory({
     required String categoryId,
     required UpdateCategoryScheme updateCategoryScheme,
     CancelToken? cancelToken,
@@ -510,16 +542,16 @@ _responseData = rawData == null ? null : deserialize<List<ProductScheme>, Produc
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/categories/{category_id}'.replaceAll('{' r'category_id' '}', categoryId.toString());
+    final _path = r'/api/categories/{category_id}'.replaceAll(
+      '{'
+      r'category_id'
+      '}',
+      categoryId.toString(),
+    );
     final _options = Options(
       method: r'PUT',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -527,13 +559,10 @@ _responseData = rawData == null ? null : deserialize<List<ProductScheme>, Produc
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(updateCategoryScheme);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(updateCategoryScheme);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -552,8 +581,14 @@ _bodyData=jsonEncode(updateCategoryScheme);
     CategoryScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<CategoryScheme, CategoryScheme>(rawData, 'CategoryScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<CategoryScheme, CategoryScheme>(
+              rawData,
+              'CategoryScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -575,5 +610,4 @@ _responseData = rawData == null ? null : deserialize<CategoryScheme, CategorySch
       extra: _response.extra,
     );
   }
-
 }

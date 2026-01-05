@@ -3,30 +3,31 @@
 //
 
 import 'dart:async';
+
 // ignore: unused_import
 import 'dart:convert';
-
 import 'package:daamduuqr_client/src/deserialize.dart';
+import 'package:dio/dio.dart';
+
 import 'package:daamduuqr_client/src/model/create_portion_scheme.dart';
 import 'package:daamduuqr_client/src/model/create_product_scheme.dart';
 import 'package:daamduuqr_client/src/model/detail_product_scheme.dart';
+
 import 'package:daamduuqr_client/src/model/product_scheme.dart';
 import 'package:daamduuqr_client/src/model/update_portion_scheme.dart';
 import 'package:daamduuqr_client/src/model/update_product_scheme.dart';
-import 'package:dio/dio.dart';
 
 class ProductsApi {
-
   final Dio _dio;
 
   const ProductsApi(this._dio);
 
   /// On Add Product Image
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [productId] 
-  /// * [fileId] 
+  /// * [productId]
+  /// * [fileId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -36,7 +37,7 @@ class ProductsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [ProductScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ProductScheme>> addProductImage({ 
+  Future<Response<ProductScheme>> addProductImage({
     required String productId,
     required String fileId,
     CancelToken? cancelToken,
@@ -46,16 +47,23 @@ class ProductsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/products/{product_id}/images/{file_id}'.replaceAll('{' r'product_id' '}', productId.toString()).replaceAll('{' r'file_id' '}', fileId.toString());
+    final _path = r'/api/products/{product_id}/images/{file_id}'
+        .replaceAll(
+          '{'
+          r'product_id'
+          '}',
+          productId.toString(),
+        )
+        .replaceAll(
+          '{'
+          r'file_id'
+          '}',
+          fileId.toString(),
+        );
     final _options = Options(
       method: r'PATCH',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       validateStatus: validateStatus,
     );
 
@@ -70,8 +78,14 @@ class ProductsApi {
     ProductScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<ProductScheme, ProductScheme>(rawData, 'ProductScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<ProductScheme, ProductScheme>(
+              rawData,
+              'ProductScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -95,11 +109,11 @@ _responseData = rawData == null ? null : deserialize<ProductScheme, ProductSchem
   }
 
   /// On Add Product Portion
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [productId] 
-  /// * [createPortionScheme] 
+  /// * [productId]
+  /// * [createPortionScheme]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -109,7 +123,7 @@ _responseData = rawData == null ? null : deserialize<ProductScheme, ProductSchem
   ///
   /// Returns a [Future] containing a [Response] with a [ProductScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ProductScheme>> addProductPortion({ 
+  Future<Response<ProductScheme>> addProductPortion({
     required String productId,
     required CreatePortionScheme createPortionScheme,
     CancelToken? cancelToken,
@@ -119,16 +133,16 @@ _responseData = rawData == null ? null : deserialize<ProductScheme, ProductSchem
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/products/{product_id}/portions'.replaceAll('{' r'product_id' '}', productId.toString());
+    final _path = r'/api/products/{product_id}/portions'.replaceAll(
+      '{'
+      r'product_id'
+      '}',
+      productId.toString(),
+    );
     final _options = Options(
       method: r'PATCH',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -136,13 +150,10 @@ _responseData = rawData == null ? null : deserialize<ProductScheme, ProductSchem
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(createPortionScheme);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(createPortionScheme);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -161,8 +172,14 @@ _bodyData=jsonEncode(createPortionScheme);
     ProductScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<ProductScheme, ProductScheme>(rawData, 'ProductScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<ProductScheme, ProductScheme>(
+              rawData,
+              'ProductScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -186,10 +203,10 @@ _responseData = rawData == null ? null : deserialize<ProductScheme, ProductSchem
   }
 
   /// On Create Product
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [createProductScheme] 
+  /// * [createProductScheme]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -199,7 +216,7 @@ _responseData = rawData == null ? null : deserialize<ProductScheme, ProductSchem
   ///
   /// Returns a [Future] containing a [Response] with a [ProductScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ProductScheme>> createProduct({ 
+  Future<Response<ProductScheme>> createProduct({
     required CreateProductScheme createProductScheme,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -211,13 +228,8 @@ _responseData = rawData == null ? null : deserialize<ProductScheme, ProductSchem
     final _path = r'/api/products';
     final _options = Options(
       method: r'POST',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -225,13 +237,10 @@ _responseData = rawData == null ? null : deserialize<ProductScheme, ProductSchem
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(createProductScheme);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(createProductScheme);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -250,8 +259,14 @@ _bodyData=jsonEncode(createProductScheme);
     ProductScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<ProductScheme, ProductScheme>(rawData, 'ProductScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<ProductScheme, ProductScheme>(
+              rawData,
+              'ProductScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -275,11 +290,11 @@ _responseData = rawData == null ? null : deserialize<ProductScheme, ProductSchem
   }
 
   /// On Delete Product Image
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [productId] 
-  /// * [fileId] 
+  /// * [productId]
+  /// * [fileId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -289,7 +304,7 @@ _responseData = rawData == null ? null : deserialize<ProductScheme, ProductSchem
   ///
   /// Returns a [Future] containing a [Response] with a [ProductScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ProductScheme>> deleteProductImage({ 
+  Future<Response<ProductScheme>> deleteProductImage({
     required String productId,
     required String fileId,
     CancelToken? cancelToken,
@@ -299,16 +314,23 @@ _responseData = rawData == null ? null : deserialize<ProductScheme, ProductSchem
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/products/{product_id}/images/{file_id}'.replaceAll('{' r'product_id' '}', productId.toString()).replaceAll('{' r'file_id' '}', fileId.toString());
+    final _path = r'/api/products/{product_id}/images/{file_id}'
+        .replaceAll(
+          '{'
+          r'product_id'
+          '}',
+          productId.toString(),
+        )
+        .replaceAll(
+          '{'
+          r'file_id'
+          '}',
+          fileId.toString(),
+        );
     final _options = Options(
       method: r'DELETE',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       validateStatus: validateStatus,
     );
 
@@ -323,8 +345,14 @@ _responseData = rawData == null ? null : deserialize<ProductScheme, ProductSchem
     ProductScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<ProductScheme, ProductScheme>(rawData, 'ProductScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<ProductScheme, ProductScheme>(
+              rawData,
+              'ProductScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -348,11 +376,11 @@ _responseData = rawData == null ? null : deserialize<ProductScheme, ProductSchem
   }
 
   /// On Delete Product Portion
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [productId] 
-  /// * [portionId] 
+  /// * [productId]
+  /// * [portionId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -362,7 +390,7 @@ _responseData = rawData == null ? null : deserialize<ProductScheme, ProductSchem
   ///
   /// Returns a [Future] containing a [Response] with a [ProductScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ProductScheme>> deleteProductPortion({ 
+  Future<Response<ProductScheme>> deleteProductPortion({
     required String productId,
     required String portionId,
     CancelToken? cancelToken,
@@ -372,16 +400,23 @@ _responseData = rawData == null ? null : deserialize<ProductScheme, ProductSchem
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/products/{product_id}/portions/{portion_id}'.replaceAll('{' r'product_id' '}', productId.toString()).replaceAll('{' r'portion_id' '}', portionId.toString());
+    final _path = r'/api/products/{product_id}/portions/{portion_id}'
+        .replaceAll(
+          '{'
+          r'product_id'
+          '}',
+          productId.toString(),
+        )
+        .replaceAll(
+          '{'
+          r'portion_id'
+          '}',
+          portionId.toString(),
+        );
     final _options = Options(
       method: r'DELETE',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       validateStatus: validateStatus,
     );
 
@@ -396,8 +431,14 @@ _responseData = rawData == null ? null : deserialize<ProductScheme, ProductSchem
     ProductScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<ProductScheme, ProductScheme>(rawData, 'ProductScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<ProductScheme, ProductScheme>(
+              rawData,
+              'ProductScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -421,10 +462,10 @@ _responseData = rawData == null ? null : deserialize<ProductScheme, ProductSchem
   }
 
   /// On Get Product
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [productId] 
+  /// * [productId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -434,7 +475,7 @@ _responseData = rawData == null ? null : deserialize<ProductScheme, ProductSchem
   ///
   /// Returns a [Future] containing a [Response] with a [DetailProductScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<DetailProductScheme>> getProduct({ 
+  Future<Response<DetailProductScheme>> getProduct({
     required String productId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -443,16 +484,16 @@ _responseData = rawData == null ? null : deserialize<ProductScheme, ProductSchem
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/products/{product_id}'.replaceAll('{' r'product_id' '}', productId.toString());
+    final _path = r'/api/products/{product_id}'.replaceAll(
+      '{'
+      r'product_id'
+      '}',
+      productId.toString(),
+    );
     final _options = Options(
       method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       validateStatus: validateStatus,
     );
 
@@ -467,8 +508,14 @@ _responseData = rawData == null ? null : deserialize<ProductScheme, ProductSchem
     DetailProductScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<DetailProductScheme, DetailProductScheme>(rawData, 'DetailProductScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<DetailProductScheme, DetailProductScheme>(
+              rawData,
+              'DetailProductScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -492,11 +539,11 @@ _responseData = rawData == null ? null : deserialize<DetailProductScheme, Detail
   }
 
   /// On Update Product
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [productId] 
-  /// * [updateProductScheme] 
+  /// * [productId]
+  /// * [updateProductScheme]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -506,7 +553,7 @@ _responseData = rawData == null ? null : deserialize<DetailProductScheme, Detail
   ///
   /// Returns a [Future] containing a [Response] with a [ProductScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ProductScheme>> updateProduct({ 
+  Future<Response<ProductScheme>> updateProduct({
     required String productId,
     required UpdateProductScheme updateProductScheme,
     CancelToken? cancelToken,
@@ -516,16 +563,16 @@ _responseData = rawData == null ? null : deserialize<DetailProductScheme, Detail
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/products/{product_id}'.replaceAll('{' r'product_id' '}', productId.toString());
+    final _path = r'/api/products/{product_id}'.replaceAll(
+      '{'
+      r'product_id'
+      '}',
+      productId.toString(),
+    );
     final _options = Options(
       method: r'PUT',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -533,13 +580,10 @@ _responseData = rawData == null ? null : deserialize<DetailProductScheme, Detail
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(updateProductScheme);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(updateProductScheme);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -558,8 +602,14 @@ _bodyData=jsonEncode(updateProductScheme);
     ProductScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<ProductScheme, ProductScheme>(rawData, 'ProductScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<ProductScheme, ProductScheme>(
+              rawData,
+              'ProductScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -583,12 +633,12 @@ _responseData = rawData == null ? null : deserialize<ProductScheme, ProductSchem
   }
 
   /// On Update Product Portion
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [productId] 
-  /// * [portionId] 
-  /// * [updatePortionScheme] 
+  /// * [productId]
+  /// * [portionId]
+  /// * [updatePortionScheme]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -598,7 +648,7 @@ _responseData = rawData == null ? null : deserialize<ProductScheme, ProductSchem
   ///
   /// Returns a [Future] containing a [Response] with a [ProductScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ProductScheme>> updateProductPortion({ 
+  Future<Response<ProductScheme>> updateProductPortion({
     required String productId,
     required String portionId,
     required UpdatePortionScheme updatePortionScheme,
@@ -609,16 +659,23 @@ _responseData = rawData == null ? null : deserialize<ProductScheme, ProductSchem
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/products/{product_id}/portions/{portion_id}'.replaceAll('{' r'product_id' '}', productId.toString()).replaceAll('{' r'portion_id' '}', portionId.toString());
+    final _path = r'/api/products/{product_id}/portions/{portion_id}'
+        .replaceAll(
+          '{'
+          r'product_id'
+          '}',
+          productId.toString(),
+        )
+        .replaceAll(
+          '{'
+          r'portion_id'
+          '}',
+          portionId.toString(),
+        );
     final _options = Options(
       method: r'PUT',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -626,13 +683,10 @@ _responseData = rawData == null ? null : deserialize<ProductScheme, ProductSchem
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(updatePortionScheme);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(updatePortionScheme);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -651,8 +705,14 @@ _bodyData=jsonEncode(updatePortionScheme);
     ProductScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<ProductScheme, ProductScheme>(rawData, 'ProductScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<ProductScheme, ProductScheme>(
+              rawData,
+              'ProductScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -674,5 +734,4 @@ _responseData = rawData == null ? null : deserialize<ProductScheme, ProductSchem
       extra: _response.extra,
     );
   }
-
 }

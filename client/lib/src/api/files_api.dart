@@ -44,22 +44,13 @@ class FilesApi {
       method: r'POST',
       headers: <String, dynamic>{...?headers},
       extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
-      // contentType: 'multipart/form-data',
+      contentType: 'multipart/form-data',
       validateStatus: validateStatus,
     );
 
     dynamic _bodyData;
 
-    try {
-      final form = FormData();
-      form.files.add(
-        MapEntry(
-          'upload_file',
-          uploadFile,
-        ),
-      );
-      _bodyData = form;
-    } catch (error, stackTrace) {
+    try {} catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,

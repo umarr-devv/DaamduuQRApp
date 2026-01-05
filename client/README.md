@@ -112,6 +112,7 @@ Class | Method | HTTP request | Description
 [*OrganizationsApi*](doc/OrganizationsApi.md) | [**getOrganizationEstablishments**](doc/OrganizationsApi.md#getorganizationestablishments) | **GET** /api/organizations/{organization_id}/establishments | On Get Organization Establishments
 [*OrganizationsApi*](doc/OrganizationsApi.md) | [**getOrganizationMenus**](doc/OrganizationsApi.md#getorganizationmenus) | **GET** /api/organizations/{organization_id}/menus | On Get Organization Menus
 [*OrganizationsApi*](doc/OrganizationsApi.md) | [**getOrganizationPlaceTypes**](doc/OrganizationsApi.md#getorganizationplacetypes) | **GET** /api/organizations/{organization_id}/place_types | On Get Organization Place Types
+[*OrganizationsApi*](doc/OrganizationsApi.md) | [**getOrganizationPlaces**](doc/OrganizationsApi.md#getorganizationplaces) | **GET** /api/organizations/{organization_id}/places | On Get Organization Places
 [*OrganizationsApi*](doc/OrganizationsApi.md) | [**getOrganizationProducts**](doc/OrganizationsApi.md#getorganizationproducts) | **GET** /api/organizations/{organization_id}/products | On Get Organization Products
 [*OrganizationsApi*](doc/OrganizationsApi.md) | [**updateOrganization**](doc/OrganizationsApi.md#updateorganization) | **PUT** /api/organizations/{organization_id} | On Update Organization
 [*PlacesApi*](doc/PlacesApi.md) | [**createPlace**](doc/PlacesApi.md#createplace) | **POST** /api/places | On Create Place

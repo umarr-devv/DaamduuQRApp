@@ -3,28 +3,29 @@
 //
 
 import 'dart:async';
+
 // ignore: unused_import
 import 'dart:convert';
-
 import 'package:daamduuqr_client/src/deserialize.dart';
-import 'package:daamduuqr_client/src/model/establishment_scheme.dart';
-import 'package:daamduuqr_client/src/model/establishment_type.dart';
-import 'package:daamduuqr_client/src/model/product_scheme.dart';
 import 'package:dio/dio.dart';
 
-class RecommendationsApi {
+import 'package:daamduuqr_client/src/model/establishment_scheme.dart';
+import 'package:daamduuqr_client/src/model/establishment_type.dart';
 
+import 'package:daamduuqr_client/src/model/product_scheme.dart';
+
+class RecommendationsApi {
   final Dio _dio;
 
   const RecommendationsApi(this._dio);
 
   /// On Get Recommendations Establishments
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [establishmentType] 
-  /// * [latitude] 
-  /// * [longitude] 
+  /// * [establishmentType]
+  /// * [latitude]
+  /// * [longitude]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -34,7 +35,7 @@ class RecommendationsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [List<EstablishmentScheme>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<EstablishmentScheme>>> getRecommendationsEstablishments({ 
+  Future<Response<List<EstablishmentScheme>>> getRecommendationsEstablishments({
     EstablishmentType? establishmentType,
     num? latitude,
     num? longitude,
@@ -48,13 +49,8 @@ class RecommendationsApi {
     final _path = r'/api/recommendations/establishments';
     final _options = Options(
       method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       validateStatus: validateStatus,
     );
 
@@ -76,8 +72,14 @@ class RecommendationsApi {
     List<EstablishmentScheme>? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<List<EstablishmentScheme>, EstablishmentScheme>(rawData, 'List<EstablishmentScheme>', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<List<EstablishmentScheme>, EstablishmentScheme>(
+              rawData,
+              'List<EstablishmentScheme>',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -101,7 +103,7 @@ _responseData = rawData == null ? null : deserialize<List<EstablishmentScheme>, 
   }
 
   /// On Get Recommendations Products
-  /// 
+  ///
   ///
   /// Parameters:
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -113,7 +115,7 @@ _responseData = rawData == null ? null : deserialize<List<EstablishmentScheme>, 
   ///
   /// Returns a [Future] containing a [Response] with a [List<ProductScheme>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<ProductScheme>>> getRecommendationsProducts({ 
+  Future<Response<List<ProductScheme>>> getRecommendationsProducts({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -124,13 +126,8 @@ _responseData = rawData == null ? null : deserialize<List<EstablishmentScheme>, 
     final _path = r'/api/recommendations/products';
     final _options = Options(
       method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       validateStatus: validateStatus,
     );
 
@@ -145,8 +142,14 @@ _responseData = rawData == null ? null : deserialize<List<EstablishmentScheme>, 
     List<ProductScheme>? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<List<ProductScheme>, ProductScheme>(rawData, 'List<ProductScheme>', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<List<ProductScheme>, ProductScheme>(
+              rawData,
+              'List<ProductScheme>',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -168,5 +171,4 @@ _responseData = rawData == null ? null : deserialize<List<ProductScheme>, Produc
       extra: _response.extra,
     );
   }
-
 }

@@ -3,29 +3,30 @@
 //
 
 import 'dart:async';
+
 // ignore: unused_import
 import 'dart:convert';
-
 import 'package:daamduuqr_client/src/deserialize.dart';
+import 'package:dio/dio.dart';
+
 import 'package:daamduuqr_client/src/model/create_menu_scheme.dart';
+
 import 'package:daamduuqr_client/src/model/menu_add_product_scheme.dart';
 import 'package:daamduuqr_client/src/model/menu_delete_product_scheme.dart';
 import 'package:daamduuqr_client/src/model/menu_scheme.dart';
 import 'package:daamduuqr_client/src/model/product_scheme.dart';
 import 'package:daamduuqr_client/src/model/update_menu_scheme.dart';
-import 'package:dio/dio.dart';
 
 class MenusApi {
-
   final Dio _dio;
 
   const MenusApi(this._dio);
 
   /// On Create Menu
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [createMenuScheme] 
+  /// * [createMenuScheme]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -35,7 +36,7 @@ class MenusApi {
   ///
   /// Returns a [Future] containing a [Response] with a [MenuScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<MenuScheme>> createMenu({ 
+  Future<Response<MenuScheme>> createMenu({
     required CreateMenuScheme createMenuScheme,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -47,13 +48,8 @@ class MenusApi {
     final _path = r'/api/menus';
     final _options = Options(
       method: r'POST',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -61,13 +57,10 @@ class MenusApi {
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(createMenuScheme);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(createMenuScheme);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -86,8 +79,14 @@ _bodyData=jsonEncode(createMenuScheme);
     MenuScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<MenuScheme, MenuScheme>(rawData, 'MenuScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<MenuScheme, MenuScheme>(
+              rawData,
+              'MenuScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -111,11 +110,11 @@ _responseData = rawData == null ? null : deserialize<MenuScheme, MenuScheme>(raw
   }
 
   /// On Delete Menu Products
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [menuId] 
-  /// * [menuAddProductScheme] 
+  /// * [menuId]
+  /// * [menuAddProductScheme]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -125,7 +124,7 @@ _responseData = rawData == null ? null : deserialize<MenuScheme, MenuScheme>(raw
   ///
   /// Returns a [Future] containing a [Response] with a [List<ProductScheme>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<ProductScheme>>> deleteMenuProducts({ 
+  Future<Response<List<ProductScheme>>> deleteMenuProducts({
     required String menuId,
     required MenuAddProductScheme menuAddProductScheme,
     CancelToken? cancelToken,
@@ -135,16 +134,16 @@ _responseData = rawData == null ? null : deserialize<MenuScheme, MenuScheme>(raw
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/menus/{menu_id}/products'.replaceAll('{' r'menu_id' '}', menuId.toString());
+    final _path = r'/api/menus/{menu_id}/products'.replaceAll(
+      '{'
+      r'menu_id'
+      '}',
+      menuId.toString(),
+    );
     final _options = Options(
       method: r'DELETE',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -152,13 +151,10 @@ _responseData = rawData == null ? null : deserialize<MenuScheme, MenuScheme>(raw
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(menuAddProductScheme);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(menuAddProductScheme);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -177,8 +173,14 @@ _bodyData=jsonEncode(menuAddProductScheme);
     List<ProductScheme>? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<List<ProductScheme>, ProductScheme>(rawData, 'List<ProductScheme>', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<List<ProductScheme>, ProductScheme>(
+              rawData,
+              'List<ProductScheme>',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -202,10 +204,10 @@ _responseData = rawData == null ? null : deserialize<List<ProductScheme>, Produc
   }
 
   /// On Get Menu
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [menuId] 
+  /// * [menuId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -215,7 +217,7 @@ _responseData = rawData == null ? null : deserialize<List<ProductScheme>, Produc
   ///
   /// Returns a [Future] containing a [Response] with a [MenuScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<MenuScheme>> getMenu({ 
+  Future<Response<MenuScheme>> getMenu({
     required String menuId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -224,16 +226,16 @@ _responseData = rawData == null ? null : deserialize<List<ProductScheme>, Produc
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/menus/{menu_id}'.replaceAll('{' r'menu_id' '}', menuId.toString());
+    final _path = r'/api/menus/{menu_id}'.replaceAll(
+      '{'
+      r'menu_id'
+      '}',
+      menuId.toString(),
+    );
     final _options = Options(
       method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       validateStatus: validateStatus,
     );
 
@@ -248,8 +250,14 @@ _responseData = rawData == null ? null : deserialize<List<ProductScheme>, Produc
     MenuScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<MenuScheme, MenuScheme>(rawData, 'MenuScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<MenuScheme, MenuScheme>(
+              rawData,
+              'MenuScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -273,10 +281,10 @@ _responseData = rawData == null ? null : deserialize<MenuScheme, MenuScheme>(raw
   }
 
   /// On Get Menu Products
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [menuId] 
+  /// * [menuId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -286,7 +294,7 @@ _responseData = rawData == null ? null : deserialize<MenuScheme, MenuScheme>(raw
   ///
   /// Returns a [Future] containing a [Response] with a [List<ProductScheme>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<ProductScheme>>> getMenuProducts({ 
+  Future<Response<List<ProductScheme>>> getMenuProducts({
     required String menuId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -295,16 +303,16 @@ _responseData = rawData == null ? null : deserialize<MenuScheme, MenuScheme>(raw
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/menus/{menu_id}/products'.replaceAll('{' r'menu_id' '}', menuId.toString());
+    final _path = r'/api/menus/{menu_id}/products'.replaceAll(
+      '{'
+      r'menu_id'
+      '}',
+      menuId.toString(),
+    );
     final _options = Options(
       method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       validateStatus: validateStatus,
     );
 
@@ -319,8 +327,14 @@ _responseData = rawData == null ? null : deserialize<MenuScheme, MenuScheme>(raw
     List<ProductScheme>? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<List<ProductScheme>, ProductScheme>(rawData, 'List<ProductScheme>', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<List<ProductScheme>, ProductScheme>(
+              rawData,
+              'List<ProductScheme>',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -344,11 +358,11 @@ _responseData = rawData == null ? null : deserialize<List<ProductScheme>, Produc
   }
 
   /// On Menu Add Products
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [menuId] 
-  /// * [menuDeleteProductScheme] 
+  /// * [menuId]
+  /// * [menuDeleteProductScheme]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -358,7 +372,7 @@ _responseData = rawData == null ? null : deserialize<List<ProductScheme>, Produc
   ///
   /// Returns a [Future] containing a [Response] with a [List<ProductScheme>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<ProductScheme>>> menuAddProducts({ 
+  Future<Response<List<ProductScheme>>> menuAddProducts({
     required String menuId,
     required MenuDeleteProductScheme menuDeleteProductScheme,
     CancelToken? cancelToken,
@@ -368,16 +382,16 @@ _responseData = rawData == null ? null : deserialize<List<ProductScheme>, Produc
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/menus/{menu_id}/products'.replaceAll('{' r'menu_id' '}', menuId.toString());
+    final _path = r'/api/menus/{menu_id}/products'.replaceAll(
+      '{'
+      r'menu_id'
+      '}',
+      menuId.toString(),
+    );
     final _options = Options(
       method: r'PATCH',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -385,13 +399,10 @@ _responseData = rawData == null ? null : deserialize<List<ProductScheme>, Produc
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(menuDeleteProductScheme);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(menuDeleteProductScheme);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -410,8 +421,14 @@ _bodyData=jsonEncode(menuDeleteProductScheme);
     List<ProductScheme>? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<List<ProductScheme>, ProductScheme>(rawData, 'List<ProductScheme>', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<List<ProductScheme>, ProductScheme>(
+              rawData,
+              'List<ProductScheme>',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -435,11 +452,11 @@ _responseData = rawData == null ? null : deserialize<List<ProductScheme>, Produc
   }
 
   /// On Update Menu
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [menuId] 
-  /// * [updateMenuScheme] 
+  /// * [menuId]
+  /// * [updateMenuScheme]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -449,7 +466,7 @@ _responseData = rawData == null ? null : deserialize<List<ProductScheme>, Produc
   ///
   /// Returns a [Future] containing a [Response] with a [MenuScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<MenuScheme>> updateMenu({ 
+  Future<Response<MenuScheme>> updateMenu({
     required String menuId,
     required UpdateMenuScheme updateMenuScheme,
     CancelToken? cancelToken,
@@ -459,16 +476,16 @@ _responseData = rawData == null ? null : deserialize<List<ProductScheme>, Produc
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/menus/{menu_id}'.replaceAll('{' r'menu_id' '}', menuId.toString());
+    final _path = r'/api/menus/{menu_id}'.replaceAll(
+      '{'
+      r'menu_id'
+      '}',
+      menuId.toString(),
+    );
     final _options = Options(
       method: r'PUT',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -476,13 +493,10 @@ _responseData = rawData == null ? null : deserialize<List<ProductScheme>, Produc
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(updateMenuScheme);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(updateMenuScheme);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -501,8 +515,14 @@ _bodyData=jsonEncode(updateMenuScheme);
     MenuScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<MenuScheme, MenuScheme>(rawData, 'MenuScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<MenuScheme, MenuScheme>(
+              rawData,
+              'MenuScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -524,5 +544,4 @@ _responseData = rawData == null ? null : deserialize<MenuScheme, MenuScheme>(raw
       extra: _response.extra,
     );
   }
-
 }

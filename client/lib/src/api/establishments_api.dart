@@ -3,34 +3,35 @@
 //
 
 import 'dart:async';
+
 // ignore: unused_import
 import 'dart:convert';
-
 import 'package:daamduuqr_client/src/deserialize.dart';
+import 'package:dio/dio.dart';
+
 import 'package:daamduuqr_client/src/model/create_establishment_scheme.dart';
 import 'package:daamduuqr_client/src/model/create_working_hour_scheme.dart';
 import 'package:daamduuqr_client/src/model/detail_establishment_scheme.dart';
 import 'package:daamduuqr_client/src/model/establishment_scheme.dart';
+
 import 'package:daamduuqr_client/src/model/place_group_scheme.dart';
 import 'package:daamduuqr_client/src/model/place_scheme.dart';
 import 'package:daamduuqr_client/src/model/product_scheme.dart';
 import 'package:daamduuqr_client/src/model/update_establishment_scheme.dart';
 import 'package:daamduuqr_client/src/model/update_working_hour_scheme.dart';
 import 'package:daamduuqr_client/src/model/working_hour_scheme.dart';
-import 'package:dio/dio.dart';
 
 class EstablishmentsApi {
-
   final Dio _dio;
 
   const EstablishmentsApi(this._dio);
 
   /// On Add Establishment Contact
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [establishmentId] 
-  /// * [contactId] 
+  /// * [establishmentId]
+  /// * [contactId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -40,7 +41,7 @@ class EstablishmentsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [EstablishmentScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<EstablishmentScheme>> addEstablishmentContact({ 
+  Future<Response<EstablishmentScheme>> addEstablishmentContact({
     required String establishmentId,
     required String contactId,
     CancelToken? cancelToken,
@@ -50,16 +51,24 @@ class EstablishmentsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/establishments/{establishment_id}/contacts/{contact_id}'.replaceAll('{' r'establishment_id' '}', establishmentId.toString()).replaceAll('{' r'contact_id' '}', contactId.toString());
+    final _path =
+        r'/api/establishments/{establishment_id}/contacts/{contact_id}'
+            .replaceAll(
+              '{'
+              r'establishment_id'
+              '}',
+              establishmentId.toString(),
+            )
+            .replaceAll(
+              '{'
+              r'contact_id'
+              '}',
+              contactId.toString(),
+            );
     final _options = Options(
       method: r'PATCH',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       validateStatus: validateStatus,
     );
 
@@ -74,8 +83,14 @@ class EstablishmentsApi {
     EstablishmentScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<EstablishmentScheme, EstablishmentScheme>(rawData, 'EstablishmentScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<EstablishmentScheme, EstablishmentScheme>(
+              rawData,
+              'EstablishmentScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -99,11 +114,11 @@ _responseData = rawData == null ? null : deserialize<EstablishmentScheme, Establ
   }
 
   /// On Add Establishment Image
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [establishmentId] 
-  /// * [fileId] 
+  /// * [establishmentId]
+  /// * [fileId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -113,7 +128,7 @@ _responseData = rawData == null ? null : deserialize<EstablishmentScheme, Establ
   ///
   /// Returns a [Future] containing a [Response] with a [EstablishmentScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<EstablishmentScheme>> addEstablishmentImage({ 
+  Future<Response<EstablishmentScheme>> addEstablishmentImage({
     required String establishmentId,
     required String fileId,
     CancelToken? cancelToken,
@@ -123,16 +138,23 @@ _responseData = rawData == null ? null : deserialize<EstablishmentScheme, Establ
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/establishments/{establishment_id}/images/{file_id}'.replaceAll('{' r'establishment_id' '}', establishmentId.toString()).replaceAll('{' r'file_id' '}', fileId.toString());
+    final _path = r'/api/establishments/{establishment_id}/images/{file_id}'
+        .replaceAll(
+          '{'
+          r'establishment_id'
+          '}',
+          establishmentId.toString(),
+        )
+        .replaceAll(
+          '{'
+          r'file_id'
+          '}',
+          fileId.toString(),
+        );
     final _options = Options(
       method: r'PATCH',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       validateStatus: validateStatus,
     );
 
@@ -147,8 +169,14 @@ _responseData = rawData == null ? null : deserialize<EstablishmentScheme, Establ
     EstablishmentScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<EstablishmentScheme, EstablishmentScheme>(rawData, 'EstablishmentScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<EstablishmentScheme, EstablishmentScheme>(
+              rawData,
+              'EstablishmentScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -172,11 +200,11 @@ _responseData = rawData == null ? null : deserialize<EstablishmentScheme, Establ
   }
 
   /// On Add Establishment Working Hour
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [establishmentId] 
-  /// * [createWorkingHourScheme] 
+  /// * [establishmentId]
+  /// * [createWorkingHourScheme]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -186,7 +214,7 @@ _responseData = rawData == null ? null : deserialize<EstablishmentScheme, Establ
   ///
   /// Returns a [Future] containing a [Response] with a [WorkingHourScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<WorkingHourScheme>> addEstablishmentWorkingHour({ 
+  Future<Response<WorkingHourScheme>> addEstablishmentWorkingHour({
     required String establishmentId,
     required CreateWorkingHourScheme createWorkingHourScheme,
     CancelToken? cancelToken,
@@ -196,16 +224,17 @@ _responseData = rawData == null ? null : deserialize<EstablishmentScheme, Establ
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/establishments/{establishment_id}/working_hours'.replaceAll('{' r'establishment_id' '}', establishmentId.toString());
+    final _path = r'/api/establishments/{establishment_id}/working_hours'
+        .replaceAll(
+          '{'
+          r'establishment_id'
+          '}',
+          establishmentId.toString(),
+        );
     final _options = Options(
       method: r'POST',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -213,13 +242,10 @@ _responseData = rawData == null ? null : deserialize<EstablishmentScheme, Establ
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(createWorkingHourScheme);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(createWorkingHourScheme);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -238,8 +264,14 @@ _bodyData=jsonEncode(createWorkingHourScheme);
     WorkingHourScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<WorkingHourScheme, WorkingHourScheme>(rawData, 'WorkingHourScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<WorkingHourScheme, WorkingHourScheme>(
+              rawData,
+              'WorkingHourScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -263,10 +295,10 @@ _responseData = rawData == null ? null : deserialize<WorkingHourScheme, WorkingH
   }
 
   /// On Create Establishment
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [createEstablishmentScheme] 
+  /// * [createEstablishmentScheme]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -276,7 +308,7 @@ _responseData = rawData == null ? null : deserialize<WorkingHourScheme, WorkingH
   ///
   /// Returns a [Future] containing a [Response] with a [EstablishmentScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<EstablishmentScheme>> createEstablishment({ 
+  Future<Response<EstablishmentScheme>> createEstablishment({
     required CreateEstablishmentScheme createEstablishmentScheme,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -288,13 +320,8 @@ _responseData = rawData == null ? null : deserialize<WorkingHourScheme, WorkingH
     final _path = r'/api/establishments';
     final _options = Options(
       method: r'POST',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -302,13 +329,10 @@ _responseData = rawData == null ? null : deserialize<WorkingHourScheme, WorkingH
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(createEstablishmentScheme);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(createEstablishmentScheme);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -327,8 +351,14 @@ _bodyData=jsonEncode(createEstablishmentScheme);
     EstablishmentScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<EstablishmentScheme, EstablishmentScheme>(rawData, 'EstablishmentScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<EstablishmentScheme, EstablishmentScheme>(
+              rawData,
+              'EstablishmentScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -352,11 +382,11 @@ _responseData = rawData == null ? null : deserialize<EstablishmentScheme, Establ
   }
 
   /// On Delete Establishment Contact
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [establishmentId] 
-  /// * [contactId] 
+  /// * [establishmentId]
+  /// * [contactId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -366,7 +396,7 @@ _responseData = rawData == null ? null : deserialize<EstablishmentScheme, Establ
   ///
   /// Returns a [Future] containing a [Response] with a [EstablishmentScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<EstablishmentScheme>> deleteEstablishmentContact({ 
+  Future<Response<EstablishmentScheme>> deleteEstablishmentContact({
     required String establishmentId,
     required String contactId,
     CancelToken? cancelToken,
@@ -376,16 +406,24 @@ _responseData = rawData == null ? null : deserialize<EstablishmentScheme, Establ
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/establishments/{establishment_id}/contacts/{contact_id}'.replaceAll('{' r'establishment_id' '}', establishmentId.toString()).replaceAll('{' r'contact_id' '}', contactId.toString());
+    final _path =
+        r'/api/establishments/{establishment_id}/contacts/{contact_id}'
+            .replaceAll(
+              '{'
+              r'establishment_id'
+              '}',
+              establishmentId.toString(),
+            )
+            .replaceAll(
+              '{'
+              r'contact_id'
+              '}',
+              contactId.toString(),
+            );
     final _options = Options(
       method: r'DELETE',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       validateStatus: validateStatus,
     );
 
@@ -400,8 +438,14 @@ _responseData = rawData == null ? null : deserialize<EstablishmentScheme, Establ
     EstablishmentScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<EstablishmentScheme, EstablishmentScheme>(rawData, 'EstablishmentScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<EstablishmentScheme, EstablishmentScheme>(
+              rawData,
+              'EstablishmentScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -425,11 +469,11 @@ _responseData = rawData == null ? null : deserialize<EstablishmentScheme, Establ
   }
 
   /// On Delete Establishment Image
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [establishmentId] 
-  /// * [fileId] 
+  /// * [establishmentId]
+  /// * [fileId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -439,7 +483,7 @@ _responseData = rawData == null ? null : deserialize<EstablishmentScheme, Establ
   ///
   /// Returns a [Future] containing a [Response] with a [EstablishmentScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<EstablishmentScheme>> deleteEstablishmentImage({ 
+  Future<Response<EstablishmentScheme>> deleteEstablishmentImage({
     required String establishmentId,
     required String fileId,
     CancelToken? cancelToken,
@@ -449,16 +493,23 @@ _responseData = rawData == null ? null : deserialize<EstablishmentScheme, Establ
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/establishments/{establishment_id}/images/{file_id}'.replaceAll('{' r'establishment_id' '}', establishmentId.toString()).replaceAll('{' r'file_id' '}', fileId.toString());
+    final _path = r'/api/establishments/{establishment_id}/images/{file_id}'
+        .replaceAll(
+          '{'
+          r'establishment_id'
+          '}',
+          establishmentId.toString(),
+        )
+        .replaceAll(
+          '{'
+          r'file_id'
+          '}',
+          fileId.toString(),
+        );
     final _options = Options(
       method: r'DELETE',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       validateStatus: validateStatus,
     );
 
@@ -473,8 +524,14 @@ _responseData = rawData == null ? null : deserialize<EstablishmentScheme, Establ
     EstablishmentScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<EstablishmentScheme, EstablishmentScheme>(rawData, 'EstablishmentScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<EstablishmentScheme, EstablishmentScheme>(
+              rawData,
+              'EstablishmentScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -498,10 +555,10 @@ _responseData = rawData == null ? null : deserialize<EstablishmentScheme, Establ
   }
 
   /// On Get Establishment
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [establishmentId] 
+  /// * [establishmentId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -511,7 +568,7 @@ _responseData = rawData == null ? null : deserialize<EstablishmentScheme, Establ
   ///
   /// Returns a [Future] containing a [Response] with a [DetailEstablishmentScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<DetailEstablishmentScheme>> getEstablishment({ 
+  Future<Response<DetailEstablishmentScheme>> getEstablishment({
     required String establishmentId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -520,16 +577,16 @@ _responseData = rawData == null ? null : deserialize<EstablishmentScheme, Establ
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/establishments/{establishment_id}'.replaceAll('{' r'establishment_id' '}', establishmentId.toString());
+    final _path = r'/api/establishments/{establishment_id}'.replaceAll(
+      '{'
+      r'establishment_id'
+      '}',
+      establishmentId.toString(),
+    );
     final _options = Options(
       method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       validateStatus: validateStatus,
     );
 
@@ -544,8 +601,14 @@ _responseData = rawData == null ? null : deserialize<EstablishmentScheme, Establ
     DetailEstablishmentScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<DetailEstablishmentScheme, DetailEstablishmentScheme>(rawData, 'DetailEstablishmentScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<DetailEstablishmentScheme, DetailEstablishmentScheme>(
+              rawData,
+              'DetailEstablishmentScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -569,10 +632,10 @@ _responseData = rawData == null ? null : deserialize<DetailEstablishmentScheme, 
   }
 
   /// On Get Establishment Place Groups
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [establishmentId] 
+  /// * [establishmentId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -582,7 +645,7 @@ _responseData = rawData == null ? null : deserialize<DetailEstablishmentScheme, 
   ///
   /// Returns a [Future] containing a [Response] with a [List<PlaceGroupScheme>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<PlaceGroupScheme>>> getEstablishmentPlaceGroups({ 
+  Future<Response<List<PlaceGroupScheme>>> getEstablishmentPlaceGroups({
     required String establishmentId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -591,16 +654,17 @@ _responseData = rawData == null ? null : deserialize<DetailEstablishmentScheme, 
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/establishments/{establishment_id}/places/groups'.replaceAll('{' r'establishment_id' '}', establishmentId.toString());
+    final _path = r'/api/establishments/{establishment_id}/places/groups'
+        .replaceAll(
+          '{'
+          r'establishment_id'
+          '}',
+          establishmentId.toString(),
+        );
     final _options = Options(
       method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       validateStatus: validateStatus,
     );
 
@@ -615,8 +679,14 @@ _responseData = rawData == null ? null : deserialize<DetailEstablishmentScheme, 
     List<PlaceGroupScheme>? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<List<PlaceGroupScheme>, PlaceGroupScheme>(rawData, 'List<PlaceGroupScheme>', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<List<PlaceGroupScheme>, PlaceGroupScheme>(
+              rawData,
+              'List<PlaceGroupScheme>',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -640,10 +710,10 @@ _responseData = rawData == null ? null : deserialize<List<PlaceGroupScheme>, Pla
   }
 
   /// On Get Establishment Places
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [establishmentId] 
+  /// * [establishmentId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -653,7 +723,7 @@ _responseData = rawData == null ? null : deserialize<List<PlaceGroupScheme>, Pla
   ///
   /// Returns a [Future] containing a [Response] with a [List<PlaceScheme>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<PlaceScheme>>> getEstablishmentPlaces({ 
+  Future<Response<List<PlaceScheme>>> getEstablishmentPlaces({
     required String establishmentId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -662,16 +732,16 @@ _responseData = rawData == null ? null : deserialize<List<PlaceGroupScheme>, Pla
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/establishments/{establishment_id}/places'.replaceAll('{' r'establishment_id' '}', establishmentId.toString());
+    final _path = r'/api/establishments/{establishment_id}/places'.replaceAll(
+      '{'
+      r'establishment_id'
+      '}',
+      establishmentId.toString(),
+    );
     final _options = Options(
       method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       validateStatus: validateStatus,
     );
 
@@ -686,8 +756,14 @@ _responseData = rawData == null ? null : deserialize<List<PlaceGroupScheme>, Pla
     List<PlaceScheme>? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<List<PlaceScheme>, PlaceScheme>(rawData, 'List<PlaceScheme>', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<List<PlaceScheme>, PlaceScheme>(
+              rawData,
+              'List<PlaceScheme>',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -711,10 +787,10 @@ _responseData = rawData == null ? null : deserialize<List<PlaceScheme>, PlaceSch
   }
 
   /// On Get Establishment Menu
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [establishmentId] 
+  /// * [establishmentId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -724,7 +800,7 @@ _responseData = rawData == null ? null : deserialize<List<PlaceScheme>, PlaceSch
   ///
   /// Returns a [Future] containing a [Response] with a [List<ProductScheme>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<ProductScheme>>> getEstablishmentProducts({ 
+  Future<Response<List<ProductScheme>>> getEstablishmentProducts({
     required String establishmentId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -733,16 +809,16 @@ _responseData = rawData == null ? null : deserialize<List<PlaceScheme>, PlaceSch
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/establishments/{establishment_id}/products'.replaceAll('{' r'establishment_id' '}', establishmentId.toString());
+    final _path = r'/api/establishments/{establishment_id}/products'.replaceAll(
+      '{'
+      r'establishment_id'
+      '}',
+      establishmentId.toString(),
+    );
     final _options = Options(
       method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       validateStatus: validateStatus,
     );
 
@@ -757,8 +833,14 @@ _responseData = rawData == null ? null : deserialize<List<PlaceScheme>, PlaceSch
     List<ProductScheme>? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<List<ProductScheme>, ProductScheme>(rawData, 'List<ProductScheme>', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<List<ProductScheme>, ProductScheme>(
+              rawData,
+              'List<ProductScheme>',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -782,11 +864,11 @@ _responseData = rawData == null ? null : deserialize<List<ProductScheme>, Produc
   }
 
   /// On Update Establishment
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [establishmentId] 
-  /// * [updateEstablishmentScheme] 
+  /// * [establishmentId]
+  /// * [updateEstablishmentScheme]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -796,7 +878,7 @@ _responseData = rawData == null ? null : deserialize<List<ProductScheme>, Produc
   ///
   /// Returns a [Future] containing a [Response] with a [EstablishmentScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<EstablishmentScheme>> updateEstablishment({ 
+  Future<Response<EstablishmentScheme>> updateEstablishment({
     required String establishmentId,
     required UpdateEstablishmentScheme updateEstablishmentScheme,
     CancelToken? cancelToken,
@@ -806,16 +888,16 @@ _responseData = rawData == null ? null : deserialize<List<ProductScheme>, Produc
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/establishments/{establishment_id}'.replaceAll('{' r'establishment_id' '}', establishmentId.toString());
+    final _path = r'/api/establishments/{establishment_id}'.replaceAll(
+      '{'
+      r'establishment_id'
+      '}',
+      establishmentId.toString(),
+    );
     final _options = Options(
       method: r'PUT',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -823,13 +905,10 @@ _responseData = rawData == null ? null : deserialize<List<ProductScheme>, Produc
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(updateEstablishmentScheme);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(updateEstablishmentScheme);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -848,8 +927,14 @@ _bodyData=jsonEncode(updateEstablishmentScheme);
     EstablishmentScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<EstablishmentScheme, EstablishmentScheme>(rawData, 'EstablishmentScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<EstablishmentScheme, EstablishmentScheme>(
+              rawData,
+              'EstablishmentScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -873,12 +958,12 @@ _responseData = rawData == null ? null : deserialize<EstablishmentScheme, Establ
   }
 
   /// On Update Establishment Working Hour
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [establishmentId] 
-  /// * [workingHourId] 
-  /// * [updateWorkingHourScheme] 
+  /// * [establishmentId]
+  /// * [workingHourId]
+  /// * [updateWorkingHourScheme]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -888,7 +973,7 @@ _responseData = rawData == null ? null : deserialize<EstablishmentScheme, Establ
   ///
   /// Returns a [Future] containing a [Response] with a [WorkingHourScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<WorkingHourScheme>> updateEstablishmentWorkingHour({ 
+  Future<Response<WorkingHourScheme>> updateEstablishmentWorkingHour({
     required String establishmentId,
     required String workingHourId,
     required UpdateWorkingHourScheme updateWorkingHourScheme,
@@ -899,16 +984,24 @@ _responseData = rawData == null ? null : deserialize<EstablishmentScheme, Establ
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/establishments/{establishment_id}/working_hours/{working_hour_id}'.replaceAll('{' r'establishment_id' '}', establishmentId.toString()).replaceAll('{' r'working_hour_id' '}', workingHourId.toString());
+    final _path =
+        r'/api/establishments/{establishment_id}/working_hours/{working_hour_id}'
+            .replaceAll(
+              '{'
+              r'establishment_id'
+              '}',
+              establishmentId.toString(),
+            )
+            .replaceAll(
+              '{'
+              r'working_hour_id'
+              '}',
+              workingHourId.toString(),
+            );
     final _options = Options(
       method: r'PATCH',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -916,13 +1009,10 @@ _responseData = rawData == null ? null : deserialize<EstablishmentScheme, Establ
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(updateWorkingHourScheme);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(updateWorkingHourScheme);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -941,8 +1031,14 @@ _bodyData=jsonEncode(updateWorkingHourScheme);
     WorkingHourScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<WorkingHourScheme, WorkingHourScheme>(rawData, 'WorkingHourScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<WorkingHourScheme, WorkingHourScheme>(
+              rawData,
+              'WorkingHourScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -964,5 +1060,4 @@ _responseData = rawData == null ? null : deserialize<WorkingHourScheme, WorkingH
       extra: _response.extra,
     );
   }
-
 }

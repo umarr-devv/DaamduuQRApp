@@ -3,24 +3,24 @@
 //
 
 import 'dart:async';
+
 // ignore: unused_import
 import 'dart:convert';
-
 import 'package:daamduuqr_client/src/deserialize.dart';
-import 'package:daamduuqr_client/src/model/search_result_scheme.dart';
 import 'package:dio/dio.dart';
 
-class SearchApi {
+import 'package:daamduuqr_client/src/model/search_result_scheme.dart';
 
+class SearchApi {
   final Dio _dio;
 
   const SearchApi(this._dio);
 
   /// On Search
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [query] 
+  /// * [query]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -30,7 +30,7 @@ class SearchApi {
   ///
   /// Returns a [Future] containing a [Response] with a [SearchResultScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<SearchResultScheme>> search({ 
+  Future<Response<SearchResultScheme>> search({
     required String query,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -42,19 +42,12 @@ class SearchApi {
     final _path = r'/api/search';
     final _options = Options(
       method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       validateStatus: validateStatus,
     );
 
-    final _queryParameters = <String, dynamic>{
-      r'query': query,
-    };
+    final _queryParameters = <String, dynamic>{r'query': query};
 
     final _response = await _dio.request<Object>(
       _path,
@@ -68,8 +61,14 @@ class SearchApi {
     SearchResultScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<SearchResultScheme, SearchResultScheme>(rawData, 'SearchResultScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<SearchResultScheme, SearchResultScheme>(
+              rawData,
+              'SearchResultScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -93,11 +92,11 @@ _responseData = rawData == null ? null : deserialize<SearchResultScheme, SearchR
   }
 
   /// On Search By Establishment
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [query] 
-  /// * [establishmentId] 
+  /// * [query]
+  /// * [establishmentId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -107,7 +106,7 @@ _responseData = rawData == null ? null : deserialize<SearchResultScheme, SearchR
   ///
   /// Returns a [Future] containing a [Response] with a [SearchResultScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<SearchResultScheme>> searchByEstablishment({ 
+  Future<Response<SearchResultScheme>> searchByEstablishment({
     required String query,
     required String establishmentId,
     CancelToken? cancelToken,
@@ -120,13 +119,8 @@ _responseData = rawData == null ? null : deserialize<SearchResultScheme, SearchR
     final _path = r'/api/search/by_establishment';
     final _options = Options(
       method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       validateStatus: validateStatus,
     );
 
@@ -147,8 +141,14 @@ _responseData = rawData == null ? null : deserialize<SearchResultScheme, SearchR
     SearchResultScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<SearchResultScheme, SearchResultScheme>(rawData, 'SearchResultScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<SearchResultScheme, SearchResultScheme>(
+              rawData,
+              'SearchResultScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -170,5 +170,4 @@ _responseData = rawData == null ? null : deserialize<SearchResultScheme, SearchR
       extra: _response.extra,
     );
   }
-
 }

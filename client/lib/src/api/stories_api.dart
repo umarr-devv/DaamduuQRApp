@@ -3,29 +3,30 @@
 //
 
 import 'dart:async';
+
 // ignore: unused_import
 import 'dart:convert';
-
 import 'package:daamduuqr_client/src/deserialize.dart';
+import 'package:dio/dio.dart';
+
 import 'package:daamduuqr_client/src/model/create_story_scheme.dart';
+
 import 'package:daamduuqr_client/src/model/story_add_establishment_scheme.dart';
 import 'package:daamduuqr_client/src/model/story_delete_establishment_scheme.dart';
 import 'package:daamduuqr_client/src/model/story_scheme.dart';
 import 'package:daamduuqr_client/src/model/update_story_scheme.dart';
-import 'package:dio/dio.dart';
 
 class StoriesApi {
-
   final Dio _dio;
 
   const StoriesApi(this._dio);
 
   /// On Add Story Content
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [storyId] 
-  /// * [images] 
+  /// * [storyId]
+  /// * [images]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -35,7 +36,7 @@ class StoriesApi {
   ///
   /// Returns a [Future] containing a [Response] with a [StoryScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<StoryScheme>> addStoryContent({ 
+  Future<Response<StoryScheme>> addStoryContent({
     required String storyId,
     List<MultipartFile>? images,
     CancelToken? cancelToken,
@@ -45,30 +46,25 @@ class StoriesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/stories/{story_id}/content'.replaceAll('{' r'story_id' '}', storyId.toString());
+    final _path = r'/api/stories/{story_id}/content'.replaceAll(
+      '{'
+      r'story_id'
+      '}',
+      storyId.toString(),
+    );
     final _options = Options(
       method: r'PATCH',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'multipart/form-data',
       validateStatus: validateStatus,
     );
 
     dynamic _bodyData;
 
-    try {
-
-    } catch(error, stackTrace) {
+    try {} catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -87,8 +83,14 @@ class StoriesApi {
     StoryScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<StoryScheme, StoryScheme>(rawData, 'StoryScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<StoryScheme, StoryScheme>(
+              rawData,
+              'StoryScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -112,11 +114,11 @@ _responseData = rawData == null ? null : deserialize<StoryScheme, StoryScheme>(r
   }
 
   /// On Add Story Establishments
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [storyId] 
-  /// * [storyAddEstablishmentScheme] 
+  /// * [storyId]
+  /// * [storyAddEstablishmentScheme]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -126,7 +128,7 @@ _responseData = rawData == null ? null : deserialize<StoryScheme, StoryScheme>(r
   ///
   /// Returns a [Future] containing a [Response] with a [StoryScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<StoryScheme>> addStoryEstablishments({ 
+  Future<Response<StoryScheme>> addStoryEstablishments({
     required String storyId,
     required StoryAddEstablishmentScheme storyAddEstablishmentScheme,
     CancelToken? cancelToken,
@@ -136,16 +138,16 @@ _responseData = rawData == null ? null : deserialize<StoryScheme, StoryScheme>(r
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/stories/{story_id}/establishments'.replaceAll('{' r'story_id' '}', storyId.toString());
+    final _path = r'/api/stories/{story_id}/establishments'.replaceAll(
+      '{'
+      r'story_id'
+      '}',
+      storyId.toString(),
+    );
     final _options = Options(
       method: r'PATCH',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -153,13 +155,10 @@ _responseData = rawData == null ? null : deserialize<StoryScheme, StoryScheme>(r
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(storyAddEstablishmentScheme);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(storyAddEstablishmentScheme);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -178,8 +177,14 @@ _bodyData=jsonEncode(storyAddEstablishmentScheme);
     StoryScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<StoryScheme, StoryScheme>(rawData, 'StoryScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<StoryScheme, StoryScheme>(
+              rawData,
+              'StoryScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -203,11 +208,11 @@ _responseData = rawData == null ? null : deserialize<StoryScheme, StoryScheme>(r
   }
 
   /// On Add Story Image
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [storyId] 
-  /// * [file] 
+  /// * [storyId]
+  /// * [file]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -217,7 +222,7 @@ _responseData = rawData == null ? null : deserialize<StoryScheme, StoryScheme>(r
   ///
   /// Returns a [Future] containing a [Response] with a [StoryScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<StoryScheme>> addStoryImage({ 
+  Future<Response<StoryScheme>> addStoryImage({
     required String storyId,
     required MultipartFile file,
     CancelToken? cancelToken,
@@ -227,30 +232,25 @@ _responseData = rawData == null ? null : deserialize<StoryScheme, StoryScheme>(r
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/stories/{story_id}/image'.replaceAll('{' r'story_id' '}', storyId.toString());
+    final _path = r'/api/stories/{story_id}/image'.replaceAll(
+      '{'
+      r'story_id'
+      '}',
+      storyId.toString(),
+    );
     final _options = Options(
       method: r'PATCH',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'multipart/form-data',
       validateStatus: validateStatus,
     );
 
     dynamic _bodyData;
 
-    try {
-
-    } catch(error, stackTrace) {
+    try {} catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -269,8 +269,14 @@ _responseData = rawData == null ? null : deserialize<StoryScheme, StoryScheme>(r
     StoryScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<StoryScheme, StoryScheme>(rawData, 'StoryScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<StoryScheme, StoryScheme>(
+              rawData,
+              'StoryScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -294,10 +300,10 @@ _responseData = rawData == null ? null : deserialize<StoryScheme, StoryScheme>(r
   }
 
   /// On Create Story
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [createStoryScheme] 
+  /// * [createStoryScheme]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -307,7 +313,7 @@ _responseData = rawData == null ? null : deserialize<StoryScheme, StoryScheme>(r
   ///
   /// Returns a [Future] containing a [Response] with a [StoryScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<StoryScheme>> createStory({ 
+  Future<Response<StoryScheme>> createStory({
     required CreateStoryScheme createStoryScheme,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -319,13 +325,8 @@ _responseData = rawData == null ? null : deserialize<StoryScheme, StoryScheme>(r
     final _path = r'/api/stories';
     final _options = Options(
       method: r'POST',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -333,13 +334,10 @@ _responseData = rawData == null ? null : deserialize<StoryScheme, StoryScheme>(r
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(createStoryScheme);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(createStoryScheme);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -358,8 +356,14 @@ _bodyData=jsonEncode(createStoryScheme);
     StoryScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<StoryScheme, StoryScheme>(rawData, 'StoryScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<StoryScheme, StoryScheme>(
+              rawData,
+              'StoryScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -383,11 +387,11 @@ _responseData = rawData == null ? null : deserialize<StoryScheme, StoryScheme>(r
   }
 
   /// On Delete Story Establishments
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [storyId] 
-  /// * [storyDeleteEstablishmentScheme] 
+  /// * [storyId]
+  /// * [storyDeleteEstablishmentScheme]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -397,7 +401,7 @@ _responseData = rawData == null ? null : deserialize<StoryScheme, StoryScheme>(r
   ///
   /// Returns a [Future] containing a [Response] with a [StoryScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<StoryScheme>> deleteStoryEstablishments({ 
+  Future<Response<StoryScheme>> deleteStoryEstablishments({
     required String storyId,
     required StoryDeleteEstablishmentScheme storyDeleteEstablishmentScheme,
     CancelToken? cancelToken,
@@ -407,16 +411,16 @@ _responseData = rawData == null ? null : deserialize<StoryScheme, StoryScheme>(r
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/stories/{story_id}/establishments'.replaceAll('{' r'story_id' '}', storyId.toString());
+    final _path = r'/api/stories/{story_id}/establishments'.replaceAll(
+      '{'
+      r'story_id'
+      '}',
+      storyId.toString(),
+    );
     final _options = Options(
       method: r'DELETE',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -424,13 +428,10 @@ _responseData = rawData == null ? null : deserialize<StoryScheme, StoryScheme>(r
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(storyDeleteEstablishmentScheme);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(storyDeleteEstablishmentScheme);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -449,8 +450,14 @@ _bodyData=jsonEncode(storyDeleteEstablishmentScheme);
     StoryScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<StoryScheme, StoryScheme>(rawData, 'StoryScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<StoryScheme, StoryScheme>(
+              rawData,
+              'StoryScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -474,10 +481,10 @@ _responseData = rawData == null ? null : deserialize<StoryScheme, StoryScheme>(r
   }
 
   /// On Get Stories By Establishment
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [establishmentId] 
+  /// * [establishmentId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -487,7 +494,7 @@ _responseData = rawData == null ? null : deserialize<StoryScheme, StoryScheme>(r
   ///
   /// Returns a [Future] containing a [Response] with a [List<StoryScheme>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<StoryScheme>>> getStoriesByEstablishment({ 
+  Future<Response<List<StoryScheme>>> getStoriesByEstablishment({
     required String establishmentId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -496,16 +503,17 @@ _responseData = rawData == null ? null : deserialize<StoryScheme, StoryScheme>(r
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/stories/by_establishment/{establishment_id}'.replaceAll('{' r'establishment_id' '}', establishmentId.toString());
+    final _path = r'/api/stories/by_establishment/{establishment_id}'
+        .replaceAll(
+          '{'
+          r'establishment_id'
+          '}',
+          establishmentId.toString(),
+        );
     final _options = Options(
       method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       validateStatus: validateStatus,
     );
 
@@ -520,8 +528,14 @@ _responseData = rawData == null ? null : deserialize<StoryScheme, StoryScheme>(r
     List<StoryScheme>? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<List<StoryScheme>, StoryScheme>(rawData, 'List<StoryScheme>', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<List<StoryScheme>, StoryScheme>(
+              rawData,
+              'List<StoryScheme>',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -545,10 +559,10 @@ _responseData = rawData == null ? null : deserialize<List<StoryScheme>, StorySch
   }
 
   /// On Get Stories By Organization
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [organizationId] 
+  /// * [organizationId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -558,7 +572,7 @@ _responseData = rawData == null ? null : deserialize<List<StoryScheme>, StorySch
   ///
   /// Returns a [Future] containing a [Response] with a [List<StoryScheme>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<StoryScheme>>> getStoriesByOrganization({ 
+  Future<Response<List<StoryScheme>>> getStoriesByOrganization({
     required String organizationId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -567,16 +581,16 @@ _responseData = rawData == null ? null : deserialize<List<StoryScheme>, StorySch
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/stories/by_organization/{organization_id}'.replaceAll('{' r'organization_id' '}', organizationId.toString());
+    final _path = r'/api/stories/by_organization/{organization_id}'.replaceAll(
+      '{'
+      r'organization_id'
+      '}',
+      organizationId.toString(),
+    );
     final _options = Options(
       method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       validateStatus: validateStatus,
     );
 
@@ -591,8 +605,14 @@ _responseData = rawData == null ? null : deserialize<List<StoryScheme>, StorySch
     List<StoryScheme>? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<List<StoryScheme>, StoryScheme>(rawData, 'List<StoryScheme>', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<List<StoryScheme>, StoryScheme>(
+              rawData,
+              'List<StoryScheme>',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -616,11 +636,11 @@ _responseData = rawData == null ? null : deserialize<List<StoryScheme>, StorySch
   }
 
   /// On Update Story
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [storyId] 
-  /// * [updateStoryScheme] 
+  /// * [storyId]
+  /// * [updateStoryScheme]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -630,7 +650,7 @@ _responseData = rawData == null ? null : deserialize<List<StoryScheme>, StorySch
   ///
   /// Returns a [Future] containing a [Response] with a [StoryScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<StoryScheme>> updateStory({ 
+  Future<Response<StoryScheme>> updateStory({
     required String storyId,
     required UpdateStoryScheme updateStoryScheme,
     CancelToken? cancelToken,
@@ -640,16 +660,16 @@ _responseData = rawData == null ? null : deserialize<List<StoryScheme>, StorySch
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/stories/{story_id}'.replaceAll('{' r'story_id' '}', storyId.toString());
+    final _path = r'/api/stories/{story_id}'.replaceAll(
+      '{'
+      r'story_id'
+      '}',
+      storyId.toString(),
+    );
     final _options = Options(
       method: r'PUT',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -657,13 +677,10 @@ _responseData = rawData == null ? null : deserialize<List<StoryScheme>, StorySch
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(updateStoryScheme);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(updateStoryScheme);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -682,8 +699,14 @@ _bodyData=jsonEncode(updateStoryScheme);
     StoryScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<StoryScheme, StoryScheme>(rawData, 'StoryScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<StoryScheme, StoryScheme>(
+              rawData,
+              'StoryScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -705,5 +728,4 @@ _responseData = rawData == null ? null : deserialize<StoryScheme, StoryScheme>(r
       extra: _response.extra,
     );
   }
-
 }

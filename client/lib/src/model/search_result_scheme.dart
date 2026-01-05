@@ -9,7 +9,6 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'search_result_scheme.g.dart';
 
-
 @JsonSerializable(
   checked: true,
   createToJson: true,
@@ -19,25 +18,15 @@ part 'search_result_scheme.g.dart';
 class SearchResultScheme {
   /// Returns a new [SearchResultScheme] instance.
   SearchResultScheme({
+    required this.query,
 
-    required  this.query,
+    this.establishments = const [],
 
-     this.establishments = const [],
-
-     this.products = const [],
+    this.products = const [],
   });
 
-  @JsonKey(
-    
-    name: r'query',
-    required: true,
-    includeIfNull: false,
-  )
-
-
+  @JsonKey(name: r'query', required: true, includeIfNull: false)
   final String query;
-
-
 
   @JsonKey(
     defaultValue: [],
@@ -45,11 +34,7 @@ class SearchResultScheme {
     required: false,
     includeIfNull: false,
   )
-
-
   final List<EstablishmentScheme>? establishments;
-
-
 
   @JsonKey(
     defaultValue: [],
@@ -57,27 +42,22 @@ class SearchResultScheme {
     required: false,
     includeIfNull: false,
   )
-
-
   final List<ProductScheme>? products;
 
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SearchResultScheme &&
+          other.query == query &&
+          other.establishments == establishments &&
+          other.products == products;
 
+  @override
+  int get hashCode =>
+      query.hashCode + establishments.hashCode + products.hashCode;
 
-
-
-    @override
-    bool operator ==(Object other) => identical(this, other) || other is SearchResultScheme &&
-      other.query == query &&
-      other.establishments == establishments &&
-      other.products == products;
-
-    @override
-    int get hashCode =>
-        query.hashCode +
-        establishments.hashCode +
-        products.hashCode;
-
-  factory SearchResultScheme.fromJson(Map<String, dynamic> json) => _$SearchResultSchemeFromJson(json);
+  factory SearchResultScheme.fromJson(Map<String, dynamic> json) =>
+      _$SearchResultSchemeFromJson(json);
 
   Map<String, dynamic> toJson() => _$SearchResultSchemeToJson(this);
 
@@ -85,6 +65,4 @@ class SearchResultScheme {
   String toString() {
     return toJson().toString();
   }
-
 }
-

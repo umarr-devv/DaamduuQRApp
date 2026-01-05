@@ -3,25 +3,26 @@
 //
 
 import 'dart:async';
+
 // ignore: unused_import
 import 'dart:convert';
-
 import 'package:daamduuqr_client/src/deserialize.dart';
-import 'package:daamduuqr_client/src/model/create_order_scheme.dart';
-import 'package:daamduuqr_client/src/model/order_scheme.dart';
 import 'package:dio/dio.dart';
 
-class OrdersApi {
+import 'package:daamduuqr_client/src/model/create_order_scheme.dart';
 
+import 'package:daamduuqr_client/src/model/order_scheme.dart';
+
+class OrdersApi {
   final Dio _dio;
 
   const OrdersApi(this._dio);
 
   /// On Create Order
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [createOrderScheme] 
+  /// * [createOrderScheme]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -31,7 +32,7 @@ class OrdersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [OrderScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<OrderScheme>> createOrder({ 
+  Future<Response<OrderScheme>> createOrder({
     required CreateOrderScheme createOrderScheme,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -43,13 +44,8 @@ class OrdersApi {
     final _path = r'/api/orders';
     final _options = Options(
       method: r'POST',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -57,13 +53,10 @@ class OrdersApi {
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(createOrderScheme);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(createOrderScheme);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -82,8 +75,14 @@ _bodyData=jsonEncode(createOrderScheme);
     OrderScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<OrderScheme, OrderScheme>(rawData, 'OrderScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<OrderScheme, OrderScheme>(
+              rawData,
+              'OrderScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -107,10 +106,10 @@ _responseData = rawData == null ? null : deserialize<OrderScheme, OrderScheme>(r
   }
 
   /// On Get Order
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [orderId] 
+  /// * [orderId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -120,7 +119,7 @@ _responseData = rawData == null ? null : deserialize<OrderScheme, OrderScheme>(r
   ///
   /// Returns a [Future] containing a [Response] with a [OrderScheme] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<OrderScheme>> getOrder({ 
+  Future<Response<OrderScheme>> getOrder({
     required String orderId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -129,16 +128,16 @@ _responseData = rawData == null ? null : deserialize<OrderScheme, OrderScheme>(r
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/orders/{order_id}'.replaceAll('{' r'order_id' '}', orderId.toString());
+    final _path = r'/api/orders/{order_id}'.replaceAll(
+      '{'
+      r'order_id'
+      '}',
+      orderId.toString(),
+    );
     final _options = Options(
       method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       validateStatus: validateStatus,
     );
 
@@ -153,8 +152,14 @@ _responseData = rawData == null ? null : deserialize<OrderScheme, OrderScheme>(r
     OrderScheme? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<OrderScheme, OrderScheme>(rawData, 'OrderScheme', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<OrderScheme, OrderScheme>(
+              rawData,
+              'OrderScheme',
+              growable: true,
+            );
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -176,5 +181,4 @@ _responseData = rawData == null ? null : deserialize<OrderScheme, OrderScheme>(r
       extra: _response.extra,
     );
   }
-
 }
