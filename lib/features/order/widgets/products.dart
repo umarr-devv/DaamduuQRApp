@@ -1,5 +1,6 @@
 import 'package:app/blocs/blocs.dart';
 import 'package:app/core/router/router.dart';
+import 'package:app/shared/icons/icons.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:app/shared/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
@@ -115,7 +116,7 @@ class _CardInfo extends StatelessWidget {
                 color: theme.custom.onMuted,
               ),
             ),
-            SomSymbol(size: 12),
+            CustomIcons.som(size: 12)
           ],
         ),
         SizedBox(height: 4),

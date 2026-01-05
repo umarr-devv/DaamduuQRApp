@@ -1,10 +1,10 @@
 import 'package:app/blocs/blocs.dart';
 import 'package:app/core/router/router.dart';
+import 'package:app/shared/icons/icons.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class MenuNavBar extends StatelessWidget {
   const MenuNavBar({super.key});
@@ -27,24 +27,24 @@ class MenuNavBar extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 _MenuNavBarItem(
-                  activeIcon: 'assets/svg/house_fill.svg',
-                  inactiveIcon: 'assets/svg/house.svg',
+                  activeIcon: CustomIcons.house_fill,
+                  inactiveIcon: CustomIcons.house,
                   index: 0,
                 ),
                 _MenuNavBarItem(
-                  activeIcon: 'assets/svg/ticket_fill.svg',
-                  inactiveIcon: 'assets/svg/ticket.svg',
+                  activeIcon: CustomIcons.ticket_fill,
+                  inactiveIcon: CustomIcons.ticket,
                   index: 1,
                 ),
                 SizedBox(width: 48),
                 _MenuNavBarItem(
-                  activeIcon: 'assets/svg/heart_fill.svg',
-                  inactiveIcon: 'assets/svg/heart.svg',
+                  activeIcon: CustomIcons.heart_fill,
+                  inactiveIcon: CustomIcons.heart,
                   index: 2,
                 ),
                 _MenuNavBarItem(
-                  activeIcon: 'assets/svg/user_fill.svg',
-                  inactiveIcon: 'assets/svg/user.svg',
+                  activeIcon: CustomIcons.user_fill,
+                  inactiveIcon: CustomIcons.user,
                   index: 3,
                 ),
               ],
@@ -80,15 +80,7 @@ class _ScanButton extends StatelessWidget {
                     borderRadius: BorderRadiusGeometry.circular(64),
                   ),
                 ),
-                icon: SvgPicture.asset(
-                  'assets/svg/receipt.svg',
-                  height: 24,
-                  width: 24,
-                  colorFilter: ColorFilter.mode(
-                    theme.custom.background,
-                    BlendMode.srcIn,
-                  ),
-                ),
+                icon: CustomIcons.receipt(color: theme.custom.background),
               ),
               Positioned(
                 top: 0,
@@ -129,15 +121,7 @@ class _ScanButton extends StatelessWidget {
                 borderRadius: BorderRadiusGeometry.circular(64),
               ),
             ),
-            icon: SvgPicture.asset(
-              'assets/svg/icon.svg',
-              height: 24,
-              width: 24,
-              colorFilter: ColorFilter.mode(
-                theme.custom.background,
-                BlendMode.srcIn,
-              ),
-            ),
+            icon: CustomIcons.icon(color: theme.custom.background),
           );
         }
       },
@@ -151,8 +135,8 @@ class _MenuNavBarItem extends StatefulWidget {
     required this.inactiveIcon,
     required this.index,
   });
-  final String activeIcon;
-  final String inactiveIcon;
+  final CustomIcons activeIcon;
+  final CustomIcons inactiveIcon;
   final int index;
 
   @override
@@ -174,15 +158,9 @@ class _MenuNavBarItemState extends State<_MenuNavBarItem> {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
         decoration: BoxDecoration(color: theme.custom.transparent),
-        child: SvgPicture.asset(
-          active ? widget.activeIcon : widget.inactiveIcon,
-          height: 24,
-          width: 24,
-          colorFilter: ColorFilter.mode(
-            active ? theme.custom.primary : theme.custom.onMuted,
-            BlendMode.srcIn,
-          ),
-        ),
+        child: active
+            ? widget.activeIcon(color: theme.custom.primary)
+            : widget.inactiveIcon(color: theme.custom.onMuted),
       ),
     );
   }

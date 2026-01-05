@@ -1,6 +1,6 @@
 import 'package:app/features/product/bloc/product/product_cubit.dart';
+import 'package:app/shared/icons/icons.dart';
 import 'package:app/shared/theme/theme.dart';
-import 'package:app/shared/widgets/components/currency.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -68,7 +68,7 @@ class _ProductPrice extends StatelessWidget {
         spacing: 4,
         children: [
           Text(product.price.toStringAsFixed(0), style: theme.custom.price),
-          SomSymbol(),
+          CustomIcons.som(),
         ],
       ),
     );

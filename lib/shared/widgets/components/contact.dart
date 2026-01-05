@@ -1,7 +1,7 @@
+import 'package:app/shared/icons/icons.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CustomContactText extends StatelessWidget {
@@ -9,18 +9,18 @@ class CustomContactText extends StatelessWidget {
 
   final ContactScheme contact;
 
-  (String, String) getData() {
+  (String, CustomIcons) getData() {
     switch (contact.type) {
       case ContactType.phone:
-        return ('Телефон', 'assets/svg/phone.svg');
+        return ('Телефон', CustomIcons.phone);
       case ContactType.email:
-        return ('Эл. почта', 'assets/svg/mail.svg');
+        return ('Эл. почта', CustomIcons.mail);
       case ContactType.instagram:
-        return ('Инстаграм', 'assets/svg/instagram.svg');
+        return ('Инстаграм', CustomIcons.instagram);
       case ContactType.whatsapp:
-        return ('Ватсап', 'assets/svg/whatsapp.svg');
+        return ('Ватсап', CustomIcons.whatsapp);
       case ContactType.telegram:
-        return ('Телеграм', 'assets/svg/telegram.svg');
+        return ('Телеграм', CustomIcons.telegram);
     }
   }
 
@@ -42,15 +42,7 @@ class CustomContactText extends StatelessWidget {
           spacing: 6,
           mainAxisSize: MainAxisSize.min,
           children: [
-            SvgPicture.asset(
-              icon,
-              height: 16,
-              width: 16,
-              colorFilter: ColorFilter.mode(
-                theme.custom.onMuted,
-                BlendMode.srcIn,
-              ),
-            ),
+            icon(size: 16, color: theme.custom.onMuted),
             Text(
               contact.name ?? label,
               style: TextStyle(

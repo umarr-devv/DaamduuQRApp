@@ -1,11 +1,11 @@
+import 'package:app/shared/icons/icons.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class _ContactData {
   _ContactData({required this.icon, required this.label, required this.url});
 
-  final String icon;
+  final CustomIcons icon;
   final String label;
   final String url;
 }
@@ -19,11 +19,11 @@ class ProfileContacts extends StatefulWidget {
 
 class _ProfileContactsState extends State<ProfileContacts> {
   final contacts = [
-    _ContactData(icon: 'assets/svg/phone.svg', label: 'Номер', url: ''),
-    _ContactData(icon: 'assets/svg/mail.svg', label: 'Эл. почта', url: ''),
-    _ContactData(icon: 'assets/svg/whatsapp.svg', label: 'WhatsApp', url: ''),
-    _ContactData(icon: 'assets/svg/telegram.svg', label: 'Telegram', url: ''),
-    _ContactData(icon: 'assets/svg/instagram.svg', label: 'Instagram', url: ''),
+    _ContactData(icon: CustomIcons.phone, label: 'Номер', url: ''),
+    _ContactData(icon: CustomIcons.mail, label: 'Эл. почта', url: ''),
+    _ContactData(icon: CustomIcons.whatsapp, label: 'WhatsApp', url: ''),
+    _ContactData(icon: CustomIcons.telegram, label: 'Telegram', url: ''),
+    _ContactData(icon: CustomIcons.instagram, label: 'Instagram', url: ''),
   ];
 
   @override
@@ -40,14 +40,7 @@ class _ProfileContactsState extends State<ProfileContacts> {
         children: contacts
             .map(
               (i) => IconButton(
-                icon: SvgPicture.asset(
-                  i.icon,
-                  height: 24,
-                  colorFilter: ColorFilter.mode(
-                    theme.custom.onMuted,
-                    BlendMode.srcIn,
-                  ),
-                ),
+                icon: i.icon(color: theme.custom.onMuted),
                 onPressed: () {},
               ),
             )

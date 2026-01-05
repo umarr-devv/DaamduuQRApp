@@ -1,6 +1,5 @@
 import 'package:app/shared/theme/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class ErrorScreen extends StatelessWidget {
   const ErrorScreen({super.key, this.retry});
@@ -18,15 +17,6 @@ class ErrorScreen extends StatelessWidget {
           spacing: 12,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SvgPicture.asset(
-              "assets/svg/face-sad-sweat.svg",
-              height: 128,
-              width: 128,
-              colorFilter: ColorFilter.mode(
-                theme.custom.foreground,
-                BlendMode.srcIn,
-              ),
-            ),
             Text(
               'Нет соединения с сетью',
               textAlign: TextAlign.center,

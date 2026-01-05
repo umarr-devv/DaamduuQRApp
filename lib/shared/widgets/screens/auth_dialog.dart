@@ -1,11 +1,11 @@
 import 'package:app/blocs/auth/auth_cubit.dart';
+import 'package:app/shared/icons/icons.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:app/shared/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class AuthDialog extends StatelessWidget {
   const AuthDialog({super.key});
@@ -101,6 +101,7 @@ class _DialogButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     final cubit = BlocProvider.of<AuthCubit>(context);
     return Column(
       spacing: 8,
@@ -112,10 +113,7 @@ class _DialogButtons extends StatelessWidget {
           child: Row(
             spacing: 4,
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SvgPicture.asset('assets/svg/google.svg', height: 24),
-              Text('Google'),
-            ],
+            children: [CustomIcons.google(size: 24), Text('Google')],
           ),
         ),
         TextButton(
@@ -126,7 +124,7 @@ class _DialogButtons extends StatelessWidget {
             spacing: 4,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SvgPicture.asset('assets/svg/apple.svg', height: 24),
+              CustomIcons.apple(size: 24, color: theme.custom.foreground),
               Text('Apple ID'),
             ],
           ),

@@ -1,4 +1,5 @@
 import 'package:app/blocs/blocs.dart';
+import 'package:app/shared/icons/icons.dart';
 import 'package:app/shared/shared.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +36,7 @@ class OrderResult extends StatelessWidget {
                           state.totalSum.toStringAsFixed(0),
                           style: theme.custom.price,
                         ),
-                        SomSymbol(size: 16),
+                        CustomIcons.som(size: 16)
                       ],
                     ),
                   ],

@@ -1,6 +1,6 @@
+import 'package:app/shared/icons/icons.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class CustomEstablishmentType extends StatelessWidget {
   const CustomEstablishmentType({
@@ -12,37 +12,32 @@ class CustomEstablishmentType extends StatelessWidget {
   final EstablishmentType? type;
   final Color color;
 
-  (String, String) getType() {
+  (String, CustomIcons) getType() {
     switch (type) {
       case null:
-        return ('assets/svg/list.svg', 'Все');
+        return ('Все', CustomIcons.list);
       case EstablishmentType.restaurant:
-        return ('assets/svg/restaurant.svg', 'Рестораны');
+        return ('Рестораны', CustomIcons.restaurant);
       case EstablishmentType.fastFood:
-        return ('assets/svg/hamburger_soda.svg', 'Фастфуды');
+        return ('Фастфуды', CustomIcons.hamburger_soda);
       case EstablishmentType.cafe:
-        return ('assets/svg/mug_hot_alt.svg', 'Кафе');
+        return ('Кафе', CustomIcons.mug_hot_alt);
       case EstablishmentType.confectionery:
-        return ('assets/svg/croissant.svg', 'Кондитерские');
+        return ('Кондитерские', CustomIcons.croissant);
       case EstablishmentType.bar:
-        return ('assets/svg/glass_cheers.svg', 'Бары');
+        return ('Бары', CustomIcons.glass_cheers);
       case EstablishmentType.coffeeShop:
-        return ('assets/svg/cup_straw_swoosh.svg', 'Кофейни');
+        return ('Кофейни', CustomIcons.cup_straw_swoosh);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final (icon, label) = getType();
+    final (label, icon) = getType();
     return Row(
       spacing: 6,
       children: [
-        SvgPicture.asset(
-          icon,
-          height: 16,
-          width: 16,
-          colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
-        ),
+        icon(size: 16, color: color),
         Text(
           label,
           style: TextStyle(

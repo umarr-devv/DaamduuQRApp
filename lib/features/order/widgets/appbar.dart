@@ -1,7 +1,7 @@
+import 'package:app/shared/icons/icons.dart';
 import 'package:app/shared/shared.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class OrderAppBar extends StatelessWidget {
   const OrderAppBar({super.key});
@@ -15,15 +15,7 @@ class OrderAppBar extends StatelessWidget {
         spacing: 4,
         mainAxisSize: MainAxisSize.min,
         children: [
-          SvgPicture.asset(
-            'assets/svg/receipt.svg',
-            height: 24,
-            width: 24,
-            colorFilter: ColorFilter.mode(
-              theme.custom.foreground,
-              BlendMode.srcIn,
-            ),
-          ),
+          CustomIcons.receipt(color: theme.custom.foreground),
           Text('Заказ №64'),
         ],
       ),

@@ -4,7 +4,6 @@ import 'package:app/shared/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class SearchResult extends StatelessWidget {
   const SearchResult({super.key});
@@ -24,15 +23,6 @@ class SearchResult extends StatelessWidget {
             spacing: 12,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SvgPicture.asset(
-                'assets/svg/face-sad-sweat.svg',
-                height: 96,
-                width: 96,
-                colorFilter: ColorFilter.mode(
-                  theme.custom.onMuted,
-                  BlendMode.srcIn,
-                ),
-              ),
               Text('Ничего не найдено', style: theme.custom.label),
             ],
           );

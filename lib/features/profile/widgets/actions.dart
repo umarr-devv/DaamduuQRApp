@@ -1,9 +1,9 @@
 import 'package:app/core/router/router.dart';
 import 'package:app/shared/dialogs/dialogs.dart';
+import 'package:app/shared/icons/icons.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
@@ -15,7 +15,7 @@ class _ActionButtonData {
     this.onTap,
   });
 
-  final String icon;
+  final CustomIcons icon;
   final String label;
   final String? description;
   final void Function()? onTap;
@@ -31,7 +31,7 @@ class ProfileActions extends StatefulWidget {
 class _ProfileActionsState extends State<ProfileActions> {
   List<_ActionButtonData> get buttons => [
     _ActionButtonData(
-      icon: 'assets/svg/map_marker.svg',
+      icon: CustomIcons.map_marker,
       description: 'Определяется автоматически',
       onTap: () {
         CitySelectDialog().show(context);
@@ -39,21 +39,21 @@ class _ProfileActionsState extends State<ProfileActions> {
       label: 'Мой город',
     ),
     _ActionButtonData(
-      icon: 'assets/svg/time_past.svg',
+      icon: CustomIcons.time_past,
       label: 'История',
       onTap: () {
         AutoRouter.of(context).push(HistoryRoute());
       },
     ),
     _ActionButtonData(
-      icon: 'assets/svg/shield_check.svg',
+      icon: CustomIcons.shield_check,
       label: 'Условия соглашения',
       onTap: () {
         AppRulesDialog().show(context);
       },
     ),
     _ActionButtonData(
-      icon: 'assets/svg/interrogation.svg',
+      icon: CustomIcons.interrogation,
       label: 'Обратная связь',
       onTap: () {
         Navigator.of(context).push(
@@ -64,7 +64,7 @@ class _ProfileActionsState extends State<ProfileActions> {
       },
     ),
     _ActionButtonData(
-      icon: 'assets/svg/comment_info.svg',
+      icon:  CustomIcons.comment_info,
       label: 'О приложении',
       onTap: () {
         AboutAppDialog().show(context);
@@ -110,15 +110,7 @@ class _ActionButton extends StatelessWidget {
               color: theme.custom.muted,
               borderRadius: BorderRadius.circular(32),
             ),
-            child: SvgPicture.asset(
-              button.icon,
-              height: 24,
-              width: 24,
-              colorFilter: ColorFilter.mode(
-                theme.custom.onMuted,
-                BlendMode.srcIn,
-              ),
-            ),
+            child: button.icon(color: theme.custom.onMuted) 
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,

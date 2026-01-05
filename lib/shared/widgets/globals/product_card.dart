@@ -1,4 +1,5 @@
 import 'package:app/core/router/router.dart';
+import 'package:app/shared/icons/icons.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:app/shared/widgets/buttons/favorite.dart';
 import 'package:app/shared/widgets/components/components.dart';
@@ -67,7 +68,7 @@ class _CardPrice extends StatelessWidget {
       spacing: 2,
       children: [
         Text(product.price.toStringAsFixed(0), style: theme.custom.price),
-        SomSymbol(),
+        CustomIcons.som()
       ],
     );
   }

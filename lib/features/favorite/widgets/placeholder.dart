@@ -1,6 +1,6 @@
+import 'package:app/shared/icons/icons.dart';
 import 'package:app/shared/shared.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class FavoritePlaceholder extends StatelessWidget {
   const FavoritePlaceholder({super.key});
@@ -14,15 +14,7 @@ class FavoritePlaceholder extends StatelessWidget {
         spacing: 12,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SvgPicture.asset(
-            'assets/svg/heart.svg',
-            height: 128,
-            width: 128,
-            colorFilter: ColorFilter.mode(
-              theme.custom.onMuted,
-              BlendMode.srcIn,
-            ),
-          ),
+          CustomIcons.heart(size: 128, color: theme.custom.onMuted),
           Text(
             'У вас пока нет избранных заведений или позиций',
             textAlign: TextAlign.center,

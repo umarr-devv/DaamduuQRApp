@@ -1,7 +1,7 @@
+import 'package:app/shared/icons/icons.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:app/shared/widgets/buttons/buttons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class HistoryAppBar extends StatelessWidget {
   const HistoryAppBar({super.key});
@@ -22,15 +22,7 @@ class _AppBarTitle extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       spacing: 8,
       children: [
-        SvgPicture.asset(
-          'assets/svg/time_past.svg',
-          height: 20,
-          width: 20,
-          colorFilter: ColorFilter.mode(
-            theme.custom.foreground,
-            BlendMode.srcIn,
-          ),
-        ),
+        CustomIcons.time_past(size: 20, color: theme.custom.foreground),
         Text('История', style: theme.custom.label),
       ],
     );
