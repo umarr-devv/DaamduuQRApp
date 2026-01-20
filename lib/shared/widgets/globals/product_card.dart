@@ -117,7 +117,7 @@ class _CardImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Hero(
       tag: 'image_${product.id}',
-      child: CustomImage(imageId: product.images[0].id),
+      child: CustomImage(imageId: product.images.isNotEmpty ? product.images[0].id : null),
     );
   }
 }
