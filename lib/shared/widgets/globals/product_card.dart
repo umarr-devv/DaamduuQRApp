@@ -68,7 +68,10 @@ class _CardPrice extends StatelessWidget {
       spacing: 2,
       children: [
         Text(product.price.toStringAsFixed(0), style: theme.custom.price),
-        CustomIcons.som()
+        Transform.translate(
+          offset: Offset(0, 2),
+          child: CustomIcons.som(size: 16, color: theme.custom.onMuted),
+        ),
       ],
     );
   }
@@ -117,7 +120,9 @@ class _CardImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Hero(
       tag: 'image_${product.id}',
-      child: CustomImage(imageId: product.images.isNotEmpty ? product.images[0].id : null),
+      child: CustomImage(
+        imageId: product.images.isNotEmpty ? product.images[0].id : null,
+      ),
     );
   }
 }

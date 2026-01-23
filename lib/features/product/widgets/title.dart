@@ -65,10 +65,13 @@ class _ProductPrice extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
-        spacing: 4,
+        spacing: 2,
         children: [
           Text(product.price.toStringAsFixed(0), style: theme.custom.price),
-          CustomIcons.som(),
+          Transform.translate(
+            offset: Offset(0, 2),
+            child: CustomIcons.som(size: 16, color: theme.custom.onMuted),
+          ),
         ],
       ),
     );

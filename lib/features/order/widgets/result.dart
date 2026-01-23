@@ -31,12 +31,19 @@ class OrderResult extends StatelessWidget {
                   children: [
                     Text('Сумма', style: theme.custom.label),
                     Row(
+                      spacing: 2,
                       children: [
                         Text(
                           state.totalSum.toStringAsFixed(0),
                           style: theme.custom.price,
                         ),
-                        CustomIcons.som(size: 16)
+                        Transform.translate(
+                          offset: Offset(0, 2),
+                          child: CustomIcons.som(
+                            size: 16,
+                            color: theme.custom.onMuted,
+                          ),
+                        ),
                       ],
                     ),
                   ],

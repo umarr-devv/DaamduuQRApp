@@ -1,6 +1,7 @@
 import 'package:app/shared/theme/theme.dart';
 import 'package:app/utils/file.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -41,12 +42,7 @@ class CustomImage extends StatelessWidget {
             },
           );
         } else {
-          return Image.asset(
-            placehodler,
-            height: height,
-            width: width,
-            fit: BoxFit.cover,
-          );
+          return Icon(FluentIcons.image_24_regular, size: 48);
         }
       },
     );

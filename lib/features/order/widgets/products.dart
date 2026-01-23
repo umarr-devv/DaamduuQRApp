@@ -106,6 +106,7 @@ class _CardInfo extends StatelessWidget {
           ),
         ),
         Row(
+          spacing: 2,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
@@ -116,7 +117,10 @@ class _CardInfo extends StatelessWidget {
                 color: theme.custom.onMuted,
               ),
             ),
-            CustomIcons.som(size: 12)
+            Transform.translate(
+              offset: Offset(0, 1),
+              child: CustomIcons.som(size: 12, color: theme.custom.onMuted),
+            ),
           ],
         ),
         SizedBox(height: 4),

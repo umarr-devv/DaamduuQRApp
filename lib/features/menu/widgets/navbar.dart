@@ -121,7 +121,7 @@ class _ScanButton extends StatelessWidget {
                 borderRadius: BorderRadiusGeometry.circular(64),
               ),
             ),
-            icon: CustomIcons.icon(color: theme.custom.background),
+            icon: CustomIcons.qr(color: theme.custom.onSecondary),
           );
         }
       },
