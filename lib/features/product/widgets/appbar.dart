@@ -2,6 +2,7 @@ import 'package:app/features/product/bloc/product/product_cubit.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:app/shared/widgets/widgets.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -55,7 +56,6 @@ class _ProductAppBarState extends State<ProductAppBar> {
           backgroundColor: theme.custom.background,
           toolbarHeight: toolbarHeight,
           expandedHeight: expandedHeight,
-
           leading: MaybePopButton(),
           title: _AppBarTitle(show: isCollapsed, product: state.product),
           actions: [
@@ -118,12 +118,19 @@ class _BackgroundImagesState extends State<_BackgroundImages> {
         height: 220,
         child: Stack(
           children: [
-            PageView(
-              controller: pageContoller,
-              children: widget.product.images.map((i) {
-                return CustomImage(imageId: i.id, fit: BoxFit.cover);
-              }).toList(),
-            ),
+            if (widget.product.images.isNotEmpty)
+              PageView(
+                controller: pageContoller,
+                children: widget.product.images.map((i) {
+                  return CustomImage(imageId: i.id, fit: BoxFit.cover);
+                }).toList(),
+              ),
+            if (widget.product.images.isEmpty)
+              Container(
+                alignment: Alignment.center,
+                decoration: BoxDecoration(color: theme.custom.muted),
+                child: Icon(FluentIcons.image_24_regular, size: 96),
+              ),
             Container(
               height: mediaQuery.padding.top + 12,
               decoration: BoxDecoration(
