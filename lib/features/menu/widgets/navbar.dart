@@ -66,7 +66,7 @@ class _ScanButton extends StatelessWidget {
     return BlocBuilder<OrderCubit, OrderState>(
       bloc: BlocProvider.of<OrderCubit>(context),
       builder: (context, state) {
-        if (state.items.isNotEmpty) {
+        if (state.establishment != null) {
           return Stack(
             children: [
               IconButton.filled(

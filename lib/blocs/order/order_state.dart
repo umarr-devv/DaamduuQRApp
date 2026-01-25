@@ -16,12 +16,12 @@ class OrderState extends Equatable {
 
   OrderState copyWith({
     List<OrderItem>? items,
-    EstablishmentScheme? establishment,
+    Object? establishment,
     PlaceScheme? place,
   }) {
     return OrderState(
       items: items ?? this.items,
-      establishment: establishment ?? this.establishment,
+      establishment: undefCompare<EstablishmentScheme>(establishment, this.establishment),
       place: place ?? this.place,
     );
   }

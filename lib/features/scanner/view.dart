@@ -1,3 +1,4 @@
+import 'package:app/blocs/blocs.dart';
 import 'package:app/core/router/router.dart';
 import 'package:app/features/scanner/bloc/scan/scan_cubit.dart';
 import 'package:app/features/scanner/widgets/info.dart';
@@ -27,6 +28,9 @@ class _ScannerScreenState extends State<ScannerScreen> {
         bloc: scanCubit,
         listener: (context, state) {
           if (state is ScanLoaded && state.establishment != null) {
+            BlocProvider.of<OrderCubit>(
+              context,
+            ).setEstablishment(state.establishment!);
             AutoRouter.of(
               context,
             ).replace(CatalogRoute(establishment: state.establishment!));

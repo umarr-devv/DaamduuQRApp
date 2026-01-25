@@ -1,3 +1,4 @@
+import 'package:app/utils/undefined.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:equatable/equatable.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
@@ -10,6 +11,11 @@ part 'order_state.dart';
 
 class OrderCubit extends HydratedCubit<OrderState> {
   OrderCubit() : super(OrderInitial());
+
+  void setEstablishment(Object? establishment) {
+    final newState = state.copyWith(establishment: establishment);
+    emit(OrderUpdate(newState));
+  }
 
   void addItem(ProductScheme product) async {
     final List<OrderItem> items = List.from(state.items);

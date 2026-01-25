@@ -1,4 +1,4 @@
-import 'package:app/features/catalog/bloc/catalog/catalog_cubit.dart';
+import 'package:app/features/catalog/bloc/bloc.dart';
 import 'package:app/features/catalog/widgets/widgets.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:auto_route/annotations.dart';
@@ -39,8 +39,17 @@ class _CatalogScreenState extends State<CatalogScreen> {
       providers: [BlocProvider.value(value: cubit)],
       child: Scaffold(
         backgroundColor: theme.custom.muted,
-        body: CustomScrollView(
-          slivers: [CatalogAppBar(), CatelogProducts(), SliverFillRemaining()],
+        body: Stack(
+          children: [
+            CustomScrollView(
+              slivers: [
+                CatalogAppBar(),
+                CatelogProducts(),
+                SliverFillRemaining(),
+              ],
+            ),
+            CatalogToOrderButton(),
+          ],
         ),
       ),
     );
