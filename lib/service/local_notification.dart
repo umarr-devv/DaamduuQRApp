@@ -43,7 +43,7 @@ class LocalNotificationService {
     );
 
     await _flutterLocalNotificationsPlugin.initialize(
-      initializationSettings,
+      settings: initializationSettings,
       onDidReceiveNotificationResponse: (details) {
         // foreground notifications
       },
@@ -79,10 +79,10 @@ class LocalNotificationService {
     );
 
     await _flutterLocalNotificationsPlugin.show(
-      _notificationCounter++,
-      title,
-      body,
-      notificationDetails,
+      id: _notificationCounter++,
+      title: title,
+      body: body,
+      notificationDetails: notificationDetails,
       payload: payload,
     );
   }
