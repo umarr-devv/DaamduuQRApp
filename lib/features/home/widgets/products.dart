@@ -1,6 +1,5 @@
 import 'package:app/features/home/blocs/home_tops/home_tops_cubit.dart';
 import 'package:app/shared/shared.dart';
-import 'package:app/shared/widgets/globals/product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

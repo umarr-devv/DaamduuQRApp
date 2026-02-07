@@ -207,7 +207,7 @@ class CustomThemeData {
         clipBehavior: Clip.antiAlias,
         color: background,
         shadowColor: black.withValues(alpha: 0.1),
-        elevation: 4,
+        elevation: 2,
         margin: const EdgeInsets.all(0),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       ),

@@ -21,7 +21,12 @@ class MaybePopButton extends StatelessWidget {
           close ? Icons.close : Icons.arrow_back_ios_new_rounded,
           color: foreground,
         ),
-        style: IconButton.styleFrom(backgroundColor: background),
+        style: IconButton.styleFrom(
+          backgroundColor: background,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadiusGeometry.circular(12),
+          ),
+        ),
         onPressed: () {
           AutoRouter.of(context).maybePop();
         },

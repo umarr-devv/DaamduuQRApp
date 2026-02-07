@@ -27,13 +27,13 @@ class OrderAppBar extends StatelessWidget {
       centerTitle: true,
       leading: MaybePopButton(),
       actions: [
-        IconButton(onPressed: () {}, icon: Icon(FluentIcons.chat_24_filled)),
+        IconButton(onPressed: () {}, icon: Icon(FluentIcons.chat_24_regular)),
         IconButton(
           onPressed: () {
             cubit.setEstablishment(undefined);
             AutoRouter.of(context).maybePop();
           },
-          icon: Icon(FluentIcons.arrow_exit_20_filled),
+          icon: Icon(FluentIcons.arrow_exit_20_regular),
         ),
         SizedBox(width: 8),
       ],

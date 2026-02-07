@@ -97,6 +97,7 @@ class SpecialOfferCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Card(
+      clipBehavior: Clip.antiAlias,
       child: Stack(
         children: [
           Container(
@@ -112,16 +113,12 @@ class SpecialOfferCard extends StatelessWidget {
           ),
           Align(
             alignment: Alignment.bottomRight,
-            child: Padding(
-              padding: const EdgeInsetsGeometry.all(8),
-              child: Tilt(
-                shadowConfig: ShadowConfig(disable: true),
-                lightConfig: LightConfig(disable: true),
-                child: Image.asset(
-                  offer.imageAsset,
-                  height: 128,
-                  fit: BoxFit.contain,
-                ),
+            child: Transform.translate(
+              offset: Offset(42, 32),
+              child: Image.asset(
+                offer.imageAsset,
+                height: 180,
+                fit: BoxFit.contain,
               ),
             ),
           ),
