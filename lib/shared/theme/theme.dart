@@ -68,7 +68,7 @@ class CustomThemeData {
 
   TextStyle get label => TextStyle(
     fontFamily: font,
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: FontWeight.w600,
     color: foreground,
   );

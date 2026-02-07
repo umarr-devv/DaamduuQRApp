@@ -81,7 +81,7 @@ class _AppBarBottom extends StatelessWidget implements PreferredSizeWidget {
   const _AppBarBottom();
 
   @override
-  Size get preferredSize => Size.fromHeight(64);
+  Size get preferredSize => Size.fromHeight(72);
 
   @override
   Widget build(BuildContext context) {
@@ -90,12 +90,12 @@ class _AppBarBottom extends StatelessWidget implements PreferredSizeWidget {
         AutoRouter.of(context).push(SearchRoute());
       },
       child: Padding(
-        padding: const EdgeInsets.only(left: 16, right: 16, bottom: 12),
+        padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
         child: TextField(
           enabled: false,
           decoration: InputDecoration(
             prefixIcon: Icon(FluentIcons.search_24_regular, size: 28),
-            hintText: 'Поиск ',
+            hintText: 'Поиск вкусностей',
           ),
         ),
       ),

@@ -64,7 +64,7 @@ class _SpecialOffersCarouselState extends State<SpecialOffersCarousel> {
                 )
                 .toList(),
             options: CarouselOptions(
-              height: 200,
+              height: 190,
               viewportFraction: 0.85,
               autoPlay: true,
               autoPlayInterval: const Duration(seconds: 5),
@@ -96,85 +96,63 @@ class SpecialOfferCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Tilt(
-      shadowConfig: ShadowConfig(disable: true),
-      borderRadius: BorderRadius.circular(16),
-      tiltConfig: TiltConfig(enableGestureTouch: false),
-      childLayout: ChildLayout(
-        outer: [
-          Align(
-            alignment: Alignment.bottomRight,
-            child: TiltParallax(child: _SpecialOfferCardImage(offer: offer)),
+    return Card(
+      child: Stack(
+        children: [
+          Container(
+            height: double.infinity,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: offer.colors,
+                begin: Alignment.centerLeft,
+                end: Alignment.bottomRight,
+              ),
+            ),
           ),
           Align(
-            alignment: Alignment.bottomLeft,
-            child: TiltParallax(child: _SpecialOfferCardButton(offer: offer)),
+            alignment: Alignment.bottomRight,
+            child: Padding(
+              padding: const EdgeInsetsGeometry.all(8),
+              child: Tilt(
+                shadowConfig: ShadowConfig(disable: true),
+                lightConfig: LightConfig(disable: true),
+                child: Image.asset(
+                  offer.imageAsset,
+                  height: 128,
+                  fit: BoxFit.contain,
+                ),
+              ),
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  offer.label,
+                  style: TextStyle(
+                    color: theme.custom.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                Text(
+                  offer.description,
+                  style: TextStyle(
+                    color: theme.custom.white.withValues(alpha: 0.75),
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+                Expanded(child: SizedBox()),
+                TextButton(onPressed: () {}, child: Text('Подробнее')),
+              ],
+            ),
           ),
         ],
       ),
-      child: Card(
-        child: Container(
-          height: double.infinity,
-          width: double.infinity,
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: offer.colors,
-              begin: Alignment.centerLeft,
-              end: Alignment.bottomRight,
-            ),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                offer.label,
-                style: TextStyle(
-                  color: theme.custom.white,
-                  fontSize: 24,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-              Text(
-                offer.description,
-                style: TextStyle(
-                  color: theme.custom.white.withValues(alpha: 0.75),
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _SpecialOfferCardButton extends StatelessWidget {
-  const _SpecialOfferCardButton({required this.offer});
-
-  final SpecialOfferData offer;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-      child: TextButton(onPressed: () {}, child: Text('Подробнее')),
-    );
-  }
-}
-
-class _SpecialOfferCardImage extends StatelessWidget {
-  const _SpecialOfferCardImage({required this.offer});
-
-  final SpecialOfferData offer;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsetsGeometry.all(8),
-      child: Image.asset(offer.imageAsset, height: 128, fit: BoxFit.contain),
     );
   }
 }
