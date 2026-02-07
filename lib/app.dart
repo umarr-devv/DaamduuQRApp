@@ -29,7 +29,9 @@ class _AppScreenState extends State<AppScreen> {
         BlocProvider.value(value: themeCubit),
       ],
       child: ThemeProvider(
-        initTheme: themeCubit.state.isDarkTheme ? darkTheme : lightTheme,
+        initTheme: themeCubit.state.isDarkTheme
+            ? CustomThemeData(brightness: Brightness.dark).toTheme()
+            : CustomThemeData(brightness: Brightness.light).toTheme(),
         builder: (context, theme) {
           return MaterialApp.router(
             title: 'DaamduuQR',

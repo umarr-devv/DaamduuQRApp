@@ -153,6 +153,9 @@ flutter:
     - "assets/splash/splash_logo.png"
 
     - "assets/placeholder/default.png"
+    - "assets/placeholder/burger.png"
+    - "assets/placeholder/pizza.png"
+    - "assets/placeholder/cappuccino.png"
 
   fonts:
     - family: Manrope

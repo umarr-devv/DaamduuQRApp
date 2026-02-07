@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
       providers: [BlocProvider(create: (context) => cubit)],
       child: CustomScrollView(
         controller: scrollController,
-        slivers: [HomeAppBar(), HomeEstablishments(), HomeProducts()],
+        slivers: [HomeAppBar(), SpecialOffersCarousel(), HomeProducts()],
       ),
     );
   }

@@ -68,8 +68,8 @@ class CustomThemeData {
 
   TextStyle get label => TextStyle(
     fontFamily: font,
-    fontSize: 15,
-    fontWeight: FontWeight.w500,
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
     color: foreground,
   );
 
@@ -138,18 +138,31 @@ class CustomThemeData {
       ),
       bottomAppBarTheme: BottomAppBarThemeData(color: background),
       inputDecorationTheme: InputDecorationTheme(
-        contentPadding: const EdgeInsets.all(0),
+        contentPadding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
         hintStyle: TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w400,
           color: onMuted,
         ),
-        border: OutlineInputBorder(borderSide: BorderSide.none),
+        filled: true,
+        fillColor: background,
+        border: OutlineInputBorder(
+          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(128),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(128),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: foreground),
+          borderRadius: BorderRadius.circular(128),
+        ),
       ),
       iconButtonTheme: IconButtonThemeData(
         style: IconButton.styleFrom(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadiusGeometry.circular(12),
+            borderRadius: BorderRadiusGeometry.circular(128),
           ),
           backgroundColor: background,
           surfaceTintColor: transparent,
@@ -161,8 +174,9 @@ class CustomThemeData {
           iconColor: foreground,
           backgroundColor: muted,
           foregroundColor: foreground,
+          padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 16),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadiusGeometry.circular(12),
+            borderRadius: BorderRadiusGeometry.circular(128),
           ),
         ),
       ),
@@ -210,6 +224,3 @@ class CustomThemeData {
 extension ThemeExtension on ThemeData {
   CustomThemeData get custom => CustomThemeData(brightness: brightness);
 }
-
-final lightTheme = CustomThemeData(brightness: Brightness.light).toTheme();
-final darkTheme = CustomThemeData(brightness: Brightness.dark).toTheme();

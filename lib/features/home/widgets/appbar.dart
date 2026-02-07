@@ -57,20 +57,22 @@ class HomeAppBar extends StatelessWidget {
             return IconButton(
               onPressed: () {
                 ThemeSwitcher.of(context).changeTheme(
-                  theme: isDarkTheme ? lightTheme : darkTheme,
+                  theme: isDarkTheme
+                      ? CustomThemeData(brightness: Brightness.light).toTheme()
+                      : CustomThemeData(brightness: Brightness.dark).toTheme(),
                   isReversed: !isDarkTheme,
                 );
                 BlocProvider.of<ThemeCubit>(context).switchTheme();
               },
               icon: Icon(
                 isDarkTheme
-                    ? FluentIcons.weather_moon_24_filled
-                    : FluentIcons.weather_sunny_24_filled,
+                    ? FluentIcons.weather_moon_24_regular
+                    : FluentIcons.weather_sunny_24_regular,
               ),
             );
           },
         ),
-        IconButton(onPressed: () {}, icon: Icon(FluentIcons.alert_24_filled)),
+        IconButton(onPressed: () {}, icon: Icon(FluentIcons.alert_24_regular)),
         SizedBox(width: 16),
       ],
       bottom: _AppBarBottom(),
@@ -82,16 +84,7 @@ class _AppBarBottom extends StatelessWidget implements PreferredSizeWidget {
   const _AppBarBottom();
 
   @override
-  Size get preferredSize => Size.fromHeight(106);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(children: [_AppBarSearch(), _AppBarFilter()]);
-  }
-}
-
-class _AppBarSearch extends StatelessWidget {
-  const _AppBarSearch();
+  Size get preferredSize => Size.fromHeight(64);
 
   @override
   Widget build(BuildContext context) {
@@ -99,101 +92,14 @@ class _AppBarSearch extends StatelessWidget {
       onTap: () {
         AutoRouter.of(context).push(SearchRoute());
       },
-      child: Hero(
-        tag: 'searchbar',
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: CustomSearchBar(
-            hintText: 'Поищите свои любимые сладости',
-            enable: false,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 16, right: 16, bottom: 12),
+        child: TextField(
+          enabled: false,
+          decoration: InputDecoration(
+            prefixIcon: Icon(FluentIcons.search_24_regular, size: 28),
+            hintText: 'Поиск ',
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class _AppBarFilter extends StatefulWidget {
-  const _AppBarFilter();
-
-  @override
-  State<_AppBarFilter> createState() => _AppBarFilterState();
-}
-
-class _AppBarFilterState extends State<_AppBarFilter> {
-  void onTap(EstablishmentType? type) {
-    BlocProvider.of<HomeCubit>(context).setType(type ?? undefined);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit, HomeState>(
-      bloc: BlocProvider.of<HomeCubit>(context),
-      builder: (context, state) {
-        return SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-          child: Row(
-            spacing: 8,
-            children:
-                [
-                  _FilterItem(
-                    type: null,
-                    onTap: onTap,
-                    currentType: state.type,
-                  ),
-                ] +
-                EstablishmentType.values
-                    .map(
-                      (i) => _FilterItem(
-                        type: i,
-                        onTap: onTap,
-                        currentType: state.type,
-                      ),
-                    )
-                    .toList(),
-          ),
-        );
-      },
-    );
-  }
-}
-
-class _FilterItem extends StatefulWidget {
-  const _FilterItem({
-    required this.type,
-    required this.onTap,
-    required this.currentType,
-  });
-
-  final EstablishmentType? type;
-  final void Function(EstablishmentType?) onTap;
-  final EstablishmentType? currentType;
-
-  @override
-  State<_FilterItem> createState() => _FilterItemState();
-}
-
-class _FilterItemState extends State<_FilterItem> {
-  bool get active => widget.currentType == widget.type;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return GestureDetector(
-      onTap: () {
-        widget.onTap(widget.type);
-      },
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 175),
-        padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
-        decoration: BoxDecoration(
-          color: active ? theme.custom.secondary : theme.custom.background,
-          borderRadius: BorderRadius.circular(32),
-        ),
-        child: CustomEstablishmentType(
-          type: widget.type,
-          color: active ? theme.custom.background : theme.custom.onMuted,
         ),
       ),
     );
