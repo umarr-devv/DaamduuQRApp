@@ -7,3 +7,4 @@ export 'page_indicator.dart';
 export 'searchbar.dart';
 export 'sliver_space.dart';
 export 'currency.dart';
+export 'dotted_line.dart';

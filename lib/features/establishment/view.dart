@@ -1,5 +1,6 @@
 import 'package:app/features/establishment/bloc/establishment/establishment_cubit.dart';
 import 'package:app/features/establishment/widgets/widgets.dart';
+import 'package:app/shared/shared.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
@@ -49,9 +50,9 @@ class _EstablishmentScreenState extends State<EstablishmentScreen> {
                 EstablishmentAppBar(scrollController: scrollController),
                 SliverToBoxAdapter(child: EstablishmentTitle()),
                 SliverToBoxAdapter(child: EstablishmentStories()),
-                SliverToBoxAdapter(child: Divider()),
+                SliverToBoxAdapter(child: CustomDottedLine()),
                 SliverToBoxAdapter(child: EstablishmentWorkTime()),
-                SliverToBoxAdapter(child: Divider()),
+                SliverToBoxAdapter(child: CustomDottedLine()),
                 SliverToBoxAdapter(child: EstablishmentContacts()),
                 SliverFillRemaining(),
               ],

@@ -185,7 +185,7 @@ class CustomThemeData {
       filledButtonTheme: FilledButtonThemeData(
         style: FilledButton.styleFrom(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadiusGeometry.circular(12),
+            borderRadius: BorderRadiusGeometry.circular(128),
           ),
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
           backgroundColor: secondary,
@@ -198,7 +198,7 @@ class CustomThemeData {
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(128),
             side: BorderSide(color: border, width: 1),
           ),
           foregroundColor: foreground,

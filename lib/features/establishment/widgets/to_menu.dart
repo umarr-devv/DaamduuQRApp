@@ -37,7 +37,8 @@ class ToMenuButton extends StatelessWidget {
                   context,
                 ).push(CatalogRoute(establishment: state.establishment));
               },
-              child: Text('Меню'),
+              
+              child: Text('Перейти к меню'),
             ),
           ),
         );

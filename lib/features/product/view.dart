@@ -1,5 +1,6 @@
 import 'package:app/features/product/bloc/product/product_cubit.dart';
 import 'package:app/features/product/widgets/widgets.dart';
+import 'package:app/shared/shared.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
@@ -47,9 +48,9 @@ class _ProductScreenState extends State<ProductScreen> {
               slivers: [
                 ProductAppBar(scrollController: scrollController),
                 ProductTitle(),
-                SliverToBoxAdapter(child: Divider()),
+                SliverToBoxAdapter(child: CustomDottedLine()),
                 ProductDescription(),
-                SliverToBoxAdapter(child: Divider()),
+                SliverToBoxAdapter(child: CustomDottedLine()),
                 ProductEstablishments(),
                 SliverFillRemaining(),
               ],
