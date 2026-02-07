@@ -42,7 +42,7 @@ class CustomImage extends StatelessWidget {
             },
           );
         } else {
-          return Icon(FluentIcons.image_24_regular, size: 48);
+          return Center(child: Icon(FluentIcons.image_24_regular, size: 48));
         }
       },
     );

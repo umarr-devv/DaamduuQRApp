@@ -134,7 +134,7 @@ class _CarouselState extends State<_Carousel> {
                   .toList(),
               options: CarouselOptions(
                 height: 190,
-                viewportFraction: 0.65,
+                viewportFraction: 0.5,
                 autoPlay: true,
                 autoPlayInterval: const Duration(seconds: 5),
                 pauseAutoPlayInFiniteScroll: true,

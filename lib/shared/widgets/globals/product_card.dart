@@ -1,5 +1,4 @@
 import 'package:app/core/router/router.dart';
-import 'package:app/shared/icons/icons.dart';
 import 'package:app/shared/theme/theme.dart';
 import 'package:app/shared/widgets/buttons/favorite.dart';
 import 'package:app/shared/widgets/components/components.dart';
@@ -23,11 +22,17 @@ class ProductCard extends StatelessWidget {
           children: [
             Column(
               children: [
-                Expanded(child: _CardImage(product: product)),
-                _CardInfo(product: product),
+                Expanded(child: _Image(product)),
+                _Info(product),
               ],
             ),
-            _FavoriteStatus(product: product),
+            Align(
+              alignment: Alignment.topRight,
+              child: Padding(
+                padding: const EdgeInsets.all(4),
+                child: FavoriteButton(id: product.id),
+              ),
+            ),
           ],
         ),
       ),
@@ -35,50 +40,24 @@ class ProductCard extends StatelessWidget {
   }
 }
 
-class _FavoriteStatus extends StatelessWidget {
-  const _FavoriteStatus({required this.product});
+class _Image extends StatelessWidget {
+  const _Image(this.product);
 
   final ProductScheme product;
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.topRight,
-      child: Padding(
-        padding: const EdgeInsets.all(8),
-        child: Hero(
-          tag: 'favorite_${product.id}',
-          child: FavoriteButton(id: product.id),
-        ),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(12),
+      child: CustomImage(
+        imageId: product.images.isNotEmpty ? product.images[0].id : null,
       ),
     );
   }
 }
 
-class _CardPrice extends StatelessWidget {
-  const _CardPrice({required this.product});
-
-  final ProductScheme product;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      spacing: 2,
-      children: [
-        Text(product.price.toStringAsFixed(0), style: theme.custom.price),
-        Transform.translate(
-          offset: Offset(0, 2),
-          child: CustomIcons.som(size: 16, color: theme.custom.onMuted),
-        ),
-      ],
-    );
-  }
-}
-
-class _CardInfo extends StatelessWidget {
-  const _CardInfo({required this.product});
+class _Info extends StatelessWidget {
+  const _Info(this.product);
 
   final ProductScheme product;
 
@@ -87,7 +66,7 @@ class _CardInfo extends StatelessWidget {
     final theme = Theme.of(context);
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -95,33 +74,23 @@ class _CardInfo extends StatelessWidget {
             product.name,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: theme.custom.label,
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+              color: theme.custom.foreground,
+            ),
           ),
           Text(
             product.category.name,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: theme.custom.subtitle,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              color: theme.custom.onMuted,
+            ),
           ),
-          const SizedBox(height: 8),
-          _CardPrice(product: product),
+          SizedBox(height: 6),
+          CustomCurrencyText(value: product.price),
         ],
-      ),
-    );
-  }
-}
-
-class _CardImage extends StatelessWidget {
-  const _CardImage({required this.product});
-
-  final ProductScheme product;
-
-  @override
-  Widget build(BuildContext context) {
-    return Hero(
-      tag: 'image_${product.id}',
-      child: CustomImage(
-        imageId: product.images.isNotEmpty ? product.images[0].id : null,
       ),
     );
   }

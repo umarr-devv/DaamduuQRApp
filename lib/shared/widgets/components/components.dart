@@ -6,3 +6,4 @@ export 'image.dart';
 export 'page_indicator.dart';
 export 'searchbar.dart';
 export 'sliver_space.dart';
+export 'currency.dart';

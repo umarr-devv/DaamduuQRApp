@@ -1,9 +1,10 @@
 import 'package:app/core/router/router.dart';
-import 'package:app/shared/theme/theme.dart';
-import 'package:app/shared/widgets/widgets.dart';
+import 'package:app/shared/shared.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:daamduuqr_client/daamduuqr_client.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class EstablishmentCard extends StatelessWidget {
   const EstablishmentCard({super.key, required this.establishment});
@@ -23,12 +24,17 @@ class EstablishmentCard extends StatelessWidget {
           children: [
             Column(
               children: [
-                Expanded(child: _CardImage(establishment: establishment)),
-                _CardInfo(establishment: establishment),
+                Expanded(child: _Image(establishment)),
+                _Info(establishment),
               ],
             ),
-            _Actions(establishment: establishment),
-            _AvailableStatus(),
+            Align(
+              alignment: Alignment.topRight,
+              child: Padding(
+                padding: const EdgeInsets.all(4),
+                child: FavoriteButton(id: establishment.id),
+              ),
+            ),
           ],
         ),
       ),
@@ -36,92 +42,75 @@ class EstablishmentCard extends StatelessWidget {
   }
 }
 
-class _AvailableStatus extends StatelessWidget {
-  const _AvailableStatus();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
-
-class _Actions extends StatelessWidget {
-  const _Actions({required this.establishment});
+class _Image extends StatelessWidget {
+  const _Image(this.establishment);
 
   final EstablishmentScheme establishment;
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.topRight,
-      child: Padding(
-        padding: const EdgeInsets.all(8),
-        child: Hero(
-          tag: 'favorite_${establishment.id}',
-          child: FavoriteButton(id: establishment.id),
-        ),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(12),
+      child: CustomImage(
+        imageId: establishment.images.isNotEmpty
+            ? establishment.images[0].id
+            : null,
       ),
     );
   }
 }
 
-class _CardInfo extends StatelessWidget {
-  const _CardInfo({required this.establishment});
+class _Info extends StatelessWidget {
+  const _Info(this.establishment);
 
   final EstablishmentScheme establishment;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            establishment.name,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: theme.custom.label,
-          ),
-          Row(
-            spacing: 4,
-            children: [
-              Icon(Icons.location_pin, size: 16, color: theme.custom.onMuted),
-              Expanded(
-                child: Text(
-                  establishment.address,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: theme.custom.subtitle,
-                ),
+    return Align(
+      alignment: AlignmentGeometry.bottomCenter,
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              establishment.name,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                color: theme.custom.foreground,
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
               ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _CardImage extends StatelessWidget {
-  const _CardImage({required this.establishment});
-
-  final EstablishmentScheme establishment;
-
-  @override
-  Widget build(BuildContext context) {
-    return Hero(
-      tag: 'image_${establishment.id}',
-      child: ClipRRect(
-        borderRadius: BorderRadiusGeometry.only(
-          topLeft: Radius.circular(16),
-          topRight: Radius.circular(16),
-        ),
-        child: CustomImage(
-          imageId: establishment.images.isNotEmpty
-              ? establishment.images[0].id
-              : null,
+            ),
+            Row(
+              spacing: 4,
+              children: [
+                RatingBarIndicator(
+                  rating: 4.4,
+                  unratedColor: theme.custom.foreground.withValues(alpha: 0.15),
+                  itemBuilder: (context, index) => Icon(
+                    FluentIcons.star_24_filled,
+                    color: theme.custom.gold,
+                  ),
+                  itemCount: 5,
+                  itemSize: 16,
+                  direction: Axis.horizontal,
+                ),
+                Text(
+                  '4.5',
+                  style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w500,
+                    color: theme.custom.foreground,
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );

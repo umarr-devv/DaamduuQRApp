@@ -1,7 +1,6 @@
 import 'package:app/shared/shared.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_tilt/flutter_tilt.dart';
 
 class SpecialOfferData {
   SpecialOfferData({

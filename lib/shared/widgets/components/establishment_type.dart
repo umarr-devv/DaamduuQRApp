@@ -12,7 +12,7 @@ class CustomEstablishmentType extends StatelessWidget {
   final EstablishmentType? type;
   final Color color;
 
-  (String, CustomIcons) getType() {
+  static (String, CustomIcons) getType(EstablishmentType? type) {
     switch (type) {
       case null:
         return ('Все', CustomIcons.list);
@@ -33,7 +33,7 @@ class CustomEstablishmentType extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final (label, icon) = getType();
+    final (label, icon) = getType(type);
     return Row(
       spacing: 6,
       children: [

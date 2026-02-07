@@ -64,6 +64,8 @@ class CustomThemeData {
   Color get info =>
       by(light: const Color(0xFF2563EB), dark: const Color(0xFF3B82F6));
 
+  Color get gold => Color(0xffffc108);
+
   Color get transparent => const Color(0x00000000);
 
   TextStyle get label => TextStyle(
