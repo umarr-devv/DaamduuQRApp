@@ -99,11 +99,7 @@ class SpecialOfferCard extends StatelessWidget {
     return Tilt(
       shadowConfig: ShadowConfig(disable: true),
       borderRadius: BorderRadius.circular(16),
-      tiltConfig: TiltConfig(
-        enableGestureHover: false,
-        enableGestureTouch: false,
-        enableGestureSensors: false,
-      ),
+      tiltConfig: TiltConfig(enableGestureTouch: false),
       childLayout: ChildLayout(
         outer: [
           Align(
