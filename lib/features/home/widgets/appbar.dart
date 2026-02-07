@@ -1,12 +1,9 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:app/blocs/blocs.dart';
 import 'package:app/core/router/router.dart';
-import 'package:app/features/home/bloc/home/home_cubit.dart';
 import 'package:app/shared/icons/icons.dart';
 import 'package:app/shared/shared.dart';
-import 'package:app/utils/undefined.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:daamduuqr_client/daamduuqr_client.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
