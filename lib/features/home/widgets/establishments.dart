@@ -136,10 +136,7 @@ class _CarouselState extends State<_Carousel> {
                 height: 190,
                 viewportFraction: 0.6,
                 autoPlay: true,
-                autoPlayInterval: const Duration(seconds: 5),
-                pauseAutoPlayInFiniteScroll: true,
-                pauseAutoPlayOnManualNavigate: true,
-                pauseAutoPlayOnTouch: true,
+                autoPlayInterval: const Duration(seconds: 7),
                 onPageChanged: (index, reason) {
                   currentIndex.value = index;
                 },

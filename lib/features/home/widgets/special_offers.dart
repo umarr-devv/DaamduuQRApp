@@ -63,13 +63,10 @@ class _SpecialOffersCarouselState extends State<SpecialOffersCarousel> {
                 )
                 .toList(),
             options: CarouselOptions(
-              height: 190,
+              height: 170,
               viewportFraction: 0.85,
               autoPlay: true,
               autoPlayInterval: const Duration(seconds: 5),
-              pauseAutoPlayInFiniteScroll: true,
-              pauseAutoPlayOnManualNavigate: true,
-              pauseAutoPlayOnTouch: true,
               onPageChanged: (index, reason) {
                 setState(() {
                   currentIndex = index;
