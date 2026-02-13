@@ -41,11 +41,6 @@ class CustomCounterButton extends StatelessWidget {
                 width: iconSize + 16,
                 child: IconButton.outlined(
                   onPressed: onRemove,
-                  style: IconButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadiusGeometry.circular(radius),
-                    ),
-                  ),
                   icon: Icon(Icons.remove, size: iconSize),
                 ),
               ),
@@ -65,9 +60,6 @@ class CustomCounterButton extends StatelessWidget {
                   style: IconButton.styleFrom(
                     backgroundColor: theme.custom.secondary,
                     foregroundColor: theme.custom.onSecondary,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadiusGeometry.circular(radius),
-                    ),
                   ),
                   icon: Icon(Icons.add, size: iconSize),
                 ),

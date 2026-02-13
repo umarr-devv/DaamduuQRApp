@@ -43,8 +43,8 @@ class _ProductInfo extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(product.category.name, style: theme.custom.title),
-        Text(product.name, style: theme.custom.subtitle),
+        Text(product.category.name, style: theme.custom.subtitle),
+        Text(product.name, style: theme.custom.title),
       ],
     );
   }

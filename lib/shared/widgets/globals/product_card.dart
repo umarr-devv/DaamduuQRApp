@@ -47,10 +47,13 @@ class _Image extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(12),
-      child: CustomImage(
-        imageId: product.images.isNotEmpty ? product.images[0].id : null,
+    return Padding(
+      padding: const EdgeInsets.all(4),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(12),
+        child: CustomImage(
+          imageId: product.images.isNotEmpty ? product.images[0].id : null,
+        ),
       ),
     );
   }
